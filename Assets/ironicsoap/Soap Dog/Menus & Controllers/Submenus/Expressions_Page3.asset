@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -340790334, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: Expressions_Page3
+  m_EditorClassIdentifier: 
+  controls:
+  - name: Blep
+    icon: {fileID: 0}
+    type: 102
+    parameter:
+      name: Expressions
+    value: 13
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Woobie Blep
+    icon: {fileID: 0}
+    type: 102
+    parameter:
+      name: Expressions
+    value: 14
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Pant
+    icon: {fileID: 0}
+    type: 102
+    parameter:
+      name: Expressions
+    value: 18
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Happy Blink
+    icon: {fileID: 0}
+    type: 102
+    parameter:
+      name: Expressions
+    value: 15
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Left Wink
+    icon: {fileID: 2800000, guid: 198b180a7f7b1af4892bc3741e05b4bc, type: 3}
+    type: 102
+    parameter:
+      name: Expressions
+    value: 16
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Right Wink
+    icon: {fileID: 2800000, guid: b5aa769ccfda9134e93a84a1ec232050, type: 3}
+    type: 102
+    parameter:
+      name: Expressions
+    value: 17
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
