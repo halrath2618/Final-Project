@@ -1,10 +1,13 @@
 ﻿using ECM.Common;
+using ECM.Controllers;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace ECM.Components
 {
+    
     /// <summary>
     /// Character Movement.
     /// 
@@ -22,6 +25,7 @@ namespace ECM.Components
 
     public sealed class CharacterMovement : MonoBehaviour
     {
+       
         #region EDITOR EXPOSED FIELDS
 
         [Header("Speed Limiters")]
@@ -1395,6 +1399,7 @@ namespace ECM.Components
             // this basically 'smooth' character's landing
 
             PreventGroundPenetration();
+            
         }
         
         /// <summary>
@@ -1437,6 +1442,7 @@ namespace ECM.Components
             // this basically 'smooth' character's landing
 
             PreventGroundPenetration();
+            
         }
 
         /// <summary>
