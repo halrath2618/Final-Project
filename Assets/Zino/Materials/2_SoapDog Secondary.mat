@@ -8,18 +8,18 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 2_SoapDog Secondary
-  m_Shader: {fileID: 4800000, guid: 0476fb45c8a3ff543956ad6c8665dd04, type: 3}
+  m_Shader: {fileID: 4800000, guid: dc7b6156ba7bb8e48946c3fcfb76683f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _METALLICGLOSSMAP
-  - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   - _FLIPBOOKBLENDING_OFF
+  - _METALLICGLOSSMAP
   - _NORMALMAP_TANGENT_SPACE
+  - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -45,7 +45,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _AlbedoMap:
+        m_Texture: {fileID: 2800000, guid: 88fe183f292818d498eab7fe543990a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AlphaMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlphaTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -117,11 +125,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Cube:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _CubeMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CubeMapMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubeTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -269,6 +285,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FoamTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _GlitterColorMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -354,6 +374,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
+        m_Texture: {fileID: 2800000, guid: 88fe183f292818d498eab7fe543990a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -433,6 +457,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalTexD:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTexR:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalTexS:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 2800000, guid: 88fe183f292818d498eab7fe543990a4, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -490,6 +526,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ReflectionCubeTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ReflectionTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -653,6 +693,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _WaveTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -675,6 +719,7 @@ Material:
     - GeometryShader_Enabled: 1
     - Instancing: 0
     - LightmapFlags: 0
+    - PixelSnap: 0
     - Tessellation_Enabled: 1
     - _1st2nd_Shades_Feather: 0.0001
     - _1stShadeMapMask_Inverse: 0
@@ -980,6 +1025,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
+    - _CausticsFade: 1
     - _CenterOutDissolveInvert: 0
     - _CenterOutDissolveMode: 1
     - _CenterOutDissolveNormals: 0
@@ -1062,6 +1108,8 @@ Material:
     - _CurvatureV: 0
     - _CustomColors: 0
     - _Cutoff: 0.5
+    - _DIVIDER_01: 0
+    - _DIVIDER_2: 0
     - _Decal0ApplyGlobalMaskBlendType: 0
     - _Decal0ApplyGlobalMaskIndex: 0
     - _Decal0ChannelSeparation: 0
@@ -1251,6 +1299,7 @@ Material:
     - _DepthColorToggle: 0
     - _DepthEmissionStrength: 0
     - _DepthFXWarning: 0
+    - _DepthFade: 1
     - _DepthMaskChannel: 0
     - _DepthMaskGlobalMask: 0
     - _DepthMaskGlobalMaskBlendType: 2
@@ -1361,6 +1410,8 @@ Material:
     - _DstBlend: 0
     - _DstBlend2: 0
     - _DstBlendAlpha: 0
+    - _EdgeFade: 1
+    - _EdgeFoamFade: 1
     - _EmissionAL0Enabled: 0
     - _EmissionAL0MultipliersBand: 0
     - _EmissionAL0StrengthBand: 0
@@ -1509,6 +1560,7 @@ Material:
     - _EnableEmission2: 0
     - _EnableEmission3: 0
     - _EnableEnvironmentalRim: 0
+    - _EnableExternalAlpha: 0
     - _EnableFlipbook: 0
     - _EnableFogOnTransparent: 1
     - _EnableGITDEmission: 0
@@ -1538,6 +1590,7 @@ Material:
     - _FXProximityColorMinColorThemeIndex: 0
     - _FXProximityColorMinDistance: 0
     - _FXProximityColorType: 1
+    - _Fadedistance: 6
     - _FlatLighting: 0
     - _FlipBackfaceNormals: 1
     - _FlipbookAlphaControlsFinalAlpha: 0
@@ -1923,6 +1976,9 @@ Material:
     - _GreenTextureUV: 0
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
+    - _HeightFoamAmt: 1
+    - _HeightFoamHeight: 1
+    - _HeightFoamSpread: 1
     - _HeightMapParametrization: 0
     - _HeightMapUV: 0
     - _HeightMax: 1
@@ -1942,6 +1998,7 @@ Material:
     - _HighColor_TexUV: 0
     - _IgnoreCastedShadows: 0
     - _IgnoreFog: 0
+    - _InvFade: 1
     - _InvTilingScale: 1
     - _Ior: 1.5
     - _IridescenceMask: 1
@@ -2306,12 +2363,14 @@ Material:
     - _NormalCorrectAmount: 0.9
     - _NormalMapSpace: 0
     - _NormalScale: 1
+    - _NormalStrength: 0.5
     - _ObjectSpaceUVMapping: 0
     - _ObjectSpaceUVMappingEmissive: 0
     - _OcclusionStrength: 0
     - _OffsetFactor: 0
     - _OffsetUnits: 0
     - _Offset_Z: 0
+    - _Opacity: 0.3
     - _OpaqueCullMode: 2
     - _OutlineALColorEnabled: 0
     - _OutlineAlphaDistanceFade: 0
@@ -2394,6 +2453,7 @@ Material:
     - _PPPosterization: 0
     - _PPPosterizationAmount: 4
     - _PPSaturation: 1
+    - _PanningSpeed: 0.33
     - _PanoUseBothEyes: 1
     - _Parallax: 0.02
     - _ParallaxInternalBlendMode: 0
@@ -2537,6 +2597,8 @@ Material:
     - _ReflectionCubeEnableLighting: 1
     - _ReflectionCubeOverride: 0
     - _ReflectionNormalStrength: 1
+    - _RefractFade: 1
+    - _RefractStrength: 0.5
     - _RefractionCABlurHelp0: 0
     - _RefractionCABlurHelp1: 0
     - _RefractionChromaticAberattion: 0
@@ -2685,6 +2747,7 @@ Material:
     - _RimPoi2BlendMode: 0
     - _RimPoiBlendMode: 0
     - _RimPower: 1
+    - _RimPower2: 3
     - _RimShadowMask: 0.5
     - _RimShadowMaskInvert: 0
     - _RimShadowMaskRampType: 0
@@ -2749,10 +2812,14 @@ Material:
     - _ShadowPostAO: 0
     - _ShadowReceive: 0
     - _ShadowStrength: 1
+    - _ShallowFade: 1
+    - _ShallowFoamAmt: 1
+    - _Shininess: 0.03
     - _SkinThicknessMapInvert: 0
     - _SkinThicknessMapUV: 0
     - _SkinThicknessPower: 1
     - _Smoothness: 0
+    - _SmoothnessAmount: 0
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SmoothnessTextureChannel: 1
@@ -2818,6 +2885,10 @@ Material:
     - _SupportDecals: 1
     - _Surface: 0
     - _SurfaceType: 0
+    - _TEXTUREMAPS: 0
+    - _TEXTURESETTINGS: 0
+    - _TTFELIGHTROOTSSHADER: 0
+    - _Tess: 4
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _TextEnabled: 0
@@ -3019,7 +3090,16 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     - __dirty: 1
+    - _foamScale: 1
+    - _maxDist: 25
+    - _minDist: 10
     - _ppHueSelectOrShift: 1
+    - _shorelineFrequency: 1
+    - _shorelineHeight: 1
+    - _shorelineScale: 1
+    - _shorelineSpeed: 1
+    - _suimono_uvx: 0
+    - _suimono_uvy: 0
     - footer_discord: 0
     - footer_github: 0
     - footer_patreon: 0
@@ -3736,6 +3816,7 @@ Material:
     - _ALVolumeColorHigh: {r: 1, g: 0, b: 0, a: 1}
     - _ALVolumeColorLow: {r: 0, g: 0, b: 1, a: 1}
     - _ALVolumeColorMid: {r: 0, g: 1, b: 0, a: 1}
+    - _AlbedoColor: {r: 1, g: 1, b: 1, a: 0}
     - _AlphaAudioLinkAddRange: {r: 0, g: 0, b: 0, a: 1}
     - _AlphaColor: {r: 1, g: 1, b: 1, a: 1}
     - _AlphaMaskPan: {r: 0, g: 0, b: 0, a: 0}
@@ -3820,16 +3901,18 @@ Material:
     - _BlackLightMasking1Range: {r: 0.1, g: 0.5, b: 0, a: 0}
     - _BlackLightMasking2Range: {r: 0.1, g: 0.5, b: 0, a: 0}
     - _BlackLightMasking3Range: {r: 0.1, g: 0.5, b: 0, a: 0}
+    - _BlendColor: {r: 0, g: 0, b: 0, a: 0}
     - _BlueColor: {r: 1, g: 1, b: 1, a: 1}
     - _BlueTexturePan: {r: 0, g: 0, b: 0, a: 0}
     - _BumpMapPan: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: 0, b: 0, a: 0}
+    - _CausticsColor: {r: 1, g: 1, b: 1, a: 1}
     - _CenterOutDissolveDirection: {r: 0, g: 0, b: 1, a: 0}
     - _ClearCoatMapsPan: {r: 0, g: 0, b: 0, a: 0}
     - _ClearCoatReflectionTint: {r: 1, g: 1, b: 1, a: 1}
     - _ClearCoatSpecularTint: {r: 1, g: 1, b: 1, a: 1}
     - _ClothMetallicSmoothnessMapPan: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
+    - _Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
     - _CubeMapColor: {r: 1, g: 1, b: 1, a: 1}
     - _CubeMapMaskPan: {r: 0, g: 0, b: 0, a: 0}
     - _CubeMapRotation: {r: 0, g: 0, b: 0, a: 0}
@@ -3906,6 +3989,7 @@ Material:
     - _EmissiveScroll_Direction3: {r: 0, g: -10, b: 0, a: 0}
     - _FXProximityColorMaxColor: {r: 1, g: 1, b: 1, a: 1}
     - _FXProximityColorMinColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _FlipbookColor: {r: 1, g: 1, b: 1, a: 1}
     - _FlipbookCrossfadeRange: {r: 0.75, g: 1, b: 0, a: 1}
     - _FlipbookMaskPan: {r: 0, g: 0, b: 0, a: 0}
@@ -3913,6 +3997,7 @@ Material:
     - _FlipbookScaleOffset: {r: 1, g: 1, b: 0, a: 0}
     - _FlipbookSideOffset: {r: 0, g: 0, b: 0, a: 0}
     - _FlipbookTexArrayPan: {r: 0, g: 0, b: 0, a: 0}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlitterALAlphaAdd: {r: 0, g: 0, b: 0, a: 0}
     - _GlitterALMaxBrightnessAdd: {r: 0, g: 0, b: 0, a: 0}
     - _GlitterALSizeAdd: {r: 0, g: 0, b: 0, a: 0}
@@ -4039,6 +4124,7 @@ Material:
     - _OutlinePersonaDirection: {r: 1, g: 0, b: 0, a: 0}
     - _OutlineTexHSVG: {r: 0, g: 1, b: 1, a: 1}
     - _OutlineTexturePan: {r: 0, g: 0, b: 0, a: 0}
+    - _OverlayColor: {r: 0, g: 0, b: 0, a: 0}
     - _PBRMaskScaleTiling: {r: 1, g: 1, b: 0, a: 0}
     - _PPMaskPan: {r: 0, g: 0, b: 0, a: 0}
     - _PPRGB: {r: 1, g: 1, b: 1, a: 1}
@@ -4083,8 +4169,10 @@ Material:
     - _RGBMaskPan: {r: 0, g: 0, b: 0, a: 0}
     - _RedColor: {r: 1, g: 1, b: 1, a: 1}
     - _RedTexturePan: {r: 0, g: 0, b: 0, a: 0}
+    - _ReflectColor: {r: 0, g: 0, b: 0, a: 0}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _ReflectionCubeColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _RgbNormalAPan: {r: 0, g: 0, b: 0, a: 0}
     - _RgbNormalBPan: {r: 0, g: 0, b: 0, a: 0}
     - _RgbNormalGPan: {r: 0, g: 0, b: 0, a: 0}
@@ -4097,6 +4185,7 @@ Material:
     - _Rim2ShadowAlpha: {r: 0, g: 0, b: 0, a: 1}
     - _Rim2TexPan: {r: 0, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.65999997, g: 0.5, b: 0.47999996, a: 1}
+    - _RimColor2: {r: 0.26, g: 0.19, b: 0.16, a: 0}
     - _RimColorTexPan: {r: 0, g: 0, b: 0, a: 0}
     - _RimEnviroMaskPan: {r: 0, g: 0, b: 0, a: 0}
     - _RimIndirColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4147,10 +4236,12 @@ Material:
     - _TextTimePadding: {r: 0, g: 0, b: 0, a: 0}
     - _TextTimeScale: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
+    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _UnderwaterColor: {r: 1, g: 1, b: 1, a: 1}
     - _VertexLocalRotationAL: {r: 0, g: 0, b: 0, a: 1}
     - _VertexLocalRotationCTALSpeed: {r: 0, g: 0, b: 0, a: 1}
     - _VertexLocalScaleALMax: {r: 0, g: 0, b: 0, a: 0}
@@ -4180,6 +4271,8 @@ Material:
     - _VoronoiRandomMinMaxBrightness: {r: 0.8, g: 1, b: 0, a: 1}
     - _VoronoiRandomMinMaxSaturation: {r: 0.8, g: 1, b: 0, a: 1}
     - _VoronoiSpeed: {r: 1, g: 1, b: 1, a: 1}
+    - _depthColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _shallowColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5310301877762420707
