@@ -41,11 +41,11 @@ public class CameraSetting : MonoBehaviour
         Vector3 desiredPosition = target.position + rotation * new Vector3(0, 0, -_currentZoom);
 
         // Obstacle avoidance
-        RaycastHit hit;
-        if (Physics.Linecast(target.position, desiredPosition, out hit))
-        {
-            desiredPosition = hit.point + (target.position - desiredPosition).normalized * collisionOffset;
-        }
+        //RaycastHit hit;
+        //if (Physics.Linecast(target.position, desiredPosition, out hit))
+        //{
+        //    desiredPosition = hit.point + (target.position - desiredPosition).normalized * collisionOffset;
+        //}
 
         // Apply position/rotation
         transform.position = desiredPosition;
