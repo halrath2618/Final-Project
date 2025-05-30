@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public float attackRadius = 1.5f;
     public LayerMask enemyLayer;
 
-    private CharacterController _controller;
+    [SerializeField] private CharacterController _controller;
     [SerializeField] private Animator _animator;
     private Vector3 _velocity;
     private float _currentSpeed;
@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        _controller = GetComponent<CharacterController>();
         _cameraTransform = Camera.main.transform;
         _currentSpeed = walkSpeed;
     }
