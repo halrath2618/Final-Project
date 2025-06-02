@@ -887,6 +887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5963515701518688456}
   - component: {fileID: 2728306245635087730}
+  - component: {fileID: 6908244968120917346}
   m_Layer: 0
   m_Name: Dragonide_PBR
   m_TagString: Untagged
@@ -936,6 +937,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6908244968120917346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100419707067652736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdcccea741f6b247bee065e33b087bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _local: {fileID: 0}
 --- !u!1 &3156578075093038608
 GameObject:
   m_ObjectHideFlags: 0

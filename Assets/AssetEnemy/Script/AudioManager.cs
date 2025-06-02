@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Sources")]
     public AudioSource sfxSource; // Nguồn âm thanh SFX
-    public AudioSource musicSource; // Nguồn nhạc nền (nếu cần)
+   // public AudioSource musicSource; // Nguồn nhạc nền (nếu cần)
 
     [Header("Hit Sounds")]
     public List<AudioClipEntry> hitSounds; // Danh sách âm thanh va chạm
@@ -57,6 +57,16 @@ public class AudioManager : MonoBehaviour
         {
             Debug.LogWarning($"Hit sound '{name}' not found!");
         }
+    }
+
+    public AudioClip GetHitClip(string name)
+    {
+        if(hitSoundDict.TryGetValue(name,out AudioClip clip))
+        {
+            return clip;
+        }
+        Debug.Log($"Hit sound '{name}' not found!");
+        return null;
     }
     #endregion
 }
