@@ -1,0 +1,11 @@
+Dialogue Line Format
+
+{n{as cn}{ at x{:y}}{ [l:e{ + l:e}]} "d"} {c(a){, c(a)}}
+
+Speaker "Dialogue Goes Here" Command(argu go here)
+
+
+{c} = Clear dialogue.
+{a} = Append (Dãy câu sẽ nối tiếp sau khi nhấn nút/chuột)
+{wc n} = Wait Clear
+{wa n} = Wait Append

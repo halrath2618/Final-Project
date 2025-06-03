@@ -1,0 +1,14 @@
+wait(1), CreateCharacter(Halrath -e true), CreateCharacter(Zino), CreateCharacter(Demon -e true -i true)
+
+MoveCharacter(Halrath -x 0 -spd 0.75 -sm false -i true)
+
+wait(1000)
+
+Move(Halrath 0 1.2 false)
+
+Show(Halrath Zino Demon -immediate false)
+
+Narrator "Showing Characters."
+
+enter Scy [Scy] "Hi"
+
