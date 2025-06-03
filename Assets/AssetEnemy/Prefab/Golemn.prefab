@@ -1534,6 +1534,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8689330002918149727}
   - component: {fileID: 8867805551152395698}
+  - component: {fileID: 6531260527716012756}
+  - component: {fileID: 4640727575432573069}
   m_Layer: 0
   m_Name: URP - Giant01 - Golem
   m_TagString: Untagged
@@ -1580,6 +1582,46 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6531260527716012756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216558823137906388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdcccea741f6b247bee065e33b087bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _local: {fileID: 0}
+--- !u!114 &4640727575432573069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216558823137906388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 966af1b524e33ab428dced2ff9ce7bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSets:
+  - animationName: Attack 1
+    attackColliders:
+    - {fileID: 7156281962059357844}
+    damage: 0
+  - animationName: Attack 2
+    attackColliders:
+    - {fileID: 7985660761605509593}
+    damage: 0
+  - animationName: Attack 3
+    attackColliders:
+    - {fileID: 7985660761605509593}
+    - {fileID: 7156281962059357844}
+    damage: 0
+  comboResetTime: 2
 --- !u!1 &6413474904180741196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,13 +2175,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 5.87
+  m_Height: 5.43
   m_Radius: 1.33
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 2.74, z: 0}
+  m_Center: {x: 0, y: 3.13, z: 0}
 --- !u!1 &8919057318327492315
 GameObject:
   m_ObjectHideFlags: 0
