@@ -167,7 +167,10 @@ MonoBehaviour:
   runSpeed: 0
   player: {fileID: 4024569438556760322}
   anim: {fileID: 1293296420}
-  patrolPoints: []
+  patrolPoints:
+  - {fileID: 1532219306}
+  - {fileID: 1414309750}
+  - {fileID: 2144633706}
   agent: {fileID: 104460507}
 --- !u!1 &271298091
 GameObject:
@@ -1466,6 +1469,70 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 104460507}
   m_SourcePrefab: {fileID: 100100000, guid: 2d33d520f9670cc44af1b78878d040cc, type: 3}
+--- !u!1 &2019940997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2019940999}
+  - component: {fileID: 2019940998}
+  m_Layer: 0
+  m_Name: NavMesh Surface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2019940998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019940997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 50413984bc84f5243a91528e7846f937, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &2019940999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019940997}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 101.19943, y: 3.9538836, z: 86.5121}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2021710002
 GameObject:
   m_ObjectHideFlags: 0
@@ -30412,3 +30479,4 @@ SceneRoots:
   - {fileID: 985011328}
   - {fileID: 1779155000}
   - {fileID: 1708061715}
+  - {fileID: 2019940999}
