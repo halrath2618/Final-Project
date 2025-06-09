@@ -14,7 +14,7 @@ public class Monster : MonoBehaviour
     public int strongAttackDamage = 20;
 
     [Header("Attack Settings")]
-    public float attackRange = 2f;  // Radius for collider check on attack
+    public float attackRange = 1f;  // Radius for collider check on attack
 
     [Header("Movement Settings")]
     public float runSpeed;
@@ -89,40 +89,22 @@ public class Monster : MonoBehaviour
 
     // ---------- Action Methods ----------
 
-    public void NormalAttack()
+    public void Attack()
     {
-        Debug.Log("Monster performs NORMAL attack!");
+        Debug.Log("Monster attacks the player!");
         anim.SetTrigger("Attack"); // Trigger attack animation
-        // Use OverlapSphere for a simple attack collision check.
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
-        foreach (var hit in hitColliders)
+        if (player != null)
         {
-            if (hit.CompareTag("Player"))
+            // Check if player is within attack range
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            if (distanceToPlayer <= attackRange)
             {
-                PlayerAutoAttack playerScript = hit.GetComponent<PlayerAutoAttack>();
-                if (playerScript != null)
+                // Apply damage to the player (assuming player has a TakeDamage method)
+                PlayerController playerController = player.GetComponent<PlayerController>();
+                if (playerController != null)
                 {
-                    playerScript.TakeDamage(normalAttackDamage);
-                    Debug.Log("Player hit for " + normalAttackDamage + " damage (normal attack).");
-                }
-            }
-        }
-    }
-
-    public void StrongAttack()
-    {
-        Debug.Log("Monster performs STRONG attack!");
-        anim.SetTrigger("Attack"); // Trigger strong attack animation
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
-        foreach (var hit in hitColliders)
-        {
-            if (hit.CompareTag("Player"))
-            {
-                PlayerAutoAttack playerScript = hit.GetComponent<PlayerAutoAttack>();
-                if (playerScript != null)
-                {
-                    playerScript.TakeDamage(strongAttackDamage);
-                    Debug.Log("Player hit for " + strongAttackDamage + " damage (strong attack).");
+                    playerController.TakeDamage(normalAttackDamage);
+                    Debug.Log("Player takes " + normalAttackDamage + " damage.");
                 }
             }
         }

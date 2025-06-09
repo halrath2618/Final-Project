@@ -9,7 +9,7 @@ public class StrongAttackActionNode : BTNode
 
     public override NodeState Evaluate()
     {
-        monster.StrongAttack();
+        monster.Attack();
         return NodeState.SUCCESS;
     }
 }

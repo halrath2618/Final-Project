@@ -22,6 +22,11 @@ public class PlayerController : MonoBehaviour
     private bool _isGrounded;
     private Transform _cameraTransform;
 
+    [Header("HP and Damage")]
+    public int maxHP = 100;
+    public int _currentHealth = 100;
+    public HPBar hp;
+
     void Start()
     {
         _cameraTransform = Camera.main.transform;
@@ -30,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        hp.HP();
         // Ground check
         _isGrounded = _controller.isGrounded;
         if (_isGrounded && _velocity.y < 0) _velocity.y = -2f;
@@ -97,5 +103,19 @@ public class PlayerController : MonoBehaviour
             transform.position + transform.forward * attackRange / 2,
             attackRadius
         );
+    }
+    public void TakeDamage(int damage)
+    {
+        _currentHealth -= damage;
+        if (_currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    public void Die()
+    {
+        _animator.SetTrigger("Die");
+        Debug.Log("Player has died.");
+        _currentHealth = maxHP; // Reset health for respawn
     }
 }
