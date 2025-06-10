@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -15,8 +18,11 @@ public class PlayerController : MonoBehaviour
     public float attackRange = 3f;
     public float attackRadius = 1.5f;
     public LayerMask enemyLayer;
-    public GameObject spell;
-    public float attackDmg;
+    public GameObject earthSpell;
+    public GameObject fireSpell;
+    public float attackDmg_Earth;
+    public float attackDmg_Fire;
+    public bool isAttacking = false;
 
     [SerializeField] private CharacterController _controller;
     [SerializeField] private Animator _animator;
@@ -24,7 +30,6 @@ public class PlayerController : MonoBehaviour
     private float _currentSpeed;
     private bool _isGrounded;
     private Transform _cameraTransform;
-    
 
     [Header("HP, Mana and Stamina Control")]
     public int maxHP = 100;
@@ -36,10 +41,22 @@ public class PlayerController : MonoBehaviour
     public int maxStamina = 100;
     public float _currentStamina = 100;
 
+    [Header("Cooldown Settings")]
+    public float e_maxSkillCooldown = 4f; // Cooldown time for skills in seconds
+    public float e_cdTime = 4f;
+    public bool e_isReady; // Flag to check if the skill is ready to be used
+    public SkillCooldown skillCooldown;
+    public GameObject E_cdSlider;
+    public GameObject F_cdSlider;
+    public float f_maxSkillCooldown = 6f; // Cooldown time for skills in seconds
+    public float f_cdTime = 6f;
+    public bool f_isReady; // Flag to check if the skill is ready to be used
+
     void Start()
     {
         _cameraTransform = Camera.main.transform;
         _currentSpeed = walkSpeed;
+        E_cdSlider.SetActive(false);
     }
 
     void Update()
@@ -95,9 +112,33 @@ public class PlayerController : MonoBehaviour
         // Basic Attack
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            StartCoroutine(PerformAttack());
+            if (e_isReady)
+            {
+                e_isReady = false; // Set skill as not ready
+                StartCoroutine(PerformAttack_1()); // Perform attack
+                StartCoroutine(ApplySkillCooldownE()); // Start cooldown
+            }
+            else
+            {
+                Debug.Log("Skill is not ready.");
+            }
         }
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (f_isReady)
+            {
+                f_isReady = false; // Set skill as not ready
+                StartCoroutine(PerformAttack_2()); // Perform attack
+                StartCoroutine(ApplySkillCooldownF()); // Start cooldown
+            }
+            else
+            {
+                Debug.Log("Skill is not ready.");
+            }
+        }
+
+        //Regenerate Mana
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             RegenerateMana();
         }
@@ -107,23 +148,32 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("IsGrounded", _isGrounded);
     }
 
-    IEnumerator PerformAttack()
+    IEnumerator PerformAttack_1()
     {
-        if (_currentMana >= 10)
+        if (!isAttacking)
         {
-            _animator.SetTrigger("Attack");
-            CastingSkill(10); // Cast skill and reduce mana
+           
+            if (_currentMana >= 10)
+            {
+                _animator.SetTrigger("Attack");
+                CastingSkill(10); // Cast skill and reduce mana
+            }
+            else
+            {
+                Debug.Log("Not enough mana to perform the attack.");
+                yield break; // Exit if not enough mana
+            }
+
+            yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
+            earthSpell.SetActive(true); // Activate the spell object
+            yield return new WaitForSeconds(1.5f);
+            earthSpell.SetActive(false); // Deactivate the spell object after the attack animation
         }
         else
         {
-            Debug.Log("Not enough mana to perform the attack.");
-            yield break; // Exit if not enough mana
+            Debug.Log("Already attacking, please wait.");
+            yield break; // Exit if already attacking
         }
-        
-        yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
-        spell.SetActive(true); // Activate the spell object
-        yield return new WaitForSeconds(1.5f);
-        spell.SetActive(false); // Deactivate the spell object after the attack animation
 
         // Detect enemies in front
         Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
@@ -131,8 +181,47 @@ public class PlayerController : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             Monster monster = enemy.GetComponent<Monster>();
-            monster.TakeDamage(attackDmg);
-            Debug.Log("Hit: " + enemy.name + " for " + attackDmg);
+            monster.TakeDamage(attackDmg_Earth);
+            Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Earth);
+        }
+    }
+
+    IEnumerator PerformAttack_2()
+    {
+        if (!isAttacking)
+        {
+           
+            if (_currentMana >= 30)
+            {
+                _animator.SetTrigger("Attack");
+                CastingSkill(30); // Cast skill and reduce mana
+            }
+            else
+            {
+                Debug.Log("Not enough mana to perform the attack.");
+                yield break; // Exit if not enough mana
+            }
+
+            yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
+            fireSpell.SetActive(true); // Activate the spell object
+            yield return new WaitForSeconds(2.75f);
+            fireSpell.SetActive(false); // Deactivate the spell object after the attack animation
+        }
+        else
+        {
+            
+            Debug.Log("Already attacking, please wait.");
+            yield break; // Exit if already attacking
+        }
+
+            // Detect enemies in front
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
+
+        foreach (Collider enemy in hitEnemies)
+        {
+            Monster monster = enemy.GetComponent<Monster>();
+            monster.TakeDamage(attackDmg_Fire);
+            Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Fire);
         }
     }
 
@@ -209,5 +298,40 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Mana is already full.");
         }
+    }
+    IEnumerator ApplySkillCooldownE()
+    {
+        while (e_cdTime > 0)
+        {
+            E_cdSlider.SetActive(true);
+            yield return e_cdTime -= Time.deltaTime; // Decrease cooldown time
+            if (e_cdTime <= 0)
+            {
+                e_cdTime = 0; // Ensure cooldown does not go below zero
+                e_isReady = true; // Skill is ready again
+                E_cdSlider.SetActive(false); // Hide cooldown slider
+                break;
+            }
+        }
+        e_cdTime = e_maxSkillCooldown; // Reset cooldown time
+        skillCooldown.E_UpdateSkillCooldown(); // Update the cooldown slider UI
+    }
+    IEnumerator ApplySkillCooldownF()
+    {
+        while (f_cdTime > 0)
+        {
+            F_cdSlider.SetActive(true);
+            yield return f_cdTime -= Time.deltaTime; // Decrease cooldown time
+            if (f_cdTime <= 0)
+            {
+                f_cdTime = 0; // Ensure cooldown does not go below zero
+                f_isReady = true; // Skill is ready again
+                F_cdSlider.SetActive(false); // Hide cooldown slider
+
+                break;
+            }
+        }
+        f_cdTime = f_maxSkillCooldown; // Reset cooldown time
+        skillCooldown.F_UpdateSkillCooldown(); // Update the cooldown slider UI
     }
 }
