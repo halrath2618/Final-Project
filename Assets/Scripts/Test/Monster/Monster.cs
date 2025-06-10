@@ -138,7 +138,7 @@ public class Monster : MonoBehaviour
     }
 
     // Method to apply damage to the monster.
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHP -= damage;
         Debug.Log("Monster takes " + damage + " damage, current HP: " + currentHP);

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public float attackRange = 3f;
     public float attackRadius = 1.5f;
     public LayerMask enemyLayer;
+    public GameObject spell;
+    public float attackDmg;
 
     [SerializeField] private CharacterController _controller;
     [SerializeField] private Animator _animator;
@@ -21,11 +24,17 @@ public class PlayerController : MonoBehaviour
     private float _currentSpeed;
     private bool _isGrounded;
     private Transform _cameraTransform;
+    
 
-    [Header("HP and Damage")]
+    [Header("HP, Mana and Stamina Control")]
     public int maxHP = 100;
     public int _currentHealth = 100;
     public HPBar hp;
+    public int maxMana = 100;
+    public int _currentMana = 100;
+    public ManaStamina manaStamina;
+    public int maxStamina = 100;
+    public float _currentStamina = 100;
 
     void Start()
     {
@@ -35,7 +44,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
         hp.HP();
+        manaStamina.UpdateMana();
+        manaStamina.UpdateStamina();
         // Ground check
         _isGrounded = _controller.isGrounded;
         if (_isGrounded && _velocity.y < 0) _velocity.y = -2f;
@@ -46,7 +58,16 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
 
         // Sprint
-        _currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed;
+        if(Input.GetKey(KeyCode.LeftShift) && _currentStamina > 0)
+        {
+            _currentSpeed = sprintSpeed;
+            StaminaSprinting();
+        }
+        else
+        {
+            _currentSpeed = walkSpeed;
+            StartCoroutine(RegenerateStamina());
+        }
 
         // Camera-relative movement
         if (direction.magnitude >= 0.1f)
@@ -72,9 +93,13 @@ public class PlayerController : MonoBehaviour
         _controller.Move(_velocity * Time.deltaTime);
 
         // Basic Attack
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            PerformAttack();
+            StartCoroutine(PerformAttack());
+        }
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            RegenerateMana();
         }
 
         // Update animator
@@ -82,17 +107,32 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("IsGrounded", _isGrounded);
     }
 
-    void PerformAttack()
+    IEnumerator PerformAttack()
     {
-        _animator.SetTrigger("Attack");
+        if (_currentMana >= 10)
+        {
+            _animator.SetTrigger("Attack");
+            CastingSkill(10); // Cast skill and reduce mana
+        }
+        else
+        {
+            Debug.Log("Not enough mana to perform the attack.");
+            yield break; // Exit if not enough mana
+        }
+        
+        yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
+        spell.SetActive(true); // Activate the spell object
+        yield return new WaitForSeconds(1.5f);
+        spell.SetActive(false); // Deactivate the spell object after the attack animation
 
         // Detect enemies in front
         Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
 
         foreach (Collider enemy in hitEnemies)
         {
-            Debug.Log("Hit: " + enemy.name);
-            // Add damage logic here
+            Monster monster = enemy.GetComponent<Monster>();
+            monster.TakeDamage(attackDmg);
+            Debug.Log("Hit: " + enemy.name + " for " + attackDmg);
         }
     }
 
@@ -117,5 +157,57 @@ public class PlayerController : MonoBehaviour
         _animator.SetTrigger("Die");
         Debug.Log("Player has died.");
         _currentHealth = maxHP; // Reset health for respawn
+    }
+    public void CastingSkill(int manaCost)
+    {
+        if (_currentMana >= manaCost)
+        {
+            _currentMana -= manaCost;
+            manaStamina.UpdateMana();
+            // Add skill casting logic here
+        }
+        else
+        {
+            Debug.Log("Not enough mana to cast the skill.");
+        }
+    }
+    public void StaminaSprinting()
+    {
+        if (_currentStamina > 0 && _currentSpeed >= sprintSpeed)
+        {
+            _currentStamina -= 0.5f; // Decrease stamina for sprinting
+            manaStamina.UpdateStamina();
+        }
+        else
+        {
+            Debug.Log("Not enough stamina to sprint.");
+            _currentSpeed = walkSpeed; // Reset speed if no stamina
+        }
+    }
+    IEnumerator RegenerateStamina()
+    {
+
+        yield return new WaitForSeconds(5f * Time.deltaTime);
+        yield return _currentStamina += 1;
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            yield return new WaitForSeconds(5f * Time.deltaTime); // Wait for the next frame to continue regenerating stamina
+        }
+        if (_currentStamina > maxStamina) 
+            _currentStamina = maxStamina;
+        manaStamina.UpdateStamina();
+    }
+
+    public void RegenerateMana()
+    {
+        if (_currentMana < maxMana)
+        {
+            _currentMana += 10; // Regenerate mana
+            manaStamina.UpdateMana();
+        }
+        else
+        {
+            Debug.Log("Mana is already full.");
+        }
     }
 }

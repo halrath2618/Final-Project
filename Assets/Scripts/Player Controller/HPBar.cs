@@ -6,7 +6,6 @@ public class HPBar : MonoBehaviour
 
     public Slider hpSlider; // Reference to the Slider component for the HP bar
 
-
     public PlayerController playerController; // Reference to the PlayerController script
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
