@@ -184,3 +184,5 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ec834e3a0a9a041e58e015c0bf39ed52, type: 3}
   - name: BearRoar
     clip: {fileID: 8300000, guid: ec834e3a0a9a041e58e015c0bf39ed52, type: 3}
+  - name: CyclopsRoar
+    clip: {fileID: 8300000, guid: f8243f842e114b244b117a2c53af728d, type: 3}
