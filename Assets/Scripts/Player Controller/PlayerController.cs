@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public float attackDmg_Earth;
     public float attackDmg_Fire;
     public bool isAttacking = false;
+    public GameObject auraSpell;
 
     [SerializeField] private CharacterController _controller;
     [SerializeField] private Animator _animator;
@@ -51,12 +52,16 @@ public class PlayerController : MonoBehaviour
     public float f_maxSkillCooldown = 6f; // Cooldown time for skills in seconds
     public float f_cdTime = 6f;
     public bool f_isReady; // Flag to check if the skill is ready to be used
-
+    public Warning_Skill warningSkill;
+    public SkillConstantlyActive skillConstantlyActive;
+    public bool auraReady; // Flag to check if the aura skill is ready to be used
     void Start()
     {
         _cameraTransform = Camera.main.transform;
         _currentSpeed = walkSpeed;
         E_cdSlider.SetActive(false);
+        auraSpell.SetActive(false);
+        auraReady = true;
     }
 
     void Update()
@@ -116,10 +121,20 @@ public class PlayerController : MonoBehaviour
             {
                 e_isReady = false; // Set skill as not ready
                 StartCoroutine(PerformAttack_1()); // Perform attack
-                StartCoroutine(ApplySkillCooldownE()); // Start cooldown
+                if (_currentMana >= 10)
+                {
+                    StartCoroutine(ApplySkillCooldownE()); // Start cooldown
+                }
+                else
+                {
+                    e_isReady = true; // Reset skill readiness if not enough mana
+                    return; // Exit if not enough mana
+                }
             }
             else
             {
+                warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                 Debug.Log("Skill is not ready.");
             }
         }
@@ -129,11 +144,39 @@ public class PlayerController : MonoBehaviour
             {
                 f_isReady = false; // Set skill as not ready
                 StartCoroutine(PerformAttack_2()); // Perform attack
-                StartCoroutine(ApplySkillCooldownF()); // Start cooldown
+                if (_currentMana >= 30)
+                {
+                    StartCoroutine(ApplySkillCooldownF()); // Start cooldown
+                }
+                else
+                {
+                    f_isReady = true; // Reset skill readiness
+                    return; // Exit if not enough mana
+                }
             }
             else
             {
+                warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                 Debug.Log("Skill is not ready.");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if(auraReady)
+            {
+                auraReady = false; // Set skill as not ready
+                auraSpell.SetActive(true); // Activate the aura spell
+                StartCoroutine(skillConstantlyActive.SkillActively()); // Start the skill effect coroutine
+                skillConstantlyActive.skillEffect.SetActive(true); // Activate the skill effect
+                Debug.Log("Aura skill activated.");
+            }
+            else
+            {
+                skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
+                auraReady = true; // Reset skill readiness
+                auraSpell.SetActive(false); // Deactivate the aura spell
+                Debug.Log("Aura skill deactivated.");
             }
         }
 
@@ -155,7 +198,7 @@ public class PlayerController : MonoBehaviour
            
             if (_currentMana >= 10)
             {
-                _animator.SetTrigger("Attack");
+                _animator.SetTrigger("Attack1");
                 CastingSkill(10); // Cast skill and reduce mana
             }
             else
@@ -193,7 +236,7 @@ public class PlayerController : MonoBehaviour
            
             if (_currentMana >= 30)
             {
-                _animator.SetTrigger("Attack");
+                _animator.SetTrigger("Attack2");
                 CastingSkill(30); // Cast skill and reduce mana
             }
             else
