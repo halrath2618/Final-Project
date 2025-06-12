@@ -55,6 +55,14 @@ public class PlayerController : MonoBehaviour
     public Warning_Skill warningSkill;
     public SkillConstantlyActive skillConstantlyActive;
     public bool auraReady; // Flag to check if the aura skill is ready to be used
+    public GameObject HP_Potion;
+    public GameObject Mana_Potion;
+    public float hpMaxCD = 10f;
+    public float manaMaxCD = 10f;
+    public float hpcdTime = 10f;
+    public float manacdTime = 10f;
+    public bool hpcdReady = true; // Flag to check if the HP potion cooldown is ready
+    public bool manacdReady = true; // Flag to check if the Mana potion cooldown is ready
     void Start()
     {
         _cameraTransform = Camera.main.transform;
@@ -66,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
+
         hp.HP();
         manaStamina.UpdateMana();
         manaStamina.UpdateStamina();
@@ -80,7 +88,7 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
 
         // Sprint
-        if(Input.GetKey(KeyCode.LeftShift) && _currentStamina > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && _currentStamina > 0)
         {
             _currentSpeed = sprintSpeed;
             StaminaSprinting();
@@ -163,7 +171,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if(auraReady)
+            if (auraReady)
             {
                 auraReady = false; // Set skill as not ready
                 auraSpell.SetActive(true); // Activate the aura spell
@@ -183,7 +191,30 @@ public class PlayerController : MonoBehaviour
         //Regenerate Mana
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            RegenerateMana();
+            if (manacdReady)
+            {
+                manacdReady = false; // Set Mana potion as not ready
+                StartCoroutine(ApplySkillCooldownManaPotion()); // Start cooldown for Mana potion
+                RegenerateMana(); // Regenerate mana
+            }
+            else
+            {
+                Debug.Log("Mana potion is on cooldown.");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.E)) // Check if E key is pressed and HP potion is ready
+        {
+            if (hpcdReady)
+            {
+                hpcdReady = false; // Set HP potion as not ready
+                StartCoroutine(ApplySkillCooldownHPPotion()); // Start cooldown for HP potion
+                DrinkHPPotion(); // Drink HP potion
+            }
+            else
+            {
+                Debug.Log("HP potion is on cooldown.");
+            }
+
         }
 
         // Update animator
@@ -191,190 +222,237 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("IsGrounded", _isGrounded);
     }
 
-    IEnumerator PerformAttack_1()
-    {
-        if (!isAttacking)
+        public void DrinkHPPotion()
         {
-           
-            if (_currentMana >= 10)
+            _currentHealth += 50; // Increase health by 50
+            if (_currentHealth > maxHP)
             {
-                _animator.SetTrigger("Attack1");
-                CastingSkill(10); // Cast skill and reduce mana
+                _currentHealth = maxHP; // Ensure health does not exceed max HP
+                Debug.Log("Health is already full.");
+            }
+            hp.HP();
+        }
+
+        IEnumerator PerformAttack_1()
+        {
+            if (!isAttacking)
+            {
+
+                if (_currentMana >= 10)
+                {
+                    _animator.SetTrigger("Attack1");
+                    CastingSkill(10); // Cast skill and reduce mana
+                }
+                else
+                {
+                    Debug.Log("Not enough mana to perform the attack.");
+                    yield break; // Exit if not enough mana
+                }
+
+                yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
+                earthSpell.SetActive(true); // Activate the spell object
+                yield return new WaitForSeconds(1.5f);
+                earthSpell.SetActive(false); // Deactivate the spell object after the attack animation
             }
             else
             {
-                Debug.Log("Not enough mana to perform the attack.");
-                yield break; // Exit if not enough mana
+                Debug.Log("Already attacking, please wait.");
+                yield break; // Exit if already attacking
             }
-
-            yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
-            earthSpell.SetActive(true); // Activate the spell object
-            yield return new WaitForSeconds(1.5f);
-            earthSpell.SetActive(false); // Deactivate the spell object after the attack animation
-        }
-        else
-        {
-            Debug.Log("Already attacking, please wait.");
-            yield break; // Exit if already attacking
-        }
-
-        // Detect enemies in front
-        Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
-
-        foreach (Collider enemy in hitEnemies)
-        {
-            Monster monster = enemy.GetComponent<Monster>();
-            monster.TakeDamage(attackDmg_Earth);
-            Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Earth);
-        }
-    }
-
-    IEnumerator PerformAttack_2()
-    {
-        if (!isAttacking)
-        {
-           
-            if (_currentMana >= 30)
-            {
-                _animator.SetTrigger("Attack2");
-                CastingSkill(30); // Cast skill and reduce mana
-            }
-            else
-            {
-                Debug.Log("Not enough mana to perform the attack.");
-                yield break; // Exit if not enough mana
-            }
-
-            yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
-            fireSpell.SetActive(true); // Activate the spell object
-            yield return new WaitForSeconds(2.75f);
-            fireSpell.SetActive(false); // Deactivate the spell object after the attack animation
-        }
-        else
-        {
-            
-            Debug.Log("Already attacking, please wait.");
-            yield break; // Exit if already attacking
-        }
 
             // Detect enemies in front
             Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
 
-        foreach (Collider enemy in hitEnemies)
-        {
-            Monster monster = enemy.GetComponent<Monster>();
-            monster.TakeDamage(attackDmg_Fire);
-            Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Fire);
+            foreach (Collider enemy in hitEnemies)
+            {
+                Monster monster = enemy.GetComponent<Monster>();
+                monster.TakeDamage(attackDmg_Earth);
+                Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Earth);
+            }
         }
-    }
 
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(
-            transform.position + transform.forward * attackRange / 2,
-            attackRadius
-        );
-    }
-    public void TakeDamage(int damage)
-    {
-        _currentHealth -= damage;
-        if (_currentHealth <= 0)
+        IEnumerator PerformAttack_2()
         {
-            Die();
+            if (!isAttacking)
+            {
+
+                if (_currentMana >= 30)
+                {
+                    _animator.SetTrigger("Attack2");
+                    CastingSkill(30); // Cast skill and reduce mana
+                }
+                else
+                {
+                    Debug.Log("Not enough mana to perform the attack.");
+                    yield break; // Exit if not enough mana
+                }
+
+                yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
+                fireSpell.SetActive(true); // Activate the spell object
+                yield return new WaitForSeconds(2.75f);
+                fireSpell.SetActive(false); // Deactivate the spell object after the attack animation
+            }
+            else
+            {
+
+                Debug.Log("Already attacking, please wait.");
+                yield break; // Exit if already attacking
+            }
+
+            // Detect enemies in front
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
+
+            foreach (Collider enemy in hitEnemies)
+            {
+                Monster monster = enemy.GetComponent<Monster>();
+                monster.TakeDamage(attackDmg_Fire);
+                Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Fire);
+            }
         }
-    }
-    public void Die()
-    {
-        _animator.SetTrigger("Die");
-        Debug.Log("Player has died.");
-        _currentHealth = maxHP; // Reset health for respawn
-    }
-    public void CastingSkill(int manaCost)
-    {
-        if (_currentMana >= manaCost)
+
+        void OnDrawGizmosSelected()
         {
-            _currentMana -= manaCost;
-            manaStamina.UpdateMana();
-            // Add skill casting logic here
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(
+                transform.position + transform.forward * attackRange / 2,
+                attackRadius
+            );
         }
-        else
+        public void TakeDamage(int damage)
         {
-            Debug.Log("Not enough mana to cast the skill.");
+            _currentHealth -= damage;
+            if (_currentHealth <= 0)
+            {
+                Die();
+            }
         }
-    }
-    public void StaminaSprinting()
-    {
-        if (_currentStamina > 0 && _currentSpeed >= sprintSpeed)
+        public void Die()
         {
-            _currentStamina -= 0.5f; // Decrease stamina for sprinting
+            _animator.SetTrigger("Die");
+            Debug.Log("Player has died.");
+            _currentHealth = maxHP; // Reset health for respawn
+        }
+        public void CastingSkill(int manaCost)
+        {
+            if (_currentMana >= manaCost)
+            {
+                _currentMana -= manaCost;
+                manaStamina.UpdateMana();
+                // Add skill casting logic here
+            }
+            else
+            {
+                Debug.Log("Not enough mana to cast the skill.");
+            }
+        }
+        public void StaminaSprinting()
+        {
+            if (_currentStamina > 0 && _currentSpeed >= sprintSpeed)
+            {
+                _currentStamina -= 0.5f; // Decrease stamina for sprinting
+                manaStamina.UpdateStamina();
+            }
+            else
+            {
+                Debug.Log("Not enough stamina to sprint.");
+                _currentSpeed = walkSpeed; // Reset speed if no stamina
+            }
+        }
+        IEnumerator RegenerateStamina()
+        {
+
+            yield return new WaitForSeconds(5f * Time.deltaTime);
+            yield return _currentStamina += 1;
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                yield return new WaitForSeconds(5f * Time.deltaTime); // Wait for the next frame to continue regenerating stamina
+            }
+            if (_currentStamina > maxStamina)
+                _currentStamina = maxStamina;
             manaStamina.UpdateStamina();
         }
-        else
-        {
-            Debug.Log("Not enough stamina to sprint.");
-            _currentSpeed = walkSpeed; // Reset speed if no stamina
-        }
-    }
-    IEnumerator RegenerateStamina()
-    {
 
-        yield return new WaitForSeconds(5f * Time.deltaTime);
-        yield return _currentStamina += 1;
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        public void RegenerateMana()
         {
-            yield return new WaitForSeconds(5f * Time.deltaTime); // Wait for the next frame to continue regenerating stamina
-        }
-        if (_currentStamina > maxStamina) 
-            _currentStamina = maxStamina;
-        manaStamina.UpdateStamina();
-    }
-
-    public void RegenerateMana()
-    {
-        if (_currentMana < maxMana)
-        {
-            _currentMana += 10; // Regenerate mana
+            if (_currentMana < maxMana)
+            {
+                _currentMana += 70; // Regenerate mana
+            if (_currentMana > maxMana)
+                _currentMana = maxMana; // Ensure mana does not exceed max mana
             manaStamina.UpdateMana();
-        }
-        else
-        {
-            Debug.Log("Mana is already full.");
-        }
-    }
-    IEnumerator ApplySkillCooldownE()
-    {
-        while (e_cdTime > 0)
-        {
-            E_cdSlider.SetActive(true);
-            yield return e_cdTime -= Time.deltaTime; // Decrease cooldown time
-            if (e_cdTime <= 0)
+            }
+            else
             {
-                e_cdTime = 0; // Ensure cooldown does not go below zero
-                e_isReady = true; // Skill is ready again
-                E_cdSlider.SetActive(false); // Hide cooldown slider
-                break;
+                Debug.Log("Mana is already full.");
             }
         }
-        e_cdTime = e_maxSkillCooldown; // Reset cooldown time
-        skillCooldown.E_UpdateSkillCooldown(); // Update the cooldown slider UI
-    }
-    IEnumerator ApplySkillCooldownF()
-    {
-        while (f_cdTime > 0)
+        IEnumerator ApplySkillCooldownE()
         {
-            F_cdSlider.SetActive(true);
-            yield return f_cdTime -= Time.deltaTime; // Decrease cooldown time
-            if (f_cdTime <= 0)
+            while (e_cdTime > 0)
             {
-                f_cdTime = 0; // Ensure cooldown does not go below zero
-                f_isReady = true; // Skill is ready again
-                F_cdSlider.SetActive(false); // Hide cooldown slider
+                E_cdSlider.SetActive(true);
+                yield return e_cdTime -= Time.deltaTime; // Decrease cooldown time
+                if (e_cdTime <= 0)
+                {
+                    e_cdTime = 0; // Ensure cooldown does not go below zero
+                    e_isReady = true; // Skill is ready again
+                    E_cdSlider.SetActive(false); // Hide cooldown slider
+                    break;
+                }
+            }
+            e_cdTime = e_maxSkillCooldown; // Reset cooldown time
+            skillCooldown.E_UpdateSkillCooldown(); // Update the cooldown slider UI
+        }
+        IEnumerator ApplySkillCooldownF()
+        {
+            while (f_cdTime > 0)
+            {
+                F_cdSlider.SetActive(true);
+                yield return f_cdTime -= Time.deltaTime; // Decrease cooldown time
+                if (f_cdTime <= 0)
+                {
+                    f_cdTime = 0; // Ensure cooldown does not go below zero
+                    f_isReady = true; // Skill is ready again
+                    F_cdSlider.SetActive(false); // Hide cooldown slider
 
-                break;
+                    break;
+                }
             }
+            f_cdTime = f_maxSkillCooldown; // Reset cooldown time
+            skillCooldown.F_UpdateSkillCooldown(); // Update the cooldown slider UI
         }
-        f_cdTime = f_maxSkillCooldown; // Reset cooldown time
-        skillCooldown.F_UpdateSkillCooldown(); // Update the cooldown slider UI
+        IEnumerator ApplySkillCooldownHPPotion()
+        {
+            while (hpcdTime > 0)
+            {
+                HP_Potion.SetActive(true);
+                yield return hpcdTime -= Time.deltaTime; // Decrease cooldown time
+                if (hpcdTime <= 0)
+                {
+                    hpcdTime = 0; // Ensure cooldown does not go below zero
+                    hpcdReady = true; // Skill is ready again
+                    HP_Potion.SetActive(false); // Hide cooldown slider
+                    break;
+                }
+            }
+            hpcdTime = hpMaxCD; // Reset cooldown time
+            skillCooldown.HPCooldownUpdate(); // Update the cooldown slider UI
+        }
+        IEnumerator ApplySkillCooldownManaPotion()
+        {
+            while (manacdTime > 0)
+            {
+                Mana_Potion.SetActive(true);
+                yield return manacdTime -= Time.deltaTime; // Decrease cooldown time
+                if (manacdTime <= 0)
+                {
+                    manacdTime = 0; // Ensure cooldown does not go below zero
+                    manacdReady = true; // Skill is ready again
+                    Mana_Potion.SetActive(false); // Hide cooldown slider
+                    break;
+                }
+            }
+            manacdTime = manaMaxCD; // Reset cooldown time
+            skillCooldown.MPCooldownUpdate(); // Update the cooldown slider UI
+        }
     }
-}
