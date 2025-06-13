@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using System.Collections;
 using TMPro;
@@ -17,7 +18,7 @@ public class EventTrigger : MonoBehaviour
     [SerializeField] private GameObject zName_Text;
     [SerializeField] private GameObject hName_Text;
     [SerializeField] private GameObject dialogue_Text;
-    
+
     [Header("Talking Blendshape")]
     [SerializeField] private DialogueBlendShapeController zino;
     [SerializeField] private DialogueBlendShapeController halrath;
@@ -31,7 +32,7 @@ public class EventTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnTriggerEnter(Collider other)
