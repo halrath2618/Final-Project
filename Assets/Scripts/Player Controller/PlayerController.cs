@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public float attackDmg_Fire;
     public bool isAttacking = false;
     public GameObject auraSpell;
+    public GameObject healAura;
+    public GameObject manaAura;
 
     [SerializeField] private CharacterController _controller;
     [SerializeField] private Animator _animator;
@@ -230,7 +232,10 @@ public class PlayerController : MonoBehaviour
         {
             yield return _currentHealth += 5 * Time.deltaTime;
             hpDuration -= Time.deltaTime; // Decrease duration of HP potion effect
+            healAura.SetActive(true); // Activate the heal aura effect
+            
         }
+        healAura.SetActive(false); // Deactivate the heal aura effect
         if (_currentHealth > maxHP)
         {
             _currentHealth = maxHP; // Ensure health does not exceed max HP
@@ -391,8 +396,9 @@ public class PlayerController : MonoBehaviour
             {
                 yield return _currentMana += 5 * Time.deltaTime; // Regenerate mana
                 manaDuration -= Time.deltaTime; // Decrease duration of mana regeneration effect
+                manaAura.SetActive(true); // Activate the heal aura effect
             }
-
+            manaAura.SetActive(false); // Deactivate the heal aura effect after regeneration
             if (_currentMana > maxMana)
                 _currentMana = maxMana; // Ensure mana does not exceed max mana
             manaStamina.UpdateMana();
