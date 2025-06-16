@@ -7,6 +7,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    private bool _isAttacking = false; // Flag to check if the player is currently attacking
+    public bool CanMove => !_isAttacking; // Property to check if the player can move
     [Header("Movement")]
     public float walkSpeed = 5f;
     public float sprintSpeed = 8f;
@@ -90,36 +92,38 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
-
-        // Sprint
-        if (Input.GetKey(KeyCode.LeftShift) && _currentStamina > 0)
+        if (CanMove)
         {
-            _currentSpeed = sprintSpeed;
-            StaminaSprinting();
-        }
-        else
-        {
-            _currentSpeed = walkSpeed;
-            StartCoroutine(RegenerateStamina());
-        }
+            // Sprint
+            if (Input.GetKey(KeyCode.LeftShift) && _currentStamina > 0)
+            {
+                _currentSpeed = sprintSpeed;
+                StaminaSprinting();
+            }
+            else
+            {
+                _currentSpeed = walkSpeed;
+                StartCoroutine(RegenerateStamina());
+            }
 
-        // Camera-relative movement
-        if (direction.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
-            Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-            _controller.Move(moveDir.normalized * _currentSpeed * Time.deltaTime);
+            // Camera-relative movement
+            if (direction.magnitude >= 0.1f)
+            {
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
+                Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+                _controller.Move(moveDir.normalized * _currentSpeed * Time.deltaTime);
 
-            // Smooth rotation
-            Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
+                // Smooth rotation
+                Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
 
-        // Jump
-        if (Input.GetButtonDown("Jump") && _isGrounded)
-        {
-            _velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
-            _animator.SetTrigger("Jump");
+            // Jump
+            if (Input.GetButtonDown("Jump") && _isGrounded)
+            {
+                _velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+                _animator.SetTrigger("Jump");
+            }
         }
 
         // Apply gravity
@@ -247,82 +251,98 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PerformAttack_1()
     {
-        if (!isAttacking)
+        _isAttacking = true; // Set attacking flag to true
+        try
         {
-
-            if (_currentMana >= 10)
+            if (!isAttacking)
             {
-                _animator.SetTrigger("Attack1");
-                CastingSkill(10); // Cast skill and reduce mana
+
+                if (_currentMana >= 10)
+                {
+                    _animator.SetTrigger("Attack1");
+                    CastingSkill(10); // Cast skill and reduce mana
+                }
+                else
+                {
+                    warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                    StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                    Debug.Log("Not enough mana to perform the attack.");
+                    yield break; // Exit if not enough mana
+                }
+
+                yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
+                earthSpell.SetActive(true); // Activate the spell object
+                yield return new WaitForSeconds(1.5f);
+                earthSpell.SetActive(false); // Deactivate the spell object after the attack animation
             }
             else
             {
-                warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
-                StartCoroutine(warningSkill.Flashing()); // Start flashing warning
-                Debug.Log("Not enough mana to perform the attack.");
-                yield break; // Exit if not enough mana
+                Debug.Log("Already attacking, please wait.");
+                yield break; // Exit if already attacking
             }
 
-            yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
-            earthSpell.SetActive(true); // Activate the spell object
-            yield return new WaitForSeconds(1.5f);
-            earthSpell.SetActive(false); // Deactivate the spell object after the attack animation
-        }
-        else
-        {
-            Debug.Log("Already attacking, please wait.");
-            yield break; // Exit if already attacking
-        }
+            // Detect enemies in front
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
 
-        // Detect enemies in front
-        Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
-
-        foreach (Collider enemy in hitEnemies)
+            foreach (Collider enemy in hitEnemies)
+            {
+                Monster monster = enemy.GetComponent<Monster>();
+                monster.TakeDamage(attackDmg_Earth);
+                Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Earth);
+            }
+        }
+        finally
         {
-            Monster monster = enemy.GetComponent<Monster>();
-            monster.TakeDamage(attackDmg_Earth);
-            Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Earth);
+            _isAttacking = false; // Reset attacking flag
         }
     }
 
     IEnumerator PerformAttack_2()
     {
-        if (!isAttacking)
+        _isAttacking = true; // Set attacking flag to true
+        try
         {
-
-            if (_currentMana >= 30)
+            if (!isAttacking)
             {
-                _animator.SetTrigger("Attack2");
-                CastingSkill(30); // Cast skill and reduce mana
+
+                if (_currentMana >= 30)
+                {
+                    _animator.SetTrigger("Attack2");
+                    CastingSkill(30); // Cast skill and reduce mana
+                }
+                else
+                {
+                    warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                    StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                    Debug.Log("Not enough mana to perform the attack.");
+                    yield break; // Exit if not enough mana
+                }
+
+                yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
+                fireSpell.SetActive(true); // Activate the spell object
+                yield return new WaitForSeconds(2.75f);
+                fireSpell.SetActive(false); // Deactivate the spell object after the attack animation
             }
             else
             {
-                warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
-                StartCoroutine(warningSkill.Flashing()); // Start flashing warning
-                Debug.Log("Not enough mana to perform the attack.");
-                yield break; // Exit if not enough mana
+
+                Debug.Log("Already attacking, please wait.");
+                yield break; // Exit if already attacking
             }
 
-            yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
-            fireSpell.SetActive(true); // Activate the spell object
-            yield return new WaitForSeconds(2.75f);
-            fireSpell.SetActive(false); // Deactivate the spell object after the attack animation
+            // Detect enemies in front
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
+
+            foreach (Collider enemy in hitEnemies)
+            {
+                Monster monster = enemy.GetComponent<Monster>();
+                monster.TakeDamage(attackDmg_Fire);
+                Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Fire);
+            }
         }
-        else
+        finally
         {
-
-            Debug.Log("Already attacking, please wait.");
-            yield break; // Exit if already attacking
-        }
-
-        // Detect enemies in front
-        Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
-
-        foreach (Collider enemy in hitEnemies)
-        {
-            Monster monster = enemy.GetComponent<Monster>();
-            monster.TakeDamage(attackDmg_Fire);
-            Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Fire);
+            _isAttacking = false; // Reset attacking flag
         }
     }
 

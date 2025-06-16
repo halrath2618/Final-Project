@@ -8,7 +8,7 @@ public class Warp : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Debug.Log("Player has entered the warp area.");
-            SceneManager.LoadScene("Map 1"); // Load the specified scene when the player enters the warp area
+            SceneManager.LoadScene("Map 1");
         }
     }
 }
