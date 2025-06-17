@@ -9,7 +9,13 @@ public class ButtonController : MonoBehaviour
 
     public bool pressAble;
 
+    public bool createMode; // Flag to indicate if the button is in create mode
+
+    public GameObject UI;
+    public GameManager gameManager; // Reference to the GameManager script
+
     public KeyCode keyToPress;
+    public GameObject arrowPrefab; // Prefab for the arrow that can press the button
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,15 +25,26 @@ public class ButtonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(keyToPress))
+        if (createMode)
         {
-            spriteRenderer.sprite = pressedSprite; // Change to pressed sprite
-            Debug.Log("Button Pressed: " + keyToPress);
+            if (Input.GetKeyDown(keyToPress))
+            {
+                UI = Instantiate(arrowPrefab, transform.position, arrowPrefab.transform.rotation, transform); // Instantiate an arrow at the button's position
+                gameManager.maxCombo++; // Increment the max combo in GameManager
+            }
         }
-        else if (Input.GetKeyUp(keyToPress))
+        else
         {
-            spriteRenderer.sprite = normalSprite; // Change back to normal sprite
-            Debug.Log("Button Released: " + keyToPress);
+            if (Input.GetKeyDown(keyToPress))
+            {
+                spriteRenderer.sprite = pressedSprite; // Change to pressed sprite
+                Debug.Log("Button Pressed: " + keyToPress);
+            }
+            else if (Input.GetKeyUp(keyToPress))
+            {
+                spriteRenderer.sprite = normalSprite; // Change back to normal sprite
+                Debug.Log("Button Released: " + keyToPress);
+            }
         }
     }
     private void OnTriggerEnter(Collider other)

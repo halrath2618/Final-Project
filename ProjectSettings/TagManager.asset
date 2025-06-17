@@ -7,6 +7,10 @@ TagManager:
   - Button
   - Arrow
   - Activator
+  - Miss
+  - Exit
+  - Skill
+  - EndZone
   layers:
   - Default
   - TransparentFX
