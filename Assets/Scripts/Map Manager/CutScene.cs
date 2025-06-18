@@ -6,26 +6,25 @@ using UnityEngine.SceneManagement;
 public class CutScene : MonoBehaviour
 {
     public PlayableDirector cutScene; // Reference to the PlayableDirector component for the cutscene
+    public GameObject cutSceneObject; // Reference to the GameObject that contains the cutscene
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // Start the cutscene when the player enters the trigger
+            cutSceneObject.SetActive(true); // Activate the cutscene GameObject
             cutScene.Play();
-            // Optionally, you can disable the player controls or other game elements here
-            // For example, if you have a PlayerController script, you might do:
-            // other.GetComponent<PlayerController>().enabled = false;
-            // Load the next scene after the cutscene finishes
-            cutScene.stopped += OnCutSceneStopped;
+            StartCoroutine(WaitForCutsceneEnd());
         }
     }
-
-    private void OnCutSceneStopped(PlayableDirector director)
+    IEnumerator WaitForCutsceneEnd()
     {
-        // Load the next scene after the cutscene finishes
-        SceneManager.LoadScene("Prologue");
-        // Optionally, you can re-enable player controls or other game elements here
-        // For example, if you have a PlayerController script, you might do:
-        // GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = true;
+        // Wait until the cutscene is done playing
+        while (cutScene.state == PlayState.Playing)
+        {
+            yield return null; // Wait for the next frame
+        }
+
+        // Load the next scene after the cutscene ends
+        SceneManager.LoadScene("Map 1");
     }
 }

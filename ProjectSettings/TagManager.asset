@@ -9,8 +9,10 @@ TagManager:
   - Activator
   - Miss
   - Exit
-  - Skill
   - EndZone
+  - Skill_E
+  - Skill_F
+  - Monster
   layers:
   - Default
   - TransparentFX

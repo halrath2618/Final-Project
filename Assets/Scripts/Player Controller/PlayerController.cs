@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -17,13 +18,14 @@ public class PlayerController : MonoBehaviour
     public float gravity = -9.81f;
 
     [Header("Combat")]
+    public float attackDmg;
     public float attackRange = 3f;
     public float attackRadius = 1.5f;
     public LayerMask enemyLayer;
     public GameObject earthSpell;
     public GameObject fireSpell;
-    public float attackDmg_Earth;
-    public float attackDmg_Fire;
+    public float attackDmg_Earth = 20f;
+    public float attackDmg_Fire = 10f;
     public bool isAttacking = false;
     public GameObject auraSpell;
     public GameObject healAura;
@@ -38,13 +40,13 @@ public class PlayerController : MonoBehaviour
 
     [Header("HP, Mana and Stamina Control")]
     public float maxHP = 100;
-    public float _currentHealth = 100;
+    public float _currentHealth;
     public HPBar hp;
     public float maxMana = 100;
-    public float _currentMana = 100;
+    public float _currentMana;
     public ManaStamina manaStamina;
     public float maxStamina = 100;
-    public float _currentStamina = 100;
+    public float _currentStamina;
 
     [Header("Cooldown Settings")]
     public float e_maxSkillCooldown = 4f; // Cooldown time for skills in seconds
@@ -71,6 +73,9 @@ public class PlayerController : MonoBehaviour
     public bool manacdReady = true; // Flag to check if the Mana potion cooldown is ready
     void Start()
     {
+        _currentHealth = maxHP; // Initialize current health to max HP
+        _currentMana = maxMana; // Initialize current mana to max Mana
+        _currentStamina = maxStamina; // Initialize current stamina to max Stamina
         _cameraTransform = Camera.main.transform;
         _currentSpeed = walkSpeed;
         E_cdSlider.SetActive(false);
@@ -181,11 +186,11 @@ public class PlayerController : MonoBehaviour
         {
             if (auraReady)
             {
+                Debug.Log("Aura skill activated.");
+                StartCoroutine(skillConstantlyActive.SkillActively()); // Start the skill effect coroutine
                 auraReady = false; // Set skill as not ready
                 auraSpell.SetActive(true); // Activate the aura spell
-                StartCoroutine(skillConstantlyActive.SkillActively()); // Start the skill effect coroutine
-                skillConstantlyActive.skillEffect.SetActive(true); // Activate the skill effect
-                Debug.Log("Aura skill activated.");
+                StartCoroutine(AuraManaDrainPerSecond()); // Start draining mana over time
             }
             else
             {
@@ -210,6 +215,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Mana potion is on cooldown.");
             }
         }
+        // Regenerate HP
         if (Input.GetKeyDown(KeyCode.E)) // Check if E key is pressed and HP potion is ready
         {
             if (hpcdReady)
@@ -249,6 +255,25 @@ public class PlayerController : MonoBehaviour
         hpDuration = 10f; // Reset duration for the next use
     }
 
+    IEnumerator AuraManaDrainPerSecond()
+    {
+        while (_currentMana > 0)
+        {
+            yield return new WaitForSeconds(1f); // Wait for 1 second
+            _currentMana -= 1; // Drain 1 mana per second
+            manaStamina.UpdateMana(); // Update mana UI
+            if (_currentMana <= 0)
+            {
+                _currentMana = 0; // Ensure mana does not go below zero
+                auraReady = true; // Reset skill readiness
+                auraSpell.SetActive(false); // Deactivate the aura spell
+                skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
+                Debug.Log("Aura skill deactivated due to no mana.");
+                break; // Exit the coroutine if no mana left
+            }
+        }
+    }
+
     IEnumerator PerformAttack_1()
     {
         _isAttacking = true; // Set attacking flag to true
@@ -279,16 +304,6 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Already attacking, please wait.");
                 yield break; // Exit if already attacking
-            }
-
-            // Detect enemies in front
-            Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
-
-            foreach (Collider enemy in hitEnemies)
-            {
-                Monster monster = enemy.GetComponent<Monster>();
-                monster.TakeDamage(attackDmg_Earth);
-                Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Earth);
             }
         }
         finally
@@ -329,23 +344,12 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Already attacking, please wait.");
                 yield break; // Exit if already attacking
             }
-
-            // Detect enemies in front
-            Collider[] hitEnemies = Physics.OverlapSphere(transform.position + transform.forward * attackRange / 2, attackRadius, enemyLayer);
-
-            foreach (Collider enemy in hitEnemies)
-            {
-                Monster monster = enemy.GetComponent<Monster>();
-                monster.TakeDamage(attackDmg_Fire);
-                Debug.Log("Hit: " + enemy.name + " for " + attackDmg_Fire);
-            }
         }
         finally
         {
             _isAttacking = false; // Reset attacking flag
         }
     }
-
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

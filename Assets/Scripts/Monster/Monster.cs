@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Monster : MonoBehaviour
 {
     [Header("Health Settings")]
     public float maxHP = 100f;
     public float currentHP = 100f;
+    public Slider healthBar;  // Assign your health bar slider in the Inspector
 
     [Header("Damage Settings")]
     public int normalAttackDamage = 10;
     public int strongAttackDamage = 20;
 
     [Header("Attack Settings")]
-    public float attackRange = 1f;  // Radius for collider check on attack
+    public float attackRange = 0.1f;  // Radius for collider check on attack
 
     [Header("Movement Settings")]
     public float runSpeed;
@@ -28,6 +30,8 @@ public class Monster : MonoBehaviour
 
     private BehaviorTree behaviorTree;
 
+
+    public PlayerController playerController;
     void Start()
     {
         // Get the NavMeshAgent attached to this monster
@@ -83,6 +87,7 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
+        HPUpdate(); // Update the health bar UI
         // Evaluate behavior tree every frame
         behaviorTree.Evaluate();
     }
@@ -156,12 +161,21 @@ public class Monster : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // Optional: if using triggers for weapon hits.
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Skill_E"))
         {
-            TakeDamage(10);  // Example fixed damage if hit by a player's attack collider.
+            TakeDamage(playerController.attackDmg_Earth); // Assuming the skill has a damage value
         }
+        else if (other.CompareTag("Skill_F"))
+        {
+            TakeDamage(playerController.attackDmg_Fire); // Assuming the skill has a damage value
+        }
+    }
+
+    private void HPUpdate()
+    {
+        healthBar.maxValue = maxHP; // Set the maximum value of the health bar
+        healthBar.value = currentHP; // Update the health bar value
     }
 }
