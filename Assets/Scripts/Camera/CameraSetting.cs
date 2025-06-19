@@ -17,6 +17,8 @@ public class CameraSetting : MonoBehaviour
     private float _verticalAngle;
     private float _horizontalAngle;
 
+    public PlayerController playerController;
+
     void Start()
     {
         _currentZoom = -offset.z;
@@ -26,11 +28,14 @@ public class CameraSetting : MonoBehaviour
     void LateUpdate()
     {
         if (!target) return;
-
-        // Camera Rotation
-        _horizontalAngle += Input.GetAxis("Mouse X") * rotationSpeed;
-        _verticalAngle -= Input.GetAxis("Mouse Y") * rotationSpeed;
-        _verticalAngle = Mathf.Clamp(_verticalAngle, -30f, 70f);
+        // Handle camera rotation and zoom only if the playerController is not null
+        if (playerController != null)
+        {
+            // Camera Rotation
+            _horizontalAngle += Input.GetAxis("Mouse X") * rotationSpeed;
+            _verticalAngle -= Input.GetAxis("Mouse Y") * rotationSpeed;
+            _verticalAngle = Mathf.Clamp(_verticalAngle, -30f, 70f);
+        }
 
         // Camera Zoom
         _currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;

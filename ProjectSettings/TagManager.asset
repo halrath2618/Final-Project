@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Button
+  - Arrow
+  - Activator
+  - Miss
+  - Exit
+  - EndZone
+  - Skill_E
+  - Skill_F
+  - Monster
   layers:
   - Default
   - TransparentFX
@@ -11,7 +20,7 @@ TagManager:
   - enemy
   - Water
   - UI
-  - 
+  - Arrow
   - 
   - Suimono_Water
   - Suimono_Depth
@@ -40,6 +49,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Arrow
+    uniqueID: 4117698315
     locked: 0
   m_RenderingLayers:
   - Default
