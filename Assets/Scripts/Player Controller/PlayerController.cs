@@ -17,6 +17,16 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5f;
     public float gravity = -9.81f;
 
+    [Header("Dodge Settings")]
+    public float dodgeDistance = 5f;
+    public float dodgeDuration = 0.4f;
+    public float dodgeCooldown = 2f;
+    public float dodgeInvulnerabilityDuration = 0.5f;
+    private bool _isDodging = false;
+    private bool _canDodge = true;
+    private Coroutine _currentDodgeCoroutine;
+    private bool _isInvulnerable = false;
+
     [Header("Combat")]
     public float attackDmg;
     public float attackRange = 3f;
@@ -47,6 +57,7 @@ public class PlayerController : MonoBehaviour
     public ManaStamina manaStamina;
     public float maxStamina = 100;
     public float _currentStamina;
+    public bool _isDrainingMana = false; // Flag to check if mana is being drained
 
     [Header("Cooldown Settings")]
     public float e_maxSkillCooldown = 4f; // Cooldown time for skills in seconds
@@ -131,6 +142,23 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // Dodge input
+        if (Input.GetKeyDown(KeyCode.V) && _canDodge && !_isDodging && _isGrounded)
+        {
+            if(_currentStamina < 10)
+            {
+                Debug.Log("Not enough stamina to dodge.");
+                return; // Exit if not enough stamina
+            }
+            else
+            {
+                _currentStamina -= 25; // Deduct stamina for dodging
+                manaStamina.UpdateStamina(); // Update stamina UI
+                StartDodge();
+            }
+
+        }
+
         // Apply gravity
         _velocity.y += gravity * Time.deltaTime;
         _controller.Move(_velocity * Time.deltaTime);
@@ -159,7 +187,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Skill is not ready.");
             }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             if (f_isReady)
             {
@@ -182,27 +210,28 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Skill is not ready.");
             }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            if (auraReady)
+            if(auraReady)
             {
-                Debug.Log("Aura skill activated.");
-                StartCoroutine(skillConstantlyActive.SkillActively()); // Start the skill effect coroutine
-                auraReady = false; // Set skill as not ready
+                auraReady = false; // Set aura skill as not ready
+                _isDrainingMana = true; // Start draining mana
+                StartCoroutine(AuraManaDrainPerSecond()); // Start mana drain coroutine
                 auraSpell.SetActive(true); // Activate the aura spell
-                StartCoroutine(AuraManaDrainPerSecond()); // Start draining mana over time
+                skillConstantlyActive.skillEffect.SetActive(true); // Activate the skill effect
             }
             else
             {
-                skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
                 auraReady = true; // Reset skill readiness
+                _isDrainingMana = false; // Stop draining mana
                 auraSpell.SetActive(false); // Deactivate the aura spell
-                Debug.Log("Aura skill deactivated.");
+                skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
+                StopDrainingMana(); // Stop draining mana if already active
             }
         }
 
         //Regenerate Mana
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (manacdReady)
             {
@@ -216,7 +245,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         // Regenerate HP
-        if (Input.GetKeyDown(KeyCode.E)) // Check if E key is pressed and HP potion is ready
+        if (Input.GetKeyDown(KeyCode.Alpha2)) // Check if E key is pressed and HP potion is ready
         {
             if (hpcdReady)
             {
@@ -234,6 +263,83 @@ public class PlayerController : MonoBehaviour
         // Update animator
         _animator.SetFloat("Speed", direction.magnitude * _currentSpeed);
         _animator.SetBool("IsGrounded", _isGrounded);
+    }
+
+    void StartDodge()
+    {
+        if (_currentStamina > 10)
+        {
+            // Cancel any ongoing attacks
+            CancelAttacks();
+            // Start dodge coroutine
+            if (_currentDodgeCoroutine != null)
+            {
+                StopCoroutine(_currentDodgeCoroutine);
+            }
+            _currentDodgeCoroutine = StartCoroutine(PerformDodge());
+        }
+        else
+        {
+            Debug.Log("Not enough stamina to dodge.");
+            return; // Exit if not enough stamina
+        }
+    }
+
+    void CancelAttacks()
+    {
+        // Cancel attack animations and effects
+        _animator.ResetTrigger("Attack1");
+        _animator.ResetTrigger("Attack2");
+
+        // Reset attack states
+        isAttacking = false;
+        _isAttacking = false;
+    }
+
+    IEnumerator PerformDodge()
+    {
+        _isDodging = true;
+        _canDodge = false;
+        _isInvulnerable = true;
+
+        // Trigger dodge animation
+        _animator.SetTrigger("Dodge");
+
+        // Calculate dodge direction
+        Vector3 dodgeDirection = transform.forward;
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            // Dodge in movement direction
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            dodgeDirection = new Vector3(horizontal, 0, vertical).normalized;
+
+            // Convert to camera-relative direction
+            float targetAngle = Mathf.Atan2(dodgeDirection.x, dodgeDirection.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
+            dodgeDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+        }
+
+        // Dodge movement
+        float elapsed = 0f;
+        while (elapsed < dodgeDuration)
+        {
+            float progress = elapsed / dodgeDuration;
+            float currentDistance = Mathf.Lerp(dodgeDistance, 0, progress);
+
+            _controller.Move(dodgeDirection * currentDistance * Time.deltaTime);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // End invulnerability after dodge
+        yield return new WaitForSeconds(dodgeInvulnerabilityDuration);
+        _isInvulnerable = false;
+
+        _isDodging = false;
+
+        // Start cooldown
+        yield return new WaitForSeconds(dodgeCooldown);
+        _canDodge = true;
     }
 
     IEnumerator DrinkHPPotion()
@@ -254,24 +360,30 @@ public class PlayerController : MonoBehaviour
         hp.HP();
         hpDuration = 10f; // Reset duration for the next use
     }
-
+    public void StopDrainingMana()
+    {
+        if(!_isDrainingMana)
+        {
+            StopCoroutine(AuraManaDrainPerSecond()); // Stop the mana drain coroutine
+        }
+    }
     IEnumerator AuraManaDrainPerSecond()
     {
-        while (_currentMana > 0)
-        {
-            yield return new WaitForSeconds(1f); // Wait for 1 second
-            _currentMana -= 1; // Drain 1 mana per second
-            manaStamina.UpdateMana(); // Update mana UI
-            if (_currentMana <= 0)
+            while (_currentMana > 0 && _isDrainingMana)
             {
-                _currentMana = 0; // Ensure mana does not go below zero
-                auraReady = true; // Reset skill readiness
-                auraSpell.SetActive(false); // Deactivate the aura spell
-                skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
-                Debug.Log("Aura skill deactivated due to no mana.");
-                break; // Exit the coroutine if no mana left
+                yield return new WaitForSeconds(1f); // Wait for 1 second
+                _currentMana -= 1; // Drain 1 mana per second
+                manaStamina.UpdateMana(); // Update mana UI
+                if (_currentMana <= 0)
+                {
+                    _currentMana = 0; // Ensure mana does not go below zero
+                    auraReady = true; // Reset skill readiness
+                    auraSpell.SetActive(false); // Deactivate the aura spell
+                    skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
+                    Debug.Log("Aura skill deactivated due to no mana.");
+                    break; // Exit the coroutine if no mana left
+                }
             }
-        }
     }
 
     IEnumerator PerformAttack_1()
@@ -295,7 +407,7 @@ public class PlayerController : MonoBehaviour
                     yield break; // Exit if not enough mana
                 }
 
-                yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
+                yield return new WaitForSeconds(1.025f); // Wait for the attack animation to play
                 earthSpell.SetActive(true); // Activate the spell object
                 yield return new WaitForSeconds(1.5f);
                 earthSpell.SetActive(false); // Deactivate the spell object after the attack animation
@@ -311,7 +423,6 @@ public class PlayerController : MonoBehaviour
             _isAttacking = false; // Reset attacking flag
         }
     }
-
     IEnumerator PerformAttack_2()
     {
         _isAttacking = true; // Set attacking flag to true
@@ -333,7 +444,7 @@ public class PlayerController : MonoBehaviour
                     yield break; // Exit if not enough mana
                 }
 
-                yield return new WaitForSeconds(2.05f); // Wait for the attack animation to play
+                yield return new WaitForSeconds(1.025f); // Wait for the attack animation to play
                 fireSpell.SetActive(true); // Activate the spell object
                 yield return new WaitForSeconds(2.75f);
                 fireSpell.SetActive(false); // Deactivate the spell object after the attack animation
@@ -360,6 +471,8 @@ public class PlayerController : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        if (_isInvulnerable) return; // Ignore damage during dodge
+
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
