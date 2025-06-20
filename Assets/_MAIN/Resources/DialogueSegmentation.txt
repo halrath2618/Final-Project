@@ -1,0 +1,3 @@
+Zino ""
+
+Zino "Move Left and then Right." Print_1p("Start Moving"), [wait]moveCharDemo(left), [wait]moveCharDemo(right), Print_1p("Done Moving")

@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Unity;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.IO;
+
+public class Menu : MonoBehaviour
+{
+    public Button start;
+    public Button load;
+    public Button quit;
+
+    public void StartGame()
+    {
+        Debug.Log("Starting game...");
+        SceneManager.LoadScene("Prologue");
+    }
+    public void LoadGame()
+    {
+        // Load game logic here
+    }
+    public void QuitToDesktop()
+    {
+        Debug.Log("Game is exiting...");
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else 
+        Application.Quit();
+        
+        #endif
+    }
+}

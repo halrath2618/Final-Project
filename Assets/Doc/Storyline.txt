@@ -1,0 +1,148 @@
+
+
+Giới thiệu câu chuyện
+
+*Câu chuyện mở đầu với nhân vật chính - Zino, một nhà thám hiểm trẻ tuổi, đang khám phá một khu rừng bí ẩn. Trên tay cậu là một chiếc đèn pin nhỏ, soi rọi từng gốc cây, bụi cỏ. Màn đêm bao trùm khiến khu rừng càng trở nên âm u.*
+
+Zino (độc thoại, trầm tư): "Khu rừng này thật kỳ lạ… im lặng một cách đáng sợ, như thể có điều gì đó đang rình rập."
+
+*Bất ngờ, một luồng sáng xanh rực rỡ xuất hiện từ xa, chiếu sáng cả một góc rừng.*
+
+Zino (ngạc nhiên): "Gì thế kia? Một thứ ánh sáng… lạ kỳ. Phải chăng là một lối đi bí mật nào đó?"
+
+*Bị cuốn hút bởi ánh sáng, Zino tiến lại gần và phát hiện ra một cánh cổng phát sáng kỳ ảo. Trước khi kịp hiểu chuyện gì, một lực hút mạnh mẽ kéo cậu vào cánh cổng.*
+
+---
+
+Phân cảnh 1: Lạc vào thế giới mới
+
+*Zino tỉnh dậy, cơ thể rã rời. Xung quanh cậu là một khu rừng u tối, những cây cổ thụ kỳ dị che khuất bầu trời, tạo nên không gian ma quái.*
+
+Zino (tự hỏi): "Mình… mình đang ở đâu? Đây không phải khu rừng mình vừa bước vào!"
+
+*Cảm thấy đói khát và hoang mang, Zino loạng choạng đi tìm lối thoát. Sau khi di chuyển một đoạn, cậu thấy một ngôi nhà nhỏ nằm sâu trong một hang động, ánh lửa từ bên trong hắt ra.*
+
+Zino (thở phào, đầy hy vọng): "Có người ở đây! Có lẽ họ sẽ giúp được mình."
+
+*Cậu gõ cửa, nhưng do kiệt sức, Zino ngã quỵ trước khi cửa kịp mở.*
+
+---
+
+Phân cảnh 2: Gặp Halrath - Chiến binh dũng cảm
+
+*Nghe tiếng động, Halrath - một chiến binh cao lớn với vẻ ngoài oai phong trong bộ áo giáp bạc - mở cửa và thấy Zino nằm bất động. Ông cau mày, đôi mắt sắc bén như cân nhắc điều gì đó.*
+
+Halrath (lẩm bẩm): "Một kẻ lạ mặt… từ thế giới khác. Sao lại đến đây?"
+
+*Halrath bế Zino vào nhà và giúp cậu uống nước để hồi sức. Một lúc sau, Zino từ từ tỉnh dậy, thấy mình đang nằm trong căn nhà ấm áp và người đàn ông lạ mặt ngồi gần đó.*
+
+Zino (ngỡ ngàng): "Ông là ai? Sao tôi lại ở đây?"
+
+Halrath (lạnh lùng): "Ta là Halrath, người bảo vệ của khu rừng này. Còn ngươi là ai? Tại sao lại tới vùng đất này?"
+
+Zino (hơi lo lắng): "Tôi là Zino… một nhà thám hiểm. Tôi tìm thấy một cánh cổng phát sáng và… giờ tôi không biết đường về nhà."
+
+*Halrath quan sát Zino với ánh mắt thận trọng, rồi gật đầu chậm rãi.*
+
+Halrath: "Vậy ngươi đã vô tình bước qua Cánh Cổng Thất Lạc. Nếu không có đủ sức mạnh và ý chí, ngươi sẽ mãi mãi kẹt lại đây."
+
+*Zino nhìn Halrath, đôi mắt ánh lên sự quyết tâm.*
+
+Zino: "Tôi phải trở về nhà… Dù thế nào cũng sẽ tìm ra cách!"
+
+*Halrath nhìn cậu chăm chú, rồi chầm chậm gật đầu, như đã thấy được ý chí trong Zino.*
+
+#Lựa chọn của Zino:
+
+1. Sợ hãi và từ bỏ hy vọng quay về
+   - Zino (cúi đầu, giọng yếu ớt): "Thế giới này quá đáng sợ… tôi không biết liệu mình có đủ sức đối mặt không…"
+   - Halrath (giọng trầm ấm): "Nếu ngươi không thể đối diện với thử thách, hãy ở lại đây. Ta sẽ bảo vệ ngươi, nhưng ngươi sẽ mãi mãi sống trong thế giới này."
+   - *Zino cảm thấy sợ hãi và quyết định ở lại cùng Halrath, từ bỏ ý định trở về nhà.*
+
+2. Quyết tâm quay về thế giới cũ
+   - Zino (đầy nghị lực): "Không, tôi không thể bỏ cuộc. Dù khó khăn đến đâu, tôi nhất định phải trở về!"
+   - Halrath (mỉm cười nhẹ nhàng): "Rất tốt. Nếu ngươi thực sự quyết tâm, hãy đi đến thành phố và tìm gặp Scy - một pháp sư quyền năng. Ông ta có thể giúp ngươi."
+
+---
+
+Phân cảnh 3: Gặp pháp sư Scy
+
+*Tại thành phố, Zino tìm gặp Scy - một pháp sư với mái tóc bạc dài, dáng vẻ uy nghi và đôi mắt sâu thẳm, toát lên vẻ bí hiểm. Khi Zino bước vào tháp của ông, Scy quan sát cậu, như muốn nhìn thấu con người cậu.*
+
+Scy (bằng giọng trầm): "Một kẻ lạ mặt… ngươi đến từ thế giới nào?"
+
+Zino (cúi đầu lịch sự): "Tôi là Zino, và tôi cần sự giúp đỡ để thu thập mảnh ghép cổ vật nhằm mở cánh cổng quay về thế giới cũ. Ngài có thể giúp tôi không?"
+
+*Scy quan sát Zino hồi lâu, đôi mắt sắc bén như lưỡi dao. Sau một lúc im lặng, ông lên tiếng.*
+
+Scy: "Ngươi có dám đặt niềm tin vào một người xa lạ như ta sao?"
+
+#Lựa chọn của Zino:
+
+1. Tin tưởng Scy
+   - Zino (kiên quyết): "Tôi sẽ tin tưởng ngài, pháp sư Scy. Tôi không còn lựa chọn nào khác."
+   - Scy (mỉm cười nhẹ): "Một sự lựa chọn dũng cảm, Zino. Ngươi sẽ cần phải học những điều cơ bản về thế giới này để tồn tại."
+   - *Scy dạy Zino những kỹ năng phép thuật và chỉ cho cậu các địa điểm có mảnh ghép cổ vật.*
+
+2. Không tin tưởng Scy
+   - Zino: "Xin lỗi, nhưng tôi sẽ tự mình khám phá."
+   - *Zino quyết định tự tìm hiểu về thế giới này, nhưng thiếu sự hướng dẫn của Scy, cậu chỉ có những hiểu biết sơ sài, khiến hành trình trở nên khó khăn hơn.*
+
+---
+
+Phân cảnh 4: Gặp Blacky - Quyết định cứu hay bỏ mặc
+
+*Trên hành trình, Zino đi qua vùng hoang dã (Wilderness) và thấy Blacky - một sinh vật nhỏ bé với bộ lông mềm mịn và đôi mắt sáng như đom đóm - đang bị bao vây bởi bầy quái vật hung tợn.*
+
+Zino (ngạc nhiên): "Đó là gì? Một sinh vật nhỏ bé… mình nên cứu nó hay không?"
+
+#Lựa chọn của Zino:
+
+1. Cứu Blacky
+   - *Zino lao vào, triệu hồi phép thuật mà cậu học được từ Scy, gây choáng lũ quái vật, và cứu Blacky ra khỏi vòng vây.*
+   - Blacky (đầy biết ơn): "Cảm ơn anh rất nhiều! Nếu không có anh, tôi chắc đã không còn sống. Cho phép tôi theo giúp đỡ anh."
+   - Zino (mỉm cười): "Thật tuyệt khi có thêm một người bạn đồng hành!"
+
+2. Không cứu Blacky
+   - *Zino quyết định không can thiệp và bỏ mặc Blacky cho bầy quái vật. Một cảm giác hối hận bùng lên khi nghe tiếng kêu của Blacky từ phía sau.*
+   - *Zino tiếp tục hành trình một mình và đến gặp Scy, nhưng ông từ chối giúp đỡ vì Blacky là bạn thân của ông. Zino đành tiếp tục hành trình trong cô độc.*
+
+---
+
+Phân cảnh 5: Đối đầu với Ác quỷ - Phần bóng tối của Zino
+
+*Sau khi thu thập đủ mảnh ghép cổ vật, Zino phải đối mặt với một con ác quỷ - phần bóng tối của chính cậu, thoát ra từ cánh cổng khi cậu lạc vào thế giới này. Con ác quỷ cười lạnh lẽo, đôi mắt đỏ rực đầy tà ác.*
+
+Ác quỷ Z
+
+ino (giọng trầm, đầy mê hoặc): "Ngươi nghĩ mình mạnh mẽ hơn ta sao? Ta chính là bản chất thực sự của ngươi - bóng tối mà ngươi luôn kìm nén."
+
+Zino (đứng thẳng, quả quyết): "Ngươi là một phần của ta, nhưng ngươi sẽ không chi phối được ta!"
+
+*Halrath, Blacky và Scy cùng sát cánh bên Zino. Một trận chiến dữ dội diễn ra. Ác quỷ tung ra những đòn tấn công tàn bạo, nhưng với sự giúp đỡ của bạn bè, Zino dần chiếm thế thượng phong.*
+
+#Lựa chọn của Zino:
+
+1. Đồng ý ở lại cùng ác quỷ
+   - *Ác quỷ chiếm lấy thể xác của Zino, biến cậu thành kẻ thù của thế giới mới. Halrath, Blacky và Scy đau lòng bỏ đi, để lại Zino lạc lối trong bóng tối vĩnh viễn.*
+
+2. Chiến đấu đến cùng cùng bạn bè
+   - *Zino cùng bạn bè đánh bại ác quỷ, mở ra cánh cổng quay về thế giới cũ. Cuối cùng, cậu đứng trước lựa chọn cuối cùng.*
+
+---
+
+Kết thúc: Quyết định cuối cùng
+
+*Tại cánh cổng trở về, Zino nhìn lại bạn bè với ánh mắt lưu luyến.*
+
+1. Ở lại thế giới mới
+   - Zino (mỉm cười): "Mình sẽ ở lại. Đây giờ là nhà của mình."
+   - *Cậu và bạn bè tiếp tục cuộc phiêu lưu, xây dựng cuộc sống mới.*
+
+2. Quay về thế giới cũ
+   - Zino (rưng rưng): "Cảm ơn các bạn. Tạm biệt."
+   - *Zino trở về, mang theo những kỷ niệm và lòng biết ơn sâu sắc.*
+
+---
+
+*Dù lựa chọn nào, Zino đã trưởng thành hơn, học được giá trị của tình bạn và lòng dũng cảm, trở thành một người mạnh mẽ hơn.*

@@ -37,7 +37,7 @@ AnimatorStateTransition:
     m_ConditionEvent: AttackType
     m_EventTreshold: 3
   - m_ConditionMode: 1
-    m_ConditionEvent: isAttack
+    m_ConditionEvent: Attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8672516544431154062}
@@ -62,7 +62,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: isRunning
+    m_ConditionEvent: Run
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2199959339855327650}
@@ -100,7 +100,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 2db3a31e90bbd034581df52b7c43927c, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 2db3a31e90bbd034581df52b7c43927c,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -118,7 +119,7 @@ AnimatorStateTransition:
     m_ConditionEvent: AttackType
     m_EventTreshold: 2
   - m_ConditionMode: 1
-    m_ConditionEvent: isAttack
+    m_ConditionEvent: Attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3506120064246736875}
@@ -155,7 +156,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 61ad1cb1816871a45bf1c54390e0d02e, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 61ad1cb1816871a45bf1c54390e0d02e,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -198,7 +200,7 @@ AnimatorStateTransition:
     m_ConditionEvent: AttackType
     m_EventTreshold: 1
   - m_ConditionMode: 1
-    m_ConditionEvent: isAttack
+    m_ConditionEvent: Attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3178319183048465025}
@@ -251,7 +253,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Detect
     m_EventTreshold: 0
   - m_ConditionMode: 4
-    m_ConditionEvent: isWalk
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -715753906092407569}
@@ -290,7 +292,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 8648884ae8359834a96b5a8ef7e9081e, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 8648884ae8359834a96b5a8ef7e9081e,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -343,7 +346,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 29585109f818e8e44a0167f671daca1c, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 29585109f818e8e44a0167f671daca1c,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -358,22 +362,24 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 8648884ae8359834a96b5a8ef7e9081e, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: 8648884ae8359834a96b5a8ef7e9081e,
+      type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
+    m_TimeScale: 0.01
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 129c2ffafba49d4499e87ca13534aea2, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: 129c2ffafba49d4499e87ca13534aea2,
+      type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: isWalk
+  m_BlendParameter: Speed
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 1
@@ -389,7 +395,7 @@ AnimatorController:
   m_Name: GolemnAnimation
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isWalk
+  - m_Name: Speed
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -401,7 +407,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: isRunning
+  - m_Name: Run
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -419,7 +425,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: isAttack
+  - m_Name: Attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -471,7 +477,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: dc0959daf1663094aac3f996e9243e4e, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: dc0959daf1663094aac3f996e9243e4e,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -498,7 +505,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 116f99fc45de8c245a7db3e92018b317, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 116f99fc45de8c245a7db3e92018b317,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -570,7 +578,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: isWalk
+    m_ConditionEvent: Speed
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Detect
@@ -634,7 +642,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 29585109f818e8e44a0167f671daca1c, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 29585109f818e8e44a0167f671daca1c,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -721,7 +730,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: d635996a072dd8540a2a7359b9af945b, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: d635996a072dd8540a2a7359b9af945b,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

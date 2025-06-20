@@ -4,7 +4,7 @@ public class AutoBlinker : MonoBehaviour
 {
     [Header("Blend Shape Settings")]
     public SkinnedMeshRenderer faceMesh;
-    public string blinkBlendShapeName = "Eye_Blink";
+    public string blinkBlendShapeName = "Blink";
     [Tooltip("Full blink weight (usually 100)")]
     public float maxBlinkWeight = 100f;
 
