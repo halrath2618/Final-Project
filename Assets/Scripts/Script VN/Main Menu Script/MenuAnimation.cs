@@ -12,7 +12,9 @@ public class MenuAnimation : MonoBehaviour
     {
         PlayOpenAnimation();
     }
-    private void PlayOpenAnimation() => _play.DOMoveX(_play.position.x, 2).From(6000);
+    private void PlayOpenAnimation() => _play.DOLocalMoveX(_play.localPosition.x + 1000, 1f)
+        .SetEase(Ease.OutBack)
+        .OnComplete(() => _play.DOLocalMoveX(_play.localPosition.x - 965, 1f).SetEase(Ease.InBack));
 
     // Update is called once per frame
     void Update()

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class LoadingScreen : MonoBehaviour
 {
 
-    public static string scene = "VisualNovel";
+    public string scene;
     public GameObject progressBar;
     public TMP_Text textPercent;
     private float fixedLoadingTime = 5f;
