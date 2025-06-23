@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4593314388535370842
+--- !u!1 &4688099739246692208
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8471904016335539701}
-  - component: {fileID: 5966877545396064308}
+  - component: {fileID: 4506866925096821298}
+  - component: {fileID: 3648236101841551172}
+  - component: {fileID: 3003921365202939494}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8471904016335539701
+--- !u!4 &4506866925096821298
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4593314388535370842}
+  m_GameObject: {fileID: 4688099739246692208}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 406.63226, y: 403.1974, z: 47.576126}
@@ -32,13 +33,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5966877545396064308
+--- !u!114 &3648236101841551172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4593314388535370842}
+  m_GameObject: {fileID: 4688099739246692208}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dec77fbd45ef83042b855f3c9c8cda7f, type: 3}
@@ -47,3 +48,21 @@ MonoBehaviour:
   menuCanvas: {fileID: 0}
   playerController: {fileID: 0}
   cameraSetting: {fileID: 0}
+--- !u!114 &3003921365202939494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4688099739246692208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb4258454103be4cae8734eec8c77d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill_1: {fileID: 0}
+  skill_2: {fileID: 0}
+  skill_3: {fileID: 0}
+  skill_4: {fileID: 0}
+  skill_5: {fileID: 0}
+  playerController: {fileID: 0}

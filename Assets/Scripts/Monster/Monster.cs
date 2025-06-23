@@ -32,9 +32,11 @@ public class Monster : MonoBehaviour
 
     [Header("References")]
     public Transform player;
-    private NavMeshAgent agent;
+    [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
-    private Health health;
+    [SerializeField] private Health health;
+    [SerializeField] private MonsterUI monsterUI; // Assuming you have a UI script to update health display
+    [SerializeField] private PlayerController playerController;
 
     [Header("Animation Parameters")]
     public string walkParam = "IsWalking";
@@ -44,8 +46,6 @@ public class Monster : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        health = GetComponent<Health>();
 
         startPosition = transform.position;
         patrolTarget = GetRandomPatrolPoint();
@@ -58,10 +58,11 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
+        monsterUI.UpdateHealthBar();   
         if (health.IsDead) return;
 
         // Check health for flee state
-        if (!isFleeing && health.CurrentHealth <= health.MaxHealth * fleeHealthThreshold)
+        if (!isFleeing && health.currentHealth <= health.maxHealth * fleeHealthThreshold)
         {
             StartFleeing();
         }
@@ -187,6 +188,8 @@ public class Monster : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
 
         // Trigger attack
+        animator.SetBool(walkParam, false);
+        animator.SetBool(runParam, false);
         animator.SetTrigger(attackParam);
 
         // Apply damage (called via animation event)
@@ -199,7 +202,6 @@ public class Monster : MonoBehaviour
     {
         if (player == null) return;
 
-        PlayerController playerController = player.GetComponent<PlayerController>();
         if (playerController != null)
         {
             playerController.TakeDamage(attackDamage);
@@ -268,6 +270,20 @@ public class Monster : MonoBehaviour
             Gizmos.DrawLine(transform.position, transform.position + rightBoundary);
             Gizmos.DrawLine(transform.position + leftBoundary, transform.position + transform.forward * detectionDistance);
             Gizmos.DrawLine(transform.position + rightBoundary, transform.position + transform.forward * detectionDistance);
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Skill_E"))
+        {
+            health.TakeDamage(playerController.attackDmg_Earth);
+            Debug.Log("Monster hit by Earth skill, current health: " + health.currentHealth);
+        }
+        else if (other.CompareTag("Skill_F"))
+        {
+            health.TakeDamage(playerController.attackDmg_Fire);
+            Debug.Log("Monster hit by Fire skill, current health: " + health.currentHealth);
         }
     }
 }

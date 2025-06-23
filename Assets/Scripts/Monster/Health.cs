@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
     public bool IsDead => currentHealth <= 0;
-
-    public int MaxHealth => maxHealth;
-    public int CurrentHealth => currentHealth;
     [SerializeField] private Animator animator;
+    [SerializeField] private MonsterUI monsterUI; // Assuming you have a UI script to update health display
+    [SerializeField] private PlayerController playerController;
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+
+
+    public void TakeDamage(float damage)
     {
         if (IsDead) return;
 
         currentHealth -= damage;
-
+        monsterUI.UpdateHealthBar();
         if (IsDead)
         {
             Die();
@@ -30,16 +31,10 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        // Handle death - play animation, disable components, etc.
-        GetComponent<Monster>().enabled = false;
-        GetComponent<NavMeshAgent>().enabled = false;
-        GetComponent<Collider>().enabled = false;
+        GetComponent<Monster>().enabled = false; // Disable monster behavior script
+                                                 // Trigger death animation
+        animator.SetTrigger("Die");
 
-        // Trigger death animation
-        if (animator != null)
-        {
-            animator.SetTrigger("Die");
-        }
 
         // Destroy after delay
         Destroy(gameObject, 5f);
