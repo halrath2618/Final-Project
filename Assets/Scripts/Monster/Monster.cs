@@ -1,181 +1,273 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class Monster : MonoBehaviour
 {
-    [Header("Health Settings")]
-    public float maxHP = 100f;
-    public float currentHP = 100f;
-    public Slider healthBar;  // Assign your health bar slider in the Inspector
-
-    [Header("Damage Settings")]
-    public int normalAttackDamage = 10;
-    public int strongAttackDamage = 20;
-
-    [Header("Attack Settings")]
-    public float attackRange = 0.1f;  // Radius for collider check on attack
-
-    [Header("Movement Settings")]
-    public float runSpeed;
-    public Transform player;  // Assign your Player transform in the Inspector
-    [SerializeField] private Animator anim;  //Animator for monster animations
-
     [Header("Patrol Settings")]
-    public Transform[] patrolPoints;
-    private int currentPatrolIndex = 0;
-    public NavMeshAgent agent;
+    public float patrolRadius = 10f;
+    public float patrolSpeed = 2f;
+    public float patrolWaitTime = 3f;
+    private Vector3 startPosition;
+    private Vector3 patrolTarget;
+    private float patrolTimer;
 
-    private BehaviorTree behaviorTree;
+    [Header("Detection Settings")]
+    public float detectionDistance = 4f;
+    public float detectionAngle = 90f; // 90 degrees in front
+    private bool playerDetected;
 
+    [Header("Combat Settings")]
+    public float attackRange = 0.5f;
+    public float attackCooldown = 2f;
+    public int attackDamage = 10;
+    private float attackTimer;
+    private bool canAttack = true;
 
-    public PlayerController playerController;
+    [Header("Flee Settings")]
+    public float fleeHealthThreshold = 0.2f; // 20% health
+    public float fleeDistance = 8f;
+    public float fleeSpeed = 5f;
+    private bool isFleeing;
+
+    [Header("References")]
+    public Transform player;
+    private NavMeshAgent agent;
+    [SerializeField] private Animator animator;
+    private Health health;
+
+    [Header("Animation Parameters")]
+    public string walkParam = "IsWalking";
+    public string runParam = "IsRunning";
+    public string attackParam = "Attack";
+    public string fleeParam = "Flee";
+
     void Start()
     {
-        // Get the NavMeshAgent attached to this monster
         agent = GetComponent<NavMeshAgent>();
-        if (patrolPoints.Length > 0 && agent != null)
-        {
-            agent.SetDestination(patrolPoints[currentPatrolIndex].position);
-        }
+        health = GetComponent<Health>();
 
-        // ------- Build the Behavior Tree -------
-        // Health-based attack sequences:
-        var runAwaySequence = new SequenceNode(new List<BTNode>
-        {
-            new HealthConditionNode(this, 0.5f, true),   // currentHP <= 50%
-            new RunAwayActionNode(this)
-        });
+        startPosition = transform.position;
+        patrolTarget = GetRandomPatrolPoint();
+        agent.speed = patrolSpeed;
 
-        var strongAttackSequence = new SequenceNode(new List<BTNode>
-        {
-            new HealthConditionNode(this, 0.7f, true),    // currentHP < 70%
-            new HealthConditionNode(this, 0.5f, false),     // currentHP > 50%
-            new StrongAttackActionNode(this)
-        });
-
-        var normalAttackSequence = new SequenceNode(new List<BTNode>
-        {
-            new HealthConditionNode(this, 0.7f, false),     // currentHP > 70%
-            new AttackActionNode(this)
-        });
-
-        // Selector to choose the attack based on health
-        var attackSelector = new SelectorNode(new List<BTNode>
-        {
-            runAwaySequence,
-            strongAttackSequence,
-            normalAttackSequence
-        });
-
-        // Attack branch: only active if the player is within 20 units.
-        var attackBranch = new SequenceNode(new List<BTNode>
-        {
-            new PlayerInRangeConditionNode(this, 20f),
-            attackSelector
-        });
-
-        // The root: if the player isn’t near, the monster will patrol.
-        behaviorTree = new BehaviorTree(new List<BTNode>
-        {
-            attackBranch,
-            new PatrolActionNode(this)
-        });
+        // Find player if not assigned
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        HPUpdate(); // Update the health bar UI
-        // Evaluate behavior tree every frame
-        behaviorTree.Evaluate();
+        if (health.IsDead) return;
+
+        // Check health for flee state
+        if (!isFleeing && health.CurrentHealth <= health.MaxHealth * fleeHealthThreshold)
+        {
+            StartFleeing();
+        }
+
+        // Handle attack cooldown
+        if (!canAttack)
+        {
+            attackTimer -= Time.deltaTime;
+            if (attackTimer <= 0)
+            {
+                canAttack = true;
+            }
+        }
+
+        // State machine
+        if (isFleeing)
+        {
+            FleeBehavior();
+        }
+        else if (playerDetected)
+        {
+            ChaseBehavior();
+        }
+        else
+        {
+            PatrolBehavior();
+        }
+
+        // Always check for player detection
+        CheckPlayerDetection();
     }
 
-    // ---------- Action Methods ----------
-
-    public void Attack()
+    Vector3 GetRandomPatrolPoint()
     {
-        Debug.Log("Monster attacks the player!");
-        anim.SetTrigger("Attack"); // Trigger attack animation
-        if (player != null)
+        Vector2 randomCircle = Random.insideUnitCircle * patrolRadius;
+        Vector3 randomPoint = startPosition + new Vector3(randomCircle.x, 0, randomCircle.y);
+
+        // Ensure point is on NavMesh
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomPoint, out hit, patrolRadius, NavMesh.AllAreas))
         {
-            // Check if player is within attack range
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-            if (distanceToPlayer <= attackRange)
+            return hit.position;
+        }
+        return startPosition;
+    }
+
+    void PatrolBehavior()
+    {
+        // Set animations
+        animator.SetBool(walkParam, true);
+        animator.SetBool(runParam, false);
+
+        // Move to patrol point
+        agent.SetDestination(patrolTarget);
+
+        // Check if reached destination
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        {
+            patrolTimer += Time.deltaTime;
+            animator.SetBool(walkParam, false);
+
+            // Wait at point before moving to next
+            if (patrolTimer >= patrolWaitTime)
             {
-                // Apply damage to the player (assuming player has a TakeDamage method)
-                PlayerController playerController = player.GetComponent<PlayerController>();
-                if (playerController != null)
+                patrolTarget = GetRandomPatrolPoint();
+                patrolTimer = 0;
+            }
+        }
+    }
+
+    void CheckPlayerDetection()
+    {
+        if (player == null || isFleeing) return;
+
+        Vector3 toPlayer = player.position - transform.position;
+        float distance = toPlayer.magnitude;
+
+        // Check if player is in detection range
+        if (distance <= detectionDistance)
+        {
+            // Check if player is in front (within detection angle)
+            float angle = Vector3.Angle(transform.forward, toPlayer);
+            if (angle <= detectionAngle / 2)
+            {
+                // Raycast to ensure line of sight
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position + Vector3.up, toPlayer.normalized, out hit, detectionDistance))
                 {
-                    playerController.TakeDamage(normalAttackDamage);
-                    Debug.Log("Player takes " + normalAttackDamage + " damage.");
+                    if (hit.transform == player)
+                    {
+                        playerDetected = true;
+                        return;
+                    }
                 }
             }
         }
+
+        playerDetected = false;
     }
 
-    public void RunAway()
+    void ChaseBehavior()
     {
-        Debug.Log("Monster runs away from the player!");
-        anim.SetFloat("Speed", 5f); // Set run animation speed
+        // Set animations
+        animator.SetBool(walkParam, false);
+        animator.SetBool(runParam, true);
+
+        // Move toward player
+        agent.SetDestination(player.position);
+
+        // Check attack range
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer <= attackRange && canAttack)
+        {
+            AttackPlayer();
+        }
+    }
+
+    void AttackPlayer()
+    {
+        // Face player
+        Vector3 direction = (player.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+
+        // Trigger attack
+        animator.SetTrigger(attackParam);
+
+        // Apply damage (called via animation event)
+        canAttack = false;
+        attackTimer = attackCooldown;
+    }
+
+    // Called from attack animation event
+    public void DealDamage()
+    {
+        if (player == null) return;
+
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.TakeDamage(attackDamage);
+        }
+    }
+
+    void StartFleeing()
+    {
+        isFleeing = true;
+        playerDetected = false;
+        agent.speed = fleeSpeed;
+        animator.SetBool(fleeParam, true);
+        animator.SetBool(runParam, false);
+        animator.SetBool(walkParam, false);
+    }
+
+    void FleeBehavior()
+    {
+        // Flee away from player
         if (player != null)
         {
-            Vector3 directionAway = (transform.position - player.position).normalized;
-            // Simple movement: manually move if necessary (or set a destination for the NavMeshAgent)
-            transform.position += directionAway * runSpeed * Time.deltaTime;
-        }
-    }
+            Vector3 fleeDirection = (transform.position - player.position).normalized;
+            Vector3 fleeTarget = transform.position + fleeDirection * fleeDistance;
 
-    // Patrol using the NavMeshAgent.
-    public void Patrol()
-    {
-        anim.SetFloat("Speed", runSpeed); // Set patrol animation speed
-        if (agent != null && patrolPoints.Length > 0)
-        {
-            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            // Ensure point is on NavMesh
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(fleeTarget, out hit, fleeDistance, NavMesh.AllAreas))
             {
-                currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-                agent.SetDestination(patrolPoints[currentPatrolIndex].position);
-                Debug.Log("Monster patrolling to point: " + currentPatrolIndex);
+                agent.SetDestination(hit.position);
             }
         }
+
+        // Check if should stop fleeing (optional)
+        // if (Vector3.Distance(transform.position, player.position) > fleeDistance * 1.5f)
+        // {
+        //     StopFleeing();
+        // }
     }
 
-    // Method to apply damage to the monster.
-    public void TakeDamage(float damage)
+    // Optional method to stop fleeing
+    void StopFleeing()
     {
-        currentHP -= damage;
-        Debug.Log("Monster takes " + damage + " damage, current HP: " + currentHP);
-        if (currentHP <= 0)
+        isFleeing = false;
+        agent.speed = patrolSpeed;
+        animator.SetBool(fleeParam, false);
+        patrolTarget = GetRandomPatrolPoint();
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // Draw patrol radius
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(startPosition, patrolRadius);
+
+        // Draw detection range
+        if (!Application.isPlaying)
         {
-            StartCoroutine(Die());
-        }
-    }
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, detectionDistance);
 
-    private IEnumerator Die()
-    {
-        Debug.Log("Monster has died!");
-        anim.SetTrigger("Die"); // Trigger death animation
-        yield return new WaitForSeconds(2f); // Wait for the death animation to finish
-        Destroy(gameObject);
-    }
+            // Draw detection cone
+            Vector3 leftBoundary = Quaternion.Euler(0, -detectionAngle / 2, 0) * transform.forward * detectionDistance;
+            Vector3 rightBoundary = Quaternion.Euler(0, detectionAngle / 2, 0) * transform.forward * detectionDistance;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Skill_E"))
-        {
-            TakeDamage(playerController.attackDmg_Earth); // Assuming the skill has a damage value
+            Gizmos.DrawLine(transform.position, transform.position + leftBoundary);
+            Gizmos.DrawLine(transform.position, transform.position + rightBoundary);
+            Gizmos.DrawLine(transform.position + leftBoundary, transform.position + transform.forward * detectionDistance);
+            Gizmos.DrawLine(transform.position + rightBoundary, transform.position + transform.forward * detectionDistance);
         }
-        else if (other.CompareTag("Skill_F"))
-        {
-            TakeDamage(playerController.attackDmg_Fire); // Assuming the skill has a damage value
-        }
-    }
-
-    private void HPUpdate()
-    {
-        healthBar.maxValue = maxHP; // Set the maximum value of the health bar
-        healthBar.value = currentHP; // Update the health bar value
     }
 }
