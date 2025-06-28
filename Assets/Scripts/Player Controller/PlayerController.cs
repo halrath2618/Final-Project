@@ -474,6 +474,7 @@ public class PlayerController : MonoBehaviour
         if (_isInvulnerable) return; // Ignore damage during dodge
 
         _currentHealth -= damage;
+        hp.HP(); // Update health bar UI
         if (_currentHealth <= 0)
         {
             Die();
