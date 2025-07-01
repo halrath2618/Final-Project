@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public float dodgeDuration = 0.4f;
     public float dodgeCooldown = 2f;
     public float dodgeInvulnerabilityDuration = 0.5f;
-    private bool _isDodging = false;
+    public bool _isDodging = false;
     private bool _canDodge = true;
     private Coroutine _currentDodgeCoroutine;
     private bool _isInvulnerable = false;
@@ -82,6 +83,13 @@ public class PlayerController : MonoBehaviour
     public float manacdTime = 10f;
     public bool hpcdReady = true; // Flag to check if the HP potion cooldown is ready
     public bool manacdReady = true; // Flag to check if the Mana potion cooldown is ready
+
+    [Header("Refs")]
+    [SerializeField] private Monster monster; // Reference to the Monster script for taking damage
+
+    [Header("Notices")]
+    [SerializeField] private CanvasGroup noticeCanvasGroup; // Reference to the CanvasGroup for notices
+    [SerializeField] private GameObject noticePanel; // Reference to the notice panel GameObject
     void Start()
     {
         _currentHealth = maxHP; // Initialize current health to max HP
@@ -461,15 +469,7 @@ public class PlayerController : MonoBehaviour
             _isAttacking = false; // Reset attacking flag
         }
     }
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(
-            transform.position + transform.forward * attackRange / 2,
-            attackRadius
-        );
-    }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (_isInvulnerable) return; // Ignore damage during dodge
 
@@ -477,14 +477,24 @@ public class PlayerController : MonoBehaviour
         hp.HP(); // Update health bar UI
         if (_currentHealth <= 0)
         {
-            Die();
+            _currentHealth = 0; // Ensure health does not go below zero
+            StartCoroutine(Die()); // Trigger game over sequence
         }
     }
-    public void Die()
+    IEnumerator GameOver()
     {
+        noticePanel.SetActive(true); // Show the notice panel
+        noticeCanvasGroup.alpha += 0.5f * Time.deltaTime; // Set the alpha to fully visible
+        yield return new WaitForSeconds(3f); // Wait for 2 seconds
+    }
+    IEnumerator Die()
+    {
+        StartCoroutine(GameOver()); // Start the game over sequence
+        GetComponent<CharacterController>().enabled = false; // Disable character controller to stop movement
         _animator.SetTrigger("Die");
         Debug.Log("Player has died.");
-        _currentHealth = maxHP; // Reset health for respawn
+        yield return new WaitForSeconds(5f); // Wait for death animation to finish
+        SceneManager.LoadScene("LoadingScene"); // Load Game Over scene
     }
     public void CastingSkill(int manaCost)
     {
@@ -615,5 +625,13 @@ public class PlayerController : MonoBehaviour
         }
         manacdTime = manaMaxCD; // Reset cooldown time
         skillCooldown.MPCooldownUpdate(); // Update the cooldown slider UI
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Claw"))
+        {
+            Debug.Log("Player hit by monster claw");
+            TakeDamage(monster.attackDamage); // Assuming Monster.Health has a static attackDmg variable
+        }
     }
 }

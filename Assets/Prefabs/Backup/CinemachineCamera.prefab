@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &519175896869530217
+--- !u!1 &8853382391807469190
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 788294816536104365}
-  - component: {fileID: 2425152123219046526}
-  - component: {fileID: 4652230982446248244}
+  - component: {fileID: 4681238409058511805}
+  - component: {fileID: 8561590619796303044}
+  - component: {fileID: 5585977335303630788}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -18,28 +18,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &788294816536104365
+--- !u!4 &4681238409058511805
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519175896869530217}
+  m_GameObject: {fileID: 8853382391807469190}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13762757, y: 0.85903364, z: -0.38703832, w: 0.30548537}
-  m_LocalPosition: {x: 41.98272, y: 8.813786, z: 46.556713}
+  m_LocalRotation: {x: 0.33543393, y: -0.10203861, z: 0.05499215, w: 0.9349054}
+  m_LocalPosition: {x: 48.92, y: 5.22, z: 38.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2425152123219046526
+  m_LocalEulerAnglesHint: {x: 39.674, y: -11.534, z: 2.559}
+--- !u!114 &8561590619796303044
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519175896869530217}
+  m_GameObject: {fileID: 8853382391807469190}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
@@ -76,13 +76,13 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &4652230982446248244
+--- !u!114 &5585977335303630788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519175896869530217}
+  m_GameObject: {fileID: 8853382391807469190}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c91f36eeb4a31ad4d8387c023c5c3fd8, type: 3}

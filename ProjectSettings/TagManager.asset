@@ -13,6 +13,7 @@ TagManager:
   - Skill_E
   - Skill_F
   - Monster
+  - Claw
   layers:
   - Default
   - TransparentFX

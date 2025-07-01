@@ -16,11 +16,12 @@ public class Monster : MonoBehaviour
     public float detectionDistance = 4f;
     public float detectionAngle = 90f; // 90 degrees in front
     private bool playerDetected;
+    [SerializeField] private Transform playerPosition;
 
     [Header("Combat Settings")]
-    public float attackRange = 0.5f;
+    public float attackRange = 2f;
     public float attackCooldown = 2f;
-    public int attackDamage = 10;
+    public float attackDamage = 10;
     private float attackTimer;
     private bool canAttack = true;
 
@@ -37,6 +38,12 @@ public class Monster : MonoBehaviour
     [SerializeField] private Health health;
     [SerializeField] private MonsterUI monsterUI; // Assuming you have a UI script to update health display
     [SerializeField] private PlayerController playerController;
+    
+    [Header("Attack Colliders")]
+    public BoxCollider monsterClaw1;
+    public BoxCollider monsterClaw2;
+    private bool _isAttacking;
+    private bool _attackTriggered;
 
     [Header("Animation Parameters")]
     public string walkParam = "IsWalking";
@@ -46,7 +53,8 @@ public class Monster : MonoBehaviour
 
     void Start()
     {
-
+        monsterClaw1.enabled = false; // Disable colliders initially
+        monsterClaw2.enabled = false;
         startPosition = transform.position;
         patrolTarget = GetRandomPatrolPoint();
         agent.speed = patrolSpeed;
@@ -58,8 +66,7 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
-        monsterUI.UpdateHealthBar();   
-        if (health.IsDead) return;
+        monsterUI.UpdateHealthBar();
 
         // Check health for flee state
         if (!isFleeing && health.currentHealth <= health.maxHealth * fleeHealthThreshold)
@@ -93,6 +100,13 @@ public class Monster : MonoBehaviour
 
         // Always check for player detection
         CheckPlayerDetection();
+
+        // Disable attack colliders when not attacking
+        if (!_isAttacking)
+        {
+            monsterClaw1.enabled = false;
+            monsterClaw2.enabled = false;
+        }
     }
 
     Vector3 GetRandomPatrolPoint()
@@ -170,43 +184,58 @@ public class Monster : MonoBehaviour
         animator.SetBool(runParam, true);
 
         // Move toward player
-        agent.SetDestination(player.position);
-
-        // Check attack range
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer <= attackRange && canAttack)
+        agent.SetDestination(playerPosition.position);
+        if (Vector3.Distance(transform.position, playerPosition.position) <= attackRange && canAttack)
         {
             AttackPlayer();
         }
+        else if (Vector3.Distance(transform.position, playerPosition.position) > attackRange)
+        {
+            // Continue chasing if not in attack range
+            agent.isStopped = false;
+            _isAttacking = false;
+            monsterClaw1.enabled = false;
+            monsterClaw2.enabled = false;
+        }
+
+        // Face player while chasing
+        Vector3 direction = (player.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
     }
 
     void AttackPlayer()
     {
-        // Face player
-        Vector3 direction = (player.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
-
-        // Trigger attack
         animator.SetBool(walkParam, false);
         animator.SetBool(runParam, false);
-        animator.SetTrigger(attackParam);
-
-        // Apply damage (called via animation event)
+        // Set attack state
+        _isAttacking = true;
         canAttack = false;
         attackTimer = attackCooldown;
+
+        // Stop movement during attack
+        agent.isStopped = true;
+
+        // Trigger attack animation
+
+        animator.SetTrigger(attackParam);
+
+        // Enable colliders for attack
+        monsterClaw1.enabled = true;
+        monsterClaw2.enabled = true;
+    }
+    public void FinishAttack()
+    {
+        // Reset attack state
+        _isAttacking = false;
+        agent.isStopped = false;
+
+        // Disable attack colliders
+        monsterClaw1.enabled = false;
+        monsterClaw2.enabled = false;
     }
 
     // Called from attack animation event
-    public void DealDamage()
-    {
-        if (player == null) return;
-
-        if (playerController != null)
-        {
-            playerController.TakeDamage(attackDamage);
-        }
-    }
 
     void StartFleeing()
     {
@@ -235,10 +264,10 @@ public class Monster : MonoBehaviour
         }
 
         // Check if should stop fleeing (optional)
-        // if (Vector3.Distance(transform.position, player.position) > fleeDistance * 1.5f)
-        // {
-        //     StopFleeing();
-        // }
+        if (Vector3.Distance(transform.position, player.position) > fleeDistance * 1.5f)
+        {
+            StopFleeing();
+        }
     }
 
     // Optional method to stop fleeing
