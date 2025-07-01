@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Starting game...");
-        SceneManager.LoadScene("Prologue");
+        SceneManager.LoadScene("LoadingScene");
     }
     public void LoadGame()
     {
