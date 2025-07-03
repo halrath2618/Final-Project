@@ -8,9 +8,9 @@ public class VolumeController : MonoBehaviour
     [SerializeField] private Scrollbar musicVolume;
     [SerializeField] private Scrollbar sfxVolume;
 
-    [SerializeField] private AudioSource masterAudioSource;
-    [SerializeField] private AudioSource musicAudioSource;
-    [SerializeField] private AudioSource sfxAudioSource;
+    private AudioSource masterAudioSource;
+    private AudioSource musicAudioSource;
+    private AudioSource sfxAudioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
