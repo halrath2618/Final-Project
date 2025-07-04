@@ -28,19 +28,34 @@ public class PlayerController : MonoBehaviour
     private Coroutine _currentDodgeCoroutine;
     private bool _isInvulnerable = false;
 
-    [Header("Combat")]
+    [Header("Combat Stats")]
     public float attackDmg;
     public float attackRange = 3f;
     public float attackRadius = 1.5f;
+    public bool isAttacking = false;
     public LayerMask enemyLayer;
+    [Header("MAge: Skills and Spells")]
     public GameObject earthSpell;
     public GameObject fireSpell;
     public float attackDmg_Earth = 20f;
     public float attackDmg_Fire = 10f;
-    public bool isAttacking = false;
     public GameObject auraSpell;
     public GameObject healAura;
     public GameObject manaAura;
+
+    [Header("Brawler: Skills and Spells")]
+    public GameObject brawlerSkill1; // Reference to the Brawler's first skill GameObject
+    public GameObject brawlerSkill2; // Reference to the Brawler's second skill GameObject
+    public GameObject brawlerAura; // Reference to the Brawler's third skill GameObject
+    public float brawlerSkill1Damage = 15f; // Damage for the first skill
+    public float brawlerSkill2Damage = 25f; // Damage for the second skill
+
+    [Header("SwordMaster: Skills and Spells")]
+    public GameObject swordMasterSkill1; // Reference to the SwordMaster's first skill GameObject
+    public GameObject swordMasterSkill2; // Reference to the SwordMaster's second skill GameObject
+    public GameObject swordMasterAura; // Reference to the SwordMaster's third skill GameObject
+    public float swordMasterSkill1Damage = 20f; // Damage for the first skill
+    public float swordMasterSkill2Damage = 30f; // Damage for the second skill
 
     [SerializeField] private CharacterController _controller;
     [SerializeField] private Animator _animator;
@@ -94,8 +109,36 @@ public class PlayerController : MonoBehaviour
     [Header("Effects")]
     [SerializeField] private GameObject fireHand; // Reference to the fire hand effect GameObject
     [SerializeField] private GameObject fireEffect; // Reference to the aura effect GameObject
+
+    [Header("Testing Switch Class")] //Testing swtiching class
+    [SerializeField] private CharacterClassManager characterClassManager; // Reference to the CharacterClassManager script
+    [SerializeField] private GameObject switchClassUI; // Reference to the UI GameObject for switching classes
+
+    private int characterClass = 0; // Variable to track the current character class
+
+    public void SwitchToBrawler()
+    {
+        characterClassManager.SwitchClass(CharacterClass.Brawler); // Switch to Brawler class
+        switchClassUI.SetActive(false); // Hide the switch class UI
+        _controller.GetComponent<CharacterController>().enabled = true;
+    }
+    public void SwitchToMage()
+    {
+        characterClassManager.SwitchClass(CharacterClass.Mage); // Switch to Mage class
+        switchClassUI.SetActive(false); // Hide the switch class UI
+        _controller.GetComponent<CharacterController>().enabled = true;
+    }
+    public void SwitchToSwordMaster()
+    {
+        characterClassManager.SwitchClass(CharacterClass.SwordMaster); // Switch to Rogue class
+        switchClassUI.SetActive(false); // Hide the switch class UI
+        _controller.GetComponent<CharacterController>().enabled = true;
+    }
     void Start()
     {
+        switchClassUI.SetActive(true);
+        _controller.GetComponent<CharacterController>().enabled = false; // Disable character controller to prevent movement during initialization
+        
         _currentHealth = maxHP; // Initialize current health to max HP
         _currentMana = maxMana; // Initialize current mana to max Mana
         _currentStamina = maxStamina; // Initialize current stamina to max Stamina
@@ -108,7 +151,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            characterClass = 1;
+            SwitchToBrawler(); // Switch to Brawler class when 1 is pressed
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            characterClass = 2;
+            SwitchToMage(); // Switch to Mage class when 2 is pressed
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            characterClass = 3;
+            SwitchToSwordMaster(); // Switch to SwordMaster class when 3 is pressed
+        }
         hp.HP();
         manaStamina.UpdateMana();
         manaStamina.UpdateStamina();
@@ -400,80 +457,123 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PerformAttack_1()
     {
-        _isAttacking = true; // Set attacking flag to true
-        try
+        if (characterClass == 1)
         {
-            if (!isAttacking)
+            _isAttacking = true; // Set attacking flag to true
+            try
             {
-
-                if (_currentMana >= 10)
+                if (!isAttacking)
                 {
-                    _animator.SetTrigger("Attack1");
-                    CastingSkill(10); // Cast skill and reduce mana
+
+                    if (_currentMana >= 10)
+                    {
+                        _animator.SetTrigger("Attack1");
+                        CastingSkill(10); // Cast skill and reduce mana
+                    }
+                    else
+                    {
+                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                        Debug.Log("Not enough mana to perform the attack.");
+                        yield break; // Exit if not enough mana
+                    }
+
+                    yield return new WaitForSeconds(2f); // Wait for the attack animation to play
+                    brawlerSkill1.SetActive(true); // Activate the spell object
+                    yield return new WaitForSeconds(1.5f);
+                    brawlerSkill1.SetActive(false); // Deactivate the spell object after the attack animation
                 }
                 else
                 {
-                    warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
-                    StartCoroutine(warningSkill.Flashing()); // Start flashing warning
-                    Debug.Log("Not enough mana to perform the attack.");
-                    yield break; // Exit if not enough mana
+                    Debug.Log("Already attacking, please wait.");
+                    yield break; // Exit if already attacking
                 }
-
-                yield return new WaitForSeconds(1.025f); // Wait for the attack animation to play
-                earthSpell.SetActive(true); // Activate the spell object
-                yield return new WaitForSeconds(1.5f);
-                earthSpell.SetActive(false); // Deactivate the spell object after the attack animation
             }
-            else
+            finally
             {
-                Debug.Log("Already attacking, please wait.");
-                yield break; // Exit if already attacking
+                _isAttacking = false; // Reset attacking flag
             }
         }
-        finally
+        if (characterClass == 2)
         {
-            _isAttacking = false; // Reset attacking flag
+            _isAttacking = true; // Set attacking flag to true
+            try
+            {
+                if (!isAttacking)
+                {
+
+                    if (_currentMana >= 10)
+                    {
+                        _animator.SetTrigger("Attack1");
+                        CastingSkill(10); // Cast skill and reduce mana
+                    }
+                    else
+                    {
+                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                        Debug.Log("Not enough mana to perform the attack.");
+                        yield break; // Exit if not enough mana
+                    }
+
+                    yield return new WaitForSeconds(1.025f); // Wait for the attack animation to play
+                    earthSpell.SetActive(true); // Activate the spell object
+                    yield return new WaitForSeconds(1.5f);
+                    earthSpell.SetActive(false); // Deactivate the spell object after the attack animation
+                }
+                else
+                {
+                    Debug.Log("Already attacking, please wait.");
+                    yield break; // Exit if already attacking
+                }
+            }
+            finally
+            {
+                _isAttacking = false; // Reset attacking flag
+            }
         }
     }
     IEnumerator PerformAttack_2()
     {
-        _isAttacking = true; // Set attacking flag to true
-        try
+        if (characterClass == 2)
         {
-            if (!isAttacking)
+            _isAttacking = true; // Set attacking flag to true
+            try
             {
-
-                if (_currentMana >= 30)
+                if (!isAttacking)
                 {
-                    _animator.SetTrigger("Attack2");
-                    CastingSkill(30); // Cast skill and reduce mana
+
+                    if (_currentMana >= 30)
+                    {
+                        _animator.SetTrigger("Attack2");
+                        CastingSkill(30); // Cast skill and reduce mana
+                    }
+                    else
+                    {
+                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                        Debug.Log("Not enough mana to perform the attack.");
+                        yield break; // Exit if not enough mana
+                    }
+                    fireHand.SetActive(true); // Activate the fire hand effect
+                    fireEffect.SetActive(true); // Activate the fire effect
+                    yield return new WaitForSeconds(1.025f); // Wait for the attack animation to play
+                    fireSpell.SetActive(true); // Activate the spell object
+                    yield return new WaitForSeconds(2.75f);
+                    fireSpell.SetActive(false); // Deactivate the spell object after the attack animation
+                    fireHand.SetActive(false); // Deactivate the fire hand effect
+                    fireEffect.SetActive(false); // Deactivate the fire effect
                 }
                 else
                 {
-                    warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
-                    StartCoroutine(warningSkill.Flashing()); // Start flashing warning
-                    Debug.Log("Not enough mana to perform the attack.");
-                    yield break; // Exit if not enough mana
-                }
-                fireHand.SetActive(true); // Activate the fire hand effect
-                fireEffect.SetActive(true); // Activate the fire effect
-                yield return new WaitForSeconds(1.025f); // Wait for the attack animation to play
-                fireSpell.SetActive(true); // Activate the spell object
-                yield return new WaitForSeconds(2.75f);
-                fireSpell.SetActive(false); // Deactivate the spell object after the attack animation
-                fireHand.SetActive(false); // Deactivate the fire hand effect
-                fireEffect.SetActive(false); // Deactivate the fire effect
-            }
-            else
-            {
 
-                Debug.Log("Already attacking, please wait.");
-                yield break; // Exit if already attacking
+                    Debug.Log("Already attacking, please wait.");
+                    yield break; // Exit if already attacking
+                }
             }
-        }
-        finally
-        {
-            _isAttacking = false; // Reset attacking flag
+            finally
+            {
+                _isAttacking = false; // Reset attacking flag
+            }
         }
     }
     public void TakeDamage(float damage)
