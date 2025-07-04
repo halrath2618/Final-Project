@@ -90,6 +90,10 @@ public class PlayerController : MonoBehaviour
     [Header("Notices")]
     [SerializeField] private CanvasGroup noticeCanvasGroup; // Reference to the CanvasGroup for notices
     [SerializeField] private GameObject noticePanel; // Reference to the notice panel GameObject
+
+    [Header("Effects")]
+    [SerializeField] private GameObject fireHand; // Reference to the fire hand effect GameObject
+    [SerializeField] private GameObject fireEffect; // Reference to the aura effect GameObject
     void Start()
     {
         _currentHealth = maxHP; // Initialize current health to max HP
@@ -451,11 +455,14 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Not enough mana to perform the attack.");
                     yield break; // Exit if not enough mana
                 }
-
+                fireHand.SetActive(true); // Activate the fire hand effect
+                fireEffect.SetActive(true); // Activate the fire effect
                 yield return new WaitForSeconds(1.025f); // Wait for the attack animation to play
                 fireSpell.SetActive(true); // Activate the spell object
                 yield return new WaitForSeconds(2.75f);
                 fireSpell.SetActive(false); // Deactivate the spell object after the attack animation
+                fireHand.SetActive(false); // Deactivate the fire hand effect
+                fireEffect.SetActive(false); // Deactivate the fire effect
             }
             else
             {
