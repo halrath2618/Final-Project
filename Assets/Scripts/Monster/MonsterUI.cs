@@ -19,12 +19,18 @@ public class MonsterUI : MonoBehaviour
     {
         UpdateHealthBar();
         //rotate the camera toward HP Bar
-        hpBar.transform.rotation = camera.transform.rotation;
+        if (hpBar != null)
+        {
+            hpBar.transform.rotation = camera.transform.rotation;
+        }
     }
 
     public void UpdateHealthBar()
     {
-        hpBar.maxValue = monsterHealth.maxHealth; // Set the maximum value of the HP bar to the monster's max health
-        hpBar.value = monsterHealth.currentHealth; // Set the current value of the HP bar to the monster's current health
+        if (hpBar != null)
+        {
+            hpBar.maxValue = monsterHealth.maxHealth; // Set the maximum value of the HP bar to the monster's max health
+            hpBar.value = monsterHealth.currentHealth; // Set the current value of the HP bar to the monster's current health
+        }
     }
 }

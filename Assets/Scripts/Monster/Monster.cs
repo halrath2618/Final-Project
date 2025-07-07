@@ -1,3 +1,4 @@
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -39,22 +40,27 @@ public class Monster : MonoBehaviour
     [SerializeField] private MonsterUI monsterUI; // Assuming you have a UI script to update health display
     [SerializeField] private PlayerController playerController;
     
-    [Header("Attack Colliders")]
-    public BoxCollider monsterClaw1;
-    public BoxCollider monsterClaw2;
-    private bool _isAttacking;
-    private bool _attackTriggered;
+     private EnemyCombatAnimation attackAnimationManager;
 
-    [Header("Animation Parameters")]
-    public string walkParam = "IsWalking";
-    public string runParam = "IsRunning";
-    public string attackParam = "Attack";
-    public string fleeParam = "Flee";
+    //[Header("Animation Parameters")]
+    ////public string walkParam = "IsWalking";
+    ////public string runParam = "IsRunning";
+    //public string attackParam = "Attack";
+    ////public string fleeParam = "Flee";
 
+    [Header("Blend Tree Settings")]
+    [SerializeField] private string blendParameter = "Blend";
+    [SerializeField] private float idleBlendValue = 0f;
+    [SerializeField] private float walkBlendValue = 0.5f;
+    [SerializeField] private float runBlendValue = 1f;
+    [SerializeField] private float fleeBlendValue = 1f;
+
+    [Header("Animation Layers")]
+    public int baseLayerIndex = 0;
+    public int combatLayerIndex = 1;
     void Start()
     {
-        monsterClaw1.enabled = false; // Disable colliders initially
-        monsterClaw2.enabled = false;
+        attackAnimationManager = GetComponent<EnemyCombatAnimation>();
         startPosition = transform.position;
         patrolTarget = GetRandomPatrolPoint();
         agent.speed = patrolSpeed;
@@ -66,7 +72,11 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
-        monsterUI.UpdateHealthBar();
+        if(monsterUI != null)
+        {
+             monsterUI.UpdateHealthBar();
+        }
+
 
         // Check health for flee state
         if (!isFleeing && health.currentHealth <= health.maxHealth * fleeHealthThreshold)
@@ -100,13 +110,6 @@ public class Monster : MonoBehaviour
 
         // Always check for player detection
         CheckPlayerDetection();
-
-        // Disable attack colliders when not attacking
-        if (!_isAttacking)
-        {
-            monsterClaw1.enabled = false;
-            monsterClaw2.enabled = false;
-        }
     }
 
     Vector3 GetRandomPatrolPoint()
@@ -126,9 +129,16 @@ public class Monster : MonoBehaviour
     void PatrolBehavior()
     {
         // Set animations
-        animator.SetBool(walkParam, true);
-        animator.SetBool(runParam, false);
-
+        if (agent.velocity.magnitude > 0.1f)
+        {
+            animator.SetFloat(blendParameter, walkBlendValue);
+        }
+        else
+        {
+            animator.SetFloat(blendParameter, idleBlendValue);
+        }
+        animator.SetLayerWeight(baseLayerIndex, 1f);
+        animator.SetLayerWeight(combatLayerIndex, 0f);
         // Move to patrol point
         agent.SetDestination(patrolTarget);
 
@@ -136,7 +146,7 @@ public class Monster : MonoBehaviour
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             patrolTimer += Time.deltaTime;
-            animator.SetBool(walkParam, false);
+           animator.SetFloat(blendParameter,idleBlendValue);
 
             // Wait at point before moving to next
             if (patrolTimer >= patrolWaitTime)
@@ -180,22 +190,22 @@ public class Monster : MonoBehaviour
     void ChaseBehavior()
     {
         // Set animations
-        animator.SetBool(walkParam, false);
-        animator.SetBool(runParam, true);
-
+        animator.SetFloat(blendParameter, runBlendValue);
+        animator.SetLayerWeight(combatLayerIndex, 1f);
+        animator.SetLayerWeight(baseLayerIndex, 0f);
         // Move toward player
         agent.SetDestination(playerPosition.position);
         if (Vector3.Distance(transform.position, playerPosition.position) <= attackRange && canAttack)
         {
-            AttackPlayer();
+            agent.isStopped = true;
+          
+            attackAnimationManager.TriggerRandomAttack();
+
         }
         else if (Vector3.Distance(transform.position, playerPosition.position) > attackRange)
         {
             // Continue chasing if not in attack range
             agent.isStopped = false;
-            _isAttacking = false;
-            monsterClaw1.enabled = false;
-            monsterClaw2.enabled = false;
         }
 
         // Face player while chasing
@@ -203,38 +213,7 @@ public class Monster : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
     }
-
-    void AttackPlayer()
-    {
-        animator.SetBool(walkParam, false);
-        animator.SetBool(runParam, false);
-        // Set attack state
-        _isAttacking = true;
-        canAttack = false;
-        attackTimer = attackCooldown;
-
-        // Stop movement during attack
-        agent.isStopped = true;
-
-        // Trigger attack animation
-
-        animator.SetTrigger(attackParam);
-
-        // Enable colliders for attack
-        monsterClaw1.enabled = true;
-        monsterClaw2.enabled = true;
-    }
-    public void FinishAttack()
-    {
-        // Reset attack state
-        _isAttacking = false;
-        agent.isStopped = false;
-
-        // Disable attack colliders
-        monsterClaw1.enabled = false;
-        monsterClaw2.enabled = false;
-    }
-
+   
     // Called from attack animation event
 
     void StartFleeing()
@@ -242,9 +221,7 @@ public class Monster : MonoBehaviour
         isFleeing = true;
         playerDetected = false;
         agent.speed = fleeSpeed;
-        animator.SetBool(fleeParam, true);
-        animator.SetBool(runParam, false);
-        animator.SetBool(walkParam, false);
+        animator.SetFloat(blendParameter, fleeBlendValue);
     }
 
     void FleeBehavior()
@@ -275,7 +252,6 @@ public class Monster : MonoBehaviour
     {
         isFleeing = false;
         agent.speed = patrolSpeed;
-        animator.SetBool(fleeParam, false);
         patrolTarget = GetRandomPatrolPoint();
     }
 
@@ -315,4 +291,18 @@ public class Monster : MonoBehaviour
             Debug.Log("Monster hit by Fire skill, current health: " + health.currentHealth);
         }
     }
+    //private IEnumerator AttackRoutine()
+    //{
+    //    // Dừng di chuyển khi tấn công
+    //    agent.isStopped = true;
+
+    //    // Kích hoạt trạng thái combat
+    //    attackAnimationManager.ToggleCombatState();
+
+    //    // Chờ cho animation tấn công hoàn thành
+    //    yield return new WaitForSeconds(attackCooldown * 0.8f); // Giảm thời gian chờ một chút
+
+    //    // Kết thúc tấn công
+    //    agent.isStopped = false;
+    //}
 }
