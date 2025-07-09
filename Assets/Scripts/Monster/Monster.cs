@@ -58,9 +58,13 @@ public class Monster : MonoBehaviour
     [Header("Animation Layers")]
     public int baseLayerIndex = 0;
     public int combatLayerIndex = 1;
+
+    [Header("Root Motion Settings")]
+    [SerializeField] private RootMotion rootMotionHandler;
+    [SerializeField] private bool useRootMotionForAttacks = true;
     void Start()
     {
-        attackAnimationManager = GetComponent<EnemyCombatAnimation>();
+        attackAnimationManager = GetComponentInChildren<EnemyCombatAnimation>();
         startPosition = transform.position;
         patrolTarget = GetRandomPatrolPoint();
         agent.speed = patrolSpeed;
@@ -197,14 +201,15 @@ public class Monster : MonoBehaviour
         agent.SetDestination(playerPosition.position);
         if (Vector3.Distance(transform.position, playerPosition.position) <= attackRange && canAttack)
         {
+            
             agent.isStopped = true;
-          
+            var rootMotion = attackAnimationManager.GetComponent<RootMotionToMonster>();
+            rootMotion.applyRootMotion = true;
             attackAnimationManager.TriggerRandomAttack();
 
         }
         else if (Vector3.Distance(transform.position, playerPosition.position) > attackRange)
         {
-            // Continue chasing if not in attack range
             agent.isStopped = false;
         }
 
