@@ -1890,6 +1890,8 @@ MonoBehaviour:
   fleeBlendValue: 1
   baseLayerIndex: 0
   combatLayerIndex: 1
+  rootMotionHandler: {fileID: 0}
+  useRootMotionForAttacks: 1
 --- !u!114 &1757643159581348068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1935,7 +1937,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1030537713270448768}
-  attackColliders: []
+  attackColliders:
+  - {fileID: 237604835563365271}
+  - {fileID: 5740627295326150680}
+  - {fileID: 8836908405845147383}
   attackCooldown: 2
   maxAttackTypes: 3
 --- !u!1 &6613194533153496045
@@ -1949,6 +1954,7 @@ GameObject:
   - component: {fileID: 5785378104661603408}
   - component: {fileID: 1030537713270448768}
   - component: {fileID: 658351061960299597}
+  - component: {fileID: 4632402641688496925}
   m_Layer: 0
   m_Name: Bear_4
   m_TagString: Untagged
@@ -2014,6 +2020,21 @@ MonoBehaviour:
   - {fileID: 8836908405845147383}
   attackCooldown: 5
   maxAttackTypes: 4
+--- !u!114 &4632402641688496925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613194533153496045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110b2f7ede5a1fc4584d2b13d483ec5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterRoot: {fileID: 7191019673777104210}
+  animator: {fileID: 1030537713270448768}
+  applyRootMotion: 1
 --- !u!1 &6897315387075790285
 GameObject:
   m_ObjectHideFlags: 0
