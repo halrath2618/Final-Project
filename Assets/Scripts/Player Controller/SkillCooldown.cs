@@ -27,13 +27,13 @@ public class SkillCooldown : MonoBehaviour
     }
     public void E_UpdateSkillCooldown()
     {
-        skillCooldownSliderE.maxValue = playerController.e_maxSkillCooldown; // Set the maximum value of the cooldown slider to the spell's cooldown time
-        skillCooldownSliderE.value = playerController.e_cdTime; // Set the current value of the cooldown slider to the spell's cooldown time
+        skillCooldownSliderE.maxValue = playerController.skill1MaxCD; // Set the maximum value of the cooldown slider to the spell's cooldown time
+        skillCooldownSliderE.value = playerController.skill1CDTime; // Set the current value of the cooldown slider to the spell's cooldown time
     }
     public void F_UpdateSkillCooldown()
     {
-        skillCooldownSliderF.maxValue = playerController.f_maxSkillCooldown; // Set the maximum value of the cooldown slider to the spell's cooldown time
-        skillCooldownSliderF.value = playerController.f_cdTime; // Set the current value of the cooldown slider to the spell's cooldown time
+        skillCooldownSliderF.maxValue = playerController.skill2MaxCD; // Set the maximum value of the cooldown slider to the spell's cooldown time
+        skillCooldownSliderF.value = playerController.skill2CDTime; // Set the current value of the cooldown slider to the spell's cooldown time
     }
     public void HPCooldownUpdate()
     {
