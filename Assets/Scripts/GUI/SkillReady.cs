@@ -17,7 +17,7 @@ public class SkillReady : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerController.e_isReady)
+        if(playerController.skill1_isReady)
         {
             skill_1.SetActive(true);
         }
@@ -25,7 +25,7 @@ public class SkillReady : MonoBehaviour
         {
             skill_1.SetActive(false);
         }
-        if (playerController.f_isReady)
+        if (playerController.skill2_isReady)
         {
             skill_2.SetActive(true);
         }

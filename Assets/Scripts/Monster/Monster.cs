@@ -314,5 +314,20 @@ public class Monster : MonoBehaviour
             health.TakeDamage(playerController.attackDmg_Fire);
             Debug.Log("Monster hit by Fire skill, current health: " + health.currentHealth);
         }
+        else if (other.CompareTag("Brawler1"))
+        {
+            health.TakeDamage(playerController.brawlerSkill1Damage);
+            Debug.Log("Monster hit by Punching, current health: " + health.currentHealth);
+        }
+        else if (other.CompareTag("Brawler2"))
+        {
+            health.TakeDamage(playerController.brawlerSkill2Damage);
+            Debug.Log("Monster hit by Kicking, current health: " + health.currentHealth);
+        }
+        else if (other.CompareTag("Brawler3"))
+        {
+            health.TakeDamage(playerController.brawlerUltimateDamage);
+            Debug.Log("Monster hit by tornado, current health: " + health.currentHealth);
+        }
     }
 }

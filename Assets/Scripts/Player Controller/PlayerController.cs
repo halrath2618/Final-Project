@@ -44,11 +44,16 @@ public class PlayerController : MonoBehaviour
     public GameObject manaAura;
 
     [Header("Brawler: Skills and Spells")]
-    public GameObject brawlerSkill1; // Reference to the Brawler's first skill GameObject
-    public GameObject brawlerSkill2; // Reference to the Brawler's second skill GameObject
-    public GameObject brawlerAura; // Reference to the Brawler's third skill GameObject
+    public GameObject brawlerLeftHand; // Reference to the Brawler's first skill GameObject
+    public GameObject brawlerRightHand; // Reference to the Brawler's second skill GameObject
+    public GameObject brawlerLeftHand2; // Reference to the Brawler's second skill GameObject
+    public GameObject brawlerSlash; // Reference to the Brawler's third skill GameObject
+    public GameObject brawlerUltimate; // Reference to the Brawler's third skill GameObject
+    public GameObject skill1HitArea; // Reference to the Brawler's first skill hit area GameObject
     public float brawlerSkill1Damage = 15f; // Damage for the first skill
     public float brawlerSkill2Damage = 25f; // Damage for the second skill
+    public float brawlerUltimateDamage = 5f; // Damage for the ultimate skill
+    private float delayHit = 8.48f;
 
     [Header("SwordMaster: Skills and Spells")]
     public GameObject swordMasterSkill1; // Reference to the SwordMaster's first skill GameObject
@@ -59,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CharacterController _controller;
     [SerializeField] private Animator _animator;
+    [SerializeField] private SphereCollider _attackCollider; // Collider for attack detection
     private Vector3 _velocity;
     private float _currentSpeed;
     private bool _isGrounded;
@@ -76,15 +82,15 @@ public class PlayerController : MonoBehaviour
     public bool _isDrainingMana = false; // Flag to check if mana is being drained
 
     [Header("Cooldown Settings")]
-    public float e_maxSkillCooldown = 4f; // Cooldown time for skills in seconds
-    public float e_cdTime = 4f;
-    public bool e_isReady; // Flag to check if the skill is ready to be used
+    public float skill1MaxCD; // Cooldown time for skills in seconds
+    public float skill1CDTime;
+    public bool skill1_isReady; // Flag to check if the skill is ready to be used
     public SkillCooldown skillCooldown;
-    public GameObject E_cdSlider;
-    public GameObject F_cdSlider;
-    public float f_maxSkillCooldown = 6f; // Cooldown time for skills in seconds
-    public float f_cdTime = 6f;
-    public bool f_isReady; // Flag to check if the skill is ready to be used
+    public GameObject skill1_cdSlider;
+    public GameObject skill2_cdSlider;
+    public float skill2MaxCD; // Cooldown time for skills in seconds
+    public float skill2CDTime;
+    public bool skill2_isReady; // Flag to check if the skill is ready to be used
     public Warning_Skill warningSkill;
     public SkillConstantlyActive skillConstantlyActive;
     public bool auraReady; // Flag to check if the aura skill is ready to be used
@@ -144,7 +150,7 @@ public class PlayerController : MonoBehaviour
         _currentStamina = maxStamina; // Initialize current stamina to max Stamina
         _cameraTransform = Camera.main.transform;
         _currentSpeed = walkSpeed;
-        E_cdSlider.SetActive(false);
+        skill1_cdSlider.SetActive(false);
         auraSpell.SetActive(false);
         auraReady = true;
     }
@@ -154,11 +160,19 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             characterClass = 1;
+            skill1MaxCD = 1f; // Set cooldown time for Brawler's first skill
+            skill1CDTime = skill1MaxCD; // Initialize cooldown time for Brawler's first skill
+            skill2MaxCD = 4f; // Set cooldown time for Brawler's second skill
+            skill2CDTime = skill2MaxCD; // Initialize cooldown time for Brawler's second skill
             SwitchToBrawler(); // Switch to Brawler class when 1 is pressed
         }
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
             characterClass = 2;
+            skill1MaxCD = 5f; // Set cooldown time for Mage's first skill
+            skill1CDTime = skill1MaxCD; // Initialize cooldown time for Mage's first skill
+            skill2MaxCD = 10f; // Set cooldown time for Mage's second skill
+            skill2CDTime = skill2MaxCD; // Initialize cooldown time for Mage's second skill
             SwitchToMage(); // Switch to Mage class when 2 is pressed
         }
         if (Input.GetKeyDown(KeyCode.Keypad3))
@@ -166,6 +180,7 @@ public class PlayerController : MonoBehaviour
             characterClass = 3;
             SwitchToSwordMaster(); // Switch to SwordMaster class when 3 is pressed
         }
+
         hp.HP();
         manaStamina.UpdateMana();
         manaStamina.UpdateStamina();
@@ -214,7 +229,7 @@ public class PlayerController : MonoBehaviour
         // Dodge input
         if (Input.GetKeyDown(KeyCode.V) && _canDodge && !_isDodging && _isGrounded)
         {
-            if(_currentStamina < 10)
+            if (_currentStamina < 10)
             {
                 Debug.Log("Not enough stamina to dodge.");
                 return; // Exit if not enough stamina
@@ -235,17 +250,17 @@ public class PlayerController : MonoBehaviour
         // Basic Attack
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (e_isReady)
+            if (skill1_isReady)
             {
-                e_isReady = false; // Set skill as not ready
+                skill1_isReady = false; // Set skill as not ready
                 StartCoroutine(PerformAttack_1()); // Perform attack
                 if (_currentMana >= 10)
                 {
-                    StartCoroutine(ApplySkillCooldownE()); // Start cooldown
+                    StartCoroutine(ApplySkillCooldown1()); // Start cooldown
                 }
                 else
                 {
-                    e_isReady = true; // Reset skill readiness if not enough mana
+                    skill1_isReady = true; // Reset skill readiness if not enough mana
                     return; // Exit if not enough mana
                 }
             }
@@ -258,17 +273,17 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            if (f_isReady)
+            if (skill2_isReady)
             {
-                f_isReady = false; // Set skill as not ready
+                skill2_isReady = false; // Set skill as not ready
                 StartCoroutine(PerformAttack_2()); // Perform attack
                 if (_currentMana >= 30)
                 {
-                    StartCoroutine(ApplySkillCooldownF()); // Start cooldown
+                    StartCoroutine(ApplySkillCooldown2()); // Start cooldown
                 }
                 else
                 {
-                    f_isReady = true; // Reset skill readiness
+                    skill2_isReady = true; // Reset skill readiness
                     return; // Exit if not enough mana
                 }
             }
@@ -281,24 +296,49 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if(auraReady)
+            if (characterClass == 1)
             {
-                auraReady = false; // Set aura skill as not ready
-                _isDrainingMana = true; // Start draining mana
-                StartCoroutine(AuraManaDrainPerSecond()); // Start mana drain coroutine
-                auraSpell.SetActive(true); // Activate the aura spell
-                skillConstantlyActive.skillEffect.SetActive(true); // Activate the skill effect
+                if (auraReady)
+                {
+                    auraReady = false; // Set skill as not ready
+                    StartCoroutine(PerformAttack_3()); // Perform attack
+                    if (_currentMana >= 80)
+                    {
+                        auraReady = true; // Reset skill readiness
+                    }
+                    else
+                    {
+                        auraReady = true; // Reset skill readiness
+                        return; // Exit if not enough mana
+                    }
+                }
+                else
+                {
+                    warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                    StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                    Debug.Log("Skill is not ready.");
+                }
             }
-            else
+            else if (characterClass == 2)
             {
-                auraReady = true; // Reset skill readiness
-                _isDrainingMana = false; // Stop draining mana
-                auraSpell.SetActive(false); // Deactivate the aura spell
-                skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
-                StopDrainingMana(); // Stop draining mana if already active
+                if (auraReady)
+                {
+                    auraReady = false; // Set aura skill as not ready
+                    _isDrainingMana = true; // Start draining mana
+                    StartCoroutine(AuraManaDrainPerSecond()); // Start mana drain coroutine
+                    auraSpell.SetActive(true); // Activate the aura spell
+                    skillConstantlyActive.skillEffect.SetActive(true); // Activate the skill effect
+                }
+                else
+                {
+                    auraReady = true; // Reset skill readiness
+                    _isDrainingMana = false; // Stop draining mana
+                    auraSpell.SetActive(false); // Deactivate the aura spell
+                    skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
+                    StopDrainingMana(); // Stop draining mana if already active
+                }
             }
         }
-
         //Regenerate Mana
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -328,7 +368,6 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-
         // Update animator
         _animator.SetFloat("Speed", direction.magnitude * _currentSpeed);
         _animator.SetBool("IsGrounded", _isGrounded);
@@ -454,7 +493,83 @@ public class PlayerController : MonoBehaviour
                 }
             }
     }
+    IEnumerator PerformAttack_3()
+    {
+        _isInvulnerable = true; // Set invulnerability during the attack
+        _isAttacking = true; // Set attacking flag to true
+        try
+        {
+            if (!isAttacking)
+            {
 
+                if (_currentMana >= 80)
+                {
+                    _animator.SetTrigger("Attack3");
+                    CastingSkill(80); // Cast skill and reduce mana
+                }
+                else
+                {
+                    warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                    StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                    Debug.Log("Not enough mana to perform the attack.");
+                    yield break; // Exit if not enough mana
+                }
+                brawlerUltimate.SetActive(true); // Activate the ultimate effect
+                _attackCollider.enabled = true; // Enable the attack collider for hit detection
+                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                _attackCollider.enabled = true;
+                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                _attackCollider.enabled = true;
+                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                _attackCollider.enabled = true;
+                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                _attackCollider.enabled = true;
+                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                _attackCollider.enabled = true;
+                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                _attackCollider.enabled = true;
+                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                _attackCollider.enabled = true;
+                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                _attackCollider.enabled = true;
+                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                _attackCollider.enabled = true;
+                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                _attackCollider.enabled = true;
+                brawlerUltimate.SetActive(false); // Deactivate the ultimate effect after the attack animation
+                _isInvulnerable = false; // Reset invulnerability after the attack
+            }
+            else
+            {
+                Debug.Log("Already attacking, please wait.");
+                yield break; // Exit if already attacking
+            }
+        }
+        finally
+        {
+            _isAttacking = false; // Reset attacking flag
+        }
+    }
     IEnumerator PerformAttack_1()
     {
         if (characterClass == 1)
@@ -465,10 +580,10 @@ public class PlayerController : MonoBehaviour
                 if (!isAttacking)
                 {
 
-                    if (_currentMana >= 10)
+                    if (_currentMana >= 3)
                     {
                         _animator.SetTrigger("Attack1");
-                        CastingSkill(10); // Cast skill and reduce mana
+                        CastingSkill(3); // Cast skill and reduce mana
                     }
                     else
                     {
@@ -477,11 +592,21 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
                     }
-
-                    yield return new WaitForSeconds(2f); // Wait for the attack animation to play
-                    brawlerSkill1.SetActive(true); // Activate the spell object
-                    yield return new WaitForSeconds(1.5f);
-                    brawlerSkill1.SetActive(false); // Deactivate the spell object after the attack animation
+                    brawlerLeftHand.SetActive(true); // Activate the left hand effect
+                    skill1HitArea.SetActive(true); // Activate the hit area for the first skill
+                    yield return new WaitForSeconds(0.25f); // Wait for the attack animation to play
+                    skill1HitArea.SetActive(false); // Deactivate the hit area after the attack animation
+                    brawlerLeftHand.SetActive(false); // Deactivate the left hand effect after the attack animation
+                    brawlerRightHand.SetActive(true); // Activate the right hand effect
+                    skill1HitArea.SetActive(true); // Reactivate the hit area for the second skill
+                    yield return new WaitForSeconds(0.25f); // Wait for the attack animation to play
+                    skill1HitArea.SetActive(false); // Deactivate the hit area after the attack animation
+                    brawlerRightHand.SetActive(false);
+                    brawlerLeftHand2.SetActive(true); // Reactivate the left hand effect
+                    skill1HitArea.SetActive(true); // Reactivate the hit area for the third skill
+                    yield return new WaitForSeconds(0.25f); // Wait for the attack animation to play
+                    skill1HitArea.SetActive(false); // Deactivate the hit area after the attack animation
+                    brawlerLeftHand2.SetActive(false); // Deactivate the left hand effect after the attack animation
                 }
                 else
                 {
@@ -534,7 +659,44 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator PerformAttack_2()
     {
-        if (characterClass == 2)
+        if (characterClass == 1)
+        {
+            _isAttacking = true; // Set attacking flag to true
+            try
+            {
+                if (!isAttacking)
+                {
+
+                    if (_currentMana >= 8)
+                    {
+                        _animator.SetTrigger("Attack2");
+                        CastingSkill(8); // Cast skill and reduce mana
+                    }
+                    else
+                    {
+                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                        Debug.Log("Not enough mana to perform the attack.");
+                        yield break; // Exit if not enough mana
+                    }
+                    yield return new WaitForSeconds(0.35f); // Wait for the attack animation to play
+                    brawlerSlash.SetActive(true); // Activate the slash effect
+                    yield return new WaitForSeconds(0.5f); // Wait for the attack animation to play
+                    brawlerSlash.SetActive(false); // Deactivate the slash effect after the attack animation
+                }
+                else
+                {
+
+                    Debug.Log("Already attacking, please wait.");
+                    yield break; // Exit if already attacking
+                }
+            }
+            finally
+            {
+                _isAttacking = false; // Reset attacking flag
+            }
+        }
+        else if (characterClass == 2)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -649,7 +811,7 @@ public class PlayerController : MonoBehaviour
         {
             while (manaDuration > 0)
             {
-                yield return _currentMana += 5 * Time.deltaTime; // Regenerate mana
+                yield return _currentMana += 10 * Time.deltaTime; // Regenerate mana
                 manaDuration -= Time.deltaTime; // Decrease duration of mana regeneration effect
                 manaAura.SetActive(true); // Activate the heal aura effect
             }
@@ -664,39 +826,39 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Mana is already full.");
         }
     }
-    IEnumerator ApplySkillCooldownE()
+    IEnumerator ApplySkillCooldown1()
     {
-        while (e_cdTime > 0)
+        while (skill1CDTime > 0)
         {
-            E_cdSlider.SetActive(true);
-            yield return e_cdTime -= Time.deltaTime; // Decrease cooldown time
-            if (e_cdTime <= 0)
+            skill1_cdSlider.SetActive(true);
+            yield return skill1CDTime -= Time.deltaTime; // Decrease cooldown time
+            if (skill1CDTime <= 0)
             {
-                e_cdTime = 0; // Ensure cooldown does not go below zero
-                e_isReady = true; // Skill is ready again
-                E_cdSlider.SetActive(false); // Hide cooldown slider
+                skill1CDTime = 0; // Ensure cooldown does not go below zero
+                skill1_isReady = true; // Skill is ready again
+                skill1_cdSlider.SetActive(false); // Hide cooldown slider
                 break;
             }
         }
-        e_cdTime = e_maxSkillCooldown; // Reset cooldown time
+        skill1CDTime = skill1MaxCD; // Reset cooldown time
         skillCooldown.E_UpdateSkillCooldown(); // Update the cooldown slider UI
     }
-    IEnumerator ApplySkillCooldownF()
+    IEnumerator ApplySkillCooldown2()
     {
-        while (f_cdTime > 0)
+        while (skill2CDTime > 0)
         {
-            F_cdSlider.SetActive(true);
-            yield return f_cdTime -= Time.deltaTime; // Decrease cooldown time
-            if (f_cdTime <= 0)
+            skill2_cdSlider.SetActive(true);
+            yield return skill2CDTime -= Time.deltaTime; // Decrease cooldown time
+            if (skill2CDTime <= 0)
             {
-                f_cdTime = 0; // Ensure cooldown does not go below zero
-                f_isReady = true; // Skill is ready again
-                F_cdSlider.SetActive(false); // Hide cooldown slider
+                skill2CDTime = 0; // Ensure cooldown does not go below zero
+                skill2_isReady = true; // Skill is ready again
+                skill2_cdSlider.SetActive(false); // Hide cooldown slider
 
                 break;
             }
         }
-        f_cdTime = f_maxSkillCooldown; // Reset cooldown time
+        skill2CDTime = skill2MaxCD; // Reset cooldown time
         skillCooldown.F_UpdateSkillCooldown(); // Update the cooldown slider UI
     }
     IEnumerator ApplySkillCooldownHPPotion()
