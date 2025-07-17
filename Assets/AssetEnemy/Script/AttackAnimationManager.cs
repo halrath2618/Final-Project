@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackAnimationManager : MonoBehaviour
@@ -14,26 +15,42 @@ public class AttackAnimationManager : MonoBehaviour
     [SerializeField] private List<AttackColliderSet> attackSets = new List<AttackColliderSet>();
     [SerializeField] private float comboResetTime = 2f;
 
+    [Header("Layer Settings")]
+    [SerializeField] private int combatLayerIndex = 1; // Layer chiến đấu
+    [SerializeField] private float layerActivationSpeed = 5f;
+
+    private Animator animator;
     private float lastAttackTime;
     private AttackColliderSet currentAttack;
+    private Dictionary<int, AttackColliderSet> attackDictionary;
 
+
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
     private void Start()
     {
+        attackDictionary = new Dictionary<int, AttackColliderSet>();
+        for (int i = 0; i < attackSets.Count; i++)
+        {
+            attackDictionary.Add(i, attackSets[i]);
+        }
         DisableAllColliders();
     }
 
     // Gọi từ Animation Event khi bắt đầu animation
-    public void StartAttack(string animationName)
+    public void StartAttack(int attackIndex)
     {
         // Tìm attack set tương ứng
-        currentAttack = attackSets.Find(x => x.animationName == animationName);
-        if (currentAttack == null)
+        if (attackDictionary.TryGetValue(attackIndex, out currentAttack))
         {
-            Debug.LogWarning($"Không tìm thấy attack set cho animation: {animationName}");
-            return;
+            EnableCurrentAttackColliders();
         }
-
-        EnableCurrentAttackColliders();
+        else
+        {
+            Debug.LogWarning($"Không tìm thấy attack set với index: {attackIndex}");
+        }
     }
 
     public void EndAttack()
@@ -43,22 +60,22 @@ public class AttackAnimationManager : MonoBehaviour
     }
 
 
-    public void ExecuteRandomAttack()
+    public void ExecuteRandomAttack(int attackIndex)
     {
-        // Kiểm tra combo time
+        if (attackSets.Count == 0) return;
+
         if (Time.time - lastAttackTime > comboResetTime)
         {
-            // Reset về attack đầu tiên nếu quá thời gian combo
-            currentAttack = attackSets[0];
-        }
-        else
-        {
-            // Random attack tiếp theo (có thể thêm logic combo ở đây)
-            currentAttack = attackSets[Random.Range(0, attackSets.Count)];
+            attackIndex = 0; // Reset về attack đầu tiên nếu quá thời gian combo
         }
 
-        // Kích hoạt animation - cần setup Animator Controller phù hợp
-        GetComponent<Animator>().Play(currentAttack.animationName);
+        // Đảm bảo index hợp lệ
+        if (attackIndex >= 0 && attackIndex < attackSets.Count)
+        {
+            currentAttack = attackSets[attackIndex];
+            animator.SetInteger("AttackType", attackIndex);
+            animator.SetTrigger("Attack");
+        }
     }
 
     private void EnableCurrentAttackColliders()
@@ -83,7 +100,6 @@ public class AttackAnimationManager : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && currentAttack != null)
