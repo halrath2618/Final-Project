@@ -195,13 +195,15 @@ public class Monster : MonoBehaviour
     {
         // Set animations
         animator.SetFloat(blendParameter, runBlendValue);
-        animator.SetLayerWeight(combatLayerIndex, 1f);
-        animator.SetLayerWeight(baseLayerIndex, 0f);
+        //animator.SetLayerWeight(combatLayerIndex, 1f);
+        //animator.SetLayerWeight(baseLayerIndex, 0f);
         // Move toward player
         agent.SetDestination(playerPosition.position);
         if (Vector3.Distance(transform.position, playerPosition.position) <= attackRange && canAttack)
         {
-            
+            animator.SetLayerWeight(combatLayerIndex, 1f);
+            animator.SetLayerWeight(baseLayerIndex, 0f);
+
             agent.isStopped = true;
             var rootMotion = attackAnimationManager.GetComponent<RootMotionToMonster>();
             rootMotion.applyRootMotion = true;
@@ -211,6 +213,9 @@ public class Monster : MonoBehaviour
         else if (Vector3.Distance(transform.position, playerPosition.position) > attackRange)
         {
             agent.isStopped = false;
+
+            animator.SetLayerWeight(combatLayerIndex, 0f);
+            animator.SetLayerWeight(baseLayerIndex, 1f);
         }
 
         // Face player while chasing
@@ -311,18 +316,5 @@ public class Monster : MonoBehaviour
             Debug.Log("Monster hit by tornado, current health: " + health.currentHealth);
         }
     }
-    //private IEnumerator AttackRoutine()
-    //{
-    //    // Dừng di chuyển khi tấn công
-    //    agent.isStopped = true;
 
-    //    // Kích hoạt trạng thái combat
-    //    attackAnimationManager.ToggleCombatState();
-
-    //    // Chờ cho animation tấn công hoàn thành
-    //    yield return new WaitForSeconds(attackCooldown * 0.8f); // Giảm thời gian chờ một chút
-
-    //    // Kết thúc tấn công
-    //    agent.isStopped = false;
-    //}
 }
