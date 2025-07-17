@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
 {
     private bool _isAttacking = false; // Flag to check if the player is currently attacking
     public bool CanMove => !_isAttacking; // Property to check if the player can move
+
+    [Header("Equipment")]
+    public GameObject[] weapon; // Reference to the player's weapon GameObject
+
     [Header("Movement")]
     public float walkSpeed = 5f;
     public float sprintSpeed = 8f;
@@ -130,18 +134,21 @@ public class PlayerController : MonoBehaviour
     }
     public void SwitchToMage()
     {
+        weapon[0].SetActive(true); // Activate the Mage weapon
         characterClassManager.SwitchClass(CharacterClass.Mage); // Switch to Mage class
         switchClassUI.SetActive(false); // Hide the switch class UI
         _controller.GetComponent<CharacterController>().enabled = true;
     }
     public void SwitchToSwordMaster()
     {
+        weapon[1].SetActive(true); // Activate the SwordMaster weapon
         characterClassManager.SwitchClass(CharacterClass.SwordMaster); // Switch to Rogue class
         switchClassUI.SetActive(false); // Hide the switch class UI
         _controller.GetComponent<CharacterController>().enabled = true;
     }
     void Start()
     {
+        
         switchClassUI.SetActive(true);
         _controller.GetComponent<CharacterController>().enabled = false; // Disable character controller to prevent movement during initialization
         
@@ -619,7 +626,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        if (characterClass == 2)
+        else if (characterClass == 2)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -644,6 +651,53 @@ public class PlayerController : MonoBehaviour
                     earthSpell.SetActive(true); // Activate the spell object
                     yield return new WaitForSeconds(1.5f);
                     earthSpell.SetActive(false); // Deactivate the spell object after the attack animation
+                }
+                else
+                {
+                    Debug.Log("Already attacking, please wait.");
+                    yield break; // Exit if already attacking
+                }
+            }
+            finally
+            {
+                _isAttacking = false; // Reset attacking flag
+            }
+        }
+        else if(characterClass == 3)
+        {
+            _isAttacking = true; // Set attacking flag to true
+            try
+            {
+                if (!isAttacking)
+                {
+
+                    if (_currentMana >= 3)
+                    {
+                        _animator.SetTrigger("Attack1");
+                        CastingSkill(3); // Cast skill and reduce mana
+                    }
+                    else
+                    {
+                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                        Debug.Log("Not enough mana to perform the attack.");
+                        yield break; // Exit if not enough mana
+                    }
+                    brawlerLeftHand.SetActive(true); // Activate the left hand effect
+                    skill1HitArea.SetActive(true); // Activate the hit area for the first skill
+                    yield return new WaitForSeconds(0.25f); // Wait for the attack animation to play
+                    skill1HitArea.SetActive(false); // Deactivate the hit area after the attack animation
+                    brawlerLeftHand.SetActive(false); // Deactivate the left hand effect after the attack animation
+                    brawlerRightHand.SetActive(true); // Activate the right hand effect
+                    skill1HitArea.SetActive(true); // Reactivate the hit area for the second skill
+                    yield return new WaitForSeconds(0.25f); // Wait for the attack animation to play
+                    skill1HitArea.SetActive(false); // Deactivate the hit area after the attack animation
+                    brawlerRightHand.SetActive(false);
+                    brawlerLeftHand2.SetActive(true); // Reactivate the left hand effect
+                    skill1HitArea.SetActive(true); // Reactivate the hit area for the third skill
+                    yield return new WaitForSeconds(0.25f); // Wait for the attack animation to play
+                    skill1HitArea.SetActive(false); // Deactivate the hit area after the attack animation
+                    brawlerLeftHand2.SetActive(false); // Deactivate the left hand effect after the attack animation
                 }
                 else
                 {
