@@ -554,7 +554,347 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: SK_Orc(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0.0000006784935, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SK_OrcPonytail
+      parentName: SK_Orc(Clone)
+      position: {x: -0, y: 2.348738, z: -0.0491687}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SK_BellyArmor
+      parentName: SK_Orc(Clone)
+      position: {x: -0.0009173584, y: 1.959976, z: 0.013836179}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SK_ShoulderPads
+      parentName: SK_Orc(Clone)
+      position: {x: -0.0009173584, y: 1.959976, z: 0.013836179}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SK_OrcBody
+      parentName: SK_Orc(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: root
+      parentName: SK_Orc(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ORC_
+      parentName: root
+      position: {x: -0, y: 0, z: 1.281}
+      rotation: {x: 0.0000000026341804, y: 0.0000000026341762, z: 0.70710623, w: 0.70710737}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: ORC_ Pelvis
+      parentName: ORC_
+      position: {x: 0, y: 3.3375797e-10, z: 0.04479623}
+      rotation: {x: 0.5, y: -0.5, z: -0.5, w: -0.5}
+      scale: {x: 1.0000006, y: 1.0000006, z: 1.0000004}
+    - name: PELT_SKIN_BACK_1
+      parentName: ORC_ Pelvis
+      position: {x: -0.045742806, y: -0.24177654, z: 0.0000009155273}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.9999998, y: 1.0000002, z: 1}
+    - name: PELT_SKIN_BACK_2
+      parentName: PELT_SKIN_BACK_1
+      position: {x: -0.14061897, y: -0.0000024986266, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: PELT_SKIN_BACK_3
+      parentName: PELT_SKIN_BACK_2
+      position: {x: -0.14854263, y: 0.0000023078917, z: 0.0000000013683472}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: PELT_SKIN_FRONT_1
+      parentName: ORC_ Pelvis
+      position: {x: 0.038860884, y: 0.2512399, z: -0.0000007564013}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.9999998, y: 1.0000001, z: 0.9999999}
+    - name: PELT_SKIN_FRONT_2
+      parentName: PELT_SKIN_FRONT_1
+      position: {x: -0.12094322, y: 0.000000019073486, z: 0.00000000783388}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000004}
+    - name: PELT_SKIN_FRONT_3
+      parentName: PELT_SKIN_FRONT_2
+      position: {x: -0.11566513, y: 0.000000019073486, z: 6.5483616e-13}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000001, z: 0.99999994}
+    - name: ORC_ L Thigh
+      parentName: ORC_ Pelvis
+      position: {x: 0.00000015258789, y: 0.00000021598109, z: 0.11536397}
+      rotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+      scale: {x: 1, y: 1, z: 1.0000006}
+    - name: ORC_ L Calf
+      parentName: ORC_ L Thigh
+      position: {x: -0.62506264, y: 0.0000000011920929, z: -0.000000038146972}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: ORC_ L Foot
+      parentName: ORC_ L Calf
+      position: {x: -0.5294484, y: -0.000000014305114, z: 0.000000038146972}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: ORC_ L Toe0
+      parentName: ORC_ L Foot
+      position: {x: -0.13266858, y: 0.27451888, z: -0.000000038146972}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: ORC_ Spine
+      parentName: ORC_ Pelvis
+      position: {x: -0.1326686, y: -0.00019799259, z: 0.0000001842594}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 0.9999999}
+    - name: ORC_ Spine1
+      parentName: ORC_ Spine
+      position: {x: -0.2487265, y: -0.00025813177, z: -7.1595424e-10}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: SHOULDER_PAD_R
+      parentName: ORC_ Spine1
+      position: {x: -0.32056636, y: -0.05708326, z: -0.31400025}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000008, y: 1.0000005, z: 0.9999998}
+    - name: SHOULDER_PAD_L
+      parentName: ORC_ Spine1
+      position: {x: -0.32056636, y: -0.057084, z: 0.3140428}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 0.9999996, z: 0.9999999}
+    - name: ORC_ L Clavicle
+      parentName: ORC_ Spine1
+      position: {x: -0.32415664, y: -0.022126589, z: 0.07591607}
+      rotation: {x: 0.7071068, y: -0.000000030908623, z: -0.7071068, w: 0.000000030908623}
+      scale: {x: 0.99999976, y: 0.99999994, z: 1.0000001}
+    - name: ORC_ L UpperArm
+      parentName: ORC_ L Clavicle
+      position: {x: -0.2495983, y: 0.0000000023841857, z: 0.00000015258789}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000004}
+    - name: ORC_ L Forearm
+      parentName: ORC_ L UpperArm
+      position: {x: -0.43627584, y: -0.0000000047683715, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SM_ForearmPad_Left
+      parentName: ORC_ L Forearm
+      position: {x: -0.14554141, y: 0.010392265, z: 0.14030425}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ORC_ L Hand
+      parentName: ORC_ L Forearm
+      position: {x: -0.3553225, y: 0, z: 0}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: -0.7071068}
+      scale: {x: 0.9999999, y: 1, z: 1.0000001}
+    - name: ORC_ L Finger0
+      parentName: ORC_ L Hand
+      position: {x: -0.042699166, y: 0.0129507445, z: -0.04930687}
+      rotation: {x: 0, y: 0.3826835, z: 0, w: -0.9238795}
+      scale: {x: 0.9999998, y: 0.99999994, z: 0.99999946}
+    - name: ORC_ L Finger01
+      parentName: ORC_ L Finger0
+      position: {x: -0.06564619, y: 0.000000114440915, z: 0.00000015258789}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.9999996}
+    - name: ORC_ L Finger02
+      parentName: ORC_ L Finger01
+      position: {x: -0.06739685, y: 0, z: -0.00000015258789}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000004, y: 0.99999994, z: 1.0000002}
+    - name: ORC_ L Finger1
+      parentName: ORC_ L Hand
+      position: {x: -0.15119494, y: -0.010786743, z: -0.047628276}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1}
+    - name: ORC_ L Finger11
+      parentName: ORC_ L Finger1
+      position: {x: -0.0757909, y: -0.00000015258789, z: -0.000000009536743}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000004, y: 1.0000007, z: 1.000001}
+    - name: ORC_ L Finger12
+      parentName: ORC_ L Finger11
+      position: {x: -0.056155622, y: 0, z: 0.000000019073486}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1.0000004, z: 1}
+    - name: ORC_ L Finger2
+      parentName: ORC_ L Hand
+      position: {x: -0.15200481, y: -0.0045616147, z: 0.019906096}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000002, y: 0.99999994, z: 1.0000001}
+    - name: ORC_ L Finger21
+      parentName: ORC_ L Finger2
+      position: {x: -0.07734749, y: 0, z: -0.0000000023841857}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.9999999, y: 1.0000001, z: 0.99999994}
+    - name: ORC_ L Finger22
+      parentName: ORC_ L Finger21
+      position: {x: -0.06444755, y: -0.00000015258789, z: 0.0000000047683715}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1}
+    - name: ORC_ L Finger3
+      parentName: ORC_ L Hand
+      position: {x: -0.15201347, y: 0.001288147, z: 0.08536676}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+    - name: ORC_ L Finger31
+      parentName: ORC_ L Finger3
+      position: {x: -0.07097847, y: 0, z: 0.000000009536743}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1}
+    - name: ORC_ L Finger32
+      parentName: ORC_ L Finger31
+      position: {x: -0.058391493, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.9999996, y: 1.0000005, z: 1.0000001}
+    - name: ORC_ Neck
+      parentName: ORC_ Spine1
+      position: {x: -0.34060714, y: -0.035367515, z: -0.000000049809294}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000004, z: 1.0000001}
+    - name: ORC_ Head
+      parentName: ORC_ Neck
+      position: {x: -0.17480148, y: 0, z: -1.4551915e-13}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000007, z: 1.0000005}
+    - name: ORC_ Queue de cheval 1
+      parentName: ORC_ Head
+      position: {x: -0.18791458, y: -0.15695477, z: -0.00000043277905}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ORC_ Queue de cheval 11
+      parentName: ORC_ Queue de cheval 1
+      position: {x: -0.060959168, y: -0.000057983398, z: -1.6094417e-10}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: ORC_ Queue de cheval 12
+      parentName: ORC_ Queue de cheval 11
+      position: {x: -0.07291107, y: -0.00006362915, z: -1.7666024e-10}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.9999999}
+    - name: ORC_ Queue de cheval 13
+      parentName: ORC_ Queue de cheval 12
+      position: {x: -0.08015045, y: -0.000055847166, z: -1.5483237e-10}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+    - name: ORC_ Queue de cheval 2
+      parentName: ORC_ Head
+      position: {x: 0.0045739743, y: 0.04915138, z: -0.00000017890022}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: ORC_ R Clavicle
+      parentName: ORC_ Spine1
+      position: {x: -0.32415664, y: -0.022126168, z: -0.075916186}
+      rotation: {x: 0.7071068, y: -0.000000030908623, z: 0.7071068, w: -0.000000030908623}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000005}
+    - name: ORC_ R UpperArm
+      parentName: ORC_ R Clavicle
+      position: {x: -0.2495983, y: -0.0000000023841857, z: -0.00000015258789}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000002}
+    - name: ORC_ R Forearm
+      parentName: ORC_ R UpperArm
+      position: {x: -0.43627593, y: 0, z: 0.00000015258789}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: SM_ForearmPad_Right
+      parentName: ORC_ R Forearm
+      position: {x: -0.14554141, y: 0.010395107, z: -0.14030425}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: -1, y: -1, z: -1}
+    - name: ORC_ R Hand
+      parentName: ORC_ R Forearm
+      position: {x: -0.35532245, y: 0, z: -0.00000015258789}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: 1.0000002, y: 0.9999998, z: 0.99999994}
+    - name: SM_Axe
+      parentName: ORC_ R Hand
+      position: {x: -0.112948604, y: 0.04486542, z: 0.020432891}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ORC_ R Finger2
+      parentName: ORC_ R Hand
+      position: {x: -0.15200488, y: -0.0045614624, z: -0.019906096}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.99999994}
+    - name: ORC_ R Finger21
+      parentName: ORC_ R Finger2
+      position: {x: -0.07734749, y: 0, z: 0.0000000047683715}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000006, y: 1.0000006, z: 0.99999994}
+    - name: ORC_ R Finger22
+      parentName: ORC_ R Finger21
+      position: {x: -0.064447634, y: 0.00000015258789, z: -0.0000000047683715}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000005, z: 0.9999998}
+    - name: ORC_ R Finger0
+      parentName: ORC_ R Hand
+      position: {x: -0.04269924, y: 0.0129507445, z: 0.04930687}
+      rotation: {x: 0, y: 0.38268346, z: 0, w: 0.9238795}
+      scale: {x: 0.99999994, y: 0.9999998, z: 1.0000002}
+    - name: ORC_ R Finger01
+      parentName: ORC_ R Finger0
+      position: {x: -0.06564621, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000004}
+    - name: ORC_ R Finger02
+      parentName: ORC_ R Finger01
+      position: {x: -0.06739689, y: 0.000000038146972, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000002, y: 1, z: 1.0000001}
+    - name: ORC_ R Finger3
+      parentName: ORC_ R Hand
+      position: {x: -0.15201363, y: 0.001288147, z: -0.08536676}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.9999997, y: 1.0000002, z: 1.0000001}
+    - name: ORC_ R Finger31
+      parentName: ORC_ R Finger3
+      position: {x: -0.070978545, y: 0, z: -0.000000009536743}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000006, z: 1.0000001}
+    - name: ORC_ R Finger32
+      parentName: ORC_ R Finger31
+      position: {x: -0.05839142, y: 0, z: 0.000000009536743}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.99999946, y: 1, z: 1.0000001}
+    - name: ORC_ R Finger1
+      parentName: ORC_ R Hand
+      position: {x: -0.15119494, y: -0.010786743, z: 0.047628276}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: ORC_ R Finger11
+      parentName: ORC_ R Finger1
+      position: {x: -0.07579098, y: 0.00000015258789, z: -0.000000009536743}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1.0000006, z: 0.99999994}
+    - name: ORC_ R Finger12
+      parentName: ORC_ R Finger11
+      position: {x: -0.05615547, y: -0.00000015258789, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1.0000008, z: 1}
+    - name: ORC_ R Thigh
+      parentName: ORC_ Pelvis
+      position: {x: -0.00000015258789, y: -0.0000001039925, z: -0.11536397}
+      rotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+      scale: {x: 1.0000004, y: 1, z: 1.0000004}
+    - name: ORC_ R Calf
+      parentName: ORC_ R Thigh
+      position: {x: -0.6250627, y: 0.0000000011920929, z: -0.000000038146972}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000008}
+    - name: ORC_ R Foot
+      parentName: ORC_ R Calf
+      position: {x: -0.5294485, y: 0, z: 0.000000038146972}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.9999998, y: 0.9999996, z: 0.9999997}
+    - name: ORC_ R Toe0
+      parentName: ORC_ R Foot
+      position: {x: -0.1326686, y: 0.27451888, z: 0}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
+      scale: {x: 1.0000006, y: 1.0000004, z: 1.0000005}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -564,12 +904,12 @@ ModelImporter:
     feetSpacing: 0
     globalScale: 1
     rootMotionBoneName: root
-    hasTranslationDoF: 0
+    hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
