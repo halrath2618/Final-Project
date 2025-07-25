@@ -38,7 +38,16 @@ public class PlayerController : MonoBehaviour
     public float attackRadius = 1.5f;
     public bool isAttacking = false;
     public LayerMask enemyLayer;
+    [Header("After Meet Halrath: Skills and Spells")]
+    public GameObject[] afterMeetHalrathSkillsIcon; // Reference to the After Meet Halrath's skills icons
+    public GameObject afterMeetHalrathSkill1; // Reference to the After Meet Halrath's first skill GameObject
+    public GameObject afterMeetHalrathSkill2; // Reference to the After Meet Halrath's second skill GameObject
+    public GameObject afterMeetHalrathSkill3; // Reference to the After Meet Halrath's third skill GameObject
+    public float attackDmg_AfterMeetHalrathSkill1 = 10f; // Damage for the first skill
+    public float attackDmg_AfterMeetHalrathSkill2 = 15f; // Damage for the second skill
+
     [Header("MAge: Skills and Spells")]
+    public GameObject[] mageSpellsIcon; 
     public GameObject earthSpell;
     public GameObject fireSpell;
     public float attackDmg_Earth = 20f;
@@ -48,23 +57,27 @@ public class PlayerController : MonoBehaviour
     public GameObject manaAura;
 
     [Header("Brawler: Skills and Spells")]
+    public GameObject[] brawlerSkillsIcon; // Reference to the Brawler's skills icons
     public GameObject brawlerLeftHand; // Reference to the Brawler's first skill GameObject
     public GameObject brawlerRightHand; // Reference to the Brawler's second skill GameObject
     public GameObject brawlerLeftHand2; // Reference to the Brawler's second skill GameObject
     public GameObject brawlerSlash; // Reference to the Brawler's third skill GameObject
     public GameObject brawlerUltimate; // Reference to the Brawler's third skill GameObject
     public GameObject skill1HitArea; // Reference to the Brawler's first skill hit area GameObject
-    public float brawlerSkill1Damage = 15f; // Damage for the first skill
+    public float brawlerSkill1Damage = 5f; // Damage for the first skill
     public float brawlerSkill2Damage = 25f; // Damage for the second skill
     public float brawlerUltimateDamage = 5f; // Damage for the ultimate skill
-    private float delayHit = 8.48f;
 
     [Header("SwordMaster: Skills and Spells")]
+    public GameObject[] swordMasterSkillsIcon; // Reference to the SwordMaster's skills icons
     public GameObject swordMasterSkill1; // Reference to the SwordMaster's first skill GameObject
     public GameObject swordMasterSkill2; // Reference to the SwordMaster's second skill GameObject
-    public GameObject swordMasterAura; // Reference to the SwordMaster's third skill GameObject
-    public float swordMasterSkill1Damage = 20f; // Damage for the first skill
-    public float swordMasterSkill2Damage = 30f; // Damage for the second skill
+    public GameObject swordMasterSkill3; // Reference to the SwordMaster's third skill GameObject
+    public GameObject swordMasterSkill4; // Reference to the SwordMaster's fourth skill GameObject
+    public GameObject swordMasterUltimate; // Reference to the SwordMaster's ultimate skill GameObject
+    public float swordMasterSkill1Damage = 5f; // Damage for the first skill
+    public float swordMasterSkill2Damage = 25f; // Damage for the second skill
+    public float swordMasterSkill3Damage = 75f; // Damage for the third skill
 
     [SerializeField] private CharacterController _controller;
     [SerializeField] private Animator _animator;
@@ -128,27 +141,44 @@ public class PlayerController : MonoBehaviour
 
     public void SwitchToBrawler()
     {
+        brawlerSkillsIcon[0].SetActive(true);
+        brawlerSkillsIcon[1].SetActive(true);
+        brawlerSkillsIcon[2].SetActive(true);
         characterClassManager.SwitchClass(CharacterClass.Brawler); // Switch to Brawler class
         switchClassUI.SetActive(false); // Hide the switch class UI
         _controller.GetComponent<CharacterController>().enabled = true;
     }
     public void SwitchToMage()
     {
-        weapon[0].SetActive(true); // Activate the Mage weapon
+        mageSpellsIcon[0].SetActive(true); // Activate the Mage spell icon
+        mageSpellsIcon[1].SetActive(true); // Activate the Mage spell icon
+        mageSpellsIcon[2].SetActive(true); // Activate the Mage fire spell
+        weapon[1].SetActive(true); // Activate the Mage weapon
         characterClassManager.SwitchClass(CharacterClass.Mage); // Switch to Mage class
         switchClassUI.SetActive(false); // Hide the switch class UI
         _controller.GetComponent<CharacterController>().enabled = true;
     }
     public void SwitchToSwordMaster()
     {
-        weapon[1].SetActive(true); // Activate the SwordMaster weapon
+        swordMasterSkillsIcon[0].SetActive(true); // Activate the SwordMaster skill icon
+        swordMasterSkillsIcon[1].SetActive(true); // Activate the SwordMaster skill icon
+        swordMasterSkillsIcon[2].SetActive(true); // Activate the SwordMaster skill icon
+        weapon[2].SetActive(true); // Activate the SwordMaster weapon
         characterClassManager.SwitchClass(CharacterClass.SwordMaster); // Switch to Rogue class
         switchClassUI.SetActive(false); // Hide the switch class UI
         _controller.GetComponent<CharacterController>().enabled = true;
     }
+    public void SwitchToMeetHalrath()
+    {
+        switchClassUI.SetActive(false); // Hide the switch class UI
+        afterMeetHalrathSkillsIcon[0].SetActive(true); // Activate the After Meet Halrath's first skill icon
+        afterMeetHalrathSkillsIcon[1].SetActive(true); // Activate the After Meet Halrath's second skill icon
+        weapon[0].SetActive(true);
+        characterClassManager.SwitchClass(CharacterClass.After_Meet_Halrath); // Switch to Halrath class
+        _controller.GetComponent<CharacterController>().enabled = true; // Enable character controller
+    }
     void Start()
     {
-        
         switchClassUI.SetActive(true);
         _controller.GetComponent<CharacterController>().enabled = false; // Disable character controller to prevent movement during initialization
         
@@ -164,7 +194,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             characterClass = 1;
             skill1MaxCD = 1f; // Set cooldown time for Brawler's first skill
@@ -173,7 +203,7 @@ public class PlayerController : MonoBehaviour
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for Brawler's second skill
             SwitchToBrawler(); // Switch to Brawler class when 1 is pressed
         }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             characterClass = 2;
             skill1MaxCD = 5f; // Set cooldown time for Mage's first skill
@@ -182,13 +212,26 @@ public class PlayerController : MonoBehaviour
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for Mage's second skill
             SwitchToMage(); // Switch to Mage class when 2 is pressed
         }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             characterClass = 3;
+            skill1MaxCD = 1f; // Set cooldown time for SwordMaster's first skill
+            skill1CDTime = skill1MaxCD; // Initialize cooldown time for SwordMaster's first skill
+            skill2MaxCD = 4f; // Set cooldown time for SwordMaster's second skill
+            skill2CDTime = skill2MaxCD; // Initialize cooldown time for SwordMaster's second skill
             SwitchToSwordMaster(); // Switch to SwordMaster class when 3 is pressed
         }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            characterClass = 4;
+            skill1MaxCD = 1f; // Set cooldown time for After Meet Halrath's first skill
+            skill1CDTime = skill1MaxCD; // Initialize cooldown time for After Meet Halrath's first skill
+            skill2MaxCD = 4f; // Set cooldown time for After Meet Halrath's second skill
+            skill2CDTime = skill2MaxCD; // Initialize cooldown time for After Meet Halrath's second skill
+            SwitchToMeetHalrath(); // Switch to After Meet Halrath class when 4 is pressed
+        }
 
-        hp.HP();
+            hp.HP();
         manaStamina.UpdateMana();
         manaStamina.UpdateStamina();
         // Ground check
@@ -343,6 +386,29 @@ public class PlayerController : MonoBehaviour
                     auraSpell.SetActive(false); // Deactivate the aura spell
                     skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
                     StopDrainingMana(); // Stop draining mana if already active
+                }
+            }
+            else if (characterClass == 3)
+            {
+                if (auraReady)
+                {
+                    auraReady = false; // Set skill as not ready
+                    StartCoroutine(PerformAttack_3()); // Perform attack
+                    if (_currentMana >= 80)
+                    {
+                        auraReady = true; // Reset skill readiness
+                    }
+                    else
+                    {
+                        auraReady = true; // Reset skill readiness
+                        return; // Exit if not enough mana
+                    }
+                }
+                else
+                {
+                    warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                    StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                    Debug.Log("Skill is not ready.");
                 }
             }
         }
@@ -502,79 +568,119 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator PerformAttack_3()
     {
-        _isInvulnerable = true; // Set invulnerability during the attack
-        _isAttacking = true; // Set attacking flag to true
-        try
+        if (characterClass == 1)
         {
-            if (!isAttacking)
+            _isInvulnerable = true; // Set invulnerability during the attack
+            _isAttacking = true; // Set attacking flag to true
+            try
             {
-
-                if (_currentMana >= 80)
+                if (!isAttacking)
                 {
-                    _animator.SetTrigger("Attack3");
-                    CastingSkill(80); // Cast skill and reduce mana
+
+                    if (_currentMana >= 80)
+                    {
+                        _animator.SetTrigger("Attack3");
+                        CastingSkill(80); // Cast skill and reduce mana
+                    }
+                    else
+                    {
+                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                        Debug.Log("Not enough mana to perform the attack.");
+                        yield break; // Exit if not enough mana
+                    }
+                    brawlerUltimate.SetActive(true); // Activate the ultimate effect
+                    _attackCollider.enabled = true; // Enable the attack collider for hit detection
+                    yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                    _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                    yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                    _attackCollider.enabled = true;
+                    yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                    _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                    yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                    _attackCollider.enabled = true;
+                    yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                    _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                    yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                    _attackCollider.enabled = true;
+                    yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                    _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                    yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                    _attackCollider.enabled = true;
+                    yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                    _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                    yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                    _attackCollider.enabled = true;
+                    yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                    _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                    yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                    _attackCollider.enabled = true;
+                    yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                    _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                    yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                    _attackCollider.enabled = true;
+                    yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                    _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                    yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                    _attackCollider.enabled = true;
+                    yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                    _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                    yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                    _attackCollider.enabled = true;
+                    yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
+                    _attackCollider.enabled = false; // Disable the attack collider after the attack animation
+                    yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
+                    _attackCollider.enabled = true;
+                    brawlerUltimate.SetActive(false); // Deactivate the ultimate effect after the attack animation
+                    _isInvulnerable = false; // Reset invulnerability after the attack
                 }
                 else
                 {
-                    warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
-                    StartCoroutine(warningSkill.Flashing()); // Start flashing warning
-                    Debug.Log("Not enough mana to perform the attack.");
-                    yield break; // Exit if not enough mana
+                    Debug.Log("Already attacking, please wait.");
+                    yield break; // Exit if already attacking
                 }
-                brawlerUltimate.SetActive(true); // Activate the ultimate effect
-                _attackCollider.enabled = true; // Enable the attack collider for hit detection
-                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
-                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
-                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
-                _attackCollider.enabled = true;
-                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
-                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
-                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
-                _attackCollider.enabled = true;
-                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
-                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
-                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
-                _attackCollider.enabled = true;
-                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
-                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
-                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
-                _attackCollider.enabled = true;
-                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
-                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
-                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
-                _attackCollider.enabled = true;
-                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
-                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
-                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
-                _attackCollider.enabled = true;
-                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
-                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
-                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
-                _attackCollider.enabled = true;
-                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
-                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
-                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
-                _attackCollider.enabled = true;
-                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
-                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
-                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
-                _attackCollider.enabled = true;
-                yield return new WaitForSeconds(0.01f); // Wait for the attack animation to play
-                _attackCollider.enabled = false; // Disable the attack collider after the attack animation
-                yield return new WaitForSeconds(0.83f); // Wait for the attack animation to play
-                _attackCollider.enabled = true;
-                brawlerUltimate.SetActive(false); // Deactivate the ultimate effect after the attack animation
-                _isInvulnerable = false; // Reset invulnerability after the attack
             }
-            else
+            finally
             {
-                Debug.Log("Already attacking, please wait.");
-                yield break; // Exit if already attacking
+                _isAttacking = false; // Reset attacking flag
             }
         }
-        finally
+        else if(characterClass == 3)
         {
-            _isAttacking = false; // Reset attacking flag
+            _isInvulnerable = true; // Set invulnerability during the attack
+            _isAttacking = true; // Set attacking flag to true
+            try
+            {
+                if (!isAttacking)
+                {
+
+                    if (_currentMana >= 80)
+                    {
+                        _animator.SetTrigger("Attack3");
+                        CastingSkill(80); // Cast skill and reduce mana
+                    }
+                    else
+                    {
+                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                        Debug.Log("Not enough mana to perform the attack.");
+                        yield break; // Exit if not enough mana
+                    }
+                    yield return new WaitForSeconds(1.2f); // Wait for the attack animation to play
+                    swordMasterUltimate.SetActive(true); // Activate the ultimate effect
+                    yield return new WaitForSeconds(1.1f); // Wait for the attack animation to play
+                    swordMasterUltimate.SetActive(false); // Deactivate the ultimate effect after the attack animation
+                }
+                else
+                {
+                    Debug.Log("Already attacking, please wait.");
+                    yield break; // Exit if already attacking
+                }
+            }
+            finally
+            {
+                _isAttacking = false; // Reset attacking flag
+            }
         }
     }
     IEnumerator PerformAttack_1()
@@ -683,24 +789,55 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
                     }
-                    brawlerLeftHand.SetActive(true); // Activate the left hand effect
-                    skill1HitArea.SetActive(true); // Activate the hit area for the first skill
-                    yield return new WaitForSeconds(0.25f); // Wait for the attack animation to play
-                    skill1HitArea.SetActive(false); // Deactivate the hit area after the attack animation
-                    brawlerLeftHand.SetActive(false); // Deactivate the left hand effect after the attack animation
-                    brawlerRightHand.SetActive(true); // Activate the right hand effect
-                    skill1HitArea.SetActive(true); // Reactivate the hit area for the second skill
-                    yield return new WaitForSeconds(0.25f); // Wait for the attack animation to play
-                    skill1HitArea.SetActive(false); // Deactivate the hit area after the attack animation
-                    brawlerRightHand.SetActive(false);
-                    brawlerLeftHand2.SetActive(true); // Reactivate the left hand effect
-                    skill1HitArea.SetActive(true); // Reactivate the hit area for the third skill
-                    yield return new WaitForSeconds(0.25f); // Wait for the attack animation to play
-                    skill1HitArea.SetActive(false); // Deactivate the hit area after the attack animation
-                    brawlerLeftHand2.SetActive(false); // Deactivate the left hand effect after the attack animation
+                    swordMasterSkill1.SetActive(true); // Activate the skill effect
+                    yield return new WaitForSeconds(0.26f); // Wait for the attack animation to play
+                    swordMasterSkill2.SetActive(true); // Activate the second skill effect
+                    yield return new WaitForSeconds(0.26f); // Wait for the attack animation to play
+                    swordMasterSkill3.SetActive(true); // Activate the third skill effect
+                    yield return new WaitForSeconds(0.26f); // Wait for the attack animation to play
+                    swordMasterSkill1.SetActive(false); // Deactivate the skill effect after the attack animation
+                    swordMasterSkill2.SetActive(false); // Deactivate the second skill effect after the attack animation
+                    swordMasterSkill3.SetActive(false); // Deactivate the third skill effect after the attack animation
                 }
                 else
                 {
+                    Debug.Log("Already attacking, please wait.");
+                    yield break; // Exit if already attacking
+                }
+            }
+            finally
+            {
+                _isAttacking = false; // Reset attacking flag
+            }
+        }
+        else if(characterClass == 4)
+        {
+            _isAttacking = true; // Set attacking flag to true
+            try
+            {
+                if (!isAttacking)
+                {
+
+                    if (_currentMana >= 3)
+                    {
+                        _animator.SetTrigger("Attack1");
+                        CastingSkill(3); // Cast skill and reduce mana
+                    }
+                    else
+                    {
+                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                        Debug.Log("Not enough mana to perform the attack.");
+                        yield break; // Exit if not enough mana
+                    }
+                    yield return new WaitForSeconds(0.5f); // Wait for the attack animation to play
+                    afterMeetHalrathSkill1.SetActive(true); // Activate the skill effect
+                    yield return new WaitForSeconds(1.1f); // Wait for the attack animation to play
+                    afterMeetHalrathSkill1.SetActive(false); // Deactivate the skill effect after the attack animation
+                }
+                else
+                {
+
                     Debug.Log("Already attacking, please wait.");
                     yield break; // Exit if already attacking
                 }
@@ -778,6 +915,82 @@ public class PlayerController : MonoBehaviour
                     fireSpell.SetActive(false); // Deactivate the spell object after the attack animation
                     fireHand.SetActive(false); // Deactivate the fire hand effect
                     fireEffect.SetActive(false); // Deactivate the fire effect
+                }
+                else
+                {
+
+                    Debug.Log("Already attacking, please wait.");
+                    yield break; // Exit if already attacking
+                }
+            }
+            finally
+            {
+                _isAttacking = false; // Reset attacking flag
+            }
+        }
+        else if(characterClass == 3)
+        {
+            _isAttacking = true; // Set attacking flag to true
+            try
+            {
+                if (!isAttacking)
+                {
+
+                    if (_currentMana >= 10)
+                    {
+                        _animator.SetTrigger("Attack2");
+                        CastingSkill(30); // Cast skill and reduce mana
+                    }
+                    else
+                    {
+                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                        Debug.Log("Not enough mana to perform the attack.");
+                        yield break; // Exit if not enough mana
+                    }
+                    swordMasterSkill4.SetActive(true); // Activate the skill effect
+                    yield return new WaitForSeconds(1.1f); // Wait for the attack animation to play
+                    swordMasterSkill4.SetActive(false); // Deactivate the skill effect after the attack animation
+                }
+                else
+                {
+
+                    Debug.Log("Already attacking, please wait.");
+                    yield break; // Exit if already attacking
+                }
+            }
+            finally
+            {
+                _isAttacking = false; // Reset attacking flag
+            }
+        }
+        else if (characterClass == 4)
+        {
+            _isAttacking = true; // Set attacking flag to true
+            try
+            {
+                if (!isAttacking)
+                {
+
+                    if (_currentMana >= 3)
+                    {
+                        _animator.SetTrigger("Attack2");
+                        CastingSkill(3); // Cast skill and reduce mana
+                    }
+                    else
+                    {
+                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        StartCoroutine(warningSkill.Flashing()); // Start flashing warning
+                        Debug.Log("Not enough mana to perform the attack.");
+                        yield break; // Exit if not enough mana
+                    }
+                    afterMeetHalrathSkill2.SetActive(true); // Activate the skill effect
+                    yield return new WaitForSeconds(0.6f); // Wait for the attack animation to play
+                    afterMeetHalrathSkill3.SetActive(true); // Deactivate the skill effect after the attack animation
+                    yield return new WaitForSeconds(0.6f); // Wait for the attack animation to play
+                    afterMeetHalrathSkill2.SetActive(false); // Deactivate the skill effect after the attack animation
+                    afterMeetHalrathSkill3.SetActive(false); // Deactivate the skill effect after the attack animation
+
                 }
                 else
                 {

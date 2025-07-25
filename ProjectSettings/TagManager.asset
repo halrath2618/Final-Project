@@ -17,6 +17,11 @@ TagManager:
   - Brawler1
   - Brawler2
   - Brawler3
+  - SMSkill1
+  - SMSkill2
+  - SMSkill3
+  - HSkill1
+  - HSkill2
   layers:
   - Default
   - TransparentFX

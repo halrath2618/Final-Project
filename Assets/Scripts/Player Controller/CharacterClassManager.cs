@@ -77,7 +77,7 @@ public class CharacterClassManager : MonoBehaviour
     //}
 
     // Example method for UI buttons
-    public void SetWarriorClass() => SwitchClass(CharacterClass.Brawler);
-    public void SetMageClass() => SwitchClass(CharacterClass.Mage);
-    public void SetArcherClass() => SwitchClass(CharacterClass.SwordMaster);
+    //public void SetWarriorClass() => SwitchClass(CharacterClass.Brawler);
+    //public void SetMageClass() => SwitchClass(CharacterClass.Mage);
+    //public void SetArcherClass() => SwitchClass(CharacterClass.SwordMaster);
 }
