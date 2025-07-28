@@ -671,6 +671,11 @@ MonoBehaviour:
   - {fileID: 3488841025857742292}
   attackCooldown: 2
   maxAttackTypes: 2
+  attackDamage:
+  - 10
+  nameLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3328492678574640837
 GameObject:
   m_ObjectHideFlags: 0

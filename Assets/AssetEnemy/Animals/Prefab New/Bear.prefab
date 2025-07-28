@@ -387,8 +387,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 524743573940668622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1596,7 +1596,7 @@ RectTransform:
   m_Father: {fileID: 2141227609239029106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -1, y: 0.25}
   m_SizeDelta: {x: -2, y: -0.5}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1786,7 +1786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7191019673777104210
 Transform:
   m_ObjectHideFlags: 0
@@ -2000,6 +2000,11 @@ MonoBehaviour:
   - {fileID: 8836908405845147383}
   attackCooldown: 5
   maxAttackTypes: 4
+  attackDamage:
+  - 10
+  nameLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!114 &4632402641688496925
 MonoBehaviour:
   m_ObjectHideFlags: 0

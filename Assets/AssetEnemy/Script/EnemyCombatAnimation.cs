@@ -4,12 +4,16 @@ using static AttackAnimationManager;
 
 public class EnemyCombatAnimation : MonoBehaviour
 {
-    public Animator animator;
+    [SerializeField]private Animator animator;
     public Collider[] attackColliders;
     public float attackCooldown = 2f;
     private float cooldownTimer;
     [SerializeField] private int maxAttackTypes = 3;
-    private bool inCombat = false;
+
+    [Header("Attack Damage")]
+    [SerializeField] private float[] attackDamage;
+    [SerializeField] private LayerMask nameLayer;
+    private bool hasDealtDamage = false;
 
     void Start()
     {
@@ -53,4 +57,33 @@ public class EnemyCombatAnimation : MonoBehaviour
         }
     }
 
+    public void DealDamage(int attackIndex)
+    {
+         int damageIndex = attackIndex;
+    
+        if (damageIndex >= 0 && damageIndex < attackDamage.Length)
+        {
+            // Tìm player gần nhất trong phạm vi
+            Collider[] hitPlayers = Physics.OverlapSphere(transform.position, 2f, nameLayer);
+        
+            foreach (var player in hitPlayers)
+            {
+                PlayerController playerHealth = player.GetComponent<PlayerController>();
+                if (playerHealth != null)
+                {
+                    hasDealtDamage = true;
+                    //playerHealth.TakeDamage(attackDamage[damageIndex]);
+                    Debug.Log($"Dealt {attackDamage[damageIndex]} damage with attack {attackIndex} to {player.name}");
+
+                    Invoke(nameof(ResetDealDamage), 2f);
+                }
+            }
+        }
+    }
+
+
+    private void ResetDealDamage()
+    {
+        hasDealtDamage = false;
+    }
 }
