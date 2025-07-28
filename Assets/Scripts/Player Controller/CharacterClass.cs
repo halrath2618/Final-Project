@@ -6,6 +6,8 @@ public enum CharacterClass
     Brawler,
     Mage,
     SwordMaster,
+    Starter,
+    After_Meet_Halrath
 }
 
 // CharacterClassData.cs

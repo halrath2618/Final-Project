@@ -14,8 +14,8 @@ public class Monster : MonoBehaviour
     private float patrolTimer;
 
     [Header("Detection Settings")]
-    public float detectionDistance = 4f;
-    public float detectionAngle = 90f; // 90 degrees in front
+    public float detectionDistance = 15f;
+    public float detectionAngle = 180f; // 90 degrees in front
     private bool playerDetected;
     [SerializeField] private Transform playerPosition;
 
@@ -314,6 +314,31 @@ public class Monster : MonoBehaviour
         {
             health.TakeDamage(playerController.brawlerUltimateDamage);
             Debug.Log("Monster hit by tornado, current health: " + health.currentHealth);
+        }
+        else if(other.CompareTag("SMSkill1"))
+        {
+            health.TakeDamage(playerController.swordMasterSkill1Damage);
+            Debug.Log("Monster hit by Sword Skill 1, current health: " + health.currentHealth);
+        }
+        else if(other.CompareTag("SMSkill2"))
+        {
+            health.TakeDamage(playerController.swordMasterSkill2Damage);
+            Debug.Log("Monster hit by Sword Skill 2, current health: " + health.currentHealth);
+        }
+        else if(other.CompareTag("SMSkill3"))
+        {
+            health.TakeDamage(playerController.swordMasterSkill3Damage);
+            Debug.Log("Monster hit by Sword Ultimate, current health: " + health.currentHealth);
+        }
+        else if (other.CompareTag("HSkill1"))
+        {
+            health.TakeDamage(playerController.attackDmg_AfterMeetHalrathSkill1);
+            Debug.Log("Monster hit by Hunter Skill 1, current health: " + health.currentHealth);
+        }
+        else if (other.CompareTag("HSkill2"))
+        {
+            health.TakeDamage(playerController.attackDmg_AfterMeetHalrathSkill2);
+            Debug.Log("Monster hit by Hunter Skill 2, current health: " + health.currentHealth);
         }
     }
 
