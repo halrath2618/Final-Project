@@ -104,15 +104,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9838455
-        functionName: DisableAttackColliders
+      - time: 0.35019577
+        functionName: DealDamage
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.35019577
-        functionName: DealDamage
+      - time: 0.4543908
+        functionName: DisableAttackColliders
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
