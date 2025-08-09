@@ -1,0 +1,456 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0d5a16b2ef8124e949219f4039dfd4, type: 3}
+  m_Name: Chapter 1
+  m_EditorClassIdentifier: 
+  startId: 0
+  entries:
+  - id: 0
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "Sau khi ti\u1EBFn v\xE0o Ng\xF4i \u0110\u1EC1n C\u1ED5\u2026 Zino th\u1EA5y
+        m\u1ED9t c\xE1nh c\u1ED5ng cao v\xFAt t\u1ECFa ra \xE1nh s\xE1ng huy\u1EC1n
+        di\u1EC7u v\xE0 ti\u1EBFn l\u1EA1i g\u1EA7n."
+      nextId: 1
+    choice:
+      options: []
+  - id: 1
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "M\u1ED9t l\u1EF1c h\xFAt k\u1EF3 l\u1EA1 k\xE9o c\u1EADu v\xE0o v\xF2ng
+        xo\xE1y kh\xF4ng-th\u1EDDi gian. Zino t\u1EC9nh l\u1EA1i \u1EDF m\u1ED9t
+        kh\xF4ng gian b\u1EA5t \u0111\u1ECBnh."
+      nextId: 2
+    choice:
+      options: []
+  - id: 2
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "V\xF4 s\u1ED1 tinh linh, y\xEAu tinh v\xE0 qu\xE1i v\u1EADt r\u1EA3i
+        r\xE1c kh\u1EAFp khu r\u1EEBng r\u1EADm \xE2m u, qu\u1EF7 d\u1ECB."
+      nextId: 3
+    choice:
+      options: []
+  - id: 3
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "Nh\u1EEFng ti\u1EC3u tinh linh b\xE9 nh\u1ECF ph\xE1t s\xE1ng, c\xE1c
+        c\xE2y \u0111\u1EA1i th\u1EE5 ng\xE0n n\u0103m t\u1ECFa linh l\u1EF1c; h\u1EA1t
+        ng\u1ECDc li ti l\u1EA5p l\xE1nh nh\u01B0 sao."
+      nextId: 4
+    choice:
+      options: []
+  - id: 4
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "Zino c\xF2n \u0111ang ng\u01A1 ng\xE1c th\xEC m\u1ED9t ti\u1EC3u tinh
+        linh m\u1EDD \u1EA3o, c\xF3 \u0111\xF4i c\xE1nh nh\u1ECF, ch\u1EADm r\xE3i
+        bay t\u1EDBi."
+      nextId: 5
+    choice:
+      options: []
+  - id: 5
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: b52f0e1f7b2a92b42a9df55fd39d9388, type: 2}
+      text: "\u201CNg\u01B0\u01A1i l\xE0 ai?\u201D"
+      nextId: 6
+    choice:
+      options: []
+  - id: 6
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: "\u201CTa l\xE0 Zino, b\u1ECB cu\u1ED1n v\xE0o v\xF2ng xo\xE1y \u1EDF
+        ng\xF4i \u0111\u1EC1n n\xEAn l\u1EA1c \u0111\u1EBFn \u0111\xE2y. C\xF2n ng\u01B0\u01A1i
+        l\xE0\u2026?\u201D"
+      nextId: 7
+    choice:
+      options: []
+  - id: 7
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: b52f0e1f7b2a92b42a9df55fd39d9388, type: 2}
+      text: "\u201CTa l\xE0 ng\u01B0\u1EDDi b\u1EA3o h\u1ED9 khu r\u1EEBng n\xE0y.
+        Ng\u01B0\u01A1i c\xF3 bi\u1EBFt m\xECnh \u0111ang \u0111\u1EE9ng \u1EDF \u0111\xE2u
+        kh\xF4ng, Zino?\u201D"
+      nextId: 8
+    choice:
+      options: []
+  - id: 8
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: "Ta\u2026 c\u0169ng ch\u1EB3ng bi\u1EBFt. T\u1EC9nh d\u1EADy sau c\xFA
+        ng\xE3 l\xE0 \u0111\xE3 \u1EDF \u0111\xE2y r\u1ED3i."
+      nextId: 9
+    choice:
+      options: []
+  - id: 9
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: b52f0e1f7b2a92b42a9df55fd39d9388, type: 2}
+      text: "Ng\u01B0\u01A1i c\u0169ng b\u1ECB cu\u1ED1n v\xE0o v\xF2ng xo\xE1y \u1EDF
+        c\xE1nh c\u1ED5ng \xE0? \u0110\xE2y l\xE0 Khu R\u1EEBng Qu\u1EF7 D\u1ECB,
+        v\xF4 c\xF9ng nguy hi\u1EC3m, d\u1ECB th\xFA lu\xF4n r\xECnh r\u1EADp."
+      nextId: 10
+    choice:
+      options: []
+  - id: 10
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: "Th\u1EBF b\xE2y gi\u1EDD ta ph\u1EA3i l\xE0m sao?"
+      nextId: 11
+    choice:
+      options: []
+  - id: 11
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: b52f0e1f7b2a92b42a9df55fd39d9388, type: 2}
+      text: "Mu\u1ED1n r\u1EDDi kh\u1ECFi r\u1EEBng, ng\u01B0\u01A1i ph\u1EA3i ho\xE0n
+        th\xE0nh c\xE1c nhi\u1EC7m v\u1EE5 theo quy \u01B0\u1EDBc n\u01A1i n\xE0y."
+      nextId: 12
+    choice:
+      options: []
+  - id: 12
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: "T\u1EA1i sao ta ph\u1EA3i l\xE0m c\xE1c nhi\u1EC7m v\u1EE5 c\u1EE7a
+        khu r\u1EEBng k\u1EF3 qu\xE1i n\xE0y?"
+      nextId: 13
+    choice:
+      options: []
+  - id: 13
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: b52f0e1f7b2a92b42a9df55fd39d9388, type: 2}
+      text: "\u0110ang \u0111\u1EE9ng tr\xEAn \u0111\u1EA5t c\u1EE7a R\u1EEBng Qu\u1EF7
+        D\u1ECB th\xEC ph\u1EA3i ch\u1EA5p nh\u1EADn quy \u01B0\u1EDBc. Kh\xF4ng
+        ho\xE0n th\xE0nh, y\xEAu tinh s\u1EBD l\u1EA5y m\u1EA1ng ng\u01B0\u01A1i
+        b\u1EA5t c\u1EE9 l\xFAc n\xE0o."
+      nextId: 14
+    choice:
+      options: []
+  - id: 14
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "Zino tr\u1EA7m ng\xE2m h\u1ED3i l\xE2u r\u1ED3i g\u1EADt \u0111\u1EA7u."
+      nextId: 15
+    choice:
+      options: []
+  - id: 15
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: "\u0110\u01B0\u1EE3c. Ta s\u1EBD l\xE0m nhi\u1EC7m v\u1EE5. \u0110\u1ED5i
+        l\u1EA1i, ng\u01B0\u01A1i ph\u1EA3i \u0111\u01B0a b\u1EA3n \u0111\u1ED3 \u0111\u1EC3
+        ta r\u1EDDi kh\u1ECFi n\u01A1i n\xE0y."
+      nextId: 16
+    choice:
+      options: []
+  - id: 16
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: b52f0e1f7b2a92b42a9df55fd39d9388, type: 2}
+      text: "\u0110\u01B0\u1EE3c th\xF4i! Ta c\u0169ng mu\u1ED1n xem ng\u01B0\u01A1i
+        l\xE0m sao v\u01B0\u1EE3t qua n\u01A1i n\xE0y."
+      nextId: 17
+    choice:
+      options: []
+  - id: 17
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "C\u1EA3 hai \u0111i s\xE2u v\xE0o r\u1EEBng; b\xF3ng t\u1ED1i d\xE0y
+        \u0111\u1EB7c, kh\xF4ng gian im l\u1EB7ng \u0111\u1EBFn r\u1EE3n ng\u01B0\u1EDDi.
+        B\u1ED7ng\u2026 ti\u1EBFng x\xE0o x\u1EA1c t\u1EEB b\u1EE5i r\u1EADm."
+      nextId: 18
+    choice:
+      options: []
+  - id: 18
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: "\xC2m thanh qu\xE1i qu\u1EF7 g\xEC th\u1EBF?"
+      nextId: 19
+    choice:
+      options: []
+  - id: 19
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: b52f0e1f7b2a92b42a9df55fd39d9388, type: 2}
+      text: "\xC2m thanh qu\xE1i qu\u1EF7 g\xEC th\u1EBF?"
+      nextId: 20
+    choice:
+      options: []
+  - id: 20
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "\xC2m thanh m\u1ED7i l\xFAc m\u1ED9t l\u1EDBn. M\u1ED9t qu\xE1i th\xFA
+        hung \xE1c ph\xF3ng ra, m\xF3ng vu\u1ED1t s\u1EAFc l\u1EA1nh lao th\u1EB3ng
+        v\xE0o Zino!"
+      nextId: 21
+    choice:
+      options: []
+  - id: 21
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: Aaaaaaaaaaaaa!
+      nextId: 22
+    choice:
+      options: []
+  - id: 22
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: Aaaaaaaaaaaaa!
+      nextId: 23
+    choice:
+      options: []
+  - id: 23
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: "Th\u1EA5y ti\u1EC3u tinh linh b\xEAn c\u1EA1nh, qu\xE1i th\xFA \u0111\u1ED5i
+        h\u01B0\u1EDBng t\u1EA5n c\xF4ng n\xF3. Zino \u0111au \u0111\u1EDBn, ki\u1EC7t
+        s\u1EE9c, ch\u1EA1y th\u1EE5c m\u1EA1ng v\xE0o r\u1EEBng s\xE2u."
+      nextId: 24
+    choice:
+      options: []
+  - id: 24
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "Th\u1EA5y ti\u1EC3u tinh linh b\xEAn c\u1EA1nh, qu\xE1i th\xFA \u0111\u1ED5i
+        h\u01B0\u1EDBng t\u1EA5n c\xF4ng n\xF3. Zino \u0111au \u0111\u1EDBn, ki\u1EC7t
+        s\u1EE9c, ch\u1EA1y th\u1EE5c m\u1EA1ng v\xE0o r\u1EEBng s\xE2u."
+      nextId: 25
+    choice:
+      options: []
+  - id: 25
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "Kh\xF4ng kh\xED lo\xE3ng d\u1EA7n, c\u1EADu kh\xF3 th\u1EDF. L\u1EA7n
+        m\xF2 t\xECm n\u01A1i tr\xFA, Zino th\u1EA5y m\u1ED9t hang r\u1ED9ng c\xF3
+        \xE1nh l\u1EEDa l\u1EADp l\xF2e."
+      nextId: 26
+    choice:
+      options: []
+  - id: 26
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "Kh\xF4ng kh\xED lo\xE3ng d\u1EA7n, c\u1EADu kh\xF3 th\u1EDF. L\u1EA7n
+        m\xF2 t\xECm n\u01A1i tr\xFA, Zino th\u1EA5y m\u1ED9t hang r\u1ED9ng c\xF3
+        \xE1nh l\u1EEDa l\u1EADp l\xF2e."
+      nextId: 27
+    choice:
+      options: []
+  - id: 27
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "Ti\u1EBFng \u0111\u1ED9ng k\xE9o l\u0169 qu\xE1i t\u1EE5 l\u1EA1i. B\xEAn
+        trong, m\u1ED9t chi\u1EBFn binh cao l\u1EDBn m\u1EDF c\u1EEDa \u2014 Halrath
+        \u2014 v\xE0 th\u1EA5y Zino"
+      nextId: 28
+    choice:
+      options: []
+  - id: 28
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: bd5d0a126f86a3945b2b2b96167b5de3, type: 2}
+      text: "K\u1EBB l\u1EA1 m\u1EB7t? \u0110\u1EBFn t\u1EEB th\u1EBF gi\u1EDBi kh\xE1c
+        \u01B0? V\xEC sao h\u1EAFn t\u1EDBi \u0111\u01B0\u1EE3c \u0111\xE2y\u2026?"
+      nextId: 29
+    choice:
+      options: []
+  - id: 29
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: bd5d0a126f86a3945b2b2b96167b5de3, type: 2}
+      text: "K\u1EBB l\u1EA1 m\u1EB7t? \u0110\u1EBFn t\u1EEB th\u1EBF gi\u1EDBi kh\xE1c
+        \u01B0? V\xEC sao h\u1EAFn t\u1EDBi \u0111\u01B0\u1EE3c \u0111\xE2y\u2026?"
+      nextId: 30
+    choice:
+      options: []
+  - id: 30
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: "A\u2026 \xF4ng l\xE0 ai? T\u1EA1i sao t\xF4i \u1EDF \u0111\xE2y?"
+      nextId: 31
+    choice:
+      options: []
+  - id: 31
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: bd5d0a126f86a3945b2b2b96167b5de3, type: 2}
+      text: "B\xECnh t\u0129nh. Ta l\xE0 Halrath, ng\u01B0\u1EDDi b\u1EA3o v\u1EC7
+        khu r\u1EEBng. C\xF2n c\u1EADu l\xE0 ai? Sao \u0111\u1EB7t ch\xE2n \u0111\u1EBFn
+        v\xF9ng \u0111\u1EA5t n\xE0y?"
+      nextId: 32
+    choice:
+      options: []
+  - id: 32
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: "T\xF4i l\xE0 Zino, nh\xE0 th\xE1m hi\u1EC3m. \u1EDE Di T\xEDch C\u1ED5
+        c\xF3 c\xE1nh c\u1ED5ng ph\xE1t s\xE1ng\u2026 t\xF4i b\u1ECB cu\u1ED1n qua
+        v\xE0 t\u1EC9nh d\u1EADy \u1EDF \u0111\xE2y."
+      nextId: 33
+    choice:
+      options: []
+  - id: 33
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: bd5d0a126f86a3945b2b2b96167b5de3, type: 2}
+      text: "ruy\u1EC1n thuy\u1EBFt k\u1EC3 v\u1EC1 ch\xECa kh\xF3a huy\u1EC1n tho\u1EA1i
+        m\u1EDF c\u1ED5ng kh\xF4ng gian. Nh\u01B0ng ch\u1EC9 ban cho k\u1EBB th\u1EADt
+        s\u1EF1 d\u0169ng c\u1EA3m. C\u1EADu c\xF3 d\xE1m t\xECm kh\xF4ng?"
+      nextId: n33_choice
+    choice:
+      options: []
+  - id: n33_choice
+    type: 1
+    line:
+      speaker: {fileID: 11400000, guid: bd5d0a126f86a3945b2b2b96167b5de3, type: 2}
+      text: 
+      nextId: 
+    choice:
+      options:
+      - text: "T\xF4i\u2026 s\u1EE3. \u1EDE l\u1EA1i \u0111\xE2y."
+        nextId: n34_gameover1
+      - text: "T\xF4i s\u1EBD kh\xF4ng b\u1ECF cu\u1ED9c. T\xF4i ph\u1EA3i tr\u1EDF
+          v\u1EC1."
+        nextId: n40_goon
+  - id: n34_gameover1
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: bd5d0a126f86a3945b2b2b96167b5de3, type: 2}
+      text: "N\u1EBFu c\u1EADu kh\xF4ng th\u1EC3 \u0111\u1ED1i di\u1EC7n th\u1EED
+        th\xE1ch, h\xE3y \u1EDF l\u1EA1i. Ta s\u1EBD b\u1EA3o v\u1EC7 c\u1EADu \u2014
+        nh\u01B0ng c\u1EADu s\u1EBD m\xE3i m\xE3i s\u1ED1ng trong th\u1EBF gi\u1EDBi
+        n\xE0y."
+      nextId: n35_gameover1
+    choice:
+      options:
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+  - id: n35_gameover1
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "Zino ch\u1ECDn \u1EDF l\u1EA1i, t\u1EEB b\u1ECF \xFD \u0111\u1ECBnh
+        v\u1EC1 nh\xE0. GAME OVER \u2014 Tr\u01B0\u1EDDng h\u1EE3p 1."
+      nextId: 
+    choice:
+      options:
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+  - id: n40_goon
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: bd5d0a126f86a3945b2b2b96167b5de3, type: 2}
+      text: "T\u1ED1t. H\xE3y \u0111\u1EBFn th\xE0nh ph\u1ED1 Azzaband t\xECm Scy,
+        m\u1ED9t ph\xE1p s\u01B0 quy\u1EC1n n\u0103ng. \xD4ng \u1EA5y s\u1EBD gi\xFAp
+        c\u1EADu hi\u1EC3u th\u1EBF gi\u1EDBi n\xE0y v\xE0 t\u1EF1 v\u1EC7."
+      nextId: n41_goon
+    choice:
+      options:
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+  - id: n41_goon
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: bd5d0a126f86a3945b2b2b96167b5de3, type: 2}
+      text: "Ta c\u1EA3m nh\u1EADn \u0111i\u1EC1u b\u1EA5t th\u01B0\u1EDDng \u0111ang
+        tho\xE1t ra t\u1EEB c\u01A1 th\u1EC3 c\u1EADu. N\u1EBFu c\xF3 g\xEC l\u1EA1,
+        quay l\u1EA1i g\u1EB7p ta."
+      nextId: n42_goon
+    choice:
+      options:
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+  - id: n42_goon
+    type: 0
+    line:
+      speaker: {fileID: 0}
+      text: "Halrath trao b\u1EA3n \u0111\u1ED3 khu r\u1EEBng, gi\u1EA5y gi\u1EDBi
+        thi\u1EC7u t\u1EDBi Scy v\xE0 v\xE0i v\u0169 kh\xED t\u1EF1 v\u1EC7."
+      nextId: n43_goon
+    choice:
+      options:
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+  - id: n43_goon
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: "C\u1EA3m \u01A1n ng\xE0i, Halrath. T\xF4i nh\u1EA5t \u0111\u1ECBnh s\u1EBD
+        tr\u1EDF v\u1EC1."
+      nextId: n44_goon
+    choice:
+      options:
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+  - id: n44_goon
+    type: 0
+    line:
+      speaker: {fileID: 11400000, guid: 9193ce626cc31364c9df4b42e508515e, type: 2}
+      text: "Zino r\u1EDDi hang, h\u01B0\u1EDBng v\u1EC1 Azzaband gi\u1EEFa r\u1EEBng
+        s\xE2u qu\u1EF7 d\u1ECB. H\xE0nh tr\xECnh b\u1EAFt \u0111\u1EA7u."
+      nextId: 
+    choice:
+      options:
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
+      - text: 
+        nextId: 
