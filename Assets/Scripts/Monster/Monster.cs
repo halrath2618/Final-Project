@@ -17,7 +17,7 @@ public class Monster : MonoBehaviour
     public float detectionDistance = 15f;
     public float detectionAngle = 180f; // 90 degrees in front
     private bool playerDetected;
-    [SerializeField] private Transform playerPosition;
+  //  [SerializeField] private Transform playerPosition;
 
     [Header("Combat Settings")]
     public float attackRange = 2f;
@@ -33,12 +33,12 @@ public class Monster : MonoBehaviour
     private bool isFleeing;
 
     [Header("References")]
-    public Transform player;
+    private Transform player;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
     [SerializeField] private Health health;
     [SerializeField] private MonsterUI monsterUI; // Assuming you have a UI script to update health display
-    [SerializeField] private PlayerController playerController;
+     private PlayerController playerController;
     
      private EnemyCombatAnimation attackAnimationManager;
 
@@ -58,10 +58,6 @@ public class Monster : MonoBehaviour
     [Header("Animation Layers")]
     public int baseLayerIndex = 0;
     public int combatLayerIndex = 1;
-
-    [Header("Root Motion Settings")]
-    [SerializeField] private RootMotion rootMotionHandler;
-    [SerializeField] private bool useRootMotionForAttacks = true;
     void Start()
     {
         attackAnimationManager = GetComponentInChildren<EnemyCombatAnimation>();
@@ -70,8 +66,19 @@ public class Monster : MonoBehaviour
         agent.speed = patrolSpeed;
 
         // Find player if not assigned
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+        //if (player == null)
+        //    player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if(playerObject != null)
+        {
+            player =playerObject.transform;
+            playerController = playerObject.GetComponent<PlayerController>();
+        }
+        else
+        {
+            Debug.Log("Player not found in scene!");
+        }
     }
 
     void Update()
@@ -193,13 +200,17 @@ public class Monster : MonoBehaviour
 
     void ChaseBehavior()
     {
+        if(player == null) return;
+
         // Set animations
         animator.SetFloat(blendParameter, runBlendValue);
         //animator.SetLayerWeight(combatLayerIndex, 1f);
         //animator.SetLayerWeight(baseLayerIndex, 0f);
         // Move toward player
-        agent.SetDestination(playerPosition.position);
-        if (Vector3.Distance(transform.position, playerPosition.position) <= attackRange && canAttack)
+        agent.SetDestination(player.position);
+        float distance = Vector3.Distance(transform.position, player.position);
+        
+        if (distance <= attackRange && canAttack)
         {
             animator.SetLayerWeight(combatLayerIndex, 1f);
             animator.SetLayerWeight(baseLayerIndex, 0f);
@@ -210,7 +221,7 @@ public class Monster : MonoBehaviour
             attackAnimationManager.TriggerRandomAttack();
 
         }
-        else if (Vector3.Distance(transform.position, playerPosition.position) > attackRange)
+        else if (distance > attackRange)
         {
             agent.isStopped = false;
 
@@ -290,6 +301,8 @@ public class Monster : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        if(playerController == null) { return; }
+
         if (other.CompareTag("Skill_E"))
         {
             health.TakeDamage(playerController.attackDmg_Earth);
