@@ -108,19 +108,16 @@ MonoBehaviour:
   patrolWaitTime: 3
   detectionDistance: 4
   detectionAngle: 90
-  playerPosition: {fileID: 0}
   attackRange: 2
   attackCooldown: 2
   attackDamage: 10
   fleeHealthThreshold: 0.2
   fleeDistance: 8
   fleeSpeed: 5
-  player: {fileID: 0}
   agent: {fileID: 140182932594774363}
   animator: {fileID: 271965940262642745}
   health: {fileID: 2228548316218234605}
   monsterUI: {fileID: 7098999818072674684}
-  playerController: {fileID: 0}
   blendParameter: Blend
   idleBlendValue: 0
   walkBlendValue: 0.5
@@ -1901,10 +1898,11 @@ MonoBehaviour:
   - {fileID: 2454831590985221408}
   attackCooldown: 2
   maxAttackTypes: 1
-  attackDamage: []
+  attackDamage:
+  - 10
   nameLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
 --- !u!114 &889836373138855209
 MonoBehaviour:
   m_ObjectHideFlags: 0
