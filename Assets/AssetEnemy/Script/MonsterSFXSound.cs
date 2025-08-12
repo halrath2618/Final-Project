@@ -13,16 +13,16 @@ public class MonsterSFXSound : MonoBehaviour
     private Dictionary<string, AudioClip> hitSoundDict;
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Đảm bảo không bị phá hủy khi chuyển Scene
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        //if (Instance == null)
+        //{
+        //    Instance = this;
+        //    //DontDestroyOnLoad(gameObject); // Đảm bảo không bị phá hủy khi chuyển Scene
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
 
         // Khởi tạo Dictionaries
         InitializeDictionaries();
@@ -51,14 +51,5 @@ public class MonsterSFXSound : MonoBehaviour
         }
     }
 
-    //public AudioClip GetHitClip(string name)
-    //{
-    //    if (hitSoundDict.TryGetValue(name, out AudioClip clip))
-    //    {
-    //        return clip;
-    //    }
-    //    Debug.Log($"Hit sound '{name}' not found!");
-    //    return null;
-    //}
     #endregion
 }

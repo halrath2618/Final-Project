@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OrcMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: root
+    m_Weight: 0
+  - m_Path: root/ORC_
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ L Thigh
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ L Thigh/ORC_ L Calf
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ L Thigh/ORC_ L Calf/ORC_ L Foot
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ L Thigh/ORC_ L Calf/ORC_ L Foot/ORC_ L Toe0
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ R Thigh
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ R Thigh/ORC_ R Calf
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ R Thigh/ORC_ R Calf/ORC_ R Foot
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ R Thigh/ORC_ R Calf/ORC_ R Foot/ORC_ R Toe0
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger0
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger0/ORC_ L Finger01
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger0/ORC_ L Finger01/ORC_ L Finger02
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger1
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger1/ORC_ L Finger11
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger1/ORC_ L Finger11/ORC_ L Finger12
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger2
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger2/ORC_ L Finger21
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger2/ORC_ L Finger21/ORC_ L Finger22
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger3
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger3/ORC_ L Finger31
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/ORC_ L Hand/ORC_ L Finger3/ORC_ L Finger31/ORC_ L Finger32
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ L Clavicle/ORC_ L UpperArm/ORC_
+      L Forearm/SM_ForearmPad_Left
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ Neck
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ Neck/ORC_ Head
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ Neck/ORC_ Head/ORC_
+      Queue de cheval 1
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ Neck/ORC_ Head/ORC_
+      Queue de cheval 1/ORC_ Queue de cheval 11
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ Neck/ORC_ Head/ORC_
+      Queue de cheval 1/ORC_ Queue de cheval 11/ORC_ Queue de cheval 12
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ Neck/ORC_ Head/ORC_
+      Queue de cheval 1/ORC_ Queue de cheval 11/ORC_ Queue de cheval 12/ORC_ Queue
+      de cheval 13
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ Neck/ORC_ Head/ORC_
+      Queue de cheval 2
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger0
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger0/ORC_ R Finger01
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger0/ORC_ R Finger01/ORC_ R Finger02
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger1
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger1/ORC_ R Finger11
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger1/ORC_ R Finger11/ORC_ R Finger12
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger2
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger2/ORC_ R Finger21
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger2/ORC_ R Finger21/ORC_ R Finger22
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger3
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger3/ORC_ R Finger31
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/ORC_ R Finger3/ORC_ R Finger31/ORC_ R Finger32
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/ORC_ R Hand/SM_Axe
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/ORC_ R Clavicle/ORC_ R UpperArm/ORC_
+      R Forearm/SM_ForearmPad_Right
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/SHOULDER_PAD_L
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/ORC_ Spine/ORC_ Spine1/SHOULDER_PAD_R
+    m_Weight: 1
+  - m_Path: root/ORC_/ORC_ Pelvis/PELT_SKIN_BACK_1
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/PELT_SKIN_BACK_1/PELT_SKIN_BACK_2
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/PELT_SKIN_BACK_1/PELT_SKIN_BACK_2/PELT_SKIN_BACK_3
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/PELT_SKIN_FRONT_1
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/PELT_SKIN_FRONT_1/PELT_SKIN_FRONT_2
+    m_Weight: 0
+  - m_Path: root/ORC_/ORC_ Pelvis/PELT_SKIN_FRONT_1/PELT_SKIN_FRONT_2/PELT_SKIN_FRONT_3
+    m_Weight: 0
+  - m_Path: SK_BellyArmor
+    m_Weight: 0
+  - m_Path: SK_OrcBody
+    m_Weight: 0
+  - m_Path: SK_OrcPonytail
+    m_Weight: 0
+  - m_Path: SK_ShoulderPads
+    m_Weight: 0
