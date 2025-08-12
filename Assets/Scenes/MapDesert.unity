@@ -14776,6 +14776,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 60178056940071133, guid: f4f4dd2081bddb145ad3f1895dd29484,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 29.837755
+      objectReference: {fileID: 0}
     - target: {fileID: 1404806830275657732, guid: f4f4dd2081bddb145ad3f1895dd29484,
         type: 3}
       propertyPath: m_SceneBindings.Array.data[0].value
@@ -14840,6 +14845,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CutSceneDesertmap
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142445434923245990, guid: f4f4dd2081bddb145ad3f1895dd29484,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229030665302778872, guid: f4f4dd2081bddb145ad3f1895dd29484,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229030665302778872, guid: f4f4dd2081bddb145ad3f1895dd29484,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 60.777756
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229030665302778872, guid: f4f4dd2081bddb145ad3f1895dd29484,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 116.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229030665302778872, guid: f4f4dd2081bddb145ad3f1895dd29484,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.91428804
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229030665302778872, guid: f4f4dd2081bddb145ad3f1895dd29484,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.12510294
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229030665302778872, guid: f4f4dd2081bddb145ad3f1895dd29484,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.38170514
+      objectReference: {fileID: 0}
+    - target: {fileID: 7229030665302778872, guid: f4f4dd2081bddb145ad3f1895dd29484,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.05222909
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -60755,7 +60800,7 @@ Transform:
   m_GameObject: {fileID: 1571758067840442173}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17301324, y: 0.28061622, z: -0.051501784, w: 0.94269216}
-  m_LocalPosition: {x: 391.2145, y: 24.254799, z: 243.9943}
+  m_LocalPosition: {x: 397.2145, y: 24.254799, z: 243.9943}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
