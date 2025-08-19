@@ -1626,19 +1626,16 @@ MonoBehaviour:
   patrolWaitTime: 3
   detectionDistance: 4
   detectionAngle: 90
-  playerPosition: {fileID: 0}
   attackRange: 4
   attackCooldown: 2
   attackDamage: 10
   fleeHealthThreshold: 0.2
   fleeDistance: 8
   fleeSpeed: 5
-  player: {fileID: 0}
   agent: {fileID: 894920859790327764}
   animator: {fileID: 8969453532174240841}
   health: {fileID: 8279805790939433960}
   monsterUI: {fileID: 6217980576556552946}
-  playerController: {fileID: 0}
   blendParameter: Blend
   idleBlendValue: 0
   walkBlendValue: 0.5
@@ -2473,7 +2470,7 @@ MonoBehaviour:
   attackColliders:
   - {fileID: 2743368954920752056}
   attackCooldown: 3
-  maxAttackTypes: 6
+  maxAttackTypes: 3
   attackDamage:
   - 10
   nameLayer:
