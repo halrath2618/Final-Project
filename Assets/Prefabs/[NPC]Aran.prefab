@@ -2891,7 +2891,7 @@ GameObject:
   - component: {fileID: 2711352358088455495}
   - component: {fileID: 3277107755741595317}
   m_Layer: 0
-  m_Name: Aran
+  m_Name: '[NPC]Aran'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

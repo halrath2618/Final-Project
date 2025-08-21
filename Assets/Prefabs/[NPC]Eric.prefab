@@ -3116,7 +3116,7 @@ GameObject:
   - component: {fileID: 6472721506717690448}
   - component: {fileID: 5525542392469938624}
   m_Layer: 0
-  m_Name: Eric
+  m_Name: '[NPC]Eric'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

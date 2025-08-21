@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 5111478903676355105}
   - component: {fileID: 3128720978468588237}
   m_Layer: 0
-  m_Name: Scy
+  m_Name: '[Main NPC] Scy'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
