@@ -19,22 +19,25 @@ public class BossAI : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private float attackCooldown;
     [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private float strafeDistance = 5f;
-    [SerializeField] private float strafeDuration = 2f;
-    [SerializeField] private float strafeChangeDirectionTime =.5f;
-    [Range(0, 1)] public float strafeProbability = .5f;
+
+    [SerializeField] private float strafeDistance = 5f; //Khoảng cách từ player khi strafe
+    [SerializeField] private float strafeDuration = 2f; //Thời gian tối đa strafe
+    [SerializeField] private float strafeChangeDirectionTime =.5f; //Tần suất đổi hướng
+    [Range(0, 1)] public float strafeProbability = .5f; //Xác suất chọn strafe thay vì tấn công
 
     [Header("References")]
     private Transform player;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
+    [SerializeField] private LayerMask playerLayer;
+
 
     private float lastAttackTime;
     private bool isPlayerInSight;
     private float strafeTimer;
     private float directionChangeTimer;
     private int strafeDirection = 1;
-    private Vector3 strafeTargerPostion;
+    private Vector3 strafeTargetPosition;
 
     void Start()
     {
@@ -66,7 +69,7 @@ public class BossAI : MonoBehaviour
                 AttackingState(); 
                 break;
             case AIState.Strafe:
-                AttackingState();
+                StrafeState();
                 break;
         }
     }
@@ -74,13 +77,13 @@ public class BossAI : MonoBehaviour
     private void DetectPlayer()
     {
 
-        Vector3 toPlayer =player.position - transform.position;
+        Vector3 distanceToPlayer =player.position - transform.position;
         isPlayerInSight = false;
-        float distance = toPlayer.magnitude;
+        float distance = distanceToPlayer.magnitude;
         if (distance < detection)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position + Vector3.up, toPlayer.normalized, out hit)) { 
+            if (Physics.Raycast(transform.position + Vector3.up, distanceToPlayer.normalized, out hit)) { 
                 if (hit.transform == player)
                 {
                     isPlayerInSight = true;
@@ -159,6 +162,11 @@ public class BossAI : MonoBehaviour
         {
             Attack();
             lastAttackTime = Time.time;
+
+            if (UnityEngine.Random.value < strafeProbability * 0.5f)
+            {
+                StartStrafe();
+            }
         }
     }
 
@@ -184,10 +192,10 @@ public class BossAI : MonoBehaviour
         playerToBoss.Normalize();
 
         Vector3 strafeDirectionVector = Quaternion.Euler(0, 90 * strafeDirection, 0) * playerToBoss;
-        strafeTargerPostion = player.position + strafeDirectionVector * strafeDistance;
+        strafeTargetPosition = player.position + strafeDirectionVector * strafeDistance;
 
         agent.isStopped =false;
-        agent.SetDestination(strafeTargerPostion);
+        agent.SetDestination(strafeTargetPosition);
     
     }
     void StrafeState()
@@ -201,12 +209,24 @@ public class BossAI : MonoBehaviour
         strafeTimer += Time.deltaTime;
         directionChangeTimer += Time.deltaTime;
 
+        // Change strafe direction periodically
+
         if (directionChangeTimer >= strafeChangeDirectionTime)
         {
             directionChangeTimer = 0f;
             strafeDirection *= -1;// Reverse direction
             CalculateStrafePosition();
         }
+
+        float distanceToStrafeTarget = Vector3.Distance(transform.position, strafeTargetPosition);
+
+        if (distanceToStrafeTarget < 1f || strafeTimer >= strafeDuration)
+        {
+            currentState = AIState.Attack;
+            agent.isStopped =  true;
+            return;
+        }
+        FaceTarget(player.position);
     }
 
     #endregion
@@ -228,5 +248,12 @@ public class BossAI : MonoBehaviour
         // Vẽ phạm vi tấn công
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        if (currentState == AIState.Strafe)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(transform.position, strafeTargetPosition);
+            Gizmos.DrawSphere(strafeTargetPosition, 0.5f);
+        }
     }
 }

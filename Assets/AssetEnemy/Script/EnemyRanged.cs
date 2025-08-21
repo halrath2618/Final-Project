@@ -7,7 +7,7 @@ public class EnemyRanged : MonoBehaviour
     [SerializeField] private float projectileSpeed = 15f;
    
 
-    public void Attack()
+    public void Shooting()
     {
         // Animation event sẽ gọi hàm này hoặc gọi trực tiếp
         if (projectilePrefab == null || firePoint == null) return;
