@@ -107,6 +107,7 @@ public class BossAI : MonoBehaviour
             currentState = AIState.Idle;
             return;
         }
+
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer <= attackRange)
         {
@@ -116,7 +117,6 @@ public class BossAI : MonoBehaviour
         {
             currentState = AIState.Chasing;
             animator.SetFloat("walk", agent.velocity.magnitude);
-
         }
     }
 
@@ -129,12 +129,12 @@ public class BossAI : MonoBehaviour
         }
 
 
+
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (distanceToPlayer <= attackRange)
         {
-            currentState = AIState.Attack;
-            agent.isStopped = true;
+            DecideAttackOrStrafe();
             return;
         }
         
@@ -142,7 +142,19 @@ public class BossAI : MonoBehaviour
         agent.SetDestination(player.position);
         FaceTarget(player.position);
     }
-
+    void DecideAttackOrStrafe()
+    {
+        // Sử dụng UnityEngine.Random thay vì Random
+        if (UnityEngine.Random.value < strafeProbability && agent.remainingDistance <= attackRange * 1.5f)
+        {
+            StartStrafe();
+        }
+        else
+        {
+            currentState = AIState.Attack;
+            agent.isStopped = true;
+        }
+    }
     void AttackingState()
     {
         if (!isPlayerInSight)
@@ -172,6 +184,8 @@ public class BossAI : MonoBehaviour
 
     private void Attack()
     {
+        int rand = UnityEngine.Random.Range(1, 3);
+        animator.SetInteger("AttackType", rand);
         animator.SetTrigger("Attack");
     }
 
