@@ -16,7 +16,7 @@ public class FileValidator : MonoBehaviour
 
     [Header("Validation Settings")]
     [SerializeField] private string manifestFileName = "file_manifest.json";
-    [SerializeField] private string nextSceneName = "MainMenu"; // Scene to load on success
+    [SerializeField] private string nextSceneName = "Main Menu"; // Scene to load on success
 
     private List<string> corruptedFiles = new List<string>();
 
