@@ -1551,19 +1551,16 @@ MonoBehaviour:
   patrolWaitTime: 3
   detectionDistance: 4
   detectionAngle: 90
-  playerPosition: {fileID: 0}
   attackRange: 5
   attackCooldown: 2
   attackDamage: 10
   fleeHealthThreshold: 0.2
   fleeDistance: 8
   fleeSpeed: 5
-  player: {fileID: 0}
   agent: {fileID: 2635028544751280812}
   animator: {fileID: 8670371222726929346}
   health: {fileID: 6624004651270585551}
   monsterUI: {fileID: 2830280707764880456}
-  playerController: {fileID: 0}
   blendParameter: Blend
   idleBlendValue: 0
   walkBlendValue: 0.5
@@ -1584,7 +1581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 0}
-  monsterHealth: {fileID: 0}
+  monsterHealth: {fileID: 6624004651270585551}
   camera: {fileID: 0}
 --- !u!114 &6624004651270585551
 MonoBehaviour:

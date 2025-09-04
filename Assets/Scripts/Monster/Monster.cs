@@ -58,9 +58,13 @@ public class Monster : MonoBehaviour
     [Header("Animation Layers")]
     public int baseLayerIndex = 0;
     public int combatLayerIndex = 1;
+
+    private int hittingLayer;
+    private bool isOnCooldown;
     void Start()
     {
         attackAnimationManager = GetComponentInChildren<EnemyCombatAnimation>();
+        hittingLayer = animator.GetLayerIndex("Hitting");
         startPosition = transform.position;
         patrolTarget = GetRandomPatrolPoint();
         agent.speed = patrolSpeed;
@@ -302,7 +306,9 @@ public class Monster : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if(playerController == null) { return; }
-
+        // hit animation
+        StartCoroutine(HitAnimationLayerCD());
+        //
         if (other.CompareTag("Skill_E"))
         {
             health.TakeDamage(playerController.attackDmg_Earth);
@@ -353,6 +359,16 @@ public class Monster : MonoBehaviour
             health.TakeDamage(playerController.attackDmg_AfterMeetHalrathSkill2);
             Debug.Log("Monster hit by Hunter Skill 2, current health: " + health.currentHealth);
         }
+    }
+
+    private IEnumerator HitAnimationLayerCD()
+    {
+        isOnCooldown = true;
+
+        animator.SetTrigger("Hitting");
+        animator.SetLayerWeight(hittingLayer, 1f);
+
+        yield return new WaitForSeconds(2f);
     }
 
 }

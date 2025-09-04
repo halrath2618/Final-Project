@@ -1,0 +1,296 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OakTreeAvatarMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: root
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh/OAK_TEE_ENT_
+      L Calf
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh/OAK_TEE_ENT_
+      L Calf/OAK_TEE_ENT_ L Foot
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh/OAK_TEE_ENT_
+      L Calf/OAK_TEE_ENT_ L Foot/OAK_TEE_ENT_ L Toe0
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh/OAK_TEE_ENT_
+      L Calf/OAK_TEE_ENT_ L Foot/OAK_TEE_ENT_ L Toe0/OAK_TEE_ENT_ L Toe01
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh/OAK_TEE_ENT_
+      L Calf/OAK_TEE_ENT_ L Foot/OAK_TEE_ENT_ L Toe0/OAK_TEE_ENT_ L Toe01/OAK_TEE_ENT_
+      L Toe02
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh/OAK_TEE_ENT_
+      L Calf/OAK_TEE_ENT_ L Foot/OAK_TEE_ENT_ L Toe1
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh/OAK_TEE_ENT_
+      L Calf/OAK_TEE_ENT_ L Foot/OAK_TEE_ENT_ L Toe1/OAK_TEE_ENT_ L Toe11
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh/OAK_TEE_ENT_
+      L Calf/OAK_TEE_ENT_ L Foot/OAK_TEE_ENT_ L Toe1/OAK_TEE_ENT_ L Toe11/OAK_TEE_ENT_
+      L Toe12
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh/OAK_TEE_ENT_
+      L Calf/OAK_TEE_ENT_ L Foot/OAK_TEE_ENT_ L Toe2
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh/OAK_TEE_ENT_
+      L Calf/OAK_TEE_ENT_ L Foot/OAK_TEE_ENT_ L Toe2/OAK_TEE_ENT_ L Toe21
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ L Thigh/OAK_TEE_ENT_
+      L Calf/OAK_TEE_ENT_ L Foot/OAK_TEE_ENT_ L Toe2/OAK_TEE_ENT_ L Toe21/OAK_TEE_ENT_
+      L Toe22
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh/OAK_TEE_ENT_
+      R Calf
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh/OAK_TEE_ENT_
+      R Calf/OAK_TEE_ENT_ R Foot
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh/OAK_TEE_ENT_
+      R Calf/OAK_TEE_ENT_ R Foot/OAK_TEE_ENT_ R Toe0
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh/OAK_TEE_ENT_
+      R Calf/OAK_TEE_ENT_ R Foot/OAK_TEE_ENT_ R Toe0/OAK_TEE_ENT_ R Toe01
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh/OAK_TEE_ENT_
+      R Calf/OAK_TEE_ENT_ R Foot/OAK_TEE_ENT_ R Toe0/OAK_TEE_ENT_ R Toe01/OAK_TEE_ENT_
+      R Toe02
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh/OAK_TEE_ENT_
+      R Calf/OAK_TEE_ENT_ R Foot/OAK_TEE_ENT_ R Toe1
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh/OAK_TEE_ENT_
+      R Calf/OAK_TEE_ENT_ R Foot/OAK_TEE_ENT_ R Toe1/OAK_TEE_ENT_ R Toe11
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh/OAK_TEE_ENT_
+      R Calf/OAK_TEE_ENT_ R Foot/OAK_TEE_ENT_ R Toe1/OAK_TEE_ENT_ R Toe11/OAK_TEE_ENT_
+      R Toe12
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh/OAK_TEE_ENT_
+      R Calf/OAK_TEE_ENT_ R Foot/OAK_TEE_ENT_ R Toe2
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh/OAK_TEE_ENT_
+      R Calf/OAK_TEE_ENT_ R Foot/OAK_TEE_ENT_ R Toe2/OAK_TEE_ENT_ R Toe21
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ R Thigh/OAK_TEE_ENT_
+      R Calf/OAK_TEE_ENT_ R Foot/OAK_TEE_ENT_ R Toe2/OAK_TEE_ENT_ R Toe21/OAK_TEE_ENT_
+      R Toe22
+    m_Weight: 0
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm/OAK_TEE_ENT_
+      L Hand
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm/OAK_TEE_ENT_
+      L Hand/OAK_TEE_ENT_ L Finger0
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm/OAK_TEE_ENT_
+      L Hand/OAK_TEE_ENT_ L Finger0/OAK_TEE_ENT_ L Finger01
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm/OAK_TEE_ENT_
+      L Hand/OAK_TEE_ENT_ L Finger0/OAK_TEE_ENT_ L Finger01/OAK_TEE_ENT_ L Finger02
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm/OAK_TEE_ENT_
+      L Hand/OAK_TEE_ENT_ L Finger1
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm/OAK_TEE_ENT_
+      L Hand/OAK_TEE_ENT_ L Finger1/OAK_TEE_ENT_ L Finger11
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm/OAK_TEE_ENT_
+      L Hand/OAK_TEE_ENT_ L Finger1/OAK_TEE_ENT_ L Finger11/OAK_TEE_ENT_ L Finger12
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm/OAK_TEE_ENT_
+      L Hand/OAK_TEE_ENT_ L Finger2
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm/OAK_TEE_ENT_
+      L Hand/OAK_TEE_ENT_ L Finger2/OAK_TEE_ENT_ L Finger21
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm/OAK_TEE_ENT_
+      L Hand/OAK_TEE_ENT_ L Finger2/OAK_TEE_ENT_ L Finger21/OAK_TEE_ENT_ L Finger22
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ L Clavicle/OAK_TEE_ENT_ L UpperArm/OAK_TEE_ENT_ L Forearm/OAK_TEE_ENT_
+      L Hand/ROCK_MOSS_PARENT
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_L_ROOT
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_L_ROOT/OAK_TREE_ENT_EYE_L
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_L_ROOT/OAK_TREE_ENT_EYE_L/OAK_TREE_ENT_EYE_L_nub
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_L_ROOT/OAK_TREE_ENT_EYEBROW_L_1
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_L_ROOT/OAK_TREE_ENT_EYEBROW_L_1/OAK_TREE_ENT_EYEBROW_L_2
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_L_ROOT/OAK_TREE_ENT_EYEBROW_L_1/OAK_TREE_ENT_EYEBROW_L_2/OAK_TREE_ENT_EYEBROW_L_3
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_L_ROOT/OAK_TREE_ENT_EYELID_LOWER_L
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_L_ROOT/OAK_TREE_ENT_EYELID_UPPER_L
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_R_ROOT
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_R_ROOT/OAK_TREE_ENT_EYE_R
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_R_ROOT/OAK_TREE_ENT_EYE_R/OAK_TREE_ENT_EYE_R_nub
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_R_ROOT/OAK_TREE_ENT_EYEBROW_R_1
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_R_ROOT/OAK_TREE_ENT_EYEBROW_R_1/OAK_TREE_ENT_EYEBROW_R_2
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_R_ROOT/OAK_TREE_ENT_EYEBROW_R_1/OAK_TREE_ENT_EYEBROW_R_2/OAK_TREE_ENT_EYEBROW_R_3
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_R_ROOT/OAK_TREE_ENT_EYELID_LOWER_R
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_EYE_R_ROOT/OAK_TREE_ENT_EYELID_UPPER_R
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_NOSE_1
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ Neck/OAK_TEE_ENT_ Head/OAK_TREE_ENT_NOSE_1/OAK_TREE_ENT_NOSE_2
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm/OAK_TEE_ENT_ R Forearm
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm/OAK_TEE_ENT_ R Forearm/OAK_TEE_ENT_
+      R Hand
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm/OAK_TEE_ENT_ R Forearm/OAK_TEE_ENT_
+      R Hand/OAK_TEE_ENT_ R Finger0
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm/OAK_TEE_ENT_ R Forearm/OAK_TEE_ENT_
+      R Hand/OAK_TEE_ENT_ R Finger0/OAK_TEE_ENT_ R Finger01
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm/OAK_TEE_ENT_ R Forearm/OAK_TEE_ENT_
+      R Hand/OAK_TEE_ENT_ R Finger0/OAK_TEE_ENT_ R Finger01/OAK_TEE_ENT_ R Finger02
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm/OAK_TEE_ENT_ R Forearm/OAK_TEE_ENT_
+      R Hand/OAK_TEE_ENT_ R Finger1
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm/OAK_TEE_ENT_ R Forearm/OAK_TEE_ENT_
+      R Hand/OAK_TEE_ENT_ R Finger1/OAK_TEE_ENT_ R Finger11
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm/OAK_TEE_ENT_ R Forearm/OAK_TEE_ENT_
+      R Hand/OAK_TEE_ENT_ R Finger1/OAK_TEE_ENT_ R Finger11/OAK_TEE_ENT_ R Finger12
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm/OAK_TEE_ENT_ R Forearm/OAK_TEE_ENT_
+      R Hand/OAK_TEE_ENT_ R Finger2
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm/OAK_TEE_ENT_ R Forearm/OAK_TEE_ENT_
+      R Hand/OAK_TEE_ENT_ R Finger2/OAK_TEE_ENT_ R Finger21
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TEE_ENT_ R Clavicle/OAK_TEE_ENT_ R UpperArm/OAK_TEE_ENT_ R Forearm/OAK_TEE_ENT_
+      R Hand/OAK_TEE_ENT_ R Finger2/OAK_TEE_ENT_ R Finger21/OAK_TEE_ENT_ R Finger22
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TREE_ENT_LIP_LOWER_L_1
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TREE_ENT_LIP_LOWER_L_1/OAK_TREE_ENT_LIP_LOWER_L_2
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TREE_ENT_LIP_LOWER_R_1
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TREE_ENT_LIP_LOWER_R_1/OAK_TREE_ENT_LIP_LOWER_R_2
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TREE_ENT_LIP_UPPER_L_1
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TREE_ENT_LIP_UPPER_L_1/OAK_TREE_ENT_LIP_UPPER_L_2
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TREE_ENT_LIP_UPPER_R_1
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/OAK_TEE_ENT_ Pelvis/OAK_TEE_ENT_ Spine/OAK_TEE_ENT_
+      Spine1/OAK_TREE_ENT_LIP_UPPER_R_1/OAK_TREE_ENT_LIP_UPPER_R_2
+    m_Weight: 1
+  - m_Path: root/OAK_TEE_ENT_/RockMossDistanceReference
+    m_Weight: 0
+  - m_Path: SK_OakTreeEnt
+    m_Weight: 0
+  - m_Path: SK_OakTreeEntBeard
+    m_Weight: 0
+  - m_Path: SK_OakTreeEntFoliageBranches
+    m_Weight: 0
+  - m_Path: SK_OakTreeEntHair
+    m_Weight: 0

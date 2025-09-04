@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BearAvatarmask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/Root_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Hip_L
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Hip_L/Knee_L
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L/Toes1_L
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L/Toes1_L/MiddleToe1_L
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Hip_L/Knee_L/Ankle_L/Toes1_L/MiddleToe1_L/MiddleToe2_L
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Hip_R
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Hip_R/Knee_R
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R/Toes1_R
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R/Toes1_R/MiddleToe1_R
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Hip_R/Knee_R/Ankle_R/Toes1_R/MiddleToe1_R/MiddleToe2_R
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Spine1_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Ear_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Ear_L/EarEnd_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Ear_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Ear_R/EarEnd_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Eye_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Eye_L/EyeEnd_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Eye_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Eye_R/EyeEnd_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/eyelidDOWN_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/eyelidDOWN_L/eyelidDOWN_L_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/eyelidDOWN_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/eyelidDOWN_R/eyelidDOWN_R_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/eyelidUP_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/eyelidUP_L/eyelidUP_L_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/eyelidUP_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/eyelidUP_R/eyelidUP_R_end
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/HeadEnd_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Jaw_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Jaw_M/JawEnd_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Jaw_M/Tongue1_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Jaw_M/Tongue1_M/Tongue2_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Neck_M/Head_M/Jaw_M/Tongue1_M/Tongue2_M/TongueEnd_M
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/Elbow_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/Elbow_L/ElbowPart1_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/Elbow_L/ElbowPart1_L/ElbowPart2_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/Elbow_L/ElbowPart1_L/ElbowPart2_L/Wrist_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/Elbow_L/ElbowPart1_L/ElbowPart2_L/Wrist_L/Fingers1_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/Elbow_L/ElbowPart1_L/ElbowPart2_L/Wrist_L/Fingers1_L/MiddleFinger1_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_L/Shoulder_L/ShoulderPart1_L/Elbow_L/ElbowPart1_L/ElbowPart2_L/Wrist_L/Fingers1_L/MiddleFinger1_L/MiddleFinger2_L
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/Elbow_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/Elbow_R/ElbowPart1_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/Elbow_R/ElbowPart1_R/ElbowPart2_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/Elbow_R/ElbowPart1_R/ElbowPart2_R/Wrist_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/Elbow_R/ElbowPart1_R/ElbowPart2_R/Wrist_R/Fingers1_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/Elbow_R/ElbowPart1_R/ElbowPart2_R/Wrist_R/Fingers1_R/MiddleFinger1_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Spine1_M/Spine2_M/Chest_M/Scapula_R/Shoulder_R/ShoulderPart1_R/Elbow_R/ElbowPart1_R/ElbowPart2_R/Wrist_R/Fingers1_R/MiddleFinger1_R/MiddleFinger2_R
+    m_Weight: 1
+  - m_Path: Armature/Root_M/Tail0_M
+    m_Weight: 0
+  - m_Path: Armature/Root_M/Tail0_M/Tail1_M
+    m_Weight: 0
+  - m_Path: Meshes
+    m_Weight: 0
+  - m_Path: Meshes/Body
+    m_Weight: 0

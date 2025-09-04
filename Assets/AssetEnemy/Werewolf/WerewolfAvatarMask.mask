@@ -1,0 +1,196 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WerewolfAvatarMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: root
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ L Thigh
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ L Thigh/WEREWOLF_ L Calf
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ L Thigh/WEREWOLF_ L Calf/WEREWOLF_
+      L HorseLink
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ L Thigh/WEREWOLF_ L Calf/WEREWOLF_
+      L HorseLink/WEREWOLF_ L Foot
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ L Thigh/WEREWOLF_ L Calf/WEREWOLF_
+      L HorseLink/WEREWOLF_ L Foot/WEREWOLF_ L Toe0
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ R Thigh
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ R Thigh/WEREWOLF_ R Calf
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ R Thigh/WEREWOLF_ R Calf/WEREWOLF_
+      R HorseLink
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ R Thigh/WEREWOLF_ R Calf/WEREWOLF_
+      R HorseLink/WEREWOLF_ R Foot
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ R Thigh/WEREWOLF_ R Calf/WEREWOLF_
+      R HorseLink/WEREWOLF_ R Foot/WEREWOLF_ R Toe0
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger0
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger0/WEREWOLF_ L Finger01
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger0/WEREWOLF_ L Finger01/WEREWOLF_ L Finger02
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger1
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger1/WEREWOLF_ L Finger11
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger1/WEREWOLF_ L Finger11/WEREWOLF_ L Finger12
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger2
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger2/WEREWOLF_ L Finger21
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger2/WEREWOLF_ L Finger21/WEREWOLF_ L Finger22
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger3
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger3/WEREWOLF_ L Finger31
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      L Clavicle/WEREWOLF_ L UpperArm/WEREWOLF_ L Forearm/WEREWOLF_ L Hand/WEREWOLF_
+      L Finger3/WEREWOLF_ L Finger31/WEREWOLF_ L Finger32
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      Neck
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      Neck/WEREWOLF_ Neck1
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      Neck/WEREWOLF_ Neck1/WEREWOLF_ Head
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      Neck/WEREWOLF_ Neck1/WEREWOLF_ Head/WEREWOLF_ Queue de cheval 1
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger0
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger0/WEREWOLF_ R Finger01
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger0/WEREWOLF_ R Finger01/WEREWOLF_ R Finger02
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger1
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger1/WEREWOLF_ R Finger11
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger1/WEREWOLF_ R Finger11/WEREWOLF_ R Finger12
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger2
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger2/WEREWOLF_ R Finger21
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger2/WEREWOLF_ R Finger21/WEREWOLF_ R Finger22
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger3
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger3/WEREWOLF_ R Finger31
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Spine/WEREWOLF_ Spine1/WEREWOLF_
+      R Clavicle/WEREWOLF_ R UpperArm/WEREWOLF_ R Forearm/WEREWOLF_ R Hand/WEREWOLF_
+      R Finger3/WEREWOLF_ R Finger31/WEREWOLF_ R Finger32
+    m_Weight: 1
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Tail
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Tail/WEREWOLF_ Tail1
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Tail/WEREWOLF_ Tail1/WEREWOLF_
+      Tail2
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Tail/WEREWOLF_ Tail1/WEREWOLF_
+      Tail2/WEREWOLF_ Tail3
+    m_Weight: 0
+  - m_Path: root/WEREWOLF_/WEREWOLF_ Pelvis/WEREWOLF_ Tail/WEREWOLF_ Tail1/WEREWOLF_
+      Tail2/WEREWOLF_ Tail3/WEREWOLF_ Tail4
+    m_Weight: 0
+  - m_Path: SK_Werewolf
+    m_Weight: 0
