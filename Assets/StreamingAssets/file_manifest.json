@@ -1,0 +1,708 @@
+{
+    "files": [
+        {
+            "filePath": "Dance Animations.meta",
+            "md5Hash": "cd72ddf9c1af26aeeb8a5b9db798d2aa"
+        },
+        {
+            "filePath": "Dance Animations/Anims.meta",
+            "md5Hash": "9e494135ff4b3c1f649f41e7b22a8fe5"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Actions.meta",
+            "md5Hash": "206ed328d0a22c6d057b1e320dee14d9"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex.meta",
+            "md5Hash": "3874e886841fd4cf63bcec5942c3b290"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes.meta",
+            "md5Hash": "ac041320cedc8a060596c817e465a6fb"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple.meta",
+            "md5Hash": "47a5ea53046494dee73d5eb53a431acf"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Actions/Blender.anim",
+            "md5Hash": "12a098a71d42a466db4ca8e2a4f84966"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Actions/Blender.anim.meta",
+            "md5Hash": "d1c6bdf19f737364f2eaeb2e97def5d1"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Actions/Fatality.anim",
+            "md5Hash": "7c339f69bf61049c68c3be1655a2779d"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Actions/Fatality.anim.meta",
+            "md5Hash": "e59b354e3c5ab64f81d9c5052450aa65"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Actions/Naruto Run.anim",
+            "md5Hash": "d111c221bbb7c37671acb8a4a3d2474e"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Actions/Naruto Run.anim.meta",
+            "md5Hash": "ef9ae96fcb13786b6958ebec15a29196"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/A1.anim",
+            "md5Hash": "5af3cfc7545d1c6c227d2c843298a100"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/A1.anim.meta",
+            "md5Hash": "5b8e27d833f6f141d9ad13b904738e94"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Aerobic.anim",
+            "md5Hash": "14ee8e6a15813959c6456040f04667b9"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Aerobic.anim.meta",
+            "md5Hash": "78821538d773dc5e2dc8372fd61f3530"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Bhangra.anim",
+            "md5Hash": "844d65fbbd69645adc2d5bba59a037b3"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Bhangra.anim.meta",
+            "md5Hash": "0bd07fd23bd75eee8e46d4da2bd5f108"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Breakdance 1.anim",
+            "md5Hash": "33acadaff6fe7545bb950385eb0065b2"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Breakdance 1.anim.meta",
+            "md5Hash": "93077826ed9b8c2352a98e539e20667e"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Breakdance 2.anim",
+            "md5Hash": "5ee81c4c5ac2c94347725eb0b3a446fa"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Breakdance 2.anim.meta",
+            "md5Hash": "0faa06054f98c4627cd648bb74ead915"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Cheerleader.anim",
+            "md5Hash": "e62e2c223fa79cc36a403c5edfbb6e1f"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Cheerleader.anim.meta",
+            "md5Hash": "8f8cfed9a71adc6177bd26a931c9c65c"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Cowboy.anim",
+            "md5Hash": "5d83cfe86f51f12e7ac761698de2c25b"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Cowboy.anim.meta",
+            "md5Hash": "66c0ab404375db0f01894ead0426506b"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/DreamFeet.anim",
+            "md5Hash": "7d3e7968e639fdedd0b686cd8b0dcf6a"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/DreamFeet.anim.meta",
+            "md5Hash": "cb8d0459e65cfc06f5d0c2f69f9bdfd6"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Eastern.anim",
+            "md5Hash": "413be6f36b11d9a7dfa63ade22293a7f"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Eastern.anim.meta",
+            "md5Hash": "a7a5c54d0dddc6eecc9630bc696952ae"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Egyptian.anim",
+            "md5Hash": "e760651cba696fc23dad2ff1987b659c"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Egyptian.anim.meta",
+            "md5Hash": "abb14a585bb4dd35706dd6e21e75af19"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Goth.anim",
+            "md5Hash": "79b43a9bffb0fb757190cc1ed1325500"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Goth.anim.meta",
+            "md5Hash": "cb26fb1ec2094c3b1583f7125fd16028"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/GrooveJam.anim",
+            "md5Hash": "afdaf0f48af117d3b6783084498167f3"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/GrooveJam.anim.meta",
+            "md5Hash": "327723e5789eccfb073b4e2df7372d86"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/HandsUp.anim",
+            "md5Hash": "fe19f2e4e10aa504317119b057e31eb9"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/HandsUp.anim.meta",
+            "md5Hash": "78ec55087935cb228a6aa0cf90cb4343"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Heart.anim",
+            "md5Hash": "074b1d692e3492455c88e6bae1076c05"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Heart.anim.meta",
+            "md5Hash": "087dfd244181d23574c8459fff561d4b"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/HiLowWave.anim",
+            "md5Hash": "b5483919f41241c548aa60f2b7fd4eeb"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/HiLowWave.anim.meta",
+            "md5Hash": "a4206634bbcb6df139e96972ba6fcada"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/HipHop 1.anim",
+            "md5Hash": "bb56abf660dbc3b96f27f9a6a3a8c249"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/HipHop 1.anim.meta",
+            "md5Hash": "1828366d13a1e9d7626bd0b659aaed7e"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/HipHop2.anim",
+            "md5Hash": "5b1c12c4b3b8875a85ab4948aafe4cc0"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/HipHop2.anim.meta",
+            "md5Hash": "ca93473d9da5071075e53a39d9dd3df4"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/HipHop3.anim",
+            "md5Hash": "99b5f6e3f25bdbebf2de53bf52a363cd"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/HipHop3.anim.meta",
+            "md5Hash": "eadcf97df5bd668ecc28e1b0a65aace3"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/India.anim",
+            "md5Hash": "eb0f378619b0ed14757bb30f3c0d93ae"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/India.anim.meta",
+            "md5Hash": "ae9022c04573f8574053d636fc9862e6"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Jammin.anim",
+            "md5Hash": "e310f8a6c63d96729a6028bb340db3bf"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Jammin.anim.meta",
+            "md5Hash": "0dbb48c8615d5bd81a012aa09d14d525"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Player Eleven.anim",
+            "md5Hash": "622367700791f9618936a19901d50e7b"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Player Eleven.anim.meta",
+            "md5Hash": "98dae8f58dc5d60740675f8490cef69a"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Pop Star.anim",
+            "md5Hash": "a7c220ad3ea759cff8642554bfb8b3da"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Pop Star.anim.meta",
+            "md5Hash": "c552aab3dda3fe84c0b89c40a3557e87"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Reanimated.anim",
+            "md5Hash": "d8419b18128e5af0f33976cb11ffa937"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Reanimated.anim.meta",
+            "md5Hash": "35266a9de123ac2c45f8cd805f26bd6d"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Rich.anim",
+            "md5Hash": "463848eae68d32b76dbf3ddb20c2c1ea"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Rich.anim.meta",
+            "md5Hash": "08a48a8437c70ba0dc659bc5848f359d"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Robot1.anim",
+            "md5Hash": "31bc62f09153ee592882ce9e0743d181"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Robot1.anim.meta",
+            "md5Hash": "71833d2fbf4f0dbd6a324aeff236e193"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Robot2.anim",
+            "md5Hash": "e5387757a34dc81589aa0bd0037e1a63"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Robot2.anim.meta",
+            "md5Hash": "dc217352ff6a8e2896e951a693ccde3b"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Sparkle.anim",
+            "md5Hash": "3e56d5864e0a63dd8ad8be0f73eb9b4b"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Sparkle.anim.meta",
+            "md5Hash": "18fab44ea1af167ab7243b28018e0751"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Split.anim",
+            "md5Hash": "cc62e95029c3e0a74853aa21a04995ef"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Split.anim.meta",
+            "md5Hash": "92a884edc81ee99f6ecddc5173dfb74a"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Warehouse.anim",
+            "md5Hash": "7d5af6f9812d30e81ccc075f63ccbf0c"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Warehouse.anim.meta",
+            "md5Hash": "ab4a2c4949ab7085a8ccaf466aec1eb9"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Wiggly.anim",
+            "md5Hash": "22a41794b40bc70faa07e347b158841a"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Complex/Wiggly.anim.meta",
+            "md5Hash": "63651dd4b713e6d5ecb9205159b2242a"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Crab Rave.anim",
+            "md5Hash": "94eb5c6e781d50dfa417b23c28f67ba8"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Crab Rave.anim.meta",
+            "md5Hash": "f4c96f7ba9b71f14eb3b25a262ab7c9f"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/FortniteDanceMoves.anim",
+            "md5Hash": "66026cdeca26cf6313e9393e9888e20e"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/FortniteDanceMoves.anim.meta",
+            "md5Hash": "3f7428f93bd84fff8759c2766d76cf8d"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Kitty Cat.anim",
+            "md5Hash": "79fdc019b888bd3c407a5fa5405e1c40"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Kitty Cat.anim.meta",
+            "md5Hash": "72207ba3ab9b1a1d8d17dc3c7b093abf"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Rickroll.anim",
+            "md5Hash": "64f6c7a77cc5cbe6fe9e6db35cf631ce"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Rickroll.anim.meta",
+            "md5Hash": "48bcfbf3fa7e860ad507fa8bf483951b"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Spooky Scary Skeletons.anim",
+            "md5Hash": "0bfbbcdf1caf174475d4b25d0f362ede"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Spooky Scary Skeletons.anim.meta",
+            "md5Hash": "910e158113fea069be54799c577ed879"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Take On Me.anim",
+            "md5Hash": "13b6ae33e3d519b76314f9bea96c6c3c"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Take On Me.anim.meta",
+            "md5Hash": "8d4837bebd61a5beefa0e10008b0593d"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Toothless Samba.anim",
+            "md5Hash": "1da10b32e918066f390433c2ba97eaf4"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Memes/Toothless Samba.anim.meta",
+            "md5Hash": "56c98cf03f07c59f61ea83ead531dd19"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/AirGuitar.anim",
+            "md5Hash": "6f1e3def1055fbb2528286b2f0d1617a"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/AirGuitar.anim.meta",
+            "md5Hash": "5372076983d539acc578c7ee9dc6605d"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Alien.anim",
+            "md5Hash": "490b584c1b9bb6ef35719ac0d94a6194"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Alien.anim.meta",
+            "md5Hash": "35c71ddb0626d683fe60800c7048cc11"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/ArmWave.anim",
+            "md5Hash": "bd2baf0e42065cc026906d40a3af1dae"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/ArmWave.anim.meta",
+            "md5Hash": "a40eed48ec00ce65a9340537996754c2"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Ballet Jumps.anim",
+            "md5Hash": "74f5408471708ae2c2bb169ef03a2da7"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Ballet Jumps.anim.meta",
+            "md5Hash": "87f27edb6c3a87db420dd8dcb75c2876"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/BBD.anim",
+            "md5Hash": "791aece40b449d1930c05236e118557e"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/BBD.anim.meta",
+            "md5Hash": "4fc9297e009c8d43084a98764d7a1859"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Boogie_Down.anim",
+            "md5Hash": "e1486fd4e1d86f89e9aaa8f69047eada"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Boogie_Down.anim.meta",
+            "md5Hash": "108f5941bca72edc0cb33924a959351a"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Breakboy.anim",
+            "md5Hash": "63928973daecb862dbbbb90433b592f3"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Breakboy.anim.meta",
+            "md5Hash": "f0895632b3f4911b4393623eab794ecc"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Charleston.anim",
+            "md5Hash": "6515cc9a5968f1449f90d146db5ece4b"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Charleston.anim.meta",
+            "md5Hash": "f2d4f27a9e9837adfac84e09e8dbc767"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Coffee.anim",
+            "md5Hash": "94a472064c0b54f9248e72bccfe926f1"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Coffee.anim.meta",
+            "md5Hash": "f08c6e3e190629592b13eaf50fc019fe"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Conga.anim",
+            "md5Hash": "69d1fc1fed7725e7104de98e707bc0dd"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Conga.anim.meta",
+            "md5Hash": "88a55cbf9e89dd297017ffbffe984eb3"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Crazy Dance.anim",
+            "md5Hash": "ef527a9ccf82496acd29e3cf47e9680f"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Crazy Dance.anim.meta",
+            "md5Hash": "63182dacd8b1ecd72131ca019e9b0922"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Crazy Feet.anim",
+            "md5Hash": "c3efb16771041a1ef643d71725f491a6"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Crazy Feet.anim.meta",
+            "md5Hash": "31b3247dd0c83afea92f42a19891bb7c"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/CrissCross.anim",
+            "md5Hash": "bd656864fa66834e91f7110eaee57579"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/CrissCross.anim.meta",
+            "md5Hash": "23e3850a3cf6ca89641d099b94d640c1"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Dancing Girl.anim",
+            "md5Hash": "f505b8d99083636076fe9b8c88e736ba"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Dancing Girl.anim.meta",
+            "md5Hash": "c0c7c26d838243f6bd7db92b2dfee452"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Disco1.anim",
+            "md5Hash": "07c929d928f7ae53693958d56bf3ad6e"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Disco1.anim.meta",
+            "md5Hash": "af1fcf38c9cc065226cacb5e5af6e65e"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Disco2.anim",
+            "md5Hash": "879f6dbffe7dac4fd2629d794a44a5fb"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Disco2.anim.meta",
+            "md5Hash": "2e0ed662b448273be922eb0d615d2fa4"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/ElectroShuffle.anim",
+            "md5Hash": "a69b53557d96d45836ffd73068f1c43d"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/ElectroShuffle.anim.meta",
+            "md5Hash": "55d6e148c5d69ffd4a89a1bd508d850e"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/ElectroSwing.anim",
+            "md5Hash": "4dcf69225a278cc387c699f851bcb2eb"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/ElectroSwing.anim.meta",
+            "md5Hash": "3449ad96dbc5113b1f59778ad63cfcb3"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Flamenco.anim",
+            "md5Hash": "1294dbb67057cbf484a5064a7ffb2447"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Flamenco.anim.meta",
+            "md5Hash": "118f6451239abc63a425dc1cfdfe469d"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Floss.anim",
+            "md5Hash": "a724efb73879278cae6f841277274ab3"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Floss.anim.meta",
+            "md5Hash": "b61e13053607b66ffae2a3ebbb70e11c"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Floss_Windmill.anim",
+            "md5Hash": "0fcc9b3cdaf684cb50139dc149d37e4b"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Floss_Windmill.anim.meta",
+            "md5Hash": "76a7076cb8687857305005baa2bd20d7"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Fresh.anim",
+            "md5Hash": "dabb6e09662862b76b26422e38f5efd4"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Fresh.anim.meta",
+            "md5Hash": "d6e855e5de3f5fe12d211bee81a346b9"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Funktime.anim",
+            "md5Hash": "c00b6edfcb9fac35190c341a78e92bc2"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Funktime.anim.meta",
+            "md5Hash": "e8e5061ff97e1c46f475060349704c67"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Hillbilly_Shuffle.anim",
+            "md5Hash": "d0d59017744f923697444b3dc0e93a1c"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Hillbilly_Shuffle.anim.meta",
+            "md5Hash": "0c3e9a3cdf009f5d8bd6a453dc051f1e"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Hula.anim",
+            "md5Hash": "c69255cb3a8d4273775b65de1d73391b"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Hula.anim.meta",
+            "md5Hash": "1e5e9dbf92d4cb6a5d2d6d0d0b5f8a38"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Intensity.anim",
+            "md5Hash": "f5fff1c811ab084350b16897940912eb"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Intensity.anim.meta",
+            "md5Hash": "faf386ca98514a60ed357a0796228076"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Jumpstyle.anim",
+            "md5Hash": "aebfaeba007ab9765a8f43ca2afc4687"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Jumpstyle.anim.meta",
+            "md5Hash": "e6c2399e1b808fe7284dbeddaf04a06f"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Lazy_Shuffle.anim",
+            "md5Hash": "73ef841799e5a44644f909b015fb7bba"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Lazy_Shuffle.anim.meta",
+            "md5Hash": "b6c423ff3556c9c7dd04028545fcd39f"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/MagicMan.anim",
+            "md5Hash": "4db03fa05fbda4bfb6c0760dd544acbb"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/MagicMan.anim.meta",
+            "md5Hash": "4240a2272948264d61cac495f9c2a352"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/NoBones.anim",
+            "md5Hash": "ae94205f0ae6196f550fac1489722134"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/NoBones.anim.meta",
+            "md5Hash": "16dfd02f09b3e32e1f808aebcfa8b55e"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Octopus.anim",
+            "md5Hash": "9317485d171c785672a22e8aeb7c3dab"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Octopus.anim.meta",
+            "md5Hash": "f9239d85b1a75e538d4ab932ecf7a6d9"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Quick Sweeper.anim",
+            "md5Hash": "a3f3a6b5e0d99b64a1e8f23895f78197"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Quick Sweeper.anim.meta",
+            "md5Hash": "1b931a0d5682a3d39b3a9d51b8aec4bc"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/RunningMan.anim",
+            "md5Hash": "61704646afc754a34601a69d4d3be224"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/RunningMan.anim.meta",
+            "md5Hash": "2035c43ef8a80efeb76b5b528ca10311"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Sidestep.anim",
+            "md5Hash": "ea583251ce7817ad8182e61b43a8feed"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Sidestep.anim.meta",
+            "md5Hash": "37cbdacac2b582bd469722bf010585ca"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/SmoothDrive.anim",
+            "md5Hash": "3c830ace3846f25c5f6d9a22c0aa5539"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/SmoothDrive.anim.meta",
+            "md5Hash": "9e70b37f8b0be4798a9df811b7acd345"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Sprinkler.anim",
+            "md5Hash": "469b6277219b43d11c34baa31cb076d1"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Sprinkler.anim.meta",
+            "md5Hash": "2c5cabb5bcfa52675cfc310b27f9a3f7"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Swim.anim",
+            "md5Hash": "41e8322c2c1da9416d942f6fa6892b9d"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Swim.anim.meta",
+            "md5Hash": "7cf2f1a8c6a311bde179249606ea15e1"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Swing Dance.anim",
+            "md5Hash": "44653bb7fa52bbd6cb41733d280e8df7"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Swing Dance.anim.meta",
+            "md5Hash": "1b11f37418a35f810d73de3779729ee1"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Touchdown.anim",
+            "md5Hash": "8ba0d4cf94bd9ee671118cafe7977248"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Touchdown.anim.meta",
+            "md5Hash": "cdb33fceb21f2b14560dbeed6ce0f750"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Twerk.anim",
+            "md5Hash": "fa3d574dbdd175638364c3a325c43456"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Twerk.anim.meta",
+            "md5Hash": "cfae478f8aa3959310b0e0bb3419cf40"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/WackyInflatable.anim",
+            "md5Hash": "05f39420aaf47c49a55dadb9bf17084e"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/WackyInflatable.anim.meta",
+            "md5Hash": "8e6c6ecc7010fd2b630076c688466b71"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Wave Dance.anim",
+            "md5Hash": "3bb6e5f47ec0bc35b0563a63ca0c88e0"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Wave Dance.anim.meta",
+            "md5Hash": "ba0819b285fdab5e0cc565089b9d3795"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Wiggle.anim",
+            "md5Hash": "4615c63f63104af52642c6969aa0e7e2"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Wiggle.anim.meta",
+            "md5Hash": "7b7757dc46e9c2106cc4fb8fd7887854"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Worm.anim",
+            "md5Hash": "e781e060f02b3f17c6929e19b9134db3"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Worm.anim.meta",
+            "md5Hash": "93d098d67a6e0981fd67bd302100e6ce"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Zippy.anim",
+            "md5Hash": "1c8e3f241bfcf75ac78daa40ea3c5333"
+        },
+        {
+            "filePath": "Dance Animations/Anims/Simple/Zippy.anim.meta",
+            "md5Hash": "1b5562cb00ec9733bc227145712dc996"
+        }
+    ]
+}
