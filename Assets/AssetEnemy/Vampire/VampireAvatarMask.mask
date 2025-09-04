@@ -1,0 +1,201 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: VampireAvatarMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: root
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_
+    m_Weight: 0
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis
+    m_Weight: 0
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ L Thigh
+    m_Weight: 0
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ L Thigh/VAMPIRE_ L Calf
+    m_Weight: 0
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ L Thigh/VAMPIRE_ L Calf/VAMPIRE_
+      L Foot
+    m_Weight: 0
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ L Thigh/VAMPIRE_ L Calf/VAMPIRE_
+      L Foot/VAMPIRE_ L Toe0
+    m_Weight: 0
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ R Thigh
+    m_Weight: 0
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ R Thigh/VAMPIRE_ R Calf
+    m_Weight: 0
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ R Thigh/VAMPIRE_ R Calf/VAMPIRE_
+      R Foot
+    m_Weight: 0
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ R Thigh/VAMPIRE_ R Calf/VAMPIRE_
+      R Foot/VAMPIRE_ R Toe0
+    m_Weight: 0
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger0
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger0/VAMPIRE_ L Finger01
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger0/VAMPIRE_ L Finger01/VAMPIRE_ L Finger02
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger1
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger1/VAMPIRE_ L Finger11
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger1/VAMPIRE_ L Finger11/VAMPIRE_ L Finger12
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger2
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger2/VAMPIRE_ L Finger21
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger2/VAMPIRE_ L Finger21/VAMPIRE_ L Finger22
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger3
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger3/VAMPIRE_ L Finger31
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger3/VAMPIRE_ L Finger31/VAMPIRE_ L Finger32
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger4
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger4/VAMPIRE_ L Finger41
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      L Clavicle/VAMPIRE_ L UpperArm/VAMPIRE_ L Forearm/VAMPIRE_ L Hand/VAMPIRE_
+      L Finger4/VAMPIRE_ L Finger41/VAMPIRE_ L Finger42
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      Neck
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      Neck/VAMPIRE_ Neck1
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      Neck/VAMPIRE_ Neck1/VAMPIRE_ Head
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      Neck/VAMPIRE_ Neck1/VAMPIRE_ Head/VAMPIRE_ Ponytail1
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger0
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger0/VAMPIRE_ R Finger01
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger0/VAMPIRE_ R Finger01/VAMPIRE_ R Finger02
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger1
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger1/VAMPIRE_ R Finger11
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger1/VAMPIRE_ R Finger11/VAMPIRE_ R Finger12
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger2
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger2/VAMPIRE_ R Finger21
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger2/VAMPIRE_ R Finger21/VAMPIRE_ R Finger22
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger3
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger3/VAMPIRE_ R Finger31
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger3/VAMPIRE_ R Finger31/VAMPIRE_ R Finger32
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger4
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger4/VAMPIRE_ R Finger41
+    m_Weight: 1
+  - m_Path: root/VAMPIRE_/VAMPIRE_ Pelvis/VAMPIRE_ Spine/VAMPIRE_ Spine1/VAMPIRE_
+      R Clavicle/VAMPIRE_ R UpperArm/VAMPIRE_ R Forearm/VAMPIRE_ R Hand/VAMPIRE_
+      R Finger4/VAMPIRE_ R Finger41/VAMPIRE_ R Finger42
+    m_Weight: 1
+  - m_Path: SK_Vampire
+    m_Weight: 0

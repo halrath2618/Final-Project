@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GolemAvatarMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: root
+    m_Weight: 1
+  - m_Path: root/GOLEM_
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ L Thigh
+    m_Weight: 0
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ L Thigh/GOLEM_ L Calf
+    m_Weight: 0
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ L Thigh/GOLEM_ L Calf/GOLEM_ L Foot
+    m_Weight: 0
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ R Thigh
+    m_Weight: 0
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ R Thigh/GOLEM_ R Calf
+    m_Weight: 0
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ R Thigh/GOLEM_ R Calf/GOLEM_ R Foot
+    m_Weight: 0
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ L Clavicle
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ L Clavicle/GOLEM_
+      L UpperArm
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ L Clavicle/GOLEM_
+      L UpperArm/GOLEM_ L Forearm
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ L Clavicle/GOLEM_
+      L UpperArm/GOLEM_ L Forearm/GOLEM_ L Hand
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ L Clavicle/GOLEM_
+      L UpperArm/GOLEM_ L Forearm/GOLEM_ L Hand/GOLEM_ L Finger0
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ L Clavicle/GOLEM_
+      L UpperArm/GOLEM_ L Forearm/GOLEM_ L Hand/GOLEM_ L Finger0/GOLEM_ L Finger01
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ L Clavicle/GOLEM_
+      L UpperArm/GOLEM_ L Forearm/GOLEM_ L Hand/GOLEM_ L Finger1
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ L Clavicle/GOLEM_
+      L UpperArm/GOLEM_ L Forearm/GOLEM_ L Hand/GOLEM_ L Finger1/GOLEM_ L Finger11
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ L Clavicle/GOLEM_
+      L UpperArm/GOLEM_ L Forearm/GOLEM_ L Hand/GOLEM_ L Finger2
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ L Clavicle/GOLEM_
+      L UpperArm/GOLEM_ L Forearm/GOLEM_ L Hand/GOLEM_ L Finger2/GOLEM_ L Finger21
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ Neck
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ Neck/GOLEM_
+      Head
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ Neck/GOLEM_
+      Head/GOLEM_ Queue de cheval 1
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ R Clavicle
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ R Clavicle/GOLEM_
+      R UpperArm
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ R Clavicle/GOLEM_
+      R UpperArm/GOLEM_ R Forearm
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ R Clavicle/GOLEM_
+      R UpperArm/GOLEM_ R Forearm/GOLEM_ R Hand
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ R Clavicle/GOLEM_
+      R UpperArm/GOLEM_ R Forearm/GOLEM_ R Hand/GOLEM_ R Finger0
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ R Clavicle/GOLEM_
+      R UpperArm/GOLEM_ R Forearm/GOLEM_ R Hand/GOLEM_ R Finger0/GOLEM_ R Finger01
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ R Clavicle/GOLEM_
+      R UpperArm/GOLEM_ R Forearm/GOLEM_ R Hand/GOLEM_ R Finger1
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ R Clavicle/GOLEM_
+      R UpperArm/GOLEM_ R Forearm/GOLEM_ R Hand/GOLEM_ R Finger1/GOLEM_ R Finger11
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ R Clavicle/GOLEM_
+      R UpperArm/GOLEM_ R Forearm/GOLEM_ R Hand/GOLEM_ R Finger2
+    m_Weight: 1
+  - m_Path: root/GOLEM_/GOLEM_ Pelvis/GOLEM_ Spine/GOLEM_ Spine1/GOLEM_ R Clavicle/GOLEM_
+      R UpperArm/GOLEM_ R Forearm/GOLEM_ R Hand/GOLEM_ R Finger2/GOLEM_ R Finger21
+    m_Weight: 1
+  - m_Path: SK_Golem
+    m_Weight: 0

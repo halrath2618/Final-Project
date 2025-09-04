@@ -236,8 +236,7 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: Event DisableAttackColliders has a time (2.000000) outside
-      the clip's valid range (0.000000..1.966667). It will never be fired
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -275,7 +274,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
+      - time: 0.3414226
         functionName: EnableAttackCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
