@@ -15,36 +15,36 @@ MonoBehaviour:
   characters:
   - name: Zino
     alias: Z
-    characterType: 1
+    characterType: 0
     nameColor: {r: 1, g: 0, b: 0, a: 1}
-    dialogueColor: {r: 0, g: 0, b: 0, a: 1}
-    nameFont: {fileID: 11400000, guid: 6eb21602d74450c4396ec6d1cdf92137, type: 2}
-    dialogueFont: {fileID: 11400000, guid: 6eb21602d74450c4396ec6d1cdf92137, type: 2}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
   - name: Halrath
     alias: H
-    characterType: 1
+    characterType: 0
     nameColor: {r: 0, g: 0.7837887, b: 1, a: 1}
-    dialogueColor: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
-    nameFont: {fileID: 11400000, guid: 6eb21602d74450c4396ec6d1cdf92137, type: 2}
-    dialogueFont: {fileID: 11400000, guid: 6eb21602d74450c4396ec6d1cdf92137, type: 2}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
   - name: Scy
     alias: S
-    characterType: 1
+    characterType: 0
     nameColor: {r: 1, g: 0.9614235, b: 0, a: 1}
-    dialogueColor: {r: 0, g: 0, b: 0, a: 1}
-    nameFont: {fileID: 11400000, guid: 6eb21602d74450c4396ec6d1cdf92137, type: 2}
-    dialogueFont: {fileID: 11400000, guid: 6eb21602d74450c4396ec6d1cdf92137, type: 2}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
   - name: Blacky
     alias: B
-    characterType: 1
+    characterType: 0
     nameColor: {r: 0.28648984, g: 0.29811916, b: 0.5471698, a: 1}
-    dialogueColor: {r: 0, g: 0, b: 0, a: 1}
-    nameFont: {fileID: 11400000, guid: 6eb21602d74450c4396ec6d1cdf92137, type: 2}
-    dialogueFont: {fileID: 11400000, guid: 6eb21602d74450c4396ec6d1cdf92137, type: 2}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
   - name: Demon
     alias: Z1
-    characterType: 1
+    characterType: 0
     nameColor: {r: 0.6037736, g: 0.20458598, b: 0.17942329, a: 1}
-    dialogueColor: {r: 0, g: 0, b: 0, a: 1}
-    nameFont: {fileID: 11400000, guid: 6eb21602d74450c4396ec6d1cdf92137, type: 2}
-    dialogueFont: {fileID: 11400000, guid: 6eb21602d74450c4396ec6d1cdf92137, type: 2}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
+    dialogueFont: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}

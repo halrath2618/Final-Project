@@ -9,6 +9,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    public float storyProgress = 0; // Variable to track story progress
     private bool _isAttacking = false; // Flag to check if the player is currently attacking
     public bool CanMove => !_isAttacking; // Property to check if the player can move
 
@@ -181,7 +182,7 @@ public class PlayerController : MonoBehaviour
     {
         switchClassUI.SetActive(true);
         _controller.GetComponent<CharacterController>().enabled = false; // Disable character controller to prevent movement during initialization
-        
+
         _currentHealth = maxHP; // Initialize current health to max HP
         _currentMana = maxMana; // Initialize current mana to max Mana
         _currentStamina = maxStamina; // Initialize current stamina to max Stamina
