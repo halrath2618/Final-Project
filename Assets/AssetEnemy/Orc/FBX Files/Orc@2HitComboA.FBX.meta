@@ -427,23 +427,30 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
+      - time: 0.17071131
         functionName: EnableAttackCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
+      - time: 0.2822135
+        functionName: DealDamage
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5882845
         functionName: DisableAttackColliders
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.26547712
-        functionName: DealDamage
-        data: 
+      - time: 0
+        functionName: PlaySound
+        data: AttackSound
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

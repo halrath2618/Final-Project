@@ -2504,7 +2504,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 5564405166431911799}
-  hitSounds: []
+  hitSounds:
+  - name: AttackSound
+    clip: {fileID: 8300000, guid: bb0ac5e7afc48cb4e87361cefb1687c9, type: 3}
 --- !u!82 &5564405166431911799
 AudioSource:
   m_ObjectHideFlags: 0

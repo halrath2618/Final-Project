@@ -752,7 +752,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 684395766978975218}
-  hitSounds: []
+  hitSounds:
+  - name: AttackSound
+    clip: {fileID: 8300000, guid: 879cbba642d9a404f9d1d0f4d42d4f6e, type: 3}
+  - name: StompAttackSound
+    clip: {fileID: 8300000, guid: dba0cca2ea759a04397350842b9540a1, type: 3}
 --- !u!1 &2108695230110449352
 GameObject:
   m_ObjectHideFlags: 0
