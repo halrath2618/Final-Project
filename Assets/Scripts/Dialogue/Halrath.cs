@@ -16,17 +16,16 @@ using Unity.Mathematics;
 
 public class Halrath : MonoBehaviour
 {
-    //public Button choice1;
-    //public Button choice2;
-    //public TMP_Text text1;
-    //public TMP_Text text2;
+    public Button choice1;
+    public Button choice2;
+    public TMP_Text text1;
+    public TMP_Text text2;
 
     public GameObject dialogueBox;
     private bool isDialogueActive = false;
 
-    //public GameObject choicePanel;
-    //public RectTransform _choicePanel;
-    //public static TMP_FontAsset tempFont;
+    public GameObject choicePanel;
+    public RectTransform _choicePanel;
 
     [SerializeField] private PlayerController playerController;
 
@@ -53,11 +52,11 @@ public class Halrath : MonoBehaviour
     //public CharacterShaking char_Shaking;
     //public BackgroundChangeSystem bg;
 
-    //public void ChoicePanelAnimation()
-    //{
-    //    choicePanel.SetActive(true);
-    //    _choicePanel.DOMoveX(_choicePanel.position.x, 1).From(6000);
-    //}
+    public void ChoicePanelAnimation()
+    {
+        choicePanel.SetActive(true);
+        _choicePanel.DOMoveX(_choicePanel.position.x, 1).From(6000);
+    }
 
     // Start is called before the first frame update
     public void OnTriggerEnter(Collider other)
@@ -104,15 +103,30 @@ public class Halrath : MonoBehaviour
         {
             case 0:
                 {
-                    yield return Z.Say("What a beautiful night...");
-                    yield return H.Say("Indeed it is, Zino.");
-                    playerController.storyProgress++;
-                    StartCoroutine(Chap());
+                    yield return Z.Say("Ô Xin chào");
+                    yield return H.Say("Oh hế lô");
+
+                    yield return Z.Say("Tôi là Zino, rất vui được gặp bạn");
+
+                    yield return H.Say("Chọn đi??");
+                    choicePanel.SetActive(true);
+                    yield return H.Say("1. ........\n2. .......");
                     break;
                 }
             case 1:
                 {
+                    yield return Z.Say("Tôi muốn hỏi về Halrath");
                     dialogueBox.SetActive(false);
+                    choicePanel.SetActive(false);
+                    Zino.enabled = true;
+                    yield return null;
+                    break;
+                }
+            case 2:
+                {
+                    yield return Z.Say("Tôi muốn hỏi về Halrath");
+                    dialogueBox.SetActive(false);
+                    choicePanel.SetActive(false);
                     Zino.enabled = true;
                     yield return null;
                     break;
@@ -120,5 +134,18 @@ public class Halrath : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void Choice1()
+    {
+        playerController.storyProgress = +1;
+        choicePanel.SetActive(false);
+        StartCoroutine(Chap());
+    }
+    public void Choice2()
+    {
+        playerController.storyProgress = +2;
+        choicePanel.SetActive(false);
+        StartCoroutine(Chap());
     }
 }

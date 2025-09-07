@@ -248,8 +248,15 @@ public class PlayerController : MonoBehaviour
             // Sprint
             if (Input.GetKey(KeyCode.LeftShift) && _currentStamina > 0)
             {
-                _currentSpeed = sprintSpeed;
-                StaminaSprinting();
+                if(_currentSpeed <= 0)
+                {
+                    return;
+                }
+                else
+                {
+                    _currentSpeed = sprintSpeed;
+                    StaminaSprinting();
+                }
             }
             else
             {
