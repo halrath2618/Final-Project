@@ -1940,7 +1940,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 3673112703092842542}
-  hitSounds: []
+  hitSounds:
+  - name: AttackSound
+    clip: {fileID: 8300000, guid: bb0ac5e7afc48cb4e87361cefb1687c9, type: 3}
 --- !u!1 &3831010831058900627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2518,19 +2520,16 @@ MonoBehaviour:
   patrolWaitTime: 3
   detectionDistance: 4
   detectionAngle: 90
-  playerPosition: {fileID: 0}
   attackRange: 2
   attackCooldown: 2
   attackDamage: 10
   fleeHealthThreshold: 0.2
   fleeDistance: 8
   fleeSpeed: 5
-  player: {fileID: 0}
   agent: {fileID: 2735763560413142338}
   animator: {fileID: 3920973955240748822}
   health: {fileID: 9064779468887736591}
   monsterUI: {fileID: 3894144837543648151}
-  playerController: {fileID: 0}
   blendParameter: Blend
   idleBlendValue: 0
   walkBlendValue: 0.5
