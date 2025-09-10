@@ -15,11 +15,11 @@ public class CreateCharacterText : MonoBehaviour
 
     public void Start()
     {
-        Z = CreateCharacter("Zino");
-        H = CreateCharacter("Halrath");
-        B = CreateCharacter("Blacky");
-        S = CreateCharacter("Scy");
-        G = CreateCharacter("Guard");
-        Z1 = CreateCharacter("Demon");
+        Z = CreateCharacter("Zino") as Character_Text;
+        H = CreateCharacter("Halrath") as Character_Text;
+        B = CreateCharacter("Blacky") as Character_Text;
+        S = CreateCharacter("Scy") as Character_Text;
+        G = CreateCharacter("Guard") as Character_Text;
+        Z1 = CreateCharacter("Demon") as Character_Text;
     }
 }
