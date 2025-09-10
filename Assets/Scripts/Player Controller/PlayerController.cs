@@ -180,8 +180,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        switchClassUI.SetActive(true);
-        _controller.GetComponent<CharacterController>().enabled = false; // Disable character controller to prevent movement during initialization
+        characterClassManager.SwitchClass(CharacterClass.Starter); // Start with the Starter class
 
         _currentHealth = maxHP; // Initialize current health to max HP
         _currentMana = maxMana; // Initialize current mana to max Mana
@@ -195,36 +194,32 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (characterClass == 1)
         {
-            characterClass = 1;
             skill1MaxCD = 1f; // Set cooldown time for Brawler's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for Brawler's first skill
             skill2MaxCD = 4f; // Set cooldown time for Brawler's second skill
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for Brawler's second skill
             SwitchToBrawler(); // Switch to Brawler class when 1 is pressed
         }
-        if (Input.GetKeyDown(KeyCode.N))
+        else if (characterClass == 2)
         {
-            characterClass = 2;
             skill1MaxCD = 5f; // Set cooldown time for Mage's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for Mage's first skill
             skill2MaxCD = 10f; // Set cooldown time for Mage's second skill
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for Mage's second skill
             SwitchToMage(); // Switch to Mage class when 2 is pressed
         }
-        if (Input.GetKeyDown(KeyCode.M))
+        else if (characterClass == 3)
         {
-            characterClass = 3;
             skill1MaxCD = 1f; // Set cooldown time for SwordMaster's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for SwordMaster's first skill
             skill2MaxCD = 4f; // Set cooldown time for SwordMaster's second skill
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for SwordMaster's second skill
             SwitchToSwordMaster(); // Switch to SwordMaster class when 3 is pressed
         }
-        if (Input.GetKeyDown(KeyCode.J))
+        else if (characterClass == 4)
         {
-            characterClass = 4;
             skill1MaxCD = 1f; // Set cooldown time for After Meet Halrath's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for After Meet Halrath's first skill
             skill2MaxCD = 4f; // Set cooldown time for After Meet Halrath's second skill

@@ -23,6 +23,8 @@ TagManager:
   - HSkill1
   - HSkill2
   - PlayerCamera
+  - D1
+  - D2
   layers:
   - Default
   - TransparentFX
