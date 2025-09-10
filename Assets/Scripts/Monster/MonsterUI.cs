@@ -11,7 +11,9 @@ public class MonsterUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        var vcam = GameObject.FindGameObjectWithTag("PlayerCamera")
+                         .GetComponent<CinemachineVirtualCamera>();
+
     }
 
     // Update is called once per frame
