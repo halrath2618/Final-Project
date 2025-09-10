@@ -370,11 +370,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Disclaimer: The story in this game don''t have anything relate to real
-    life. Just a fiction for original character.'
+  m_text: "C\u1ED1t truy\u1EC7n trong tr\xF2 ch\u01A1i n\xE0y ho\xE0n to\xE0n l\xE0
+    h\u01B0 c\u1EA5u, kh\xF4ng c\xF3 b\u1EA5t k\u1EF3 li\xEAn h\u1EC7 n\xE0o \u0111\u1EBFn
+    \u0111\u1EDDi th\u1EF1c. M\u1ECDi t\xECnh ti\u1EBFt ch\u1EC9 nh\u1EB1m ph\u1EE5c
+    v\u1EE5 cho vi\u1EC7c x\xE2y d\u1EF1ng nh\xE2n v\u1EADt g\u1ED1c v\xE0 th\u1EBF
+    gi\u1EDBi t\u01B0\u1EDFng t\u01B0\u1EE3ng.\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
-  m_sharedMaterial: {fileID: 21831057732861670, guid: 15e26ddfa07c7504b9f007c20597bb1d,
+  m_fontAsset: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}
+  m_sharedMaterial: {fileID: -5433013324671183055, guid: ea3b7a34c5bdeca4d984c286187bb193,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -399,8 +402,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
-  m_fontSizeBase: 65
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -589,12 +592,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: All characters in the game (except monsters) are copyrighted by Zino Redpaw.
-    The character models were created using Soap's original base. Use of any kind
-    in any form is strictly prohibited.
+  m_text: "T\u1EA5t c\u1EA3 c\xE1c nh\xE2n v\u1EADt trong tr\xF2 ch\u01A1i (ngo\u1EA1i
+    tr\u1EEB qu\xE1i v\u1EADt) \u0111\u1EC1u thu\u1ED9c b\u1EA3n quy\u1EC1n c\u1EE7a
+    Zino Redpaw. C\xE1c m\xF4 h\xECnh nh\xE2n v\u1EADt \u0111\u01B0\u1EE3c t\u1EA1o
+    d\u1EF1a tr\xEAn m\u1EABu n\u1EC1n g\u1ED1c c\u1EE7a Soap. M\u1ECDi h\xECnh th\u1EE9c
+    s\u1EED d\u1EE5ng d\u01B0\u1EDBi b\u1EA5t k\u1EF3 d\u1EA1ng n\xE0o \u0111\u1EC1u
+    b\u1ECB nghi\xEAm c\u1EA5m tuy\u1EC7t \u0111\u1ED1i.\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
-  m_sharedMaterial: {fileID: 21831057732861670, guid: 15e26ddfa07c7504b9f007c20597bb1d,
+  m_fontAsset: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}
+  m_sharedMaterial: {fileID: -5433013324671183055, guid: ea3b7a34c5bdeca4d984c286187bb193,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -619,8 +625,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
-  m_fontSizeBase: 65
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -818,12 +824,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The game is focus on Story so it will not have any UI for quest hint or
-    auto direct you to the point of the quest. So best is read every sentences of
-    the story to find your next move in the quest.
+  m_text: "Tr\xF2 ch\u01A1i t\u1EADp trung ho\xE0n to\xE0n v\xE0o c\u1ED1t truy\u1EC7n,
+    v\xEC v\u1EADy s\u1EBD kh\xF4ng c\xF3 giao di\u1EC7n hi\u1EC3n th\u1ECB g\u1EE3i
+    \xFD nhi\u1EC7m v\u1EE5 hay t\u1EF1 \u0111\u1ED9ng d\u1EABn b\u1EA1n \u0111\u1EBFn
+    \u0111i\u1EC3m c\u1EA7n \u0111\u1EBFn. \u0110\u1EC3 ho\xE0n th\xE0nh nhi\u1EC7m
+    v\u1EE5, b\u1EA1n b\u1EAFt bu\u1ED9c ph\u1EA3i \u0111\u1ECDc k\u1EF9 t\u1EEBng
+    c\xE2u trong c\xE2u chuy\u1EC7n\u2014m\u1ECDi chi ti\u1EBFt \u0111\u1EC1u c\xF3
+    th\u1EC3 l\xE0 manh m\u1ED1i cho b\u01B0\u1EDBc ti\u1EBFp theo.\r"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
-  m_sharedMaterial: {fileID: 21831057732861670, guid: 15e26ddfa07c7504b9f007c20597bb1d,
+  m_fontAsset: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}
+  m_sharedMaterial: {fileID: -5433013324671183055, guid: ea3b7a34c5bdeca4d984c286187bb193,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -848,8 +858,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
-  m_fontSizeBase: 65
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1319,10 +1329,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press the button when you done ->
+  m_text: "\u0110\u1ECDc xong th\xEC nh\u1EA5n ph\xEDm n\xE0y nh\xE9 ->"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 15e26ddfa07c7504b9f007c20597bb1d, type: 2}
-  m_sharedMaterial: {fileID: 21831057732861670, guid: 15e26ddfa07c7504b9f007c20597bb1d,
+  m_fontAsset: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}
+  m_sharedMaterial: {fileID: -5433013324671183055, guid: ea3b7a34c5bdeca4d984c286187bb193,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1347,8 +1357,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 28.1
+  m_fontSizeBase: 28.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
