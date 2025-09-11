@@ -27,7 +27,7 @@ public class Scy : MonoBehaviour
     //public GameObject fighting;
 
     public CameraSetting cameraSetting;
-    [SerializeField] private Animator halrath;
+    [SerializeField] private Animator scy;
     [SerializeField] private Animator zino;
 
 
