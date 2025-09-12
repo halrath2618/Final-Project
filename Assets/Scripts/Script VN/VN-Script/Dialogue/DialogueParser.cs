@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
-using UnityEngine;
 
 namespace DIALOGUE
 {
@@ -20,7 +15,7 @@ namespace DIALOGUE
 
             return new DialogueLine(speaker, dialogue, commands);
         }
-        private static (string,string,string) RipContent(string rawLine)
+        private static (string, string, string) RipContent(string rawLine)
         {
             string speaker = "", dialogue = "", commands = "";
 
@@ -28,16 +23,16 @@ namespace DIALOGUE
             int dialogueEnd = -1;
             bool isEscaped = false;
 
-            for(int i = 0; i < rawLine.Length; i++)
+            for (int i = 0; i < rawLine.Length; i++)
             {
                 char current = rawLine[i];
-                if(current == '\\')
+                if (current == '\\')
                     isEscaped = !isEscaped;
-                else if(current == '"' && !isEscaped)
+                else if (current == '"' && !isEscaped)
                 {
-                    if(dialogueStart == -1)
+                    if (dialogueStart == -1)
                         dialogueStart = i;
-                    else if(dialogueEnd == -1)
+                    else if (dialogueEnd == -1)
                         dialogueEnd = i;
                 }
                 else
@@ -51,7 +46,7 @@ namespace DIALOGUE
             Regex commandRegex = new Regex(commandRegexPattern);
             MatchCollection matches = commandRegex.Matches(rawLine);
             int commandStart = -1;
-            foreach(Match match in matches)
+            foreach (Match match in matches)
             {
                 if (match.Index < dialogueStart || match.Index > dialogueEnd)
                 {
@@ -66,13 +61,13 @@ namespace DIALOGUE
             if (dialogueStart != -1 && dialogueEnd != -1 && (commandStart == -1 || commandStart > dialogueEnd))
             {
                 speaker = rawLine.Substring(0, dialogueStart).Trim();
-                dialogue = rawLine.Substring(dialogueStart + 1, dialogueEnd - dialogueStart - 1).Replace("\\\"","\"");
+                dialogue = rawLine.Substring(dialogueStart + 1, dialogueEnd - dialogueStart - 1).Replace("\\\"", "\"");
                 if (commandStart != -1)
                     commands = rawLine.Substring(commandStart).Trim();
             }
             else if (commandStart != -1 && dialogueStart > commandStart)
                 commands = rawLine;
-            else 
+            else
                 dialogue = rawLine;
 
             return (speaker, dialogue, commands);

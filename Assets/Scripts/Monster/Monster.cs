@@ -17,7 +17,7 @@ public class Monster : MonoBehaviour
     public float detectionDistance = 15f;
     public float detectionAngle = 180f; // 90 degrees in front
     private bool playerDetected;
-  //  [SerializeField] private Transform playerPosition;
+    //  [SerializeField] private Transform playerPosition;
 
     [Header("Combat Settings")]
     public float attackRange = 2f;
@@ -34,13 +34,13 @@ public class Monster : MonoBehaviour
 
     [Header("References")]
     private Transform player;
-    [SerializeField] private NavMeshAgent agent;
+    private NavMeshAgent agent;
     [SerializeField] private Animator animator;
     [SerializeField] private Health health;
     [SerializeField] private MonsterUI monsterUI; // Assuming you have a UI script to update health display
-     private PlayerController playerController;
-    
-     private EnemyCombatAnimation attackAnimationManager;
+    private PlayerController playerController;
+
+    private EnemyCombatAnimation attackAnimationManager;
 
     //[Header("Animation Parameters")]
     ////public string walkParam = "IsWalking";
@@ -63,6 +63,7 @@ public class Monster : MonoBehaviour
     private bool isOnCooldown;
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         attackAnimationManager = GetComponentInChildren<EnemyCombatAnimation>();
         hittingLayer = animator.GetLayerIndex("Hitting");
         startPosition = transform.position;
@@ -74,9 +75,9 @@ public class Monster : MonoBehaviour
         //    player = GameObject.FindGameObjectWithTag("Player").transform;
 
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if(playerObject != null)
+        if (playerObject != null)
         {
-            player =playerObject.transform;
+            player = playerObject.transform;
             playerController = playerObject.GetComponent<PlayerController>();
         }
         else
@@ -87,9 +88,9 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
-        if(monsterUI != null)
+        if (monsterUI != null)
         {
-             monsterUI.UpdateHealthBar();
+            monsterUI.UpdateHealthBar();
         }
 
 
@@ -161,7 +162,7 @@ public class Monster : MonoBehaviour
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             patrolTimer += Time.deltaTime;
-           animator.SetFloat(blendParameter,idleBlendValue);
+            animator.SetFloat(blendParameter, idleBlendValue);
 
             // Wait at point before moving to next
             if (patrolTimer >= patrolWaitTime)
@@ -204,7 +205,7 @@ public class Monster : MonoBehaviour
 
     void ChaseBehavior()
     {
-        if(player == null) return;
+        if (player == null) return;
 
         // Set animations
         animator.SetFloat(blendParameter, runBlendValue);
@@ -213,7 +214,7 @@ public class Monster : MonoBehaviour
         // Move toward player
         agent.SetDestination(player.position);
         float distance = Vector3.Distance(transform.position, player.position);
-        
+
         if (distance <= attackRange && canAttack)
         {
             animator.SetLayerWeight(combatLayerIndex, 1f);
@@ -238,7 +239,7 @@ public class Monster : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
     }
-   
+
     // Called from attack animation event
 
     void StartFleeing()
@@ -305,7 +306,7 @@ public class Monster : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(playerController == null) { return; }
+        if (playerController == null) { return; }
         // hit animation
         StartCoroutine(HitAnimationLayerCD());
         //
@@ -334,17 +335,17 @@ public class Monster : MonoBehaviour
             health.TakeDamage(playerController.brawlerUltimateDamage);
             Debug.Log("Monster hit by tornado, current health: " + health.currentHealth);
         }
-        else if(other.CompareTag("SMSkill1"))
+        else if (other.CompareTag("SMSkill1"))
         {
             health.TakeDamage(playerController.swordMasterSkill1Damage);
             Debug.Log("Monster hit by Sword Skill 1, current health: " + health.currentHealth);
         }
-        else if(other.CompareTag("SMSkill2"))
+        else if (other.CompareTag("SMSkill2"))
         {
             health.TakeDamage(playerController.swordMasterSkill2Damage);
             Debug.Log("Monster hit by Sword Skill 2, current health: " + health.currentHealth);
         }
-        else if(other.CompareTag("SMSkill3"))
+        else if (other.CompareTag("SMSkill3"))
         {
             health.TakeDamage(playerController.swordMasterSkill3Damage);
             Debug.Log("Monster hit by Sword Ultimate, current health: " + health.currentHealth);

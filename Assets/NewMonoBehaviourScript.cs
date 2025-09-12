@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.UI;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public PlayableDirector scenes;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

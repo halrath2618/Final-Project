@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace FIMSpace
 {
@@ -122,7 +121,7 @@ namespace FIMSpace
             Debug.DrawLine(bl, fl, c, time);
             Debug.DrawLine(fl, fr, c, time);
 
-            Debug.DrawLine(fr1, fr1, c,time);
+            Debug.DrawLine(fr1, fr1, c, time);
             Debug.DrawLine(br, br1, c, time);
             Debug.DrawLine(bl1, bl, c, time);
             Debug.DrawLine(fl1, fl, c, time);

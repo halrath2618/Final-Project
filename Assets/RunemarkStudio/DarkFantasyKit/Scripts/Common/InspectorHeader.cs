@@ -1,12 +1,10 @@
 ﻿namespace Runemark.Common
 {
-    #if UNITY_EDITOR
-    using System.Collections;
-    using System.Collections.Generic;
+#if UNITY_EDITOR
     using UnityEditor;
     using UnityEngine;
 
-    public class InspectorHeader 
+    public class InspectorHeader
     {
         GUIStyle background;
         string title;
@@ -15,10 +13,10 @@
         {
             this.title = title;
 
-            Texture2D bg = Resources.Load<Texture2D>("InspectorHeader");  
+            Texture2D bg = Resources.Load<Texture2D>("InspectorHeader");
             background = new GUIStyle();
             background.padding = new RectOffset(15, 3, 3, 3);
-            background.normal.background = bg; 
+            background.normal.background = bg;
 
 
             Font lFont = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
@@ -27,16 +25,16 @@
             background.font = lFont;
             background.fontSize = 18;
             background.fontStyle = FontStyle.Bold;
-            background.normal.textColor = new Color(0.85f, 0.85f, 0.85f, 1.00f); 
+            background.normal.textColor = new Color(0.85f, 0.85f, 0.85f, 1.00f);
             background.fixedHeight = 50f;
-            background.alignment = TextAnchor.MiddleLeft;     
+            background.alignment = TextAnchor.MiddleLeft;
         }
-        
+
         public void Draw()
         {
-            GUILayout.Box(title, background);   
+            GUILayout.Box(title, background);
         }
-    
+
     }
-    #endif
+#endif
 }

@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using UnityEngine;
-using static AttackAnimationManager;
+﻿using UnityEngine;
 
 public class EnemyCombatAnimation : MonoBehaviour
 {
-    [SerializeField]private Animator animator;
+    [SerializeField] private Animator animator;
     public Collider[] attackColliders;
     public float attackCooldown = 2f;
     private float cooldownTimer;
@@ -29,12 +27,12 @@ public class EnemyCombatAnimation : MonoBehaviour
 
     public bool CanAttack()
     {
-        return cooldownTimer <= 0f ;
+        return cooldownTimer <= 0f;
     }
 
     public void TriggerRandomAttack()
     {
-        int rand = Random.Range(1, maxExclusive: maxAttackTypes+1);
+        int rand = Random.Range(1, maxExclusive: maxAttackTypes + 1);
         animator.SetInteger("AttackType", rand);
         animator.SetTrigger("Attack");
         cooldownTimer = attackCooldown;
@@ -43,10 +41,10 @@ public class EnemyCombatAnimation : MonoBehaviour
     // Called from Animation Event
     public void EnableAttackCollider(int index)
     {
-         for (int i = 0; i < attackColliders.Length; i++)
+        for (int i = 0; i < attackColliders.Length; i++)
         {
             attackColliders[i].enabled = (i == index);
-           // Debug.Log($"Collider {i} ({attackColliders[i].name}) => {(i == index ? "ENABLED" : "disabled")}");
+            // Debug.Log($"Collider {i} ({attackColliders[i].name}) => {(i == index ? "ENABLED" : "disabled")}");
         }
     }
     public void DisableAttackColliders()
@@ -59,13 +57,13 @@ public class EnemyCombatAnimation : MonoBehaviour
 
     public void DealDamage(int attackIndex)
     {
-         int damageIndex = attackIndex;
-    
+        int damageIndex = attackIndex;
+
         if (damageIndex >= 0 && damageIndex < attackDamage.Length)
         {
             // Tìm player gần nhất trong phạm vi
             Collider[] hitPlayers = Physics.OverlapSphere(transform.position, 2f, nameLayer);
-        
+
             foreach (var player in hitPlayers)
             {
                 PlayerController playerHealth = player.GetComponent<PlayerController>();

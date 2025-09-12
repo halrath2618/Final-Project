@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Zino_Chap1_D5 : MonoBehaviour
 {
@@ -21,6 +21,7 @@ public class Zino_Chap1_D5 : MonoBehaviour
 
     public CameraSetting cameraSetting;
     [SerializeField] private Animator zino;
+    [SerializeField] private Animator halrath;
     [SerializeField] CreateCharacterText createCharacterText;
 
 
@@ -41,10 +42,12 @@ public class Zino_Chap1_D5 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+
             Debug.Log("Trigger Entered");
             zino.SetFloat("Speed", 0);
             dialogueBox.SetActive(true);
             playerController.enabled = false;
+            halrath.SetTrigger("Sit");
             StartCoroutine(Chap5());
         }
     }
@@ -78,14 +81,14 @@ public class Zino_Chap1_D5 : MonoBehaviour
     {
         switch (playerController.storyProgress)
         {
-            case 4:
+            case 0:
                 {
                     yield return createCharacterText.Z.Say("Mình…{a}mình đang ở đâu?{c}Đây không phải khu rừng mình vừa bước vào!");
                     playerController.storyProgress++;
                     StartCoroutine(Chap5());
                     break;
                 }
-            case 5:
+            case 1:
                 {
                     dialogueBox.SetActive(false);
                     playerController.enabled = true;

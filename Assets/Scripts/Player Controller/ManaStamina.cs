@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 public class ManaStamina : MonoBehaviour
 {
-    
+
     public PlayerController playerController; // Reference to the PlayerController script
     public Slider manaSlider; // Reference to the UI Slider for Mana
     public Slider staminaSlider; // Reference to the UI Slider for Stamina
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

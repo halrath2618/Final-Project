@@ -995,7 +995,7 @@ GameObject:
   - component: {fileID: 3488841025857742292}
   m_Layer: 0
   m_Name: WEREWOLF_ R Hand
-  m_TagString: Untagged
+  m_TagString: Claw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1038,8 +1038,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.56, y: 1, z: 1}
-  m_Center: {x: -0.21, y: 0, z: 0}
+  m_Size: {x: 2.2667947, y: 1, z: 1}
+  m_Center: {x: 0.14339761, y: -0.0000000837765, z: 0.00000008295134}
 --- !u!1 &4446016644445254082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,9 +1210,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7795316562323073399}
   - component: {fileID: 1103058688869347183}
+  - component: {fileID: 515012537254095663}
   m_Layer: 0
   m_Name: SK_Werewolf
-  m_TagString: Untagged
+  m_TagString: Claw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1343,6 +1344,28 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.04158652, y: 0.3205915, z: -0.0000017881393}
     m_Extent: {x: 2.170765, y: 1.9486313, z: 2.2800307}
   m_DirtyAABB: 0
+--- !u!64 &515012537254095663
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958296373398083160}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 93f2a5184ecdd5f4ca0ff6e37aabad3c, type: 3}
 --- !u!1 &5371468471520846738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,7 +1764,7 @@ GameObject:
   - component: {fileID: 7229271429275334099}
   m_Layer: 0
   m_Name: Werewolf
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1832,7 +1855,6 @@ MonoBehaviour:
   fleeHealthThreshold: 0.2
   fleeDistance: 8
   fleeSpeed: 5
-  agent: {fileID: 6491769838490050054}
   animator: {fileID: 5762433045199440199}
   health: {fileID: 2222485144529571012}
   monsterUI: {fileID: 7229271429275334099}
@@ -2047,7 +2069,7 @@ GameObject:
   - component: {fileID: 5055350587906742375}
   m_Layer: 0
   m_Name: WEREWOLF_ L Hand
-  m_TagString: Untagged
+  m_TagString: Claw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2090,8 +2112,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.56, y: 1, z: 1}
-  m_Center: {x: -0.21, y: 0, z: 0}
+  m_Size: {x: 2.408872, y: 1, z: 1}
+  m_Center: {x: 0.21443671, y: -0.0000000121043975, z: 0.00000001844584}
 --- !u!1 &8233585500251556057
 GameObject:
   m_ObjectHideFlags: 0

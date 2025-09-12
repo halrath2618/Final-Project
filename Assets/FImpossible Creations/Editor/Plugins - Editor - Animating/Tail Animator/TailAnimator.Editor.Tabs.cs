@@ -310,7 +310,7 @@ namespace FIMSpace.FTail
             {
                 GUI.color = new Color(1f, 1f, 1f, 0.7f);
                 EditorGUIUtility.labelWidth = 210;
-                EditorGUILayout.PropertyField(sp_OverrideKeyframeAnimation, new GUIContent(sp_OverrideKeyframeAnimation.displayName+ " (Off)", sp_OverrideKeyframeAnimation.tooltip));
+                EditorGUILayout.PropertyField(sp_OverrideKeyframeAnimation, new GUIContent(sp_OverrideKeyframeAnimation.displayName + " (Off)", sp_OverrideKeyframeAnimation.tooltip));
                 EditorGUIUtility.labelWidth = 0;
                 GUI.color = c;
             }

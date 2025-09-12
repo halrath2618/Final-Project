@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace COMMANDS
@@ -14,7 +13,7 @@ namespace COMMANDS
 
         private static IEnumerator Wait(string data)
         {
-           if(float.TryParse(data, out float time))
+            if (float.TryParse(data, out float time))
             {
                 yield return new WaitForSeconds(time);
             }

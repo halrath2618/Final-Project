@@ -1,15 +1,13 @@
 using DIALOGUE;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace CHARACTERS
 {
     public class CharacterManager : MonoBehaviour
     {
-        public static CharacterManager instance {  get; private set; }
+        public static CharacterManager instance { get; private set; }
 
         private Dictionary<string, Character> characters = new Dictionary<string, Character>();
 
@@ -22,7 +20,7 @@ namespace CHARACTERS
         public string characterPrefabNameFormat => $"Character - [{CHARACTER_NAME_ID}]";
         public string characterPrefabPathFormat => $"{characterRootPathFormat}/{characterPrefabNameFormat}";
 
-        [SerializeField] 
+        [SerializeField]
         private RectTransform _characterpanel = null;
         public RectTransform characterPanel => _characterpanel;
 
@@ -38,9 +36,9 @@ namespace CHARACTERS
 
         public Character GetCharacter(string characterName, bool createIfDoesNotExist = false)
         {
-            if(characters.ContainsKey(characterName.ToLower()))
+            if (characters.ContainsKey(characterName.ToLower()))
                 return characters[characterName.ToLower()];
-            else if (createIfDoesNotExist) 
+            else if (createIfDoesNotExist)
                 return CreateCharacter(characterName);
 
             return null;
@@ -110,17 +108,17 @@ namespace CHARACTERS
                 default:
                     return null;
             }
-            
+
 
         }
 
-        
+
         public void SortCharacter()
         {
             List<Character> activeCharacters = characters.Values.Where(c => c.root.gameObject.activeInHierarchy && c.isVisible).ToList();
             List<Character> inactiveCharacters = characters.Values.Except(activeCharacters).ToList();
 
-            activeCharacters.Sort((a,b) => a.priority.CompareTo(b.priority));
+            activeCharacters.Sort((a, b) => a.priority.CompareTo(b.priority));
             activeCharacters.Concat(inactiveCharacters);
 
             SortCharacters(activeCharacters);

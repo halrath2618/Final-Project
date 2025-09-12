@@ -71,7 +71,7 @@ namespace FIMSpace.Basics
             if (Cursor.lockState != CursorLockMode.None)
             {
                 // Rotation with pressed rmb
-                if (Input.GetMouseButton(1) || !NeedRMB )
+                if (Input.GetMouseButton(1) || !NeedRMB)
                 {
                     rotation.x -= (Input.GetAxis("Mouse Y") * 1f * MouseSensitivity);
                     rotation.y += (Input.GetAxis("Mouse X") * 1f * MouseSensitivity);

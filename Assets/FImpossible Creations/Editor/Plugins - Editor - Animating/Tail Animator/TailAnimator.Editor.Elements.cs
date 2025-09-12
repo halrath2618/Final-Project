@@ -163,7 +163,7 @@ namespace FIMSpace.FTail
 
             EditorGUILayout.EndHorizontal();
 
-            if ( Get.OptimizeWithMesh)
+            if (Get.OptimizeWithMesh)
             {
                 SerializedProperty spc = sp_OptimizeWithMesh.Copy();
                 spc.Next(false);
@@ -745,10 +745,10 @@ namespace FIMSpace.FTail
                                     if (tail.CollisionMode == TailAnimator2.ECollisionMode.m_3DCollision)
                                     {
                                         Collider[] coll = draggedObject.GetComponents<Collider>();
-                                        for (int ci = 0; ci < coll.Length; ci++) 
+                                        for (int ci = 0; ci < coll.Length; ci++)
                                         {
                                             if (coll[ci] is CharacterController) continue;
-                                            tail.AddCollider(coll[ci]); 
+                                            tail.AddCollider(coll[ci]);
                                         }
                                     }
                                     else

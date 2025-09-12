@@ -1,16 +1,14 @@
-﻿using System;
-using System.Security.Cryptography.X509Certificates;
+﻿using RengeGames.HealthBars.Extensions;
 using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.UI;
-using RengeGames.HealthBars.Extensions;
 using Random = UnityEngine.Random;
 
-namespace RengeGames.HealthBars.Editors {
+namespace RengeGames.HealthBars.Editors
+{
     [CanEditMultipleObjects]
     [CustomEditor(typeof(RadialSegmentedHealthBar))]
-    public class RadialSegmentedHealthBarEditor : Editor {
+    public class RadialSegmentedHealthBarEditor : Editor
+    {
         #region serializedproperties
 
         private SerializedProperty parentName;
@@ -100,7 +98,8 @@ namespace RengeGames.HealthBars.Editors {
         private bool depletedFoldout = false;
         private bool emptyFoldout = false;
 
-        private void OnEnable() {
+        private void OnEnable()
+        {
             parentName = serializedObject.FindProperty("parentName");
             hbName = serializedObject.FindProperty("hbName");
             usingSpriteRenderer = serializedObject.FindProperty("usingSpriteRenderer");
@@ -184,14 +183,16 @@ namespace RengeGames.HealthBars.Editors {
         private SerializedProperty FindSerializedPropertyFromAutoProperty(SerializedObject obj, string propertyName) => obj.FindProperty($"<{propertyName}>k__BackingField");
         private SerializedProperty FindValueProperty(SerializedProperty parent) => parent.FindPropertyRelative("_value");
 
-        public override void OnInspectorGUI() {
+        public override void OnInspectorGUI()
+        {
             serializedObject.Update();
 
             headerStyle = GUI.skin.label;
             headerStyle.fontStyle = FontStyle.Bold;
 
             GUILayout.Label("Naming and Access", headerStyle);
-            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+            {
                 EditorGUILayout.PropertyField(parentName, new GUIContent() { text = "Parent Name" });
                 EditorGUILayout.PropertyField(hbName, new GUIContent() { text = "Health Bar Name" });
             }
@@ -199,7 +200,8 @@ namespace RengeGames.HealthBars.Editors {
             GUILayout.Space(10);
 
             GUILayout.Label("Data", headerStyle);
-            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+            {
                 EditorGUILayout.PropertyField(segmentCount, new GUIContent() { text = "Segment Count" });
                 EditorGUILayout.PropertyField(removeSegments, new GUIContent() { text = "Remove Segments" });
             }
@@ -208,8 +210,10 @@ namespace RengeGames.HealthBars.Editors {
             GUILayout.Label("Appearance", headerStyle);
 
             generalFoldout = EditorGUILayout.Foldout(generalFoldout, "General Appearance");
-            if (generalFoldout) {
-                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+            if (generalFoldout)
+            {
+                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                {
                     EditorGUILayout.PropertyField(fillClockwise, new GUIContent("Fill Clockwise"));
                     EditorGUILayout.PropertyField(segmentSpacing, new GUIContent() { text = "Segment Spacing" });
                     SliderPropertyField("Arc", FindValueProperty(arc), 0, 1);
@@ -228,11 +232,15 @@ namespace RengeGames.HealthBars.Editors {
                 EditorGUILayout.PropertyField(innerColor, new GUIContent() { text = "Health Color" });
             }
             EditorGUILayout.EndHorizontal();
-            if (hbFoldout) {
-                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+            if (hbFoldout)
+            {
+                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                {
                     EditorGUILayout.PropertyField(pulsateWhenLow, new GUIContent() { text = "Pulsate When Low" });
-                    if (FindValueProperty(pulsateWhenLow).boolValue) {
-                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                    if (FindValueProperty(pulsateWhenLow).boolValue)
+                    {
+                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                        {
                             EditorGUILayout.PropertyField(pulseColor, new GUIContent("Pulse Color"));
                             SliderPropertyField("Percent Health Activation", FindValueProperty(pulseActivationThreshold), 0, 1);
                             EditorGUILayout.PropertyField(pulseSpeed, new GUIContent() { text = "Pulse Speed" });
@@ -240,8 +248,10 @@ namespace RengeGames.HealthBars.Editors {
                     }
 
                     EditorGUILayout.PropertyField(innerTextureEnabled, new GUIContent() { text = "Use Texture" });
-                    if (!innerTextureEnabled.hasMultipleDifferentValues && FindValueProperty(innerTextureEnabled).boolValue) {
-                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                    if (!innerTextureEnabled.hasMultipleDifferentValues && FindValueProperty(innerTextureEnabled).boolValue)
+                    {
+                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                        {
                             //Texture stuff
                             EditorGUILayout.PropertyField(innerTexture, new GUIContent() { text = "Texture" });
                             EditorGUILayout.PropertyField(innerTextureScaleWithSegments, new GUIContent() { text = "Scale Texture with Segments" });
@@ -252,8 +262,10 @@ namespace RengeGames.HealthBars.Editors {
 
                             //Gradient stuff
                             EditorGUILayout.PropertyField(innerGradientEnabled, new GUIContent() { text = "Use Gradient" });
-                            if (!innerGradientEnabled.hasMultipleDifferentValues && FindValueProperty(innerGradientEnabled).boolValue) {
-                                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                            if (!innerGradientEnabled.hasMultipleDifferentValues && FindValueProperty(innerGradientEnabled).boolValue)
+                            {
+                                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                                {
                                     EditorGUILayout.PropertyField(innerGradient, new GUIContent() { text = "Gradient" });
                                     EditorGUILayout.PropertyField(valueAsGradientTimeInner, new GUIContent() { text = "Value As Gradient Time" });
                                 }
@@ -263,8 +275,10 @@ namespace RengeGames.HealthBars.Editors {
                     }
 
                     EditorGUILayout.PropertyField(contentNoiseEnabled, new GUIContent() { text = "Use Noise" });
-                    if (!contentNoiseEnabled.hasMultipleDifferentValues && FindValueProperty(contentNoiseEnabled).boolValue) {
-                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                    if (!contentNoiseEnabled.hasMultipleDifferentValues && FindValueProperty(contentNoiseEnabled).boolValue)
+                    {
+                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                        {
                             EditorGUILayout.PropertyField(contentNoiseStrength, new GUIContent() { text = "Noise Strength" });
                             EditorGUILayout.PropertyField(contentNoiseScale, new GUIContent() { text = "Noise Scale" });
                             EditorGUILayout.PropertyField(contentNoiseOffset, new GUIContent() { text = "Noise Offset" });
@@ -280,11 +294,15 @@ namespace RengeGames.HealthBars.Editors {
                 EditorGUILayout.PropertyField(overlayColor, new GUIContent() { text = "Overlay Color" });
             }
             EditorGUILayout.EndHorizontal();
-            if (overlayFoldout) {
-                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+            if (overlayFoldout)
+            {
+                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                {
                     EditorGUILayout.PropertyField(overlayTextureEnabled, new GUIContent() { text = "Use Texture" });
-                    if (FindValueProperty(overlayTextureEnabled).boolValue) {
-                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                    if (FindValueProperty(overlayTextureEnabled).boolValue)
+                    {
+                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                        {
                             EditorGUILayout.PropertyField(overlayTexture, new GUIContent() { text = "Texture" });
                             SliderPropertyField("Texture Opacity", FindValueProperty(overlayTextureOpacity), 0, 1);
                             EditorGUILayout.PropertyField(overlayTextureTiling, new GUIContent() { text = "Texture Tiling" });
@@ -293,8 +311,10 @@ namespace RengeGames.HealthBars.Editors {
                     }
 
                     EditorGUILayout.PropertyField(overlayNoiseEnabled, new GUIContent() { text = "Use Noise" });
-                    if (FindValueProperty(overlayNoiseEnabled).boolValue) {
-                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                    if (FindValueProperty(overlayNoiseEnabled).boolValue)
+                    {
+                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                        {
                             EditorGUILayout.PropertyField(overlayNoiseStrength, new GUIContent() { text = "Noise Strength" });
                             EditorGUILayout.PropertyField(overlayNoiseScale, new GUIContent() { text = "Noise Scale" });
                             EditorGUILayout.PropertyField(overlayNoiseOffset, new GUIContent() { text = "Noise Offset" });
@@ -310,14 +330,18 @@ namespace RengeGames.HealthBars.Editors {
                 EditorGUILayout.PropertyField(borderColor, new GUIContent() { text = "Border Color" });
             }
             EditorGUILayout.EndHorizontal();
-            if (borderFoldout) {
-                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+            if (borderFoldout)
+            {
+                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                {
                     SliderPropertyField("Border Width", FindValueProperty(borderWidth), 0, 1);
                     EditorGUILayout.PropertyField(borderSpacing, new GUIContent() { text = "Border Spacing" });
 
                     EditorGUILayout.PropertyField(borderTextureEnabled, new GUIContent() { text = "Use Texture" });
-                    if (FindValueProperty(borderTextureEnabled).boolValue) {
-                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                    if (FindValueProperty(borderTextureEnabled).boolValue)
+                    {
+                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                        {
                             EditorGUILayout.PropertyField(borderTexture, new GUIContent() { text = "Texture" });
                             EditorGUILayout.PropertyField(borderTextureScaleWithSegments, new GUIContent() { text = "Scale Texture with Segments" });
                             EditorGUILayout.PropertyField(alignBorderTexture, new GUIContent() { text = "Align Texture" });
@@ -336,12 +360,16 @@ namespace RengeGames.HealthBars.Editors {
                 EditorGUILayout.PropertyField(emptyColor, new GUIContent() { text = "Depleted Color" });
             }
             EditorGUILayout.EndHorizontal();
-            if (depletedFoldout) {
-                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+            if (depletedFoldout)
+            {
+                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                {
                     SliderPropertyField("Depleted Transparency", FindValueProperty(removeBorder), 0, 1);
                     EditorGUILayout.PropertyField(emptyTextureEnabled, new GUIContent() { text = "Use Texture" });
-                    if (FindValueProperty(emptyTextureEnabled).boolValue) {
-                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                    if (FindValueProperty(emptyTextureEnabled).boolValue)
+                    {
+                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                        {
                             EditorGUILayout.PropertyField(emptyTexture, new GUIContent() { text = "Texture" });
                             EditorGUILayout.PropertyField(emptyTextureScaleWithSegments, new GUIContent() { text = "Scale Texture with Segments" });
                             EditorGUILayout.PropertyField(alignEmptyTexture, new GUIContent() { text = "Align Texture" });
@@ -352,8 +380,10 @@ namespace RengeGames.HealthBars.Editors {
 
                             //Gradient stuff
                             EditorGUILayout.PropertyField(emptyGradientEnabled, new GUIContent() { text = "Use Gradient" });
-                            if (!emptyGradientEnabled.hasMultipleDifferentValues && FindValueProperty(emptyGradientEnabled).boolValue) {
-                                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                            if (!emptyGradientEnabled.hasMultipleDifferentValues && FindValueProperty(emptyGradientEnabled).boolValue)
+                            {
+                                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                                {
                                     EditorGUILayout.PropertyField(emptyGradient, new GUIContent() { text = "Gradient" });
                                     EditorGUILayout.PropertyField(valueAsGradientTimeEmpty, new GUIContent() { text = "Value As Gradient Time" });
                                 }
@@ -362,8 +392,10 @@ namespace RengeGames.HealthBars.Editors {
                     }
 
                     EditorGUILayout.PropertyField(emptyNoiseEnabled, new GUIContent() { text = "Use Noise" });
-                    if (FindValueProperty(emptyNoiseEnabled).boolValue) {
-                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                    if (FindValueProperty(emptyNoiseEnabled).boolValue)
+                    {
+                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                        {
                             EditorGUILayout.PropertyField(emptyNoiseStrength, new GUIContent() { text = "Noise Strength" });
                             EditorGUILayout.PropertyField(emptyNoiseScale, new GUIContent() { text = "Noise Scale" });
                             EditorGUILayout.PropertyField(emptyNoiseOffset, new GUIContent() { text = "Noise Offset" });
@@ -379,12 +411,16 @@ namespace RengeGames.HealthBars.Editors {
                 EditorGUILayout.PropertyField(spaceColor, new GUIContent() { text = "Empty Space Color" });
             }
             EditorGUILayout.EndHorizontal();
-            if (emptyFoldout) {
-                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+            if (emptyFoldout)
+            {
+                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                {
                     //FindValueProperty(spaceTextureEnabled).boolValue = EditorGUILayout.Toggle("Use Texture", FindValueProperty(spaceTextureEnabled).boolValue);
                     EditorGUILayout.PropertyField(spaceTextureEnabled, new GUIContent() { text = "Use Texture" });
-                    if (FindValueProperty(spaceTextureEnabled).boolValue) {
-                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                    if (FindValueProperty(spaceTextureEnabled).boolValue)
+                    {
+                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                        {
                             EditorGUILayout.PropertyField(spaceTexture, new GUIContent() { text = "Texture" });
                             EditorGUILayout.PropertyField(alignSpaceTexture, new GUIContent() { text = "Align Texture" });
                             SliderPropertyField("Texture Opacity", FindValueProperty(spaceTextureOpacity), 0, 1);
@@ -397,30 +433,39 @@ namespace RengeGames.HealthBars.Editors {
 
             EditorGUILayout.Separator();
             GUILayout.Label("Other", headerStyle);
-            using (new EditorGUILayout.HorizontalScope(EditorStyles.helpBox)) {
+            using (new EditorGUILayout.HorizontalScope(EditorStyles.helpBox))
+            {
                 GUILayout.BeginVertical();
                 {
-                    if (GUILayout.Button("Reset to defaults")) {
+                    if (GUILayout.Button("Reset to defaults"))
+                    {
                         Undo.RecordObjects(serializedObject.targetObjects, "Reset RSHB");
-                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects) {
+                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects)
+                        {
                             (serializedObjectTargetObject as RadialSegmentedHealthBar)?.ResetPropertiesToDefault();
                         }
                     }
 
-                    if (GUILayout.Button("Duplicate Shader")) {
-                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects) {
-                            if (serializedObjectTargetObject != null) {
+                    if (GUILayout.Button("Duplicate Shader"))
+                    {
+                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects)
+                        {
+                            if (serializedObjectTargetObject != null)
+                            {
                                 var obj = serializedObjectTargetObject as RadialSegmentedHealthBar;
                                 GameObject.Instantiate(obj, obj.transform.parent);
                             }
                         }
                     }
 
-                    if (GUILayout.Button("Randomize All")) {
+                    if (GUILayout.Button("Randomize All"))
+                    {
                         Color c = new Color();
                         Undo.RecordObjects(serializedObject.targetObjects, "Randomize RSHB");
-                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects) {
-                            if (serializedObjectTargetObject != null) {
+                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects)
+                        {
+                            if (serializedObjectTargetObject != null)
+                            {
                                 var obj = serializedObjectTargetObject as RadialSegmentedHealthBar;
 
                                 obj.SegmentCount.Value = Mathf.Round(Random.value * 10 + 1);
@@ -447,18 +492,24 @@ namespace RengeGames.HealthBars.Editors {
                 GUILayout.BeginVertical();
                 {
 
-                    if (GUILayout.Button("Use Sprite Renderer")) {
-                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects) {
-                            if (serializedObjectTargetObject != null) {
+                    if (GUILayout.Button("Use Sprite Renderer"))
+                    {
+                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects)
+                        {
+                            if (serializedObjectTargetObject != null)
+                            {
                                 var obj = serializedObjectTargetObject as RadialSegmentedHealthBar;
                                 obj.UsingSpriteRenderer = true;
                             }
                         }
                     }
 
-                    if (GUILayout.Button("Use Image")) {
-                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects) {
-                            if (serializedObjectTargetObject != null) {
+                    if (GUILayout.Button("Use Image"))
+                    {
+                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects)
+                        {
+                            if (serializedObjectTargetObject != null)
+                            {
                                 var obj = serializedObjectTargetObject as RadialSegmentedHealthBar;
                                 obj.UsingSpriteRenderer = false;
                             }
@@ -466,7 +517,8 @@ namespace RengeGames.HealthBars.Editors {
                     }
 
                     string currentlyUsing = "-";
-                    if (!usingSpriteRenderer.hasMultipleDifferentValues) {
+                    if (!usingSpriteRenderer.hasMultipleDifferentValues)
+                    {
                         if (usingSpriteRenderer.boolValue)
                             currentlyUsing = "Sprite Renderer";
                         else
@@ -476,9 +528,12 @@ namespace RengeGames.HealthBars.Editors {
 
                     EditorGUI.BeginChangeCheck();
                     EditorGUILayout.PropertyField(forceBuiltInShader, new GUIContent("Force Built In Shader", "Toggle this if you are having render issues in your canvas!"));
-                    if (EditorGUI.EndChangeCheck()) {
-                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects) {
-                            if (serializedObjectTargetObject != null) {
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        foreach (var serializedObjectTargetObject in serializedObject.targetObjects)
+                        {
+                            if (serializedObjectTargetObject != null)
+                            {
                                 var obj = serializedObjectTargetObject as RadialSegmentedHealthBar;
                                 obj.ForceBuiltInShader = forceBuiltInShader.boolValue;
                             }
@@ -494,13 +549,15 @@ namespace RengeGames.HealthBars.Editors {
             //base.OnInspectorGUI();
         }
 
-        void SliderPropertyField(string text, SerializedProperty property, float min, float max) {
+        void SliderPropertyField(string text, SerializedProperty property, float min, float max)
+        {
             var floatVal = property.floatValue;
             EditorGUI.BeginChangeCheck();
             EditorGUI.showMixedValue = property.hasMultipleDifferentValues;
             floatVal = EditorGUILayout.Slider(text, floatVal, min, max);
             EditorGUI.showMixedValue = false;
-            if (EditorGUI.EndChangeCheck()) {
+            if (EditorGUI.EndChangeCheck())
+            {
                 property.floatValue = floatVal;
             }
         }

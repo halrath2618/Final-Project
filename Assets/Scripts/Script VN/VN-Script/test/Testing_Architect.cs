@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DIALOGUE;
+using UnityEngine;
 
 namespace TESTING
 {
@@ -35,7 +33,7 @@ namespace TESTING
             {
                 if (architect.isBuilding)
                 {
-                    if(!architect.hurryUp)
+                    if (!architect.hurryUp)
                         architect.hurryUp = true;
                     else
                         architect.ForceComplete();

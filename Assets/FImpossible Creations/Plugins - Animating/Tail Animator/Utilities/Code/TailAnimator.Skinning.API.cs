@@ -210,7 +210,7 @@ namespace FIMSpace.FTail
             newMesh.boneWeights = weights;
 
             List<Vector3> normals = new List<Vector3>();
-            List < Vector4> tangents = new List<Vector4>();
+            List<Vector4> tangents = new List<Vector4>();
             baseMesh.GetNormals(normals);
             baseMesh.GetTangents(tangents);
 

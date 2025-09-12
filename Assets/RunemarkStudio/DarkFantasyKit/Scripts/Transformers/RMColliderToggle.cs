@@ -3,16 +3,16 @@
     using UnityEngine;
     using UnityEngine.AI;
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
+#endif
 
     /// <summary>
     /// This component toggles the mesh renderer on the same object.
     /// </summary>
     [AddComponentMenu("Dark Fantasy Kit/Collider Toggle")]
     public class RMColliderToggle : RMFunction
-    {     
+    {
         public override bool InProgress { get { return false; } }
 
         Collider _collider
@@ -49,7 +49,7 @@
         }
     }
 
-     #if UNITY_EDITOR
+#if UNITY_EDITOR
     [CanEditMultipleObjects]
     [CustomEditor(typeof(RMColliderToggle), true)]
     public class RMColliderToggleEditor : CustomInspectorBase
@@ -60,10 +60,10 @@
             get
             {
                 return "This component toggles the collider on the same object. \n" +
-                    "You can activate this component by calling the Activate method from script.\n"+
+                    "You can activate this component by calling the Activate method from script.\n" +
                     "You can also call the Toggle (bool visible) method.";
             }
         }
     }
-    #endif
+#endif
 }

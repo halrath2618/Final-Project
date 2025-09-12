@@ -2,10 +2,10 @@
 {
     using UnityEngine;
     using UnityEngine.AI;
-    
-    #if UNITY_EDITOR
+
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
+#endif
 
     public class RMTopDownController : MonoBehaviour
     {
@@ -32,19 +32,19 @@
                 }
             }
 
-            if(_animator !=null)
+            if (_animator != null)
                 _animator.SetFloat("Speed", _agent.velocity.sqrMagnitude);
         }
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [CanEditMultipleObjects]
     [CustomEditor(typeof(RMTopDownController), true)]
     public class RMTopDownControllerEditor : CustomInspectorBase
-    {           
+    {
         protected override string Title { get { return "Top-Down Character Controller"; } }
         protected override string Description { get { return "Simple character controller for top-down demo scenes."; } }
 
     }
-    #endif
+#endif
 }

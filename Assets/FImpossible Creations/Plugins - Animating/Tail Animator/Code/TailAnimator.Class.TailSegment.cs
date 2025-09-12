@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace FIMSpace.FTail
 {
@@ -194,7 +193,7 @@ namespace FIMSpace.FTail
             public void RefreshKeyLocalPosition()
             {
                 if (transform)
-                    LastKeyframeLocalRotation =(transform.localRotation);
+                    LastKeyframeLocalRotation = (transform.localRotation);
                 else
                     LastKeyframeLocalRotation = (InitialLocalRotation);
             }
@@ -202,10 +201,10 @@ namespace FIMSpace.FTail
 
             public void RefreshKeyLocalPositionAndRotation()
             {
-                if ( transform)
-                RefreshKeyLocalPositionAndRotation(transform.localPosition, transform.localRotation);
+                if (transform)
+                    RefreshKeyLocalPositionAndRotation(transform.localPosition, transform.localRotation);
                 else
-                RefreshKeyLocalPositionAndRotation(InitialLocalPosition, InitialLocalRotation);
+                    RefreshKeyLocalPositionAndRotation(InitialLocalPosition, InitialLocalRotation);
             }
 
             public void RefreshKeyLocalPositionAndRotation(Vector3 p, Quaternion r)

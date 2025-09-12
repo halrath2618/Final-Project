@@ -1,5 +1,4 @@
 // Health system for monsters
-using UnityEngine.AI;
 using UnityEngine;
 
 public class Health : MonoBehaviour

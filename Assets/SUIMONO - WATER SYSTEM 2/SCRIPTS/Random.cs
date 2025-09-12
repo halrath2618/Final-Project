@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace Suimono.Core
 {
     /// <summary>
     /// Simple and fast random number generator which can reset to a specific iteration
     /// </summary>
-    
+
     public class Random
     {
         //Initialiser magic values
@@ -130,7 +129,7 @@ namespace Suimono.Core
             {
                 return min;
             }
-            return (int)Next((float)min, (float)max+0.999f);
+            return (int)Next((float)min, (float)max + 0.999f);
         }
 
         /// <summary>

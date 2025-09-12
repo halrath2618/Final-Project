@@ -1,10 +1,10 @@
 ﻿namespace Runemark.Common
 {
-    #if UNITY_EDITOR
-    using UnityEngine;
+#if UNITY_EDITOR
+    using System.Collections.Generic;
     using UnityEditor;
     using UnityEditorInternal;
-    using System.Collections.Generic;
+    using UnityEngine;
 
     public class EditorGUILayoutExtension
     {
@@ -12,7 +12,7 @@
         {
             string[] gameTags = InternalEditorUtility.tags;
             int mask = 0;
-         
+
             for (int i = 0; i < selectedTags.Length; i++)
             {
                 for (int cnt = 0; cnt < gameTags.Length; cnt++)
@@ -23,7 +23,7 @@
             }
 
             int tempMask = EditorGUILayout.MaskField(label, mask, gameTags);
-            
+
             if (tempMask != mask)
             {
                 mask = tempMask;
@@ -42,5 +42,5 @@
         }
     }
 
-    #endif
+#endif
 }

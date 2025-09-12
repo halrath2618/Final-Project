@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,8 +18,8 @@ namespace CHARACTERS
 
         private string artAssetsDirectory = "";
 
-        public override bool isVisible 
-        { 
+        public override bool isVisible
+        {
             get { return isRevealing || rootCG.alpha == 1; }
             set { rootCG.alpha = value ? 1 : 0; }
         }
@@ -28,12 +27,12 @@ namespace CHARACTERS
         {
             rootCG.alpha = ENABLE_ON_START ? 1 : 0;
             artAssetsDirectory = rootAssetFolder + "/Images";
-           
+
 
             GetLayer();
-            
+
             Debug.Log($"Created Sprite Character: '{name}'");
-           
+
         }
 
         private void GetLayer()
@@ -50,7 +49,7 @@ namespace CHARACTERS
                 Transform child = rendererRoot.transform.GetChild(i);
 
                 Image rendererImage = child.GetComponent<Image>();
-                if(rendererImage != null)
+                if (rendererImage != null)
                 {
                     CharacterSpriteLayer layer = new CharacterSpriteLayer(rendererImage, i);
                     layers.Add(layer);
@@ -60,7 +59,7 @@ namespace CHARACTERS
             }
         }
 
-        public void SetSprite( Sprite sprite, int layer = 0)
+        public void SetSprite(Sprite sprite, int layer = 0)
         {
             layers[layer].SetSprite(sprite);
         }
@@ -71,7 +70,7 @@ namespace CHARACTERS
             {
                 string[] data = spriteName.Split(SPRITESHEET_TEX_SPRITE_DELIMITTER);
                 Sprite[] spriteArray = new Sprite[0];
-                if(data.Length == 2)
+                if (data.Length == 2)
                 {
                     string textureName = data[0];
                     spriteName = data[1];
@@ -104,7 +103,7 @@ namespace CHARACTERS
             float targetAlpha = show ? 1f : 0;
             CanvasGroup self = rootCG;
 
-            while(self.alpha != targetAlpha)
+            while (self.alpha != targetAlpha)
             {
                 self.alpha = Mathf.MoveTowards(self.alpha, targetAlpha, 3f * Time.deltaTime);
                 yield return null;
@@ -116,7 +115,7 @@ namespace CHARACTERS
 
         public override void SetColor(Color color)
         {
-            
+
             base.SetColor(color);
             color = displayColor;
 
@@ -136,21 +135,21 @@ namespace CHARACTERS
 
             yield return null;
 
-            while(layers.Any(l => l.isChangingColor))
+            while (layers.Any(l => l.isChangingColor))
             {
-                yield return null; 
+                yield return null;
             }
 
             co_changingColor = null;
         }
 
-        
+
 
         public override IEnumerator Highlighting(bool highlight, float speedMultiplier)
         {
             Color targetColor = displayColor;
 
-            foreach(CharacterSpriteLayer layer in layers)
+            foreach (CharacterSpriteLayer layer in layers)
                 layer.TransitionColor(targetColor, speedMultiplier);
             yield return null;
 
@@ -166,7 +165,7 @@ namespace CHARACTERS
         {
             foreach (CharacterSpriteLayer layer in layers)
             {
-                if(faceLeft)
+                if (faceLeft)
                     layer.FaceLeft(speedMultiplier, immediate);
                 else
                     layer.FaceRight(speedMultiplier, immediate);
@@ -174,7 +173,7 @@ namespace CHARACTERS
             yield return null;
 
             while (layers.Any(l => l.isFlipping))
-                { yield return null; }
+            { yield return null; }
 
             co_flipping = null;
         }
@@ -183,13 +182,13 @@ namespace CHARACTERS
         {
             Sprite sprite = GetSprite(expression);
 
-            if(sprite == null)
+            if (sprite == null)
             {
                 Debug.LogWarning($"Sprite '{expression}' could not be found for character '{name}'");
                 return;
             }
 
-            TransitionSprite(sprite,layer);
+            TransitionSprite(sprite, layer);
         }
     }
 }

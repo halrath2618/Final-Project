@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -65,7 +63,7 @@ public class GameManager : MonoBehaviour
     public void NoteHit()
     {
         Debug.Log("Note hit!"); // Log when a note is hit
-        
+
         currentHp += hpIncreaseRate; // Increase health points
         if (currentHp > maxHp) // Ensure health does not exceed maximum
         {

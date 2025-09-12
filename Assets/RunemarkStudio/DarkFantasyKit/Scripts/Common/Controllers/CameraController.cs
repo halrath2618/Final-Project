@@ -4,14 +4,14 @@
 
     public class CameraController : MonoBehaviour
     {
-        public float mainSpeed  = 100;     // regular speed
+        public float mainSpeed = 100;     // regular speed
         public float shiftAdd = 250;       // multiplied by how long shift is held.  Basically running
         public float maxShift = 1000;      // Maximum speed when holdin gshift
         public float camSens = 0.25f;      // How sensitive it with mouse
 
         Vector3 lastMouse = new Vector3(255, 255, 255); //kind of in the middle of the screen, rather than at the top (play)
         float totalRun = 1;
-    
+
         void Update()
         {
             lastMouse = Input.mousePosition - lastMouse;
@@ -53,18 +53,21 @@
         private Vector3 GetBaseInput()
         {
             Vector3 p_Velocity = Vector3.zero;
-            if (Input.GetKey (KeyCode.W))
+            if (Input.GetKey(KeyCode.W))
             {
-                p_Velocity += new Vector3(0, 0 , 1);
+                p_Velocity += new Vector3(0, 0, 1);
             }
-            if (Input.GetKey (KeyCode.S)){
-                p_Velocity += new Vector3(0, 0 , -1);
+            if (Input.GetKey(KeyCode.S))
+            {
+                p_Velocity += new Vector3(0, 0, -1);
             }
-            if (Input.GetKey (KeyCode.A)){
-                p_Velocity += new Vector3(-1, 0 , 0);
+            if (Input.GetKey(KeyCode.A))
+            {
+                p_Velocity += new Vector3(-1, 0, 0);
             }
-            if (Input.GetKey (KeyCode.D)){
-                p_Velocity += new Vector3(1, 0 , 0);
+            if (Input.GetKey(KeyCode.D))
+            {
+                p_Velocity += new Vector3(1, 0, 0);
             }
             return p_Velocity;
         }

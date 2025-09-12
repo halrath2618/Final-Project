@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundtrackController : MonoBehaviour
@@ -32,16 +30,16 @@ public class SoundtrackController : MonoBehaviour
         }
         Debug.LogWarning("Soundtrack not found: " + name);
     }
-    public void PlaySFXByName(string name) 
-    { 
-        for (int i = 0; i < sfxNames.Length; i++) 
-        { 
-            if (sfxNames[i] == name) 
-            { 
-                sfxSource.PlayOneShot(soundEffects[i]); 
-                return; 
-            } 
-        } 
-        Debug.LogWarning("Sound effect not found: " + name); 
+    public void PlaySFXByName(string name)
+    {
+        for (int i = 0; i < sfxNames.Length; i++)
+        {
+            if (sfxNames[i] == name)
+            {
+                sfxSource.PlayOneShot(soundEffects[i]);
+                return;
+            }
+        }
+        Debug.LogWarning("Sound effect not found: " + name);
     }
 }

@@ -1,9 +1,9 @@
+using CHARACTERS;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using CHARACTERS;
 using System.Linq;
+using UnityEngine;
 
 namespace COMMANDS
 {
@@ -24,7 +24,7 @@ namespace COMMANDS
             database.AddCommand("hide", new Func<string[], IEnumerator>(HideAll));
         }
 
-        
+
 
         public static void CreateCharacter(string[] data)
         {
@@ -39,7 +39,7 @@ namespace COMMANDS
 
             Character character = CharacterManager.instance.CreateCharacter(characterName);
 
-            if(!enable)
+            if (!enable)
             {
                 return;
             }
@@ -96,7 +96,7 @@ namespace COMMANDS
                     characters.Add(character);
                 }
             }
-            if(characters.Count == 0)
+            if (characters.Count == 0)
             {
                 yield break;
             }
@@ -114,9 +114,9 @@ namespace COMMANDS
                     character.Show();
             }
 
-            if(!immediate)
+            if (!immediate)
             {
-                while(characters.Any(c => c.isRevealing))
+                while (characters.Any(c => c.isRevealing))
                     yield return null;
             }
         }

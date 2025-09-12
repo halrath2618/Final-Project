@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
-using TMPro;
 
 public class SubtitleTrackMixer : PlayableBehaviour
 {
@@ -18,15 +16,15 @@ public class SubtitleTrackMixer : PlayableBehaviour
         for (int i = 0; i < inputCount; i++)
         {
             float inputWeight = playable.GetInputWeight(i);
-            
-            if(inputWeight > 0f)
+
+            if (inputWeight > 0f)
             {
                 ScriptPlayable<SubtitleBehaviour> inputPlayable = (ScriptPlayable<SubtitleBehaviour>)playable.GetInput(i);
 
                 SubtitleBehaviour input = inputPlayable.GetBehaviour();
                 currentText = input.subtitleText;
                 currentAlpha = inputWeight;
-                 
+
 
             }
 

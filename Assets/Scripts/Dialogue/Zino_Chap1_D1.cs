@@ -1,18 +1,5 @@
-﻿using CHARACTERS;
-using COMMANDS;
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.Collections.LowLevel.Unsafe;
-using Unity.VisualScripting;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using DG.Tweening;
-using System.IO;
-using System;
-using Unity.Mathematics;
 
 public class Zino_Chap1_D1 : MonoBehaviour
 {

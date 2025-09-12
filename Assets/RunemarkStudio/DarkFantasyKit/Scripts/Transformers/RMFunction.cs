@@ -11,6 +11,6 @@
         bool _inProgress;
 
         public virtual void Activate() { }
-        public virtual void Deactivate() { }        
+        public virtual void Deactivate() { }
     }
 }

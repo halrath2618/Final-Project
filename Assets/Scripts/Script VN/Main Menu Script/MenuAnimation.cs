@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
 public class MenuAnimation : MonoBehaviour
 {
@@ -19,6 +17,6 @@ public class MenuAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

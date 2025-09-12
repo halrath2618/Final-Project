@@ -2,21 +2,21 @@
 {
     using UnityEngine;
     using UnityEngine.Events;
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
+#endif
 
 
     [RequireComponent(typeof(Collider))]
     [AddComponentMenu("Dark Fantasy Kit/Triggers/Simple Trigger")]
     public class RMTrigger : MonoBehaviour
     {
-      
+
         [TagField] public string Tag;
 
         [Header("Trigger Enter & Exit")]
         public UnityEvent OnEnter;
-        public UnityEvent OnExit;        
+        public UnityEvent OnExit;
 
         void OnTriggerEnter(Collider other)
         {
@@ -38,7 +38,7 @@
         }
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [CanEditMultipleObjects]
     [CustomEditor(typeof(RMTrigger), true)]
     public class RMTRiggerEditor : CustomInspectorBase
@@ -46,5 +46,5 @@
         protected override string Title { get { return "Simple Trigger"; } }
         protected override string Description { get { return "You can create simple OnTriggerEnter and OnTriggerExit events."; } }
     }
-    #endif
+#endif
 }

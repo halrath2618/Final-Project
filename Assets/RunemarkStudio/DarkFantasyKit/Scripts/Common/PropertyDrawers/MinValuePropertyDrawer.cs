@@ -1,9 +1,9 @@
 ﻿namespace Runemark.Common
 {
     using UnityEngine;
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
+#endif
 
     public class MinAttribute : PropertyAttribute
     {
@@ -16,7 +16,7 @@
             minValueInt = min;
             isInt = true;
         }
-        
+
         public MinAttribute(float min)
         {
             minValueFloat = min;

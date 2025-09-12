@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace COMMANDS
 {
-    public class CommandParameters 
+    public class CommandParameters
     {
         private const char PARAMETER_IDENTIFIER = '-';
         private Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -12,7 +10,7 @@ namespace COMMANDS
 
         public CommandParameters(string[] parameterArray)
         {
-            for(int i = 0; i < parameterArray.Length; i++)
+            for (int i = 0; i < parameterArray.Length; i++)
             {
                 if (parameterArray[i].StartsWith(PARAMETER_IDENTIFIER) && !float.TryParse(parameterArray[i], out _))
                 {
@@ -20,7 +18,7 @@ namespace COMMANDS
                     string pValue = "";
 
 
-                    if(i +1 < parameterArray.Length && !parameterArray[i + 1].StartsWith(PARAMETER_IDENTIFIER))
+                    if (i + 1 < parameterArray.Length && !parameterArray[i + 1].StartsWith(PARAMETER_IDENTIFIER))
                     {
                         pValue = parameterArray[i + 1];
                         i++;
@@ -30,7 +28,7 @@ namespace COMMANDS
                 else
                     unlableParameters.Add(parameterArray[i]);
             }
-            
+
         }
 
         public bool TryGetValue<T>(string parameterName, out T value, T defaultValue = default(T)) => TryGetValue(new string[] { parameterName }, out value, defaultValue);
@@ -40,23 +38,23 @@ namespace COMMANDS
         {
             foreach (string parameterName in parameterNames)
             {
-                if(parameters.TryGetValue(parameterName, out string parameterValue))
+                if (parameters.TryGetValue(parameterName, out string parameterValue))
                 {
-                    if(TryCastParameter(parameterValue, out value))
+                    if (TryCastParameter(parameterValue, out value))
                     {
                         unlableParameters.Remove(parameterName);
                         return true;
                     }
                 }
-               
+
             }
             //search unlable if no matches
             foreach (string parameterName in unlableParameters)
             {
-                    if (TryCastParameter(parameterName, out value))
-                    {
-                        return true;
-                    }
+                if (TryCastParameter(parameterName, out value))
+                {
+                    return true;
+                }
 
             }
 
@@ -67,9 +65,9 @@ namespace COMMANDS
 
         private bool TryCastParameter<T>(string parameterValue, out T value)
         {
-            if(typeof(T) == typeof(bool))
+            if (typeof(T) == typeof(bool))
             {
-                if(bool.TryParse(parameterValue, out bool boolValue))
+                if (bool.TryParse(parameterValue, out bool boolValue))
                 {
                     value = (T)(object)boolValue;
                     return true;
@@ -93,8 +91,8 @@ namespace COMMANDS
             }
             else if (typeof(T) == typeof(string))
             {
-                    value = (T)(object)parameterValue;
-                    return true;
+                value = (T)(object)parameterValue;
+                return true;
             }
 
             value = default(T);

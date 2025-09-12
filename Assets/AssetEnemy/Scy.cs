@@ -103,7 +103,7 @@ public class Scy : MonoBehaviour
                     yield return S.Say("Không hẳn đâu, lúc đấy tôi cũng rất sợ, sợ phải chết và tôi sợ chính nổi sợ của tôi nữa.");
                     yield return S.Say("Khi mà tôi khuyên cậu tỉnh lại cũng chỉnh là thời khắc tôi đánh thức bản thân của mình.");
                     yield return S.Say("Trước kia vì sự nhút nhát không dám đối mặt với quá khứ và kỉ niệm tôi đã bị giam cầm và liên tục thất bại khi truy tìm các mảnh ghép báu vật, nhờ có cậu mà tôi đã tìm lại được bản thân của mình. Cảm ơn cậu Zino à….");
-                    
+
                     yield return Z.Say("Cậu rất dũng cảm mà Scy, không có cậu chắc giờ này tôi còn ở lại cảnh cổng ấy mất.");
 
                     yield return S.Say("Không nhắc lại chuyện cũ nữa. Nếu như cậu đã muốn hoàn thành xong hết thử thách để sớm quay về thế giới thực của mình thì Scy tôi sẽ cố gắng giúp cậu hoàn thành.");

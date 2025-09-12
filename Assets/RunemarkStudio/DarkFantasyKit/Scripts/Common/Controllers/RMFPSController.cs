@@ -1,13 +1,13 @@
 ﻿namespace Runemark.Common.Gameplay
 {
     using UnityEngine;
-    
-    #if UNITY_EDITOR
+
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
+#endif
 
     public class RMFPSController : MonoBehaviour
-    {       
+    {
         public float mouseSensitivityX = 1.0f;
         public float mouseSensitivityY = 1.0f;
         public float walkSpeed = 10.0f;
@@ -23,7 +23,7 @@
 
         Rigidbody _rigidbody;
 
-        
+
         bool _grounded;
         bool _cursorVisible;
 
@@ -104,13 +104,13 @@
         }
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [CanEditMultipleObjects]
     [CustomEditor(typeof(RMFPSController), true)]
     public class RMFPSControllerEditor : CustomInspectorBase
-    {   
+    {
         protected override string Title { get { return "First Person Controller"; } }
         protected override string Description { get { return "This is a simple FPS controller."; } }
     }
-    #endif
+#endif
 }

@@ -2,10 +2,8 @@ using CHARACTERS;
 using COMMANDS;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 
 using UnityEngine;
-using UnityEngine.XR;
 
 namespace DIALOGUE
 {
@@ -28,7 +26,7 @@ namespace DIALOGUE
         {
             userPrompt = true;
         }
-        
+
         public Coroutine StartConversation(List<string> conversation)
         {
             StopConversation();
@@ -43,20 +41,20 @@ namespace DIALOGUE
             {
                 return;
             }
-          
+
             dialogueSystem.StopCoroutine(process);
             process = null;
         }
 
         IEnumerator RunningConversation(List<string> conversation)
         {
-            for(int i = 0; i < conversation.Count; i++)
+            for (int i = 0; i < conversation.Count; i++)
             {
                 if (string.IsNullOrWhiteSpace(conversation[i]))
                     continue;
                 DialogueLine line = DialogueParser.Parse(conversation[i]);
 
-                if(line.hasDialogue)
+                if (line.hasDialogue)
                 {
                     yield return Line_RunDialogue(line);
                 }
@@ -64,8 +62,8 @@ namespace DIALOGUE
                 {
                     yield return Line_RunCommands(line);
                 }
-                if(line.hasDialogue)
-                //wait for user input
+                if (line.hasDialogue)
+                    //wait for user input
                     yield return WaitForUserInput();
             }
         }
@@ -79,7 +77,7 @@ namespace DIALOGUE
             //build
             yield return BuildLineSegments(line.dialogueData);
 
-            
+
         }
 
         private void HandleSpeakerLogic(DL_Speaker_Data speakerData)
@@ -117,7 +115,7 @@ namespace DIALOGUE
         IEnumerator Line_RunCommands(DialogueLine line)
         {
             List<DL_Command_Data.Command> commands = line.commandData.commands;
-            foreach(DL_Command_Data.Command command in commands)
+            foreach (DL_Command_Data.Command command in commands)
             {
                 if (command.waitForCompletion || command.name == "wait")
                     yield return CommandManager.instance.Execute(command.name, command.arguments);
@@ -129,7 +127,7 @@ namespace DIALOGUE
 
         IEnumerator BuildLineSegments(DL_Dialogue_Data line)
         {
-            for (int i = 0; i< line.segments.Count; i++)
+            for (int i = 0; i < line.segments.Count; i++)
             {
                 DL_Dialogue_Data.DialogueSegment segment = line.segments[i];
 
@@ -137,7 +135,7 @@ namespace DIALOGUE
                 yield return BuildDialogue(segment.dialogue, segment.appendText);
             }
         }
-        
+
         IEnumerator WaitForDialogueSegmentSignalToBeTriggered(DL_Dialogue_Data.DialogueSegment segment)
         {
             switch (segment.startSignal)
@@ -187,7 +185,7 @@ namespace DIALOGUE
                 yield return null;
 
             dialogueSystem.prompt.Hide();
-            
+
             userPrompt = false;
         }
     }

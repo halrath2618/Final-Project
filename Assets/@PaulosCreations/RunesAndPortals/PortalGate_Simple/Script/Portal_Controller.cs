@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -36,7 +35,7 @@ public class Portal_Controller : MonoBehaviour
     {
         if (inTransition || _activate == activated)
             return;
-    
+
         if (_activate)//toggle on
         {
             activated = true;
@@ -98,20 +97,20 @@ public class Portal_Controller : MonoBehaviour
                 if (fadeFloat <= 0f)//transition finished
                 {
                     inTransition = false;
-    
+
                     portalAudio.Stop();
                     effectsParticles[2].Stop();
                 }
             }
-    
+
             //fade in/out
             portalAudio.volume = maxVolportal * fadeFloat;
 
             portalEffectMat.SetFloat("_PortalFade", fadeFloat);
             portalMat.SetFloat("_EmissionStrength", fadeFloat);
 
-            portalLight.intensity = maxIntPortalLight * fadeFloat; 
-    
+            portalLight.intensity = maxIntPortalLight * fadeFloat;
+
             yield return null;
         }
     }
@@ -134,7 +133,7 @@ public class Portal_Controller : MonoBehaviour
             ParticleSystem.MainModule mod = part.main;
             mod.startColor = portalEffectColor;
         }
-        
+
         portalAudio.volume = 0f;
         portalLight.intensity = 0f;
     }

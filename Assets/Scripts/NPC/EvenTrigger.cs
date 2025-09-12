@@ -1,7 +1,7 @@
 
-using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine;
 public class EventTrigger : MonoBehaviour
 {
     [Header("Animators for Zino and Halrath")]

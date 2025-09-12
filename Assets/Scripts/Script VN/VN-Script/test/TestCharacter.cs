@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using CHARACTERS;
-using DIALOGUE;
+using System.Collections;
 using TMPro;
+using UnityEngine;
 
 namespace TESTING
 {
     public class TestCharacter : MonoBehaviour
     {
-        
+
         public TMP_FontAsset tempFont;
         private Character CreateCharacter(string name) => CharacterManager.instance.CreateCharacter(name);
 
@@ -17,7 +15,7 @@ namespace TESTING
         // Start is called before the first frame update
         void Start()
         {
-            
+
             //Character halrath = CharacterManager.instance.CreateCharacter("Halrath");
             //Character halrath2 = CharacterManager.instance.CreateCharacter("Halrath");
             //Character pan = CharacterManager.instance.CreateCharacter("Pan");
@@ -27,7 +25,7 @@ namespace TESTING
         IEnumerator Test()
         {
 
-            
+
             shaking.Shake();
 
             Character mys = CreateCharacter("?????") as Character_Text;
@@ -38,7 +36,7 @@ namespace TESTING
 
             Character_Sprite Halrath = CreateCharacter("Halrath") as Character_Sprite;
 
-            
+
 
             Halrath.SetPosition(new Vector2(0.7f, 0));
             yield return Halrath.Show();
@@ -51,7 +49,7 @@ namespace TESTING
 
             Character_Sprite Zino = CreateCharacter("Zino") as Character_Sprite;
 
-            Zino.SetPosition(new Vector2(0,0));
+            Zino.SetPosition(new Vector2(0, 0));
 
             yield return new WaitForSeconds(1);
             yield return Zino.Show();
@@ -59,7 +57,7 @@ namespace TESTING
 
             yield return Zino.Say("Eikkkkk!! Monster!!!!!!!!!!");
 
-            yield return Zino.MoveToPosition(new Vector2(-1,0),2, false);
+            yield return Zino.MoveToPosition(new Vector2(-1, 0), 2, false);
 
             yield return null;
 

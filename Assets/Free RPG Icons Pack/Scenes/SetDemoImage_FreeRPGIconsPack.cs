@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor;
 
 namespace DemoImage_FreeIconPack
 {
@@ -15,11 +13,12 @@ namespace DemoImage_FreeIconPack
         {
             DemoImage = GetComponentsInChildren<Image>();
             int j = 6;
-            
+
             for (int i = 1; i < 51; i++) // DemoImage[0] is background
             {
-                
-                if (((i - 1) % 5) == 0) { 
+
+                if (((i - 1) % 5) == 0)
+                {
                     j = 6;
                 }
 

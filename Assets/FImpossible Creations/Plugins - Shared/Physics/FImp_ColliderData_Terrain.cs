@@ -26,7 +26,7 @@ namespace FIMSpace
             Vector3 offsettedPosition = segmentPosition + segmentOffset;
             Vector3 terrPoint = offsettedPosition;
             terrPoint.y = TerrCollider.transform.position.y + TerrainComponent.SampleHeight(offsettedPosition);
-            
+
 
             float hitToPointDist = (offsettedPosition - terrPoint).magnitude;
             float underMul = 1f;

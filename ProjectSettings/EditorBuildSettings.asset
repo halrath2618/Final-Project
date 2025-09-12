@@ -18,7 +18,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Prologue.unity
     guid: 695824549de59614f87267bae4b93027
   - enabled: 1
+    path: Assets/Scenes/LoadingScene 1.unity
+    guid: 581a515d824dbad458995cebf3abc77e
+  - enabled: 1
     path: Assets/Scenes/Map 1.unity
-    guid: 914a70e48293be94daf68f05980f332d
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene 2.unity
+    guid: de24d49dd3bc5b34a847d399751ce304
+  - enabled: 1
+    path: Assets/Scenes/Map 2.unity
+    guid: eae9236422d4537468cb78f5ae596836
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

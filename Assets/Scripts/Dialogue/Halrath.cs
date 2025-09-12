@@ -1,18 +1,9 @@
 ﻿using CHARACTERS;
-using COMMANDS;
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.Collections.LowLevel.Unsafe;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using DG.Tweening;
-using System.IO;
-using System;
-using Unity.Mathematics;
+using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class Halrath : MonoBehaviour
 {
@@ -77,7 +68,7 @@ public class Halrath : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             if (isDialogueActive)
                 StartDialogue();

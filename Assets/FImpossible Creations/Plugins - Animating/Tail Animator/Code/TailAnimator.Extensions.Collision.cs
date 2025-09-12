@@ -100,7 +100,7 @@ namespace FIMSpace.FTail
                 for (int i = 0; i < IncludedCollidersData.Count; i++)
                 {
                     if (IncludedCollidersData[i].Transform == null) { forceRefreshCollidersData = true; break; }
-                    
+
                     if (IncludedCollidersData[i].Transform.gameObject.activeInHierarchy)
                     {
 
@@ -129,7 +129,7 @@ namespace FIMSpace.FTail
                             }
                             else
                             {
-                                if ( IncludedCollidersData[i].Collider2D == null)
+                                if (IncludedCollidersData[i].Collider2D == null)
                                 {
                                     forceRefreshCollidersData = true;
                                     break;
@@ -408,8 +408,8 @@ namespace FIMSpace.FTail
                 for (int i = 0; i < CollidersDataToCheck.Count; i++)
                 {
                     bool push = CollidersDataToCheck[i].PushIfInside(ref targetPoint, bone.GetRadiusScaled(), Vector3.zero);
-                    if (!pushed) if (push) 
-                        { 
+                    if (!pushed) if (push)
+                        {
                             pushed = true;
                             bone.LatestSelectiveCollision = CollidersDataToCheck[i];
                         }
@@ -419,10 +419,10 @@ namespace FIMSpace.FTail
             {
                 for (int i = 0; i < CollidersDataToCheck.Count; i++)
                 {
-                    if (CollidersDataToCheck[i].PushIfInside(ref targetPoint, bone.GetRadiusScaled(), Vector3.zero)) 
+                    if (CollidersDataToCheck[i].PushIfInside(ref targetPoint, bone.GetRadiusScaled(), Vector3.zero))
                     {
                         bone.LatestSelectiveCollision = CollidersDataToCheck[i];
-                        return true; 
+                        return true;
                     }
                 }
             }

@@ -1,9 +1,9 @@
 ﻿namespace Runemark.Common
 {
     using UnityEngine;
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
+#endif
 
     public class TagFieldAttribute : PropertyAttribute
     {

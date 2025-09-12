@@ -12,7 +12,7 @@ namespace TobyFredson
     }
 
     public enum TobyWindType
-    { 
+    {
         GentleBreeze,
         WindOff,
     }

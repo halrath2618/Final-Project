@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class TextArchitect
 {
@@ -19,7 +18,7 @@ public class TextArchitect
 
     public enum BuildMethod { instant, typewriter, fade }
     public BuildMethod buildMethod = BuildMethod.typewriter;
-    public Color textColor { get { return  tmpro.color; } set { tmpro.color = value; } }
+    public Color textColor { get { return tmpro.color; } set { tmpro.color = value; } }
 
     public float speed { get { return baseSpeed * speedMultiplier; } set { speedMultiplier = value; } }
     private const float baseSpeed = 1;
@@ -30,7 +29,7 @@ public class TextArchitect
 
     public bool hurryUp = false;
 
-    public TextArchitect (TextMeshProUGUI tmpro_ui)
+    public TextArchitect(TextMeshProUGUI tmpro_ui)
     {
         this.tmpro_ui = tmpro_ui;
     }
@@ -39,7 +38,7 @@ public class TextArchitect
         this.tmpro_world = tmpro_world;
     }
 
-    public Coroutine Build (string text)
+    public Coroutine Build(string text)
     {
         preText = "";
         targetText = text;
@@ -74,7 +73,7 @@ public class TextArchitect
     {
 
         Prepare();
-        switch(buildMethod)
+        switch (buildMethod)
         {
             case BuildMethod.typewriter:
                 yield return Build_Typewriter();
@@ -136,7 +135,7 @@ public class TextArchitect
         tmpro.maxVisibleCharacters = 0;
         tmpro.text = preText;
 
-        if(preText != "")
+        if (preText != "")
         {
             tmpro.ForceMeshUpdate();
             tmpro.maxVisibleCharacters = tmpro.textInfo.characterCount;
@@ -152,7 +151,7 @@ public class TextArchitect
 
     private IEnumerator Build_Typewriter()
     {
-        while(tmpro.maxVisibleCharacters < tmpro.textInfo.characterCount)
+        while (tmpro.maxVisibleCharacters < tmpro.textInfo.characterCount)
         {
             tmpro.maxVisibleCharacters += hurryUp ? characterPerCycle * 5 : characterPerCycle;
             yield return new WaitForSeconds(0.015f / speed);

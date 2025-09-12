@@ -1,6 +1,5 @@
 ﻿#if UNITY_EDITOR
 
-using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -127,7 +126,7 @@ namespace FIMSpace.FEditor
         {
             bool clicked = false;
             EditorGUILayout.BeginVertical(Style(new Color(.6f, .6f, .3f, .075f), 0));
-            if ( GUILayout.Button(new GUIContent(title, EditorGUIUtility.IconContent("console.warnicon.sml").image), EditorStyles.boldLabel)) clicked = true;
+            if (GUILayout.Button(new GUIContent(title, EditorGUIUtility.IconContent("console.warnicon.sml").image), EditorStyles.boldLabel)) clicked = true;
             //EditorGUILayout.LabelField(new GUIContent(title, EditorGUIUtility.IconContent("console.warnicon.sml").image), EditorStyles.boldLabel);
             EditorGUILayout.EndVertical();
             return clicked;

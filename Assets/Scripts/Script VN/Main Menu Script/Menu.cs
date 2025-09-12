@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Unity;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.IO;
 
 public class Menu : MonoBehaviour
 {
@@ -24,11 +20,11 @@ public class Menu : MonoBehaviour
     public void QuitToDesktop()
     {
         Debug.Log("Game is exiting...");
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #else 
+#else
         Application.Quit();
         
-        #endif
+#endif
     }
 }

@@ -15,7 +15,7 @@ namespace FIMSpace.FTail
             else if (SmoothingStyle == EAnimationStyle.Quick)
                 return TailCalculations_SmoothPositionLerp(from, to, bone.PositionSpeed);
             else
-                return TailCalculations_SmoothPositionLinear(from, to, bone.PositionSpeed );
+                return TailCalculations_SmoothPositionLinear(from, to, bone.PositionSpeed);
         }
 
 

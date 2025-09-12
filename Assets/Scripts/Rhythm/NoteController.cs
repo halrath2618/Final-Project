@@ -13,7 +13,7 @@ public class NoteController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,16 +24,16 @@ public class NoteController : MonoBehaviour
         {
             if (canbePressed)
             {
-                    gameObject.SetActive(false); // Deactivate the note when the corresponding key is pressed
+                gameObject.SetActive(false); // Deactivate the note when the corresponding key is pressed
 
-                    GameManager.instance.NoteHit(); // Call the NoteHit method in GameManager
+                GameManager.instance.NoteHit(); // Call the NoteHit method in GameManager
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Activator")
+        if (other.tag == "Activator")
         {
             canbePressed = true;
             Debug.Log("Note can be pressed!"); // Log when the note can be pressed

@@ -1,18 +1,11 @@
 ﻿using CHARACTERS;
-using COMMANDS;
-using JetBrains.Annotations;
+using DG.Tweening;
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.Collections.LowLevel.Unsafe;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using DG.Tweening;
-using System.IO;
-using System;
-using Unity.Mathematics;
 
 public class VisualNovelDialogue : MonoBehaviour
 {
@@ -159,7 +152,7 @@ public class VisualNovelDialogue : MonoBehaviour
         confused = Z.GetSprite("Zconfused");
         shock = Z.GetSprite("Zshock");
         normal = Z.GetSprite("Zino");
-        
+
         health.text = mainHealthPoint.ToString();
 
         StartCoroutine(Chap());
@@ -262,7 +255,7 @@ public class VisualNovelDialogue : MonoBehaviour
             dmg = Math.Round(UnityEngine.Random.Range(10, 19) * 1.5f, 0);
             invi = false;
         }
-        else 
+        else
             dmg = UnityEngine.Random.Range(10, 19);
         storyProcess++;
         soundtrack.PlaySFXByName("SwordSlash");
@@ -273,10 +266,10 @@ public class VisualNovelDialogue : MonoBehaviour
         assassinFight.SetActive(false);
         if (invi)
         {
-            dmg = Math.Round(UnityEngine.Random.Range(1, 5) * 10 * 1.5f,0);
+            dmg = Math.Round(UnityEngine.Random.Range(1, 5) * 10 * 1.5f, 0);
             invi = false;
         }
-        else 
+        else
             dmg = UnityEngine.Random.Range(1, 7) * 10;
         storyProcess++;
         soundtrack.PlaySFXByName("SwordSlash");
@@ -391,7 +384,7 @@ public class VisualNovelDialogue : MonoBehaviour
                     bg.ChangeBackground("Forest-dark");
                     mainHealthPoint -= 50;
                     health.text = mainHealthPoint.ToString();
-                    if(soundtrack != null)
+                    if (soundtrack != null)
                     {
                         soundtrack.PlayTrackByName("HeartBeat");
                         soundtrack.PlaySFXByName("Fall");
@@ -442,7 +435,7 @@ public class VisualNovelDialogue : MonoBehaviour
                 }
             case 0.2f:
                 {
-                    while(storyProcess == 0.2f)
+                    while (storyProcess == 0.2f)
                     {
                         if (esc == 5)
                         {
@@ -569,7 +562,7 @@ public class VisualNovelDialogue : MonoBehaviour
             case 2:
                 {
                     bg.ChangeBackground("Bedroom");
-                    
+
                     yield return N.Say("Zino cảm thấy tuyệt vọng, cúi đầu, giọng yếu ớt đáp...");
                     soundtrack.PlayTrackByName("FinalDecision");
                     Z.Show();
@@ -618,7 +611,7 @@ public class VisualNovelDialogue : MonoBehaviour
             case 4:
                 {
                     bg.ChangeBackground("Cave");
-                    
+
                     yield return Z.Say("Cũng chưa đi xa lắm, quay lại hỏi thêm thông tin từ Halrath thôi.....{a}có hơi phiền thật.");
                     soundtrack.PlayTrackByName("Calm");
                     Z.Hide();
@@ -656,7 +649,7 @@ public class VisualNovelDialogue : MonoBehaviour
                     yield return Z.Say("Xin lỗi, tại.......à thôi đừng bận tâm. Thế ngài có công việc gì cho tôi nào?");
                     yield return H.Say("Eh...đừng gọi tôi là ngài nữa...tôi không lớn tuổi tới mức đó đâu.{c}Tôi chắc chỉ lớn cậu chừng hai đến ba tuổi thôi và gọi tôi là Halrath được rồi.");
                     yield return N.Say("Halrath vẫn nói với giọng trầm và ấm...làm người nghe cảm thấy thoải mái và dễ chịu.{c}Zino ngạc nhiên...");
-                    yield return N.Say("Zino vui vẻ trả lời."); 
+                    yield return N.Say("Zino vui vẻ trả lời.");
                     yield return Z.Say("Thật vậy sao ?{c}Thế phải gọi là anh rồi, anh Halrath.{c}Thế anh có việc gì để em làm không? Em sẽ làm để có tiền công vào thành phố.");
 
                     yield return H.Say("Được thôi, sẵn đây cũng có một số việc cần làm.");
@@ -710,12 +703,12 @@ public class VisualNovelDialogue : MonoBehaviour
                             if (isDefend)
                                 yield return N.Say("Zino thủ thế chuẩn bị chặn đòn đánh tiếp theo.");
                             else
-                                yield return N.Say("Zino đã đánh hụt và không gây ra sát thương."); 
+                                yield return N.Say("Zino đã đánh hụt và không gây ra sát thương.");
                         }
-                        
+
                         if (wolfRHP <= 0)
                         {
-                            
+
                             dmg = 0;
                             storyProcess += 0.25f;
                             StartCoroutine(Chap());
@@ -723,14 +716,14 @@ public class VisualNovelDialogue : MonoBehaviour
                         }
                         //RNG Monster dmg and return Zino dmg to 0
 
-                        wolfdmg = Math.Round(UnityEngine.Random.Range(1, 10) - _def,0);
-                        
-                        
+                        wolfdmg = Math.Round(UnityEngine.Random.Range(1, 10) - _def, 0);
+
+
                         dmg = 0;
                         if (isDefend)
                         {
                             soundtrack.PlaySFXByName("MonsterSlash");
-                            yield return N.Say("Zino đã chặn được đòn đánh của quái vật."); 
+                            yield return N.Say("Zino đã chặn được đòn đánh của quái vật.");
                             isDefend = false;
                             storyProcess -= 0.15f;
                             StartCoroutine(Chap());
@@ -878,7 +871,7 @@ public class VisualNovelDialogue : MonoBehaviour
                     yield return N.Say("Trên đường ra khỏi khu rừng, Zino vô tình bắt gặp con quái thú lần trước.{c}Không đợi bị tấn công, Zino rút thanh kiếm mà Halrath đã đưa và bắt đầu chiến đấu.");
                     soundtrack.PlayTrackByName("InDanger");
                     EnemyAppear1();
-                    storyProcess+=0.1f;
+                    storyProcess += 0.1f;
                     StartCoroutine(Chap());
                     break;
                 }
@@ -930,7 +923,7 @@ public class VisualNovelDialogue : MonoBehaviour
                             break;
                         }
                         //RNG Monster dmg and return Zino dmg to 0
-                        double wolfdmg = Math.Round(UnityEngine.Random.Range(1, 10) - _def,0);
+                        double wolfdmg = Math.Round(UnityEngine.Random.Range(1, 10) - _def, 0);
                         dmg = 0;
                         if (isDefend)
                         {
@@ -1397,12 +1390,12 @@ public class VisualNovelDialogue : MonoBehaviour
                     while (wolfRHP > 0)
                     {
                         double dmgdeal = dmg - wolfRDef;
-                        if(dmgdeal <= 0)
+                        if (dmgdeal <= 0)
                         {
                             if (stun)
                             {
                                 yield return N.Say("Zino dùng kỹ năng gây choáng quái vật.");
-                                
+
                             }
                             else if (dUp)
                             {
@@ -1505,8 +1498,8 @@ public class VisualNovelDialogue : MonoBehaviour
                                 }
                             }
                         }
-                        
-                        
+
+
                         break;
                     }
                     break;

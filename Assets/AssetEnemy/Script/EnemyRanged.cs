@@ -5,7 +5,7 @@ public class EnemyRanged : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float projectileSpeed = 15f;
-   
+
 
     public void Shooting()
     {
@@ -20,6 +20,6 @@ public class EnemyRanged : MonoBehaviour
             rb.linearVelocity = direction * projectileSpeed;
         }
 
-       
+
     }
 }

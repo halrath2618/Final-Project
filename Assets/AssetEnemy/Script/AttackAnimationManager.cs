@@ -7,7 +7,7 @@ public class AttackAnimationManager : MonoBehaviour
     public class AttackColliderSet
     {
         public string animationName; // Tên animation
-        public Collider[] attackColliders; 
+        public Collider[] attackColliders;
         public int damage; // Sát thương của đòn tấn công 
     }
 

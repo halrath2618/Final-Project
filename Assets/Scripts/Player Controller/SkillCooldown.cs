@@ -8,13 +8,13 @@ public class SkillCooldown : MonoBehaviour
     public Slider skillCooldownSliderE; // Reference to the UI Slider for cooldown
     public Slider skillCooldownSliderF; // Reference to the UI Slider for cooldown of the second skill
     public Slider HP;
-    public Slider MP; 
-    public PlayerController playerController; // Reference to the PlayerController script
+    public Slider MP;
+    private PlayerController playerController; // Reference to the PlayerController script
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        playerController = GetComponent<PlayerController>(); // Get the PlayerController component from the same GameObject
     }
 
     // Update is called once per frame

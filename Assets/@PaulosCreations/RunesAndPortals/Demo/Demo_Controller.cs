@@ -57,51 +57,51 @@ public class Demo_Controller : MonoBehaviour
         //portalGateScript.F_TogglePortalGate(true);
         //vortexScript.F_ToggleVortex(true);
         //riftScript.F_ToggleRift(true);
-        
+
         //On
         //start delay
         yield return new WaitForSeconds(1f);
         runestoneScript.ToggleRuneStone(true);
-        
+
         yield return new WaitForSeconds(3f);
         StartCoroutine(CameraRoutine());
-        
+
         yield return new WaitForSeconds(2f);
         portalRoundScripts.F_TogglePortalRound(true);
-        
+
         yield return new WaitForSeconds(4f);
         vortexScript.F_ToggleVortex(true);
-        
+
         yield return new WaitForSeconds(10f);
         portalGateScript.F_TogglePortalGate(true);
-        
+
         yield return new WaitForSeconds(7f);
         portalSimpleScripts.TogglePortal(true);
-        
+
         yield return new WaitForSeconds(9f);
         riftScript.F_ToggleRift(true);
-        
+
         yield return new WaitForSeconds(3f);
         StartCoroutine(FadeLight());
-        
+
         yield return new WaitForSeconds(45f);
-        
+
         //Off
         yield return new WaitForSeconds(8f);
         runestoneScript.ToggleRuneStone(false);
-        
+
         yield return new WaitForSeconds(2f);
         portalRoundScripts.F_TogglePortalRound(false);
-        
+
         yield return new WaitForSeconds(5f);
         vortexScript.F_ToggleVortex(false);
-        
+
         yield return new WaitForSeconds(9f);
         portalGateScript.F_TogglePortalGate(false);
-        
+
         yield return new WaitForSeconds(7f);
         portalSimpleScripts.TogglePortal(false);
-        
+
         yield return new WaitForSeconds(10f);
         riftScript.F_ToggleRift(false);
     }

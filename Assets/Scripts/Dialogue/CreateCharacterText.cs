@@ -1,6 +1,5 @@
-using UnityEngine;
 using CHARACTERS;
-using System.Collections;
+using UnityEngine;
 
 public class CreateCharacterText : MonoBehaviour
 {

@@ -6,7 +6,7 @@ public class MonsterSFXSound : MonoBehaviour
 {
     public static MonsterSFXSound Instance;
     [Header("Audio Sources")]
-    public AudioSource sfxSource; 
+    public AudioSource sfxSource;
 
     [Header("Hit Sounds")]
     public List<AudioClipEntry> hitSounds; // Danh sách âm thanh va chạm

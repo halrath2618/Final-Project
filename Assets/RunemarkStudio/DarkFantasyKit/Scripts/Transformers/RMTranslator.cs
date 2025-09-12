@@ -2,16 +2,16 @@
 {
     using UnityEngine;
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
+#endif
 
     /// <summary>
     /// This component translates the target transform from the start position to the end position.
     /// </summary>   
     [AddComponentMenu("Dark Fantasy Kit/Translator")]
     public class RMTranslator : RMTransformer
-    {     
+    {
         public Transform Target;
         public Vector3 Start = Vector3.zero;
         public Vector3 End = Vector3.zero;
@@ -23,7 +23,7 @@
         }
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [CanEditMultipleObjects]
     [CustomEditor(typeof(RMTranslator), true)]
     public class RMTranslatorEditor : RMTransformerEditor
@@ -33,15 +33,15 @@
         {
             get
             {
-                return "This component translates the target transform from the start position to the end position. \n"+
+                return "This component translates the target transform from the start position to the end position. \n" +
                     "You can activate this component by calling the Activate method from script.";
             }
         }
-    
+
         void OnSceneGUI()
         {
             var t = target as RMTranslator;
-            
+
             var start = t.transform.TransformPoint(t.Start);
             var end = t.transform.TransformPoint(t.End);
 
@@ -64,7 +64,7 @@
             Handles.Label(Vector3.Lerp(start, end, 0.5f), "Distance:" + (end - start).magnitude);
         }
     }
-    #endif
+#endif
 }
 
 

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -34,10 +33,10 @@ namespace DIALOGUE
         private string ProcessKeywords(string rawSpeaker)
         {
             if (rawSpeaker.StartsWith(ENTER_KEYWORD))
-                {
-                    rawSpeaker = rawSpeaker.Substring(ENTER_KEYWORD.Length);
-                    makeCharacterEnter = true;
-                }
+            {
+                rawSpeaker = rawSpeaker.Substring(ENTER_KEYWORD.Length);
+                makeCharacterEnter = true;
+            }
 
             return rawSpeaker;
         }
@@ -105,7 +104,7 @@ namespace DIALOGUE
                         }
                         else
                             return (0, parts[0]);
-                       
+
                     }).ToList();
                 }
             }

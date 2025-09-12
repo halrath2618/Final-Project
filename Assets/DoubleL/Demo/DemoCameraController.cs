@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DoubleL
@@ -57,12 +55,12 @@ namespace DoubleL
 
         [Header("Movement Settings")]
         public float boost = 3.5f;
-                
+
         public float positionLerpTime = 0.2f;
 
         [Header("Rotation Settings")]
         public AnimationCurve mouseSensitivityCurve = new AnimationCurve(new Keyframe(0f, 0.5f, 0f, 5f), new Keyframe(1f, 2.5f, 0f, 0f));
-                
+
         public float rotationLerpTime = 0.01f;
 
         public bool invertY = false;
@@ -112,18 +110,18 @@ namespace DoubleL
                 UnityEditor.EditorApplication.isPlaying = false;
 #endif
             }
-            
+
             if (Input.GetMouseButtonDown(1))
             {
                 Cursor.lockState = CursorLockMode.Locked;
             }
-            
+
             if (Input.GetMouseButtonUp(1))
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
             }
-            
+
             if (Input.GetMouseButton(1))
             {
                 var mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") * (invertY ? 1 : -1));
@@ -133,9 +131,9 @@ namespace DoubleL
                 m_TargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
                 m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
             }
-            
+
             var translation = GetInputTranslationDirection() * Time.deltaTime;
-                        
+
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 translation *= 10.0f;

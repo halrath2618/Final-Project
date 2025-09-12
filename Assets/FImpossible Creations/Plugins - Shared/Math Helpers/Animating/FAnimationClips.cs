@@ -302,7 +302,7 @@ namespace FIMSpace.Basics
             if (Animator.IsInTransition(Layer))
             {
                 info = Animator.GetNextAnimatorStateInfo(Layer);
-                if (info.shortNameHash == Animator.StringToHash(clip) ) return true;
+                if (info.shortNameHash == Animator.StringToHash(clip)) return true;
             }
             else
             {

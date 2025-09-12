@@ -11,7 +11,7 @@ namespace FIMSpace.FEditor
     public static partial class FEditor_MenuAddOptions
     {
 
-#region Prefixes
+        #region Prefixes
 
         private static string GetPrefix(UnityEngine.Object o, string path)
         {
@@ -60,10 +60,10 @@ namespace FIMSpace.FEditor
             return false;
         }
 
-#endregion
+        #endregion
 
 
-#region Helper Prefabs Methods
+        #region Helper Prefabs Methods
 
         static bool IsAnyPrefabable(Object[] list)
         {
@@ -102,7 +102,7 @@ namespace FIMSpace.FEditor
             {
                 Object ob = Selection.objects[i];
                 if (AssetDatabase.Contains(ob) == false) continue;
-                if (ob is Texture2D ) return true;
+                if (ob is Texture2D) return true;
             }
 
             return false;

@@ -1,8 +1,6 @@
-using System.Collections;
+using CHARACTERS;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using CHARACTERS;
 
 namespace DIALOGUE
 {
@@ -10,7 +8,7 @@ namespace DIALOGUE
     {
         [SerializeField] private DialogueSystemConfigurationSO _config;
         public DialogueSystemConfigurationSO config => _config;
-        
+
         public DialogueContainer dialogueContainer = new DialogueContainer();
         private ConversationManager conversationManager;
         private TextArchitect architect;
@@ -47,14 +45,14 @@ namespace DIALOGUE
             architect = new TextArchitect(dialogueContainer.dialogueText);
             conversationManager = new ConversationManager(architect);
 
-            if(TryGetComponent(out autoReader))
+            if (TryGetComponent(out autoReader))
                 autoReader.Initialize(conversationManager);
         }
 
         public void OnUserPrompt_Next()
         {
             onUserPrompt_Next?.Invoke();
-            if(autoReader != null&&autoReader.isOn)
+            if (autoReader != null && autoReader.isOn)
                 autoReader.Disable();
         }
         public void OnSystemPrompt_Next()

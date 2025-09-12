@@ -226,11 +226,11 @@ namespace FIMSpace
 
         protected static void GetCapsuleHeadsPositions(CapsuleCollider2D capsule, ref Vector3 upper, ref Vector3 bottom, Vector3 direction, float radius, float scalerFactor)
         {
-            Vector3 upCapCenter = direction * (GetCapsule2DHeight(capsule)  * scalerFactor - radius); // Local Space Position
+            Vector3 upCapCenter = direction * (GetCapsule2DHeight(capsule) * scalerFactor - radius); // Local Space Position
             upper = capsule.transform.position + capsule.transform.TransformDirection(upCapCenter) + capsule.transform.TransformVector(capsule.offset); // World Space
             upper.z = 0f;
 
-            Vector3 downCapCenter = -direction * (GetCapsule2DHeight(capsule)  * scalerFactor - radius);
+            Vector3 downCapCenter = -direction * (GetCapsule2DHeight(capsule) * scalerFactor - radius);
             bottom = capsule.transform.position + capsule.transform.TransformDirection(downCapCenter) + capsule.transform.TransformVector(capsule.offset);
             bottom.z = 0f;
         }

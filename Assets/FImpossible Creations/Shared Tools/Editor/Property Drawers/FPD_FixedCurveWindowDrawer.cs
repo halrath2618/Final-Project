@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 
 [CustomPropertyDrawer(typeof(FPD_FixedCurveWindowAttribute))]
 public class FPD_FixedCurveWindow : PropertyDrawer
@@ -10,7 +10,7 @@ public class FPD_FixedCurveWindow : PropertyDrawer
 
         if (property.propertyType == SerializedPropertyType.AnimationCurve)
         {
-            EditorGUI.CurveField(position, property, att.Color, new Rect(att.StartTime, att.StartValue, att.EndTime - att.StartTime , att.EndValue - att.StartValue ), label );
+            EditorGUI.CurveField(position, property, att.Color, new Rect(att.StartTime, att.StartValue, att.EndTime - att.StartTime, att.EndValue - att.StartValue), label);
         }
     }
 }

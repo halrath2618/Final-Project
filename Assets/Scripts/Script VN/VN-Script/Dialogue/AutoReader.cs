@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 namespace DIALOGUE
 {
@@ -41,7 +40,7 @@ namespace DIALOGUE
         }
         public void Disable()
         {
-            if(!isOn) 
+            if (!isOn)
                 return;
             StopCoroutine(co_running);
             skip = false;
@@ -76,7 +75,7 @@ namespace DIALOGUE
                     timeToRead = Mathf.Clamp((timeToRead - (Time.time - timeStarted)), MIN_READ_TIME, MAX_READ_TIME);
                     timeToRead = (timeToRead / speed) + READ_TIME_PADDING;
 
-                    yield return new WaitForSeconds(timeToRead); 
+                    yield return new WaitForSeconds(timeToRead);
                 }
                 else
                 {
@@ -93,7 +92,7 @@ namespace DIALOGUE
         {
             bool prevState = skip;
             skip = false;
-            if(prevState)
+            if (prevState)
                 Enable();
             else
             {

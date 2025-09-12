@@ -147,7 +147,7 @@ namespace FIMSpace.FTail
             // Rotating towards desired orientation
             _tc_targetParentRot = _tc_lookRot * child.ParentBone.transform.rotation;
 
-            if ( AnimateRoll)
+            if (AnimateRoll)
             {
                 _tc_targetParentRot = Quaternion.Lerp(child.ParentBone.TrueTargetRotation, _tc_targetParentRot, deltaForLerps * Mathf.LerpUnclamped(10f, 60f, child.RotationSpeed));
             }
@@ -160,7 +160,7 @@ namespace FIMSpace.FTail
             child.ParentBone.PreviousPosReferenceRotation = child.ParentBone.PosRefRotation;
 
             // Setting positions reference rotation separately
-            if ( !AnimateRoll) if (child.RotationSpeed < 1f) _tc_targetParentRot = TailCalculations_SmoothRotation(child.ParentBone.PosRefRotation, _tc_targetParentRot, child);
+            if (!AnimateRoll) if (child.RotationSpeed < 1f) _tc_targetParentRot = TailCalculations_SmoothRotation(child.ParentBone.PosRefRotation, _tc_targetParentRot, child);
 
             child.ParentBone.PosRefRotation = _tc_targetParentRot;
         }

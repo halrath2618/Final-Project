@@ -2,25 +2,25 @@
 {
     using System.Collections.Generic;
     using UnityEngine;
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
+#endif
 
     /// <summary>
     /// This component syncronizea the activation of multiple Transfromer functionality.
     /// </summary>
     [AddComponentMenu("Dark Fantasy Kit/Syncronizer")]
     public class RMTransformerSync : RMFunction
-    {     
+    {
         public List<RMTransformer> List;
 
         public override bool InProgress
         {
             get
             {
-                return List.Find(x => x.InProgress) != null;                   
+                return List.Find(x => x.InProgress) != null;
             }
-        }      
+        }
         public override void Activate()
         {
             foreach (var t in List) t.Activate();
@@ -31,7 +31,7 @@
         }
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [CanEditMultipleObjects]
     [CustomEditor(typeof(RMTransformerSync), true)]
     public class RMTransformerSyncEditor : CustomInspectorBase
@@ -46,5 +46,5 @@
             }
         }
     }
-    #endif
+#endif
 }

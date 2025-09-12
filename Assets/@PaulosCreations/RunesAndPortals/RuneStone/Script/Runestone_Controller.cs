@@ -33,7 +33,7 @@ public class Runestone_Controller : MonoBehaviour
 
     private void Awake()
     {
-        Setup();      
+        Setup();
     }
 
     //Call this function to activate or deactivate the effects
@@ -62,7 +62,7 @@ public class Runestone_Controller : MonoBehaviour
         {
             implodeAudio.Play();
 
-            activated = false;            
+            activated = false;
 
             if (animating)
             {
@@ -134,9 +134,9 @@ public class Runestone_Controller : MonoBehaviour
             rocksBaseTF.localPosition = rocksWantedPosition;
             rocksBaseTF.Rotate(myTF.up, Time.deltaTime * (fadeFloat * -120f));
 
-            rocks[0].Rotate(myTF.forward, Time.deltaTime * (fadeFloat *  220f), Space.World);
+            rocks[0].Rotate(myTF.forward, Time.deltaTime * (fadeFloat * 220f), Space.World);
             rocks[1].Rotate(myTF.forward, Time.deltaTime * (fadeFloat * -280f), Space.World);
-            rocks[2].Rotate(myTF.forward, Time.deltaTime * (fadeFloat *  340f), Space.World);
+            rocks[2].Rotate(myTF.forward, Time.deltaTime * (fadeFloat * 340f), Space.World);
             rocks[3].Rotate(myTF.forward, Time.deltaTime * (fadeFloat * -300f), Space.World);
 
             portalLight.intensity = maxIntPortalLight * fadeFloat;
@@ -168,13 +168,13 @@ public class Runestone_Controller : MonoBehaviour
 
             rocksBaseTF.Rotate(myTF.up, Time.deltaTime * -120f, Space.World);
 
-            rocks[0].Rotate(myTF.forward, Time.deltaTime *  220f, Space.World);
+            rocks[0].Rotate(myTF.forward, Time.deltaTime * 220f, Space.World);
             rocks[1].Rotate(myTF.forward, Time.deltaTime * -280f, Space.World);
-            rocks[2].Rotate(myTF.forward, Time.deltaTime *  340f, Space.World);
+            rocks[2].Rotate(myTF.forward, Time.deltaTime * 340f, Space.World);
             rocks[3].Rotate(myTF.forward, Time.deltaTime * -300f, Space.World);
 
             runes[0].Rotate(myTF.right, Time.deltaTime * -120f, Space.World);
-            runes[1].Rotate(myTF.right, Time.deltaTime *   40f, Space.World);
+            runes[1].Rotate(myTF.right, Time.deltaTime * 40f, Space.World);
 
             //flicker the light
             if (portalLight.intensity == randIntencity)

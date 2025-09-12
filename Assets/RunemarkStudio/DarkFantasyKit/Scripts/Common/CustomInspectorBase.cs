@@ -1,6 +1,5 @@
 ﻿namespace Runemark.Common
 {
-    using System;
 #if UNITY_EDITOR
     using System.Collections.Generic;
     using System.Linq;
@@ -79,19 +78,19 @@
                 if (group > maxGroup) maxGroup = group;
                 if (group < minGroup) minGroup = group;
             }
-     
+
             properties.Add(new PropertyData()
             {
                 key = title,
                 index = -1,
                 group = group,
-                useCustomField = true,            
+                useCustomField = true,
                 customField = () => { GUILayout.Label(title, EditorStyles.boldLabel); }
             });
             existingNames.Add(name);
         }
         protected void AddSpace(float pixels, int group = 0)
-        {            
+        {
             if (!lastIndexByGroup.ContainsKey(group))
             {
                 lastIndexByGroup.Add(group, 0);
@@ -151,16 +150,16 @@
 
             if (prop.useCustomField)
                 prop.customField();
-            else if(prop.label == null)
+            else if (prop.label == null)
                 EditorGUILayout.PropertyField(prop.property, true);
             else
                 EditorGUILayout.PropertyField(prop.property, prop.label, true);
-        }    
-       
+        }
+
         #endregion
 
         #region Inspector Functions
-        protected virtual string Title { get { return target.GetType().Name ; } }
+        protected virtual string Title { get { return target.GetType().Name; } }
         protected virtual string Description { get { return ""; } }
 
         InspectorHeader header;
@@ -168,8 +167,8 @@
         void OnEnable()
         {
             OnInit();
-            ReorderProperties();   
-            header = new InspectorHeader(Title);            
+            ReorderProperties();
+            header = new InspectorHeader(Title);
         }
 
         public sealed override void OnInspectorGUI()
@@ -179,7 +178,7 @@
                 serializedObject.Update();
                 header.Draw();
 
-                if(Description != "")
+                if (Description != "")
                     EditorGUILayout.HelpBox(Description, MessageType.Info);
 
                 if (properties.Count == 0)
@@ -188,24 +187,24 @@
                     return;
                 }
 
-                foreach(var property in properties)
+                foreach (var property in properties)
                 {
                     DrawPropertyField(property);
                 }
                 serializedObject.ApplyModifiedProperties();
 
                 if (cc.changed)
-                {                    
+                {
                     OnChanged();
                 }
             }
         }
-        protected virtual void OnInit(){}
-        protected virtual void OnChanged(){}
+        protected virtual void OnInit() { }
+        protected virtual void OnChanged() { }
 
 
         #endregion
     }
 
-    #endif
+#endif
 }

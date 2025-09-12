@@ -62,9 +62,9 @@ namespace FIMSpace.FEditor
 
         public static void DrawBoneHandle(Vector3 from, Vector3 to, float fatness = 1f, bool faceCamera = false)
         {
-            Vector3 forw =  (to - from).normalized;
+            Vector3 forw = (to - from).normalized;
 
-            if ( faceCamera)
+            if (faceCamera)
             {
                 if (SceneView.lastActiveSceneView != null)
                     if (SceneView.lastActiveSceneView.camera)

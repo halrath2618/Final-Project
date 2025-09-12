@@ -1,10 +1,6 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -13,7 +9,9 @@ public class PlayerController : MonoBehaviour
     private bool _isAttacking = false; // Flag to check if the player is currently attacking
     public bool CanMove => !_isAttacking; // Property to check if the player can move
 
-    public int level = 0;
+    private CharacterController _controller;
+    private Animator _animator;
+
 
     [Header("Equipment")]
     public GameObject[] weapon; // Reference to the player's weapon GameObject
@@ -50,7 +48,7 @@ public class PlayerController : MonoBehaviour
     public float attackDmg_AfterMeetHalrathSkill2 = 15f; // Damage for the second skill
 
     [Header("MAge: Skills and Spells")]
-    public GameObject[] mageSpellsIcon; 
+    public GameObject[] mageSpellsIcon;
     public GameObject earthSpell;
     public GameObject fireSpell;
     public float attackDmg_Earth = 20f;
@@ -83,9 +81,8 @@ public class PlayerController : MonoBehaviour
     public float swordMasterSkill3Damage = 75f; // Damage for the third skill
     [Header("Audio")]
     [SerializeField] private AudioSFXManager sfx; // Reference to the AudioSFXManager script
-
-    [SerializeField] private CharacterController _controller;
-    [SerializeField] private Animator _animator;
+    
+    
     [SerializeField] private SphereCollider _attackCollider; // Collider for attack detection
     private Vector3 _velocity;
     private float _currentSpeed;
@@ -95,10 +92,9 @@ public class PlayerController : MonoBehaviour
     [Header("HP, Mana and Stamina Control")]
     public float maxHP = 100;
     public float _currentHealth;
-    public HPBar hp;
+    private HPBar hp;
     public float maxMana = 100;
     public float _currentMana;
-    public ManaStamina manaStamina;
     public float maxStamina = 100;
     public float _currentStamina;
     public bool _isDrainingMana = false; // Flag to check if mana is being drained
@@ -107,14 +103,14 @@ public class PlayerController : MonoBehaviour
     public float skill1MaxCD; // Cooldown time for skills in seconds
     public float skill1CDTime;
     public bool skill1_isReady; // Flag to check if the skill is ready to be used
-    public SkillCooldown skillCooldown;
+    private SkillCooldown skillCooldown;
     public GameObject skill1_cdSlider;
     public GameObject skill2_cdSlider;
     public float skill2MaxCD; // Cooldown time for skills in seconds
     public float skill2CDTime;
     public bool skill2_isReady; // Flag to check if the skill is ready to be used
-    public Warning_Skill warningSkill;
-    public SkillConstantlyActive skillConstantlyActive;
+    private Warning_Skill warningSkill;
+    private SkillConstantlyActive skillConstantlyActive;
     public bool auraReady; // Flag to check if the aura skill is ready to be used
     public GameObject HP_Potion;
     public GameObject Mana_Potion;
@@ -128,19 +124,19 @@ public class PlayerController : MonoBehaviour
     public bool manacdReady = true; // Flag to check if the Mana potion cooldown is ready
 
     [Header("Refs")]
-    [SerializeField] private Monster monster; // Reference to the Monster script for taking damage
+    public Monster monster; // Reference to the Monster script for taking damage
 
     [Header("Notices")]
-    [SerializeField] private CanvasGroup noticeCanvasGroup; // Reference to the CanvasGroup for notices
-    [SerializeField] private GameObject noticePanel; // Reference to the notice panel GameObject
+    public CanvasGroup noticeCanvasGroup; // Reference to the CanvasGroup for notices
+    public GameObject noticePanel; // Reference to the notice panel GameObject
 
     [Header("Effects")]
     [SerializeField] private GameObject fireHand; // Reference to the fire hand effect GameObject
     [SerializeField] private GameObject fireEffect; // Reference to the aura effect GameObject
 
     [Header("Testing Switch Class")] //Testing swtiching class
-    [SerializeField] private CharacterClassManager characterClassManager; // Reference to the CharacterClassManager script
-    [SerializeField] private GameObject switchClassUI; // Reference to the UI GameObject for switching classes
+    private CharacterClassManager characterClassManager; // Reference to the CharacterClassManager script
+    //[SerializeField] private GameObject switchClassUI; // Reference to the UI GameObject for switching classes
 
     private int characterClass = 0; // Variable to track the current character class
 
@@ -150,7 +146,6 @@ public class PlayerController : MonoBehaviour
         brawlerSkillsIcon[1].SetActive(true);
         brawlerSkillsIcon[2].SetActive(true);
         characterClassManager.SwitchClass(CharacterClass.Brawler); // Switch to Brawler class
-        switchClassUI.SetActive(false); // Hide the switch class UI
         _controller.GetComponent<CharacterController>().enabled = true;
     }
     public void SwitchToMage()
@@ -160,7 +155,6 @@ public class PlayerController : MonoBehaviour
         mageSpellsIcon[2].SetActive(true); // Activate the Mage fire spell
         weapon[1].SetActive(true); // Activate the Mage weapon
         characterClassManager.SwitchClass(CharacterClass.Mage); // Switch to Mage class
-        switchClassUI.SetActive(false); // Hide the switch class UI
         _controller.GetComponent<CharacterController>().enabled = true;
     }
     public void SwitchToSwordMaster()
@@ -170,12 +164,10 @@ public class PlayerController : MonoBehaviour
         swordMasterSkillsIcon[2].SetActive(true); // Activate the SwordMaster skill icon
         weapon[2].SetActive(true); // Activate the SwordMaster weapon
         characterClassManager.SwitchClass(CharacterClass.SwordMaster); // Switch to Rogue class
-        switchClassUI.SetActive(false); // Hide the switch class UI
         _controller.GetComponent<CharacterController>().enabled = true;
     }
     public void SwitchToMeetHalrath()
     {
-        switchClassUI.SetActive(false); // Hide the switch class UI
         afterMeetHalrathSkillsIcon[0].SetActive(true); // Activate the After Meet Halrath's first skill icon
         afterMeetHalrathSkillsIcon[1].SetActive(true); // Activate the After Meet Halrath's second skill icon
         weapon[0].SetActive(true);
@@ -184,8 +176,16 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        characterClassManager.SwitchClass(CharacterClass.Starter); // Start with the Starter class
-
+        characterClassManager = GetComponent<CharacterClassManager>();
+        warningSkill = GetComponent<Warning_Skill>();
+        skillConstantlyActive = GetComponent<SkillConstantlyActive>();
+        hp = GetComponent<HPBar>();
+        _controller = GetComponent<CharacterController>();
+        _animator = GetComponentInChildren<Animator>();
+        skillCooldown = GetComponent<SkillCooldown>();
+        characterClassManager.SwitchClass(CharacterClass.Brawler); // Start with the Starter class
+        characterClass = 1;
+        //switchClassUI.SetActive(true); // Show the switch class UI at the start
         _currentHealth = maxHP; // Initialize current health to max HP
         _currentMana = maxMana; // Initialize current mana to max Mana
         _currentStamina = maxStamina; // Initialize current stamina to max Stamina
@@ -198,42 +198,62 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.B))
+        //{
+        //    characterClass = 1;
+        //    switchClassUI.SetActive(false); // Hide the switch class UI after selection
+        //}
+        //else if (Input.GetKeyDown(KeyCode.N))
+        //{
+        //    characterClass = 2;
+        //    switchClassUI.SetActive(false); // Hide the switch class UI after selection
+        //}
+        //else if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //    characterClass = 3;
+        //    switchClassUI.SetActive(false); // Hide the switch class UI after selection
+        //}
+        //else if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    characterClass = 4;
+        //    switchClassUI.SetActive(false); // Hide the switch class UI after selection
+        //}
         if (characterClass == 1)
         {
-            skill1MaxCD = 1f; // Set cooldown time for Brawler's first skill
+            skill1MaxCD = 0f; // Set cooldown time for Brawler's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for Brawler's first skill
-            skill2MaxCD = 4f; // Set cooldown time for Brawler's second skill
+            skill2MaxCD = 0f; // Set cooldown time for Brawler's second skill
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for Brawler's second skill
             SwitchToBrawler(); // Switch to Brawler class when 1 is pressed
         }
         else if (characterClass == 2)
         {
-            skill1MaxCD = 5f; // Set cooldown time for Mage's first skill
+            skill1MaxCD = 0f; // Set cooldown time for Mage's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for Mage's first skill
-            skill2MaxCD = 10f; // Set cooldown time for Mage's second skill
+            skill2MaxCD = 0f; // Set cooldown time for Mage's second skill
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for Mage's second skill
             SwitchToMage(); // Switch to Mage class when 2 is pressed
         }
         else if (characterClass == 3)
         {
-            skill1MaxCD = 1f; // Set cooldown time for SwordMaster's first skill
+            skill1MaxCD = 0f; // Set cooldown time for SwordMaster's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for SwordMaster's first skill
-            skill2MaxCD = 4f; // Set cooldown time for SwordMaster's second skill
+            skill2MaxCD = 0f; // Set cooldown time for SwordMaster's second skill
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for SwordMaster's second skill
             SwitchToSwordMaster(); // Switch to SwordMaster class when 3 is pressed
         }
         else if (characterClass == 4)
         {
-            skill1MaxCD = 1f; // Set cooldown time for After Meet Halrath's first skill
+            skill1MaxCD = 0f; // Set cooldown time for After Meet Halrath's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for After Meet Halrath's first skill
-            skill2MaxCD = 4f; // Set cooldown time for After Meet Halrath's second skill
+            skill2MaxCD = 0f; // Set cooldown time for After Meet Halrath's second skill
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for After Meet Halrath's second skill
             SwitchToMeetHalrath(); // Switch to After Meet Halrath class when 4 is pressed
         }
 
-            hp.HP();
-        manaStamina.UpdateMana();
-        manaStamina.UpdateStamina();
+        hp.UpdateHP();
+        hp.UpdateMana();
+        hp.UpdateStamina();
         // Ground check
         _isGrounded = _controller.isGrounded;
         if (_isGrounded && _velocity.y < 0) _velocity.y = -2f;
@@ -247,7 +267,7 @@ public class PlayerController : MonoBehaviour
             // Sprint
             if (Input.GetKey(KeyCode.LeftShift) && _currentStamina > 0)
             {
-                if(_currentSpeed <= 0)
+                if (_currentSpeed <= 0)
                 {
                     return;
                 }
@@ -294,7 +314,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 _currentStamina -= 25; // Deduct stamina for dodging
-                manaStamina.UpdateStamina(); // Update stamina UI
+                hp.UpdateStamina(); // Update stamina UI
                 StartDodge();
             }
 
@@ -309,7 +329,7 @@ public class PlayerController : MonoBehaviour
         {
             if (skill1_isReady)
             {
-                skill1_isReady = false; // Set skill as not ready
+                /*skill1_isReady = false;*/ // Set skill as not ready
                 StartCoroutine(PerformAttack_1()); // Perform attack
                 if (_currentMana >= 10)
                 {
@@ -323,7 +343,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
                 StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                 Debug.Log("Skill is not ready.");
             }
@@ -332,7 +351,7 @@ public class PlayerController : MonoBehaviour
         {
             if (skill2_isReady)
             {
-                skill2_isReady = false; // Set skill as not ready
+                /*skill2_isReady = false;*/ // Set skill as not ready
                 StartCoroutine(PerformAttack_2()); // Perform attack
                 if (_currentMana >= 30)
                 {
@@ -346,7 +365,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                
                 StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                 Debug.Log("Skill is not ready.");
             }
@@ -371,7 +390,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                    
                     StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                     Debug.Log("Skill is not ready.");
                 }
@@ -413,7 +432,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                    
                     StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                     Debug.Log("Skill is not ready.");
                 }
@@ -537,7 +556,7 @@ public class PlayerController : MonoBehaviour
             yield return _currentHealth += 5 * Time.deltaTime;
             hpDuration -= Time.deltaTime; // Decrease duration of HP potion effect
             healAura.SetActive(true); // Activate the heal aura effect
-            
+
         }
         healAura.SetActive(false); // Deactivate the heal aura effect
         if (_currentHealth > maxHP)
@@ -545,33 +564,33 @@ public class PlayerController : MonoBehaviour
             _currentHealth = maxHP; // Ensure health does not exceed max HP
             Debug.Log("Health is already full.");
         }
-        hp.HP();
+        hp.UpdateHP();
         hpDuration = 10f; // Reset duration for the next use
     }
     public void StopDrainingMana()
     {
-        if(!_isDrainingMana)
+        if (!_isDrainingMana)
         {
             StopCoroutine(AuraManaDrainPerSecond()); // Stop the mana drain coroutine
         }
     }
     IEnumerator AuraManaDrainPerSecond()
     {
-            while (_currentMana > 0 && _isDrainingMana)
+        while (_currentMana > 0 && _isDrainingMana)
+        {
+            yield return new WaitForSeconds(1f); // Wait for 1 second
+            _currentMana -= 1; // Drain 1 mana per second
+            hp.UpdateMana(); // Update mana UI
+            if (_currentMana <= 0)
             {
-                yield return new WaitForSeconds(1f); // Wait for 1 second
-                _currentMana -= 1; // Drain 1 mana per second
-                manaStamina.UpdateMana(); // Update mana UI
-                if (_currentMana <= 0)
-                {
-                    _currentMana = 0; // Ensure mana does not go below zero
-                    auraReady = true; // Reset skill readiness
-                    auraSpell.SetActive(false); // Deactivate the aura spell
-                    skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
-                    Debug.Log("Aura skill deactivated due to no mana.");
-                    break; // Exit the coroutine if no mana left
-                }
+                _currentMana = 0; // Ensure mana does not go below zero
+                auraReady = true; // Reset skill readiness
+                auraSpell.SetActive(false); // Deactivate the aura spell
+                skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
+                Debug.Log("Aura skill deactivated due to no mana.");
+                break; // Exit the coroutine if no mana left
             }
+        }
     }
     IEnumerator PerformAttack_3()
     {
@@ -591,7 +610,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        
                         StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
@@ -652,7 +671,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        else if(characterClass == 3)
+        else if (characterClass == 3)
         {
             _isInvulnerable = true; // Set invulnerability during the attack
             _isAttacking = true; // Set attacking flag to true
@@ -668,7 +687,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        
                         StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
@@ -707,7 +726,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        
                         StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
@@ -754,7 +773,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        
                         StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
@@ -776,7 +795,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        else if(characterClass == 3)
+        else if (characterClass == 3)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -791,7 +810,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        
                         StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
@@ -817,7 +836,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        else if(characterClass == 4)
+        else if (characterClass == 4)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -832,7 +851,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        
                         StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
@@ -872,7 +891,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        
                         StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
@@ -909,7 +928,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        
                         StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
@@ -935,7 +954,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        else if(characterClass == 3)
+        else if (characterClass == 3)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -950,7 +969,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        
                         StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
@@ -986,7 +1005,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        warningSkill.gameWarning.SetActive(true); // Show warning for skill cooldown
+                        
                         StartCoroutine(warningSkill.Flashing()); // Start flashing warning
                         Debug.Log("Not enough mana to perform the attack.");
                         yield break; // Exit if not enough mana
@@ -1017,7 +1036,7 @@ public class PlayerController : MonoBehaviour
         if (_isInvulnerable) return; // Ignore damage during dodge
 
         _currentHealth -= damage;
-        hp.HP(); // Update health bar UI
+        hp.UpdateHP(); // Update health bar UI
         if (_currentHealth <= 0)
         {
             _currentHealth = 0; // Ensure health does not go below zero
@@ -1044,7 +1063,7 @@ public class PlayerController : MonoBehaviour
         if (_currentMana >= manaCost)
         {
             _currentMana -= manaCost;
-            manaStamina.UpdateMana();
+            hp.UpdateMana();
             // Add skill casting logic here
         }
         else
@@ -1057,7 +1076,7 @@ public class PlayerController : MonoBehaviour
         if (_currentStamina > 0 && _currentSpeed >= sprintSpeed)
         {
             _currentStamina -= 0.5f; // Decrease stamina for sprinting
-            manaStamina.UpdateStamina();
+            hp.UpdateStamina();
         }
         else
         {
@@ -1076,7 +1095,7 @@ public class PlayerController : MonoBehaviour
         }
         if (_currentStamina > maxStamina)
             _currentStamina = maxStamina;
-        manaStamina.UpdateStamina();
+        hp.UpdateStamina();
     }
 
     IEnumerator RegenerateMana()
@@ -1092,7 +1111,7 @@ public class PlayerController : MonoBehaviour
             manaAura.SetActive(false); // Deactivate the heal aura effect after regeneration
             if (_currentMana > maxMana)
                 _currentMana = maxMana; // Ensure mana does not exceed max mana
-            manaStamina.UpdateMana();
+            hp.UpdateMana();
             manaDuration = 10f;
         }
         else

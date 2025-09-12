@@ -1,9 +1,8 @@
-using UnityEngine;
-using UnityEditor;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 
 public class ManifestGenerator
 {

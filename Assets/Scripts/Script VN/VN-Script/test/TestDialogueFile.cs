@@ -1,5 +1,4 @@
 using DIALOGUE;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ public class TestDialogueFile : MonoBehaviour
     void StartConversation()
     {
         List<string> lines = FileManager.ReadTextAsset(fileToRead);
-        
+
         //foreach (string line in lines)
         //{
         //    if (string.IsNullOrWhiteSpace(line))

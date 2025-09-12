@@ -25,7 +25,7 @@ namespace FIMSpace.FTools
         public Quaternion StartBoneRotationOffset { get; set; }
 
 
-        public virtual void Init(Transform root) 
+        public virtual void Init(Transform root)
         {
             StartBoneRotationOffset = Quaternion.identity;
         }

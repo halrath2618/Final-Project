@@ -2,9 +2,9 @@
 {
     using UnityEngine;
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
+#endif
 
     /// <summary>
     /// Base transformer class.
@@ -20,8 +20,8 @@
         public bool ActivateOnStart;
         public LoopType loopType;
         public float Duration = 1f;
-        public AnimationCurve AccelerationCurve = new AnimationCurve(new Keyframe(0,0), new Keyframe(1,1));
-        
+        public AnimationCurve AccelerationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+
         float _time = 0f;
         public float Position = 0f;
         float _direction = 1f;
@@ -43,7 +43,7 @@
         }
 
         public override void Deactivate()
-        {         
+        {
             _active = false;
             InProgress = false;
         }
@@ -63,11 +63,11 @@
                 {
                     case LoopType.Once:
                         Position = Mathf.Clamp01(_time);
-                        if(_direction > 0 && Position >= 1 || _direction < 0 && Position <= 0)
+                        if (_direction > 0 && Position >= 1 || _direction < 0 && Position <= 0)
                         {
                             Deactivate();
                             _direction *= -1;
-                        }   
+                        }
 
                         break;
                     case LoopType.PingPong:
@@ -80,13 +80,13 @@
                 DoTransform(Position);
             }
         }
-        
+
         public abstract void DoTransform(float position);
 
 
 
 #if UNITY_EDITOR
-        [Range(0,1)]
+        [Range(0, 1)]
         public float PreviewPosition;
         protected Vector3 _cachedPosition;
         public void CatchPosition()
@@ -97,7 +97,7 @@
     }
 
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [CustomEditor(typeof(RMTransformer), true)]
     public class RMTransformerEditor : CustomInspectorBase
     {
@@ -115,5 +115,5 @@
             myTarget.DoTransform(myTarget.PreviewPosition);
         }
     }
-    #endif
+#endif
 }

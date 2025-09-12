@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
         animator.SetFloat("Speed", speed);
         animator.SetBool("Detect", playerDetected);
 
-       
+
 
     }
 
@@ -139,5 +139,5 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
-    
+
 }

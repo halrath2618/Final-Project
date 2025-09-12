@@ -1,13 +1,12 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using UnityEngine.Networking; // Required for reading StreamingAssets on Android/WebGL
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks; // For asynchronous hashing
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FileValidator : MonoBehaviour
 {
@@ -24,7 +23,7 @@ public class FileValidator : MonoBehaviour
     {
         // Ensure UI is in a clean state
         if (progressBar != null) progressBar.value = 0;
-        
+
         StartCoroutine(ValidateFilesCoroutine());
     }
     private IEnumerator ValidateFilesCoroutine()

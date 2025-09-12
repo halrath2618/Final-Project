@@ -1,5 +1,4 @@
 using DIALOGUE;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +17,7 @@ namespace TESTING
         void SendFileToParse()
         {
             List<string> lines = FileManager.ReadTextAsset("testFile");
-            foreach(string line in lines)
+            foreach (string line in lines)
             {
                 if (line == string.Empty)
                     continue;

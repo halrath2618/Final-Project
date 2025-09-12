@@ -807,7 +807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1605581670}
   manifestFileName: file_manifest.json
-  lvl: {fileID: 1383794379}
+  nextSceneName: Prologue
 --- !u!114 &1383794379
 MonoBehaviour:
   m_ObjectHideFlags: 0

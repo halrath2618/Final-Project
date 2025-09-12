@@ -46,8 +46,8 @@ namespace FIMSpace
 
         public override bool PushIfInside(ref Vector3 point, float pointRadius, Vector3 pointOffset)
         {
-            if ( Is2D == false)
-            return PushOutFromSphereCollider(Sphere, pointRadius, ref point, SphereRadius, pointOffset);
+            if (Is2D == false)
+                return PushOutFromSphereCollider(Sphere, pointRadius, ref point, SphereRadius, pointOffset);
             else
                 return PushOutFromSphereCollider(Sphere2D, pointRadius, ref point, SphereRadius, pointOffset);
         }

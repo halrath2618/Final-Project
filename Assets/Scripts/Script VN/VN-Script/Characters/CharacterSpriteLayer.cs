@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,7 +31,7 @@ namespace CHARACTERS
 
         public bool isFlipping => co_flipping != null;
 
-        public CharacterSpriteLayer (Image defaultRenderer, int layer = 0)
+        public CharacterSpriteLayer(Image defaultRenderer, int layer = 0)
         {
             renderer = defaultRenderer;
             this.layer = layer;
@@ -52,7 +51,7 @@ namespace CHARACTERS
             if (isTransitioningLayer)
                 characterManager.StopCoroutine(co_transitioningLayer);
 
-            co_transitioningLayer = characterManager.StartCoroutine(TransitioningSprite(sprite,speed));
+            co_transitioningLayer = characterManager.StartCoroutine(TransitioningSprite(sprite, speed));
 
             return co_transitioningLayer;
         }
@@ -93,7 +92,7 @@ namespace CHARACTERS
         }
         private IEnumerator RunAlphaLeveling()
         {
-            while(rendererCG.alpha < 1 || oldRenderer.Any(oldCG => oldCG.alpha > 0))
+            while (rendererCG.alpha < 1 || oldRenderer.Any(oldCG => oldCG.alpha > 0))
             {
                 float speed = DEFAULT_TRANSITION_SPEED * transitionSpeedMultiplier * Time.deltaTime;
                 rendererCG.alpha = Mathf.MoveTowards(rendererCG.alpha, 1, speed);
@@ -120,7 +119,7 @@ namespace CHARACTERS
         {
             renderer.color = color;
 
-            foreach(CanvasGroup oldCG in oldRenderer)
+            foreach (CanvasGroup oldCG in oldRenderer)
             {
                 oldCG.GetComponent<Image>().color = color;
             }
@@ -152,13 +151,13 @@ namespace CHARACTERS
             Color oldColor = renderer.color;
             List<Image> oldImages = new List<Image>();
 
-            foreach(var oldCG in oldRenderer)
+            foreach (var oldCG in oldRenderer)
             {
                 oldImages.Add(oldCG.GetComponent<Image>());
             }
 
             float colorPercent = 0;
-            while(colorPercent < 1)
+            while (colorPercent < 1)
             {
                 colorPercent += DEFAULT_TRANSITION_SPEED * speedMultiplier * Time.deltaTime;
 

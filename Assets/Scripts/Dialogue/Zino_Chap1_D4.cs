@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Zino_Chap1_D4 : MonoBehaviour
 {
@@ -22,7 +22,6 @@ public class Zino_Chap1_D4 : MonoBehaviour
     public CameraSetting cameraSetting;
     [SerializeField] private Animator zino;
     [SerializeField] CreateCharacterText createCharacterText;
-    [SerializeField] private LevelGame level;
 
 
 

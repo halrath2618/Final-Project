@@ -19,7 +19,7 @@ namespace FIMSpace.FEditor
         {
             checkForAnim = true;
             FoundAnimator = null;
-            if ( resetClicks ) clicks = 0;
+            if (resetClicks) clicks = 0;
         }
 
 
@@ -51,7 +51,7 @@ namespace FIMSpace.FEditor
 
                     if (mec.runtimeAnimatorController == null)
                     {
-                        EditorGUILayout.HelpBox("  No 'Animator Controller' inside Animator ("+FoundAnimator.transform.name+")", MessageType.Warning);
+                        EditorGUILayout.HelpBox("  No 'Animator Controller' inside Animator (" + FoundAnimator.transform.name + ")", MessageType.Warning);
                         drawInactiveWarning = false;
                         working = false;
                     }
@@ -214,7 +214,7 @@ namespace FIMSpace.FEditor
             if (nameLower.EndsWith(".r")) return true;
             if (nameLower.EndsWith(".l")) return false;
 
-            if ( includeNotSure)
+            if (includeNotSure)
             {
                 if (nameLower.Contains("r_")) return true;
                 if (nameLower.Contains("l_")) return false;
@@ -238,7 +238,8 @@ namespace FIMSpace.FEditor
         public static bool? IsRightOrLeft(Transform child, Transform itsRoot)
         {
             Vector3 transformed = itsRoot.InverseTransformPoint(child.position);
-            if (transformed.x < 0f) return false; else
+            if (transformed.x < 0f) return false;
+            else
             if (transformed.x > 0f) return true;
             return null;
         }
@@ -248,7 +249,7 @@ namespace FIMSpace.FEditor
         {
             for (int i = 0; i < keys.Length; i++)
                 if (text.Contains(keys[i])) return true;
-            
+
             return false;
         }
 

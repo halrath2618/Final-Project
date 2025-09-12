@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -26,7 +24,7 @@ public class LoadingScreen : MonoBehaviour
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             progressBar.GetComponent<Image>().fillAmount = progress;
-            textPercent.text = (progress*100).ToString("0") + "%";
+            textPercent.text = (progress * 100).ToString("0") + "%";
 
             yield return null;
         }

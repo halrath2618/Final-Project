@@ -30,7 +30,7 @@ namespace CHARACTERS
         protected Color unHighlightedColor => new Color(color.r * UNHIGHLIGHTED_DARKEN_STRENGTH, color.g * UNHIGHLIGHTED_DARKEN_STRENGTH, color.b * UNHIGHLIGHTED_DARKEN_STRENGTH, color.a);
         public bool highlighted { get; protected set; } = true;
         protected bool facingLeft = DEFAULT_ORIENTATION_IS_FACING_LEFT;
-        public int priority {  get; protected set; }
+        public int priority { get; protected set; }
 
         protected CharacterManager characterManager => CharacterManager.instance;
 
@@ -56,7 +56,7 @@ namespace CHARACTERS
         public bool isFacingLeft => facingLeft;
         public bool isFacingRight => !facingLeft;
         public bool isFlipping => co_flipping != null;
-        public Character(string name, CharacterConfigData config, GameObject prefab )
+        public Character(string name, CharacterConfigData config, GameObject prefab)
         {
             this.name = name;
             displayName = name;
@@ -128,10 +128,10 @@ namespace CHARACTERS
 
         public virtual Coroutine MoveToPosition(Vector2 position, float speed = 2f, bool smooth = false)
         {
-            if(root == null)
+            if (root == null)
                 return null;
 
-            if(isMoving)
+            if (isMoving)
                 characterManager.StopCoroutine(co_moving);
 
             co_moving = characterManager.StartCoroutine(MovingToPosition(position, speed, smooth));
@@ -146,8 +146,8 @@ namespace CHARACTERS
 
             while (root.anchorMin != minAnchorTarget || root.anchorMax != maxAnchorTarget)
             {
-                root.anchorMin = smooth ? 
-                    Vector2.Lerp(root.anchorMin, minAnchorTarget, speed * Time.deltaTime) 
+                root.anchorMin = smooth ?
+                    Vector2.Lerp(root.anchorMin, minAnchorTarget, speed * Time.deltaTime)
                     : Vector2.MoveTowards(root.anchorMin, minAnchorTarget, speed * Time.deltaTime * 0.35f);
 
                 root.anchorMax = root.anchorMin + padding;
@@ -206,7 +206,7 @@ namespace CHARACTERS
             if (isHighlighting)
                 return co_highlighting;
 
-            if(isUnHighlighting)
+            if (isUnHighlighting)
                 characterManager.StopCoroutine(co_highlighting);
 
             highlighted = true;
@@ -261,7 +261,7 @@ namespace CHARACTERS
             return co_flipping;
         }
 
-        public virtual IEnumerator FaceDirection (bool faceLeft, float speedMultiplier, bool immediate)
+        public virtual IEnumerator FaceDirection(bool faceLeft, float speedMultiplier, bool immediate)
         {
             Debug.Log("Can't flip a character of this type!");
             yield return null;

@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Timeline;
 using TMPro;
+using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 [TrackBindingType(typeof(TextMeshProUGUI))]
 [TrackClipType(typeof(SubtitleClip))]

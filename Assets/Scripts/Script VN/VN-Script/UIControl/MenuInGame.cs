@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -37,7 +35,7 @@ public class MenuInGame : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) || _config)
+        if (Input.GetKeyDown(KeyCode.Escape) || _config)
         {
             OpenMenuInGame();
         }
@@ -50,12 +48,12 @@ public class MenuInGame : MonoBehaviour
     public void QuitToDesktop()
     {
         Debug.Log("Game is exiting...");
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#else
         Application.Quit();
             
-        #endif
+#endif
     }
     public void MainMenu()
     {

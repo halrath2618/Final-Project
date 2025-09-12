@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PortalRound_Controller : MonoBehaviour 
+public class PortalRound_Controller : MonoBehaviour
 {
     [Header("Applied to the effects at start")]
     [SerializeField] private Color effectsColor;

@@ -127,8 +127,8 @@ namespace FIMSpace
         /// <returns></returns>
         public virtual bool PushIfInside(ref Vector3 point, float pointRadius, Vector3 pointOffset)
         {
-            if ( Collider as SphereCollider )
-            Debug.Log("It shouldn't appear");
+            if (Collider as SphereCollider)
+                Debug.Log("It shouldn't appear");
             return false;
         }
 

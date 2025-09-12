@@ -39,7 +39,7 @@ namespace FIMSpace.FEditor
                 MeshFilter f = toSave.GetComponentInChildren<MeshFilter>();
                 if (f == null) f = FTransformMethods.FindComponentInAllChildren<MeshFilter>(toSave.transform);
 
-                if (f) 
+                if (f)
                     f.gameObject.AddComponent<BoxCollider>();
                 else
                     toSave.AddComponent<BoxCollider>();
