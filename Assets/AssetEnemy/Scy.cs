@@ -27,7 +27,7 @@ public class Scy : MonoBehaviour
     //public GameObject fighting;
 
     public CameraSetting cameraSetting;
-    [SerializeField] private Animator scy;
+    [SerializeField] private Animator halrath;
     [SerializeField] private Animator zino;
 
 
@@ -63,7 +63,7 @@ public class Scy : MonoBehaviour
         isDialogueActive = false;
         z.StopTalking();
         s.StopTalking();
-        scy.SetTrigger("Idle");
+        halrath.SetTrigger("Idle");
         zino.SetTrigger("Idle");
     }
     private void Update()
@@ -77,7 +77,7 @@ public class Scy : MonoBehaviour
     public void StartDialogue()
     {
         zino.SetTrigger("Talking");
-        scy.SetTrigger("Talking");
+        halrath.SetTrigger("Talking");
         z.StartTalking();
         s.StartTalking();
         Zino.enabled = false;
