@@ -55,7 +55,8 @@ public class Zino_Chap1_D1 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Trigger Entered");
-            playerController.GetComponent<CharacterController>().enabled = false;
+            playerController.enabled = false;
+            zino.SetFloat("Speed", 0);
             dialogueBox.SetActive(true);
             StartCoroutine(Chap1());
         }
@@ -100,7 +101,7 @@ public class Zino_Chap1_D1 : MonoBehaviour
                 {
                     dialogueBox.SetActive(false);
                     //choicePanel.SetActive(false);
-                    playerController.GetComponent<CharacterController>().enabled = true;
+                    playerController.enabled = true;
                     yield return null;
                     break;
                 }

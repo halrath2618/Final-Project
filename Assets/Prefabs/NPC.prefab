@@ -3007,6 +3007,7 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
+  - 50
   - 0
   - 0
   - 0
@@ -3022,11 +3023,17 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
+  - 100
+  - 100
+  - 100
+  - 100
   - 0
   - 0
   - 0
   - 0
+  - 35
   - 0
+  - 100
   - 0
   - 0
   - 0
@@ -3043,6 +3050,7 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
+  - 100
   - 0
   - 0
   - 0
@@ -3073,18 +3081,10 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
+  - 21
   - 0
   - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 75
   - 0
   - 0
   - 0
@@ -3429,7 +3429,6 @@ GameObject:
   m_Component:
   - component: {fileID: 163642991786193663}
   - component: {fileID: 4364289266906077005}
-  - component: {fileID: 3716536652774323426}
   - component: {fileID: 3746857821682478235}
   - component: {fileID: 6929359447654845815}
   - component: {fileID: 134002826988471688}
@@ -3477,32 +3476,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.92
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3716536652774323426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7748877842877569762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d69a78deb69034d9c04b42f48f7f8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choice1: {fileID: 0}
-  choice2: {fileID: 0}
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  dialogueBox: {fileID: 0}
-  choicePanel: {fileID: 0}
-  _choicePanel: {fileID: 0}
-  playerController: {fileID: 0}
-  Zino: {fileID: 0}
-  z: {fileID: 0}
-  h: {fileID: 3746857821682478235}
-  cameraSetting: {fileID: 0}
-  halrath: {fileID: 5889948993057567166}
-  zino: {fileID: 0}
 --- !u!114 &3746857821682478235
 MonoBehaviour:
   m_ObjectHideFlags: 0

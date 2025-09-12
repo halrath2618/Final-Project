@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private bool _isAttacking = false; // Flag to check if the player is currently attacking
     public bool CanMove => !_isAttacking; // Property to check if the player can move
 
+    public int level = 0;
+
     [Header("Equipment")]
     public GameObject[] weapon; // Reference to the player's weapon GameObject
 
@@ -79,6 +81,8 @@ public class PlayerController : MonoBehaviour
     public float swordMasterSkill1Damage = 5f; // Damage for the first skill
     public float swordMasterSkill2Damage = 25f; // Damage for the second skill
     public float swordMasterSkill3Damage = 75f; // Damage for the third skill
+    [Header("Audio")]
+    [SerializeField] private AudioSFXManager sfx; // Reference to the AudioSFXManager script
 
     [SerializeField] private CharacterController _controller;
     [SerializeField] private Animator _animator;

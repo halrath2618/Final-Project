@@ -32,7 +32,6 @@ Material:
     m_Colors:
     - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6

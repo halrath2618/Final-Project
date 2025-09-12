@@ -25,6 +25,6 @@ public class CutScene : MonoBehaviour
         }
 
         // Load the next scene after the cutscene ends
-        SceneManager.LoadScene("Map 1");
+        SceneManager.LoadScene("LoadingScene");
     }
 }

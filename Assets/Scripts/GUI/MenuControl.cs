@@ -70,7 +70,7 @@ public class MenuController : MonoBehaviour
     }
     public void ResumeGame()
     {
-        if (_isMenuOpen) ToggleMenu();
+        menuCanvas.SetActive(false);
     }
 
     public void QuitGame()

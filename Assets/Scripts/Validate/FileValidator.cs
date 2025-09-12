@@ -16,7 +16,7 @@ public class FileValidator : MonoBehaviour
 
     [Header("Validation Settings")]
     [SerializeField] private string manifestFileName = "file_manifest.json";
-    [SerializeField] private string nextSceneName = "Main Menu"; // Scene to load on success
+    public string nextSceneName; // Scene to load on success
 
     private List<string> corruptedFiles = new List<string>();
 
@@ -24,10 +24,9 @@ public class FileValidator : MonoBehaviour
     {
         // Ensure UI is in a clean state
         if (progressBar != null) progressBar.value = 0;
-
+        
         StartCoroutine(ValidateFilesCoroutine());
     }
-
     private IEnumerator ValidateFilesCoroutine()
     {
         // 1. Load the Manifest

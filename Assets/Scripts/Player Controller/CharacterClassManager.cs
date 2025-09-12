@@ -12,11 +12,6 @@ public class CharacterClassManager : MonoBehaviour
     private CharacterClass currentClass;
     private GameObject currentEquipment;
 
-    void Start()
-    {
-        // Initialize with first class
-        SwitchClass(CharacterClass.Brawler);
-    }
 
     public void SwitchClass(CharacterClass newClass)
     {

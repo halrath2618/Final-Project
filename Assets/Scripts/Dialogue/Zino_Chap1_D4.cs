@@ -22,6 +22,7 @@ public class Zino_Chap1_D4 : MonoBehaviour
     public CameraSetting cameraSetting;
     [SerializeField] private Animator zino;
     [SerializeField] CreateCharacterText createCharacterText;
+    [SerializeField] private LevelGame level;
 
 
 
@@ -42,8 +43,9 @@ public class Zino_Chap1_D4 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Trigger Entered");
+            zino.SetFloat("Speed", 0);
             dialogueBox.SetActive(true);
-            playerController.GetComponent<CharacterController>().enabled = false;
+            playerController.enabled = false;
             StartCoroutine(Chap4());
         }
     }
@@ -87,7 +89,7 @@ public class Zino_Chap1_D4 : MonoBehaviour
             case 4:
                 {
                     dialogueBox.SetActive(false);
-                    playerController.GetComponent<CharacterController>().enabled = true;
+                    playerController.enabled = true;
                     //choicePanel.SetActive(false);
                     yield return null;
                     break;

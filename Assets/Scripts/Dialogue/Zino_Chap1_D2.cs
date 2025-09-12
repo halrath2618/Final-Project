@@ -36,8 +36,6 @@ public class Zino_Chap1_D2 : MonoBehaviour
     [SerializeField] private Animator zino;
     [SerializeField] CreateCharacterText createCharacterText;
 
-    private GameObject trigger;
-
 
 
     //public CanvasShaking cv_Shaking;
@@ -57,7 +55,8 @@ public class Zino_Chap1_D2 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Trigger Entered");
-            playerController.GetComponent<CharacterController>().enabled = false;
+            zino.SetFloat("Speed", 0);
+            playerController.enabled = false;
             dialogueBox.SetActive(true);
             StartCoroutine(Chap2());
         }
@@ -103,8 +102,8 @@ public class Zino_Chap1_D2 : MonoBehaviour
                 {
                     dialogueBox.SetActive(false);
                     //choicePanel.SetActive(false);
-                    playerController.GetComponent<CharacterController>().enabled = true;
-                    trigger.GetComponent<SphereCollider>().enabled = false;
+                    playerController.enabled = true;
+                    gameObject.GetComponent<SphereCollider>().enabled = false;
                     yield return null;
                     break;
                 }
