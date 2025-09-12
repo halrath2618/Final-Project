@@ -63,7 +63,7 @@ public class Scy : MonoBehaviour
         isDialogueActive = false;
         z.StopTalking();
         s.StopTalking();
-        halrath.SetTrigger("Idle");
+        scy.SetTrigger("Idle");
         zino.SetTrigger("Idle");
     }
     private void Update()
@@ -77,7 +77,7 @@ public class Scy : MonoBehaviour
     public void StartDialogue()
     {
         zino.SetTrigger("Talking");
-        halrath.SetTrigger("Talking");
+        scy.SetTrigger("Talking");
         z.StartTalking();
         s.StartTalking();
         Zino.enabled = false;
