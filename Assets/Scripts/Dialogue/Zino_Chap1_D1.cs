@@ -79,6 +79,7 @@ public class Zino_Chap1_D1 : MonoBehaviour
         {
             case 0:
                 {
+                    z.StartTalking();
                     yield return createCharacterText.Z.Say("Vậy là... đây chính là nơi mà người ta chỉ nhắc đến trong những câu chuyện mờ nhạt. Khu rừng đã nuốt chửng lối đi, những vì sao biến mất khỏi bầu trời, nhưng tôi vẫn bước tiếp. Có thứ gì đó kéo tôi đến đây. Thứ gì đó cổ xưa.");
                     playerController.storyProgress++;
                     StartCoroutine(Chap1());
@@ -86,6 +87,7 @@ public class Zino_Chap1_D1 : MonoBehaviour
                 }
             case 1:
                 {
+                    z.StopTalking();
                     dialogueBox.SetActive(false);
                     //choicePanel.SetActive(false);
                     playerController.enabled = true;

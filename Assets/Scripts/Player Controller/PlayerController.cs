@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
     private CharacterClassManager characterClassManager; // Reference to the CharacterClassManager script
     //[SerializeField] private GameObject switchClassUI; // Reference to the UI GameObject for switching classes
 
-    private int characterClass = 0; // Variable to track the current character class
+    private int characterClass; // Variable to track the current character class
 
     public void SwitchToBrawler()
     {
@@ -183,8 +183,7 @@ public class PlayerController : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _animator = GetComponentInChildren<Animator>();
         skillCooldown = GetComponent<SkillCooldown>();
-        characterClassManager.SwitchClass(CharacterClass.Brawler); // Start with the Starter class
-        characterClass = 1;
+        characterClassManager.SwitchClass(CharacterClass.Starter); // Start with the Starter class
         //switchClassUI.SetActive(true); // Show the switch class UI at the start
         _currentHealth = maxHP; // Initialize current health to max HP
         _currentMana = maxMana; // Initialize current mana to max Mana

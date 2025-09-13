@@ -80,6 +80,7 @@ public class Zino_Chap1_D4 : MonoBehaviour
         {
             case 3:
                 {
+                    z.StartTalking();
                     yield return createCharacterText.Z.Say("Cánh cổng thật kỳ lạ....{a}\nDù phía sau cánh cổng là gì...{a}tôi sẽ đối mặt.{a} Tôi không thể để mảnh cổ vật tuột khỏi tay mình như thế.");
                     playerController.storyProgress++;
                     StartCoroutine(Chap4());
@@ -87,6 +88,7 @@ public class Zino_Chap1_D4 : MonoBehaviour
                 }
             case 4:
                 {
+                    z.StopTalking();
                     dialogueBox.SetActive(false);
                     playerController.enabled = true;
                     //choicePanel.SetActive(false);

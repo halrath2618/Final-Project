@@ -80,6 +80,7 @@ public class Zino_Chap1_D3 : MonoBehaviour
         {
             case 2:
                 {
+                    z.StartTalking();
                     yield return createCharacterText.Z.Say("Khoan{a} gì thế? Không! Nó đang bay...{a}bay thẳng về phía cánh cổng!");
                     playerController.storyProgress++;
                     StartCoroutine(Chap3());
@@ -87,6 +88,7 @@ public class Zino_Chap1_D3 : MonoBehaviour
                 }
             case 3:
                 {
+                    z.StopTalking();
                     dialogueBox.SetActive(false);
                     playerController.enabled = true;
                     //choicePanel.SetActive(false);
