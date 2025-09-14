@@ -5820,7 +5820,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 97.90739
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
@@ -5846,8 +5846,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517506135}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.51623076, z: 0, w: 0.85644954}
-  m_LocalPosition: {x: 266.598, y: 51.91, z: 269.029}
+  m_LocalRotation: {x: 0.010017454, y: 0.49081135, z: -0.0056436383, w: 0.87119}
+  m_LocalPosition: {x: 665.41, y: 7.1, z: 116.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14297,6 +14297,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CutsceneMapRung2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7502183348835986847, guid: 40b6b33324cb5bd40bc15fa2d7ad6df0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 262.48
       objectReference: {fileID: 0}
     - target: {fileID: 7670357378515542386, guid: 40b6b33324cb5bd40bc15fa2d7ad6df0,
         type: 3}
