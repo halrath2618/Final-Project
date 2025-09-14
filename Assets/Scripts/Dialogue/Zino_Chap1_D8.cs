@@ -85,6 +85,7 @@ public class Zino_Chap1_D8 : MonoBehaviour
                     z.StartTalking();
                     zino.SetTrigger("Talking");
                     yield return createCharacterText.Z.Say("Làm ơn.....{a} Cứu tôi với....");
+                    zino.SetTrigger("Idle");
                     zino.SetTrigger("Injured");
                     yield return createCharacterText.Z.Say("Có ai không.....{a} giúp tôi với.....");
                     yield return createCharacterText.Z.Say("Có....ai...........");
@@ -98,6 +99,7 @@ public class Zino_Chap1_D8 : MonoBehaviour
                 {
                     z.StopTalking();
                     dialogueBox.SetActive(false);
+                    gameObject.SetActive(false);
                     playerController.enabled = true;
                     SceneManager.LoadScene("LoadingScene 1.5");
                     //choicePanel.SetActive(false);

@@ -1845,10 +1845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolRadius: 10
-  patrolSpeed: 2
+  patrolSpeed: 10
   patrolWaitTime: 3
-  detectionDistance: 4
-  detectionAngle: 90
   attackRange: 2
   attackCooldown: 2
   attackDamage: 10

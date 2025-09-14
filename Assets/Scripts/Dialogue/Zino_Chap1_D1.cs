@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Zino_Chap1_D1 : MonoBehaviour
@@ -89,6 +90,7 @@ public class Zino_Chap1_D1 : MonoBehaviour
                 {
                     z.StopTalking();
                     dialogueBox.SetActive(false);
+                    gameObject.SetActive(false);
                     //choicePanel.SetActive(false);
                     playerController.enabled = true;
                     yield return null;

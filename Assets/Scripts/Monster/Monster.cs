@@ -14,8 +14,8 @@ public class Monster : MonoBehaviour
     private float patrolTimer;
 
     [Header("Detection Settings")]
-    public float detectionDistance = 15f;
-    public float detectionAngle = 180f; // 90 degrees in front
+    private float detectionDistance;
+    private float detectionAngle; // 90 degrees in front
     private bool playerDetected;
     //  [SerializeField] private Transform playerPosition;
 
@@ -63,6 +63,8 @@ public class Monster : MonoBehaviour
     private bool isOnCooldown;
     void Start()
     {
+        detectionDistance = 20f;
+        detectionAngle = 180f;
         agent = GetComponent<NavMeshAgent>();
         attackAnimationManager = GetComponentInChildren<EnemyCombatAnimation>();
         hittingLayer = animator.GetLayerIndex("Hitting");
@@ -359,6 +361,10 @@ public class Monster : MonoBehaviour
         {
             health.TakeDamage(playerController.attackDmg_AfterMeetHalrathSkill2);
             Debug.Log("Monster hit by Hunter Skill 2, current health: " + health.currentHealth);
+        }
+        else if (other.CompareTag("D7"))
+        {
+            health.TakeDamage(100);
         }
     }
 

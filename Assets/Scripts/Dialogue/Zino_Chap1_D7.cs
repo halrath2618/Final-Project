@@ -45,13 +45,11 @@ public class Zino_Chap1_D7 : MonoBehaviour
             Debug.Log("Trigger Entered");
             zino.SetFloat("Speed", 0);
             dialogueBox.SetActive(true);
-            playerController.enabled = false;
             StartCoroutine(Chap7());
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        isDialogueActive = false;
         z.StopTalking();
         zino.SetTrigger("Idle");
     }
@@ -91,6 +89,7 @@ public class Zino_Chap1_D7 : MonoBehaviour
                 {
                     z.StopTalking();
                     dialogueBox.SetActive(false);
+                    gameObject.SetActive(false);
                     playerController.enabled = true;
                     //choicePanel.SetActive(false);
                     yield return null;

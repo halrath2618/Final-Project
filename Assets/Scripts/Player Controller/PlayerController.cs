@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Testing Switch Class")] //Testing swtiching class
     private CharacterClassManager characterClassManager; // Reference to the CharacterClassManager script
-    //[SerializeField] private GameObject switchClassUI; // Reference to the UI GameObject for switching classes
+    [SerializeField] private GameObject switchClassUI; // Reference to the UI GameObject for switching classes
 
     private int characterClass; // Variable to track the current character class
 
@@ -185,6 +185,7 @@ public class PlayerController : MonoBehaviour
         skillCooldown = GetComponent<SkillCooldown>();
         characterClassManager.SwitchClass(CharacterClass.Starter); // Start with the Starter class
         //switchClassUI.SetActive(true); // Show the switch class UI at the start
+        //gameObject.GetComponent<CharacterController>().enabled = false; // Disable character controller until a class is selected
         _currentHealth = maxHP; // Initialize current health to max HP
         _currentMana = maxMana; // Initialize current mana to max Mana
         _currentStamina = maxStamina; // Initialize current stamina to max Stamina
@@ -219,33 +220,33 @@ public class PlayerController : MonoBehaviour
         //}
         if (characterClass == 1)
         {
-            skill1MaxCD = 0f; // Set cooldown time for Brawler's first skill
+            skill1MaxCD = 1f; // Set cooldown time for Brawler's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for Brawler's first skill
-            skill2MaxCD = 0f; // Set cooldown time for Brawler's second skill
+            skill2MaxCD = 4f; // Set cooldown time for Brawler's second skill
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for Brawler's second skill
             SwitchToBrawler(); // Switch to Brawler class when 1 is pressed
         }
         else if (characterClass == 2)
         {
-            skill1MaxCD = 0f; // Set cooldown time for Mage's first skill
+            skill1MaxCD = 1f; // Set cooldown time for Mage's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for Mage's first skill
-            skill2MaxCD = 0f; // Set cooldown time for Mage's second skill
+            skill2MaxCD = 4f; // Set cooldown time for Mage's second skill
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for Mage's second skill
             SwitchToMage(); // Switch to Mage class when 2 is pressed
         }
         else if (characterClass == 3)
         {
-            skill1MaxCD = 0f; // Set cooldown time for SwordMaster's first skill
+            skill1MaxCD = 1f; // Set cooldown time for SwordMaster's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for SwordMaster's first skill
-            skill2MaxCD = 0f; // Set cooldown time for SwordMaster's second skill
+            skill2MaxCD = 4f; // Set cooldown time for SwordMaster's second skill
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for SwordMaster's second skill
             SwitchToSwordMaster(); // Switch to SwordMaster class when 3 is pressed
         }
         else if (characterClass == 4)
         {
-            skill1MaxCD = 0f; // Set cooldown time for After Meet Halrath's first skill
+            skill1MaxCD = 1f; // Set cooldown time for After Meet Halrath's first skill
             skill1CDTime = skill1MaxCD; // Initialize cooldown time for After Meet Halrath's first skill
-            skill2MaxCD = 0f; // Set cooldown time for After Meet Halrath's second skill
+            skill2MaxCD = 2f; // Set cooldown time for After Meet Halrath's second skill
             skill2CDTime = skill2MaxCD; // Initialize cooldown time for After Meet Halrath's second skill
             SwitchToMeetHalrath(); // Switch to After Meet Halrath class when 4 is pressed
         }
@@ -328,10 +329,10 @@ public class PlayerController : MonoBehaviour
         {
             if (skill1_isReady)
             {
-                /*skill1_isReady = false;*/ // Set skill as not ready
                 StartCoroutine(PerformAttack_1()); // Perform attack
                 if (_currentMana >= 10)
                 {
+                    /*skill1_isReady = false;*/ // Set skill as not ready
                     StartCoroutine(ApplySkillCooldown1()); // Start cooldown
                 }
                 else
@@ -350,10 +351,10 @@ public class PlayerController : MonoBehaviour
         {
             if (skill2_isReady)
             {
-                /*skill2_isReady = false;*/ // Set skill as not ready
                 StartCoroutine(PerformAttack_2()); // Perform attack
                 if (_currentMana >= 30)
                 {
+                    /*skill2_isReady = false;*/ // Set skill as not ready
                     StartCoroutine(ApplySkillCooldown2()); // Start cooldown
                 }
                 else
@@ -1139,6 +1140,7 @@ public class PlayerController : MonoBehaviour
     {
         while (skill2CDTime > 0)
         {
+            Debug.Log("Skill 2 cooldown: " + skill2CDTime);
             skill2_cdSlider.SetActive(true);
             yield return skill2CDTime -= Time.deltaTime; // Decrease cooldown time
             if (skill2CDTime <= 0)
@@ -1146,10 +1148,10 @@ public class PlayerController : MonoBehaviour
                 skill2CDTime = 0; // Ensure cooldown does not go below zero
                 skill2_isReady = true; // Skill is ready again
                 skill2_cdSlider.SetActive(false); // Hide cooldown slider
-
                 break;
             }
         }
+        Debug.Log("Skill 2 cooldown finished.");
         skill2CDTime = skill2MaxCD; // Reset cooldown time
         skillCooldown.F_UpdateSkillCooldown(); // Update the cooldown slider UI
     }

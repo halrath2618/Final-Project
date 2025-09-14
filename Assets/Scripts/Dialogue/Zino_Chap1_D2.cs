@@ -90,6 +90,7 @@ public class Zino_Chap1_D2 : MonoBehaviour
                 {
                     z.StopTalking();
                     dialogueBox.SetActive(false);
+                    gameObject.SetActive(false);
                     //choicePanel.SetActive(false);
                     playerController.enabled = true;
                     gameObject.GetComponent<SphereCollider>().enabled = false;

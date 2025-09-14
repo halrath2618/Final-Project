@@ -96,6 +96,7 @@ public class Zino_Chap1_D5 : MonoBehaviour
                 {
                     z.StopTalking();
                     dialogueBox.SetActive(false);
+                    gameObject.SetActive(false);
                     playerController.enabled = true;
                     //choicePanel.SetActive(false);
                     yield return null;
