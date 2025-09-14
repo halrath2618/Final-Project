@@ -80,6 +80,7 @@ public class Zino_Chap1_D2 : MonoBehaviour
         {
             case 1:
                 {
+                    z.StartTalking();
                     yield return createCharacterText.Z.Say("Chiếc rương này... cổ hơn cả thời gian. Tôi cảm nhận được nó đang rung lên dưới làn da mình. Di vật — nó ở bên trong. Tôi biết mà. Tôi đã đi quá xa để còn nghi ngờ.");
                     playerController.storyProgress++;
                     StartCoroutine(Chap2());
@@ -87,7 +88,9 @@ public class Zino_Chap1_D2 : MonoBehaviour
                 }
             case 2:
                 {
+                    z.StopTalking();
                     dialogueBox.SetActive(false);
+                    gameObject.SetActive(false);
                     //choicePanel.SetActive(false);
                     playerController.enabled = true;
                     gameObject.GetComponent<SphereCollider>().enabled = false;

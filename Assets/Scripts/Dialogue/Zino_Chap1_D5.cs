@@ -83,14 +83,20 @@ public class Zino_Chap1_D5 : MonoBehaviour
         {
             case 0:
                 {
+                    z.StartTalking();
                     yield return createCharacterText.Z.Say("Mình…{a}mình đang ở đâu?{c}Đây không phải khu rừng mình vừa bước vào!");
+                    yield return createCharacterText.Z.Say("Tất cả đồ đạc đều mất cả rồi…{a}Mình phải làm gì đây?");
+                    yield return createCharacterText.Z.Say("...");
+                    yield return createCharacterText.Z.Say("Phải nhanh chóng rời khỏi khu rừng này thôi.");
                     playerController.storyProgress++;
                     StartCoroutine(Chap5());
                     break;
                 }
             case 1:
                 {
+                    z.StopTalking();
                     dialogueBox.SetActive(false);
+                    gameObject.SetActive(false);
                     playerController.enabled = true;
                     //choicePanel.SetActive(false);
                     yield return null;

@@ -2,19 +2,26 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: FAE_WaterCreek
   m_Shader: {fileID: 4800000, guid: f8df9d72baf4e0c4bac2d4036f6c5d7b, type: 3}
-  m_ShaderKeywords: _WORLDSPACETILIBG_ON _WORLDSPACETILING_ON
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _WORLDSPACETILIBG_ON
+  - _WORLDSPACETILING_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -34,6 +41,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: f3a337f61eb58134f97ca1b4183a2ebf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _Cutoff: 0.5
     - _Depth: 5
@@ -56,5 +64,7 @@ Material:
     - _Worldspacetiling: 1
     m_Colors:
     - _FresnelColor: {r: 1, g: 1, b: 1, a: 0.5019608}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _WaterColor: {r: 0, g: 0.503546, b: 1, a: 1}
+    - _RimColor: {r: 0.27100393, g: 0.5195677, b: 0.6603774, a: 1}
+    - _WaterColor: {r: 0, g: 0.48235294, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
