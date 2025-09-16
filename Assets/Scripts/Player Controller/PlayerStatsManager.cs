@@ -3,9 +3,11 @@ using UnityEngine;
 public class PlayerStatsManager : MonoBehaviour
 {
     public static PlayerStatsManager instance;
-    public float health;
-    public float stamina;
-    public float mana;
+    public float health = 100f;
+    public float stamina = 100f;
+    public float mana = 100f;
+
+    public int characterClassNum = 0;
 
     public int HPPotionCount = 5;
     public int MPPotionCount = 5;

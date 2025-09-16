@@ -136,9 +136,6 @@ public class PlayerController : MonoBehaviour
     [Header("Testing Switch Class")] //Testing swtiching class
     private CharacterClassManager characterClassManager; // Reference to the CharacterClassManager script
     public GameObject switchClassUI; // Reference to the UI GameObject for switching classes
-
-    public int characterClass; // Variable to track the current character class
-
     public void SwitchToBrawler()
     {
         brawlerSkillsIcon[0].SetActive(true);
@@ -186,13 +183,8 @@ public class PlayerController : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _animator = GetComponentInChildren<Animator>();
         //skillCooldown = GetComponent<SkillCooldown>();
-        characterClass = 3; // Default to After Meet Halrath class for testing
-        characterClassManager.SwitchClass(CharacterClass.Starter); // Start with the Starter class
         //switchClassUI.SetActive(true); // Show the switch class UI at the start
         //gameObject.GetComponent<CharacterController>().enabled = false; // Disable character controller until a class is selected
-        playerStatsManager.health = maxHP; // Initialize current health to max HP
-        playerStatsManager.mana = maxMana; // Initialize current mana to max Mana
-        playerStatsManager.stamina = maxStamina; // Initialize current stamina to max Stamina
         _cameraTransform = Camera.main.transform;
         _currentSpeed = walkSpeed;
         //skill1_cdSlider.SetActive(false);
@@ -205,25 +197,25 @@ public class PlayerController : MonoBehaviour
         skillCoolDownManager.enabled = false;
         //if (Input.GetKeyDown(KeyCode.B))
         //{
-        //    characterClass = 1;
+        //    playerStatsManager.characterClassNum = 1;
         //    switchClassUI.SetActive(false); // Hide the switch class UI after selection
         //}
         //else if (Input.GetKeyDown(KeyCode.N))
         //{
-        //    characterClass = 2;
+        //    playerStatsManager.characterClassNum = 2;
         //    switchClassUI.SetActive(false); // Hide the switch class UI after selection
         //}
         //else if (Input.GetKeyDown(KeyCode.M))
         //{
-        //    characterClass = 3;
+        //    playerStatsManager.characterClassNum = 3;
         //    switchClassUI.SetActive(false); // Hide the switch class UI after selection
         //}
         //else if (Input.GetKeyDown(KeyCode.L))
         //{
-        //    characterClass = 4;
+        //    playerStatsManager.characterClassNum = 4;
         //    switchClassUI.SetActive(false); // Hide the switch class UI after selection
         //}
-        //if (characterClass == 1)
+        //if (playerStatsManager.characterClassNum == 1)
         //{
         //    skillCoolDownManager.skill1MaxCD = 1f; // Set cooldown time for Brawler's first skill
         //    skillCoolDownManager.skill1CDTime = skillCoolDownManager.skill1MaxCD; // Initialize cooldown time for Brawler's first skill
@@ -231,7 +223,7 @@ public class PlayerController : MonoBehaviour
         //    skillCoolDownManager.skill2CDTime = skillCoolDownManager.skill2MaxCD; // Initialize cooldown time for Brawler's second skill
         //    SwitchToBrawler(); // Switch to Brawler class when 1 is pressed
         //}
-        //else if (characterClass == 2)
+        //else if (playerStatsManager.characterClassNum == 2)
         //{
         //    skillCoolDownManager.skill1MaxCD = 1f; // Set cooldown time for Mage's first skill
         //    skillCoolDownManager.skill1CDTime = skillCoolDownManager.skill1MaxCD; // Initialize cooldown time for Mage's first skill
@@ -239,7 +231,7 @@ public class PlayerController : MonoBehaviour
         //    skillCoolDownManager.skill2CDTime = skillCoolDownManager.skill2MaxCD; // Initialize cooldown time for Mage's second skill
         //    SwitchToMage(); // Switch to Mage class when 2 is pressed
         //}
-        //else if (characterClass == 3)
+        //else if (playerStatsManager.characterClassNum == 3)
         //{
         //    skillCoolDownManager.skill1MaxCD = 1f; // Set cooldown time for SwordMaster's first skill
         //    skillCoolDownManager.skill1CDTime = skillCoolDownManager.skill1MaxCD; // Initialize cooldown time for SwordMaster's first skill
@@ -247,7 +239,7 @@ public class PlayerController : MonoBehaviour
         //    skillCoolDownManager.skill2CDTime = skillCoolDownManager.skill2MaxCD; // Initialize cooldown time for SwordMaster's second skill
         //    SwitchToSwordMaster(); // Switch to SwordMaster class when 3 is pressed
         //}
-        //else if (characterClass == 4)
+        //else if (playerStatsManager.characterClassNum == 4)
         //{
         //    skillCoolDownManager.skill1MaxCD = 1f; // Set cooldown time for After Meet Halrath's first skill
         //    skillCoolDownManager.skill1CDTime = skillCoolDownManager.skill1MaxCD; // Initialize cooldown time for After Meet Halrath's first skill
@@ -378,7 +370,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (characterClass == 1)
+            if (playerStatsManager.characterClassNum == 1)
             {
                 if (skillCoolDownManager.auraReady)
                 {
@@ -401,7 +393,7 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Skill is not ready.");
                 }
             }
-            else if (characterClass == 2)
+            else if (playerStatsManager.characterClassNum == 2)
             {
                 if (skillCoolDownManager.auraReady)
                 {
@@ -420,7 +412,7 @@ public class PlayerController : MonoBehaviour
                     StopDrainingMana(); // Stop draining mana if already active
                 }
             }
-            else if (characterClass == 3)
+            else if (playerStatsManager.characterClassNum == 3)
             {
                 if (skillCoolDownManager.auraReady)
                 {
@@ -612,7 +604,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator PerformAttack_3()
     {
-        if (characterClass == 1)
+        if (playerStatsManager.characterClassNum == 2)
         {
             _isInvulnerable = true; // Set invulnerability during the attack
             _isAttacking = true; // Set attacking flag to true
@@ -689,7 +681,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        else if (characterClass == 3)
+        else if (playerStatsManager.characterClassNum == 4)
         {
             _isInvulnerable = true; // Set invulnerability during the attack
             _isAttacking = true; // Set attacking flag to true
@@ -729,7 +721,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator PerformAttack_1()
     {
-        if (characterClass == 1)
+        if (playerStatsManager.characterClassNum == 2)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -776,7 +768,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        else if (characterClass == 2)
+        else if (playerStatsManager.characterClassNum == 3)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -813,7 +805,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        else if (characterClass == 3)
+        else if (playerStatsManager.characterClassNum == 4)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -854,7 +846,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        else if (characterClass == 4)
+        else if (playerStatsManager.characterClassNum == 1)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -894,7 +886,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator PerformAttack_2()
     {
-        if (characterClass == 1)
+        if (playerStatsManager.characterClassNum == 2)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -931,7 +923,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        else if (characterClass == 2)
+        else if (playerStatsManager.characterClassNum == 3)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -972,7 +964,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        else if (characterClass == 3)
+        else if (playerStatsManager.characterClassNum == 4)
         {
             _isAttacking = true; // Set attacking flag to true
             try
@@ -1008,7 +1000,7 @@ public class PlayerController : MonoBehaviour
                 _isAttacking = false; // Reset attacking flag
             }
         }
-        else if (characterClass == 4)
+        else if (playerStatsManager.characterClassNum == 1)
         {
             _isAttacking = true; // Set attacking flag to true
             try

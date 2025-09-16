@@ -14,6 +14,7 @@ public class HPBar : MonoBehaviour
     void Start()
     {
         playerController = GetComponent<PlayerController>();
+        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
     }
 
     // Update is called once per frame
