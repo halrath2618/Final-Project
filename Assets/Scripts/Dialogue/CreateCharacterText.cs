@@ -9,6 +9,7 @@ public class CreateCharacterText : MonoBehaviour
     [SerializeField] public Character S;
     [SerializeField] public Character G;
     [SerializeField] public Character Z1;
+    [SerializeField] public Character N;
 
     public static Character CreateCharacter(string name) => CharacterManager.instance.CreateCharacter(name);
 
@@ -20,5 +21,6 @@ public class CreateCharacterText : MonoBehaviour
         S = CreateCharacter("Scy") as Character_Text;
         G = CreateCharacter("Guard") as Character_Text;
         Z1 = CreateCharacter("Demon") as Character_Text;
+        N = CreateCharacter(" ") as Character_Text;
     }
 }

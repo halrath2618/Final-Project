@@ -13,6 +13,7 @@ public class Zino_Chap1_D5 : MonoBehaviour
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
 
+    [SerializeField] private PlayerStatsManager playerStatsManager;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private DialogueBlendShapeController z;
 
@@ -55,6 +56,10 @@ public class Zino_Chap1_D5 : MonoBehaviour
         z.StopTalking();
         zino.SetTrigger("Idle");
     }
+    private void Start()
+    {
+        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
+    }
     //private void Update()
     //{
     //    if (Input.GetKeyDown(KeyCode.F))
@@ -68,7 +73,7 @@ public class Zino_Chap1_D5 : MonoBehaviour
     //    zino.SetTrigger("Talking");
     //    z.StartTalking();
     //    Zino.enabled = false;
-    //    Debug.Log("Story point: " + playerController.storyProgress);
+    //    Debug.Log("Story point: " + playerStatsManager.storyProgress);
     //    Z = CreateCharacter("Zino") as Character_Text;
 
     //    dialogueBox.SetActive(true);
@@ -77,7 +82,7 @@ public class Zino_Chap1_D5 : MonoBehaviour
 
     IEnumerator Chap5()
     {
-        switch (playerController.storyProgress)
+        switch (playerStatsManager.storyProgress)
         {
             case 0:
                 {
@@ -86,7 +91,7 @@ public class Zino_Chap1_D5 : MonoBehaviour
                     yield return createCharacterText.Z.Say("Tất cả đồ đạc đều mất cả rồi…{a}Mình phải làm gì đây?");
                     yield return createCharacterText.Z.Say("...");
                     yield return createCharacterText.Z.Say("Phải nhanh chóng rời khỏi khu rừng này thôi.");
-                    playerController.storyProgress++;
+                    playerStatsManager.storyProgress++;
                     StartCoroutine(Chap5());
                     break;
                 }
@@ -107,13 +112,13 @@ public class Zino_Chap1_D5 : MonoBehaviour
 
     public void Choice1()
     {
-        playerController.storyProgress = +1;
+        playerStatsManager.storyProgress = +1;
         //choicePanel.SetActive(false);
         //StartCoroutine(Chap());
     }
     public void Choice2()
     {
-        playerController.storyProgress = +2;
+        playerStatsManager.storyProgress = +2;
         //choicePanel.SetActive(false);
         //StartCoroutine(Chap());
     }

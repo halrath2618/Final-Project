@@ -14,6 +14,7 @@ public class Zino_Chap1_D7 : MonoBehaviour
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
 
+    [SerializeField] private PlayerStatsManager playerStatsManager;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private DialogueBlendShapeController z;
 
@@ -53,6 +54,10 @@ public class Zino_Chap1_D7 : MonoBehaviour
         z.StopTalking();
         zino.SetTrigger("Idle");
     }
+    private void Start()
+    {
+        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
+    }
     //private void Update()
     //{
     //    if (Input.GetKeyDown(KeyCode.F))
@@ -66,7 +71,7 @@ public class Zino_Chap1_D7 : MonoBehaviour
     //    zino.SetTrigger("Talking");
     //    z.StartTalking();
     //    Zino.enabled = false;
-    //    Debug.Log("Story point: " + playerController.storyProgress);
+    //    Debug.Log("Story point: " + playerStatsManager.storyProgress);
     //    Z = CreateCharacter("Zino") as Character_Text;
 
     //    dialogueBox.SetActive(true);
@@ -75,13 +80,13 @@ public class Zino_Chap1_D7 : MonoBehaviour
 
     IEnumerator Chap7()
     {
-        switch (playerController.storyProgress)
+        switch (playerStatsManager.storyProgress)
         {
             case 2:
                 {
                     z.StartTalking();
                     yield return createCharacterText.Z.Say("Đằng kia có ánh đèn, may quá được cứu rồi!!!!!");
-                    playerController.storyProgress++;
+                    playerStatsManager.storyProgress++;
                     StartCoroutine(Chap7());
                     break;
                 }
@@ -102,13 +107,13 @@ public class Zino_Chap1_D7 : MonoBehaviour
 
     public void Choice1()
     {
-        playerController.storyProgress = +1;
+        playerStatsManager.storyProgress = +1;
         //choicePanel.SetActive(false);
         //StartCoroutine(Chap());
     }
     public void Choice2()
     {
-        playerController.storyProgress = +2;
+        playerStatsManager.storyProgress = +2;
         //choicePanel.SetActive(false);
         //StartCoroutine(Chap());
     }

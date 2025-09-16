@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    public float storyProgress = 0; // Variable to track story progress
+    [SerializeField] private PlayerStatsManager playerStatsManager; // Reference to the PlayerStatsManager script
     private bool _isAttacking = false; // Flag to check if the player is currently attacking
     public bool CanMove => !_isAttacking; // Property to check if the player can move
 
@@ -91,12 +91,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("HP, Mana and Stamina Control")]
     public float maxHP = 100;
-    public float _currentHealth;
     private HPBar hp;
     public float maxMana = 100;
-    public float _currentMana;
     public float maxStamina = 100;
-    public float _currentStamina;
     public bool _isDrainingMana = false; // Flag to check if mana is being drained
 
     [Header("CoolDown Skill")]
@@ -178,6 +175,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>(); // Find the PlayerStatsManager in the scene
         monster = FindAnyObjectByType<Monster>();
         skillCooldown = GetComponent<SkillCooldown>();
         skillCoolDownManager = GetComponent<SkillCoolDownManager>();
@@ -192,9 +190,9 @@ public class PlayerController : MonoBehaviour
         characterClassManager.SwitchClass(CharacterClass.Starter); // Start with the Starter class
         //switchClassUI.SetActive(true); // Show the switch class UI at the start
         //gameObject.GetComponent<CharacterController>().enabled = false; // Disable character controller until a class is selected
-        _currentHealth = maxHP; // Initialize current health to max HP
-        _currentMana = maxMana; // Initialize current mana to max Mana
-        _currentStamina = maxStamina; // Initialize current stamina to max Stamina
+        playerStatsManager.health = maxHP; // Initialize current health to max HP
+        playerStatsManager.mana = maxMana; // Initialize current mana to max Mana
+        playerStatsManager.stamina = maxStamina; // Initialize current stamina to max Stamina
         _cameraTransform = Camera.main.transform;
         _currentSpeed = walkSpeed;
         //skill1_cdSlider.SetActive(false);
@@ -273,7 +271,7 @@ public class PlayerController : MonoBehaviour
         if (CanMove)
         {
             // Sprint
-            if (Input.GetKey(KeyCode.LeftShift) && _currentStamina > 0)
+            if (Input.GetKey(KeyCode.LeftShift) && playerStatsManager.stamina > 0)
             {
                 if (_currentSpeed <= 0)
                 {
@@ -314,14 +312,14 @@ public class PlayerController : MonoBehaviour
         // Dodge input
         if (Input.GetKeyDown(KeyCode.V) && _canDodge && !_isDodging && _isGrounded)
         {
-            if (_currentStamina < 10)
+            if (playerStatsManager.stamina < 10)
             {
                 Debug.Log("Not enough stamina to dodge.");
                 return; // Exit if not enough stamina
             }
             else
             {
-                _currentStamina -= 25; // Deduct stamina for dodging
+                playerStatsManager.stamina -= 25; // Deduct stamina for dodging
                 hp.UpdateStamina(); // Update stamina UI
                 StartDodge();
             }
@@ -338,7 +336,7 @@ public class PlayerController : MonoBehaviour
             if (skillCoolDownManager.skill1_isReady)
             {
                 StartCoroutine(PerformAttack_1()); // Perform attack
-                if (_currentMana >= 10)
+                if (playerStatsManager.mana >= 10)
                 {
                     skillCoolDownManager.skill1_isReady = false; // Set skill as not ready
                     StartCoroutine(skillCoolDownManager.ApplySkillCooldown1()); // Start cooldown
@@ -360,7 +358,7 @@ public class PlayerController : MonoBehaviour
             if (skillCoolDownManager.skill2_isReady)
             {
                 StartCoroutine(PerformAttack_2()); // Perform attack
-                if (_currentMana >= 30)
+                if (playerStatsManager.mana >= 30)
                 {
                     skillCoolDownManager.skill2_isReady = false; // Set skill as not ready
                     StartCoroutine(skillCoolDownManager.ApplySkillCooldown2()); // Start cooldown
@@ -386,7 +384,7 @@ public class PlayerController : MonoBehaviour
                 {
                     skillCoolDownManager.auraReady = false; // Set skill as not ready
                     StartCoroutine(PerformAttack_3()); // Perform attack
-                    if (_currentMana >= 80)
+                    if (playerStatsManager.mana >= 80)
                     {
                         skillCoolDownManager.auraReady = true; // Reset skill readiness
                     }
@@ -428,7 +426,7 @@ public class PlayerController : MonoBehaviour
                 {
                     skillCoolDownManager.auraReady = false; // Set skill as not ready
                     StartCoroutine(PerformAttack_3()); // Perform attack
-                    if (_currentMana >= 80)
+                    if (playerStatsManager.mana >= 80)
                     {
                         skillCoolDownManager.auraReady = true; // Reset skill readiness
                     }
@@ -449,29 +447,41 @@ public class PlayerController : MonoBehaviour
         //Regenerate Mana
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (skillCoolDownManager.manacdReady)
+            if (skillCoolDownManager.manacdReady && playerStatsManager.MPPotionCount > 0)
             {
+                playerStatsManager.MPPotionCount--; // Decrease Mana potion count
                 skillCoolDownManager.manacdReady = false; // Set Mana potion as not ready
                 StartCoroutine(skillCoolDownManager.ApplySkillCooldownManaPotion()); // Start cooldown for Mana potion
                 StartCoroutine(RegenerateMana()); // Regenerate mana
             }
-            else
+            else if (!skillCoolDownManager.manacdReady)
             {
                 Debug.Log("Mana potion is on cooldown.");
+            }
+            else if (playerStatsManager.MPPotionCount <= 0)
+            {
+                playerStatsManager.MPPotionCount = 0; // Ensure Mana potion count does not go below zero
+                Debug.Log("No Mana potions left.");
             }
         }
         // Regenerate HP
         if (Input.GetKeyDown(KeyCode.Alpha2)) // Check if E key is pressed and HP potion is ready
         {
-            if (skillCoolDownManager.hpcdReady)
+            if (skillCoolDownManager.hpcdReady && playerStatsManager.HPPotionCount > 0)
             {
+                playerStatsManager.HPPotionCount--; // Decrease HP potion count
                 skillCoolDownManager.hpcdReady = false; // Set HP potion as not ready
                 StartCoroutine(skillCoolDownManager.ApplySkillCooldownHPPotion()); // Start cooldown for HP potion
                 StartCoroutine(DrinkHPPotion()); // Drink HP potion
             }
-            else
+            else if (!skillCoolDownManager.hpcdReady)
             {
                 Debug.Log("HP potion is on cooldown.");
+            }
+            else if (playerStatsManager.HPPotionCount <= 0)
+            {
+                playerStatsManager.HPPotionCount = 0; // Ensure HP potion count does not go below zero
+                Debug.Log("No HP potions left.");
             }
 
         }
@@ -482,7 +492,7 @@ public class PlayerController : MonoBehaviour
 
     void StartDodge()
     {
-        if (_currentStamina > 10)
+        if (playerStatsManager.stamina > 10)
         {
             // Cancel any ongoing attacks
             CancelAttacks();
@@ -561,15 +571,15 @@ public class PlayerController : MonoBehaviour
     {
         while (skillCoolDownManager.hpDuration > 0)
         {
-            yield return _currentHealth += 5 * Time.deltaTime;
+            yield return playerStatsManager.health += 5 * Time.deltaTime;
             skillCoolDownManager.hpDuration -= Time.deltaTime; // Decrease duration of HP potion effect
             healAura.SetActive(true); // Activate the heal aura effect
 
         }
         healAura.SetActive(false); // Deactivate the heal aura effect
-        if (_currentHealth > maxHP)
+        if (playerStatsManager.health > maxHP)
         {
-            _currentHealth = maxHP; // Ensure health does not exceed max HP
+            playerStatsManager.health = maxHP; // Ensure health does not exceed max HP
             Debug.Log("Health is already full.");
         }
         hp.UpdateHP();
@@ -584,14 +594,14 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator AuraManaDrainPerSecond()
     {
-        while (_currentMana > 0 && _isDrainingMana)
+        while (playerStatsManager.mana > 0 && _isDrainingMana)
         {
             yield return new WaitForSeconds(1f); // Wait for 1 second
-            _currentMana -= 1; // Drain 1 mana per second
+            playerStatsManager.mana -= 1; // Drain 1 mana per second
             hp.UpdateMana(); // Update mana UI
-            if (_currentMana <= 0)
+            if (playerStatsManager.mana <= 0)
             {
-                _currentMana = 0; // Ensure mana does not go below zero
+                playerStatsManager.mana = 0; // Ensure mana does not go below zero
                 skillCoolDownManager.auraReady = true; // Reset skill readiness
                 auraSpell.SetActive(false); // Deactivate the aura spell
                 skillCoolDownManager.skillConstantlyActive.skillEffect.SetActive(false); // Deactivate the skill effect
@@ -611,7 +621,7 @@ public class PlayerController : MonoBehaviour
                 if (!isAttacking)
                 {
 
-                    if (_currentMana >= 80)
+                    if (playerStatsManager.mana >= 80)
                     {
                         _animator.SetTrigger("Attack3");
                         CastingSkill(80); // Cast skill and reduce mana
@@ -688,7 +698,7 @@ public class PlayerController : MonoBehaviour
                 if (!isAttacking)
                 {
 
-                    if (_currentMana >= 80)
+                    if (playerStatsManager.mana >= 80)
                     {
                         _animator.SetTrigger("Attack3");
                         CastingSkill(80); // Cast skill and reduce mana
@@ -727,7 +737,7 @@ public class PlayerController : MonoBehaviour
                 if (!isAttacking)
                 {
 
-                    if (_currentMana >= 3)
+                    if (playerStatsManager.mana >= 3)
                     {
                         _animator.SetTrigger("Attack1");
                         CastingSkill(3); // Cast skill and reduce mana
@@ -774,7 +784,7 @@ public class PlayerController : MonoBehaviour
                 if (!isAttacking)
                 {
 
-                    if (_currentMana >= 10)
+                    if (playerStatsManager.mana >= 10)
                     {
                         _animator.SetTrigger("Attack1");
                         CastingSkill(10); // Cast skill and reduce mana
@@ -811,7 +821,7 @@ public class PlayerController : MonoBehaviour
                 if (!isAttacking)
                 {
 
-                    if (_currentMana >= 3)
+                    if (playerStatsManager.mana >= 3)
                     {
                         _animator.SetTrigger("Attack1");
                         CastingSkill(3); // Cast skill and reduce mana
@@ -852,7 +862,7 @@ public class PlayerController : MonoBehaviour
                 if (!isAttacking)
                 {
 
-                    if (_currentMana >= 3)
+                    if (playerStatsManager.mana >= 3)
                     {
                         _animator.SetTrigger("Attack1");
                         CastingSkill(3); // Cast skill and reduce mana
@@ -892,7 +902,7 @@ public class PlayerController : MonoBehaviour
                 if (!isAttacking)
                 {
 
-                    if (_currentMana >= 8)
+                    if (playerStatsManager.mana >= 8)
                     {
                         _animator.SetTrigger("Attack2");
                         CastingSkill(8); // Cast skill and reduce mana
@@ -929,7 +939,7 @@ public class PlayerController : MonoBehaviour
                 if (!isAttacking)
                 {
 
-                    if (_currentMana >= 30)
+                    if (playerStatsManager.mana >= 30)
                     {
                         _animator.SetTrigger("Attack2");
                         CastingSkill(30); // Cast skill and reduce mana
@@ -970,7 +980,7 @@ public class PlayerController : MonoBehaviour
                 if (!isAttacking)
                 {
 
-                    if (_currentMana >= 10)
+                    if (playerStatsManager.mana >= 10)
                     {
                         _animator.SetTrigger("Attack2");
                         CastingSkill(30); // Cast skill and reduce mana
@@ -1006,7 +1016,7 @@ public class PlayerController : MonoBehaviour
                 if (!isAttacking)
                 {
 
-                    if (_currentMana >= 3)
+                    if (playerStatsManager.mana >= 3)
                     {
                         _animator.SetTrigger("Attack2");
                         CastingSkill(3); // Cast skill and reduce mana
@@ -1043,11 +1053,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_isInvulnerable) return; // Ignore damage during dodge
 
-        _currentHealth -= damage;
+        playerStatsManager.health -= damage;
         hp.UpdateHP(); // Update health bar UI
-        if (_currentHealth <= 0)
+        if (playerStatsManager.health <= 0)
         {
-            _currentHealth = 0; // Ensure health does not go below zero
+            playerStatsManager.health = 0; // Ensure health does not go below zero
             StartCoroutine(Die()); // Trigger game over sequence
         }
     }
@@ -1068,9 +1078,9 @@ public class PlayerController : MonoBehaviour
     }
     public void CastingSkill(int manaCost)
     {
-        if (_currentMana >= manaCost)
+        if (playerStatsManager.mana >= manaCost)
         {
-            _currentMana -= manaCost;
+            playerStatsManager.mana -= manaCost;
             hp.UpdateMana();
             // Add skill casting logic here
         }
@@ -1081,9 +1091,9 @@ public class PlayerController : MonoBehaviour
     }
     public void StaminaSprinting()
     {
-        if (_currentStamina > 0 && _currentSpeed >= sprintSpeed)
+        if (playerStatsManager.stamina > 0 && _currentSpeed >= sprintSpeed)
         {
-            _currentStamina -= 0.5f; // Decrease stamina for sprinting
+            playerStatsManager.stamina -= 0.5f; // Decrease stamina for sprinting
             hp.UpdateStamina();
         }
         else
@@ -1096,29 +1106,29 @@ public class PlayerController : MonoBehaviour
     {
 
         yield return new WaitForSeconds(5f * Time.deltaTime);
-        yield return _currentStamina += 1;
+        yield return playerStatsManager.stamina += 1;
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             yield return new WaitForSeconds(5f * Time.deltaTime); // Wait for the next frame to continue regenerating stamina
         }
-        if (_currentStamina > maxStamina)
-            _currentStamina = maxStamina;
+        if (playerStatsManager.stamina > maxStamina)
+            playerStatsManager.stamina = maxStamina;
         hp.UpdateStamina();
     }
 
     IEnumerator RegenerateMana()
     {
-        if (_currentMana < maxMana)
+        if (playerStatsManager.mana < maxMana)
         {
             while (skillCoolDownManager.manaDuration > 0)
             {
-                yield return _currentMana += 10 * Time.deltaTime; // Regenerate mana
+                yield return playerStatsManager.mana += 10 * Time.deltaTime; // Regenerate mana
                 skillCoolDownManager.manaDuration -= Time.deltaTime; // Decrease duration of mana regeneration effect
                 manaAura.SetActive(true); // Activate the heal aura effect
             }
             manaAura.SetActive(false); // Deactivate the heal aura effect after regeneration
-            if (_currentMana > maxMana)
-                _currentMana = maxMana; // Ensure mana does not exceed max mana
+            if (playerStatsManager.mana > maxMana)
+                playerStatsManager.mana = maxMana; // Ensure mana does not exceed max mana
             hp.UpdateMana();
             skillCoolDownManager.manaDuration = 10f;
         }

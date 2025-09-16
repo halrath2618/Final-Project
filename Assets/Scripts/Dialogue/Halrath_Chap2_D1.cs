@@ -1,19 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 
 public class Halrath_Chap2_D1 : MonoBehaviour
 {
-    //public Button choice1;
-    //public Button choice2;
-    //public TMP_Text text1;
-    //public TMP_Text text2;
+    public Button choice1;
+    public Button choice2;
+    public TMP_Text text1;
+    public TMP_Text text2;
+    public GameObject F;
 
     public GameObject dialogueBox;
     private bool isDialogueActive = false;
 
-    //public GameObject choicePanel;
-    //public RectTransform _choicePanel;
+    public GameObject choicePanel;
+    public RectTransform _choicePanel;
 
+    [SerializeField] private PlayerStatsManager playerStatsManager;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private DialogueBlendShapeController z;
     [SerializeField] private DialogueBlendShapeController h;
@@ -31,11 +36,11 @@ public class Halrath_Chap2_D1 : MonoBehaviour
     //public CharacterShaking char_Shaking;
     //public BackgroundChangeSystem bg;
 
-    //public void ChoicePanelAnimation()
-    //{
-    //    choicePanel.SetActive(true);
-    //    _choicePanel.DOMoveX(_choicePanel.position.x, 1).From(6000);
-    //}
+    public void ChoicePanelAnimation()
+    {
+        choicePanel.SetActive(true);
+        _choicePanel.DOMoveX(_choicePanel.position.x, 1).From(6000);
+    }
 
     // Start is called before the first frame update
 
@@ -43,7 +48,7 @@ public class Halrath_Chap2_D1 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
+            F.SetActive(true);
             Debug.Log("Trigger Entered");
             //zino.SetFloat("Speed", 0);
             //dialogueBox.SetActive(true);
@@ -53,10 +58,15 @@ public class Halrath_Chap2_D1 : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        F.SetActive(false);
         isDialogueActive = false;
         z.StopTalking();
         zino.SetTrigger("Idle");
 
+    }
+    private void Start()
+    {
+        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
     }
     private void Update()
     {
@@ -68,10 +78,11 @@ public class Halrath_Chap2_D1 : MonoBehaviour
     }
     public void StartDialogue()
     {
+        F.SetActive(false);
         zino.SetTrigger("Talking");
         z.StartTalking();
         playerController.enabled = false;
-        Debug.Log("Story point: " + playerController.storyProgress);
+        Debug.Log("Story point: " + playerStatsManager.storyProgress);
         zino.SetFloat("Speed", 0);
         dialogueBox.SetActive(true);
         StartCoroutine(Chap());
@@ -79,7 +90,7 @@ public class Halrath_Chap2_D1 : MonoBehaviour
 
     IEnumerator Chap()
     {
-        switch (playerController.storyProgress)
+        switch (playerStatsManager.storyProgress)
         {
             case 0:
                 {
@@ -92,15 +103,36 @@ public class Halrath_Chap2_D1 : MonoBehaviour
                     yield return createCharacterText.Z.Say("Vâng!!");
                     yield return createCharacterText.H.Say("Cánh cổng đó đã không hoạt động trong suốt gần 20 năm nay rồi.....{a} Thật kỳ lạ.{c}Cậu có đang giữ mảnh cổ vật đó không?");
                     yield return createCharacterText.Z.Say("Khi nó bay vào cánh cổng, tôi đã cố gắng nắm lấy nó nhưng không được.{c} Tôi không biết nó đã đi đâu nữa rồi.");
+                    yield return createCharacterText.H.Say("Hmmm,{a} khó rồi đấy.......");
+                    yield return createCharacterText.Z.Say("Bây giờ làm sao tôi có thể tìm lại mảnh cổ vật đó và quay trở lại được?");
+                    yield return createCharacterText.H.Say("Cánh cổng đó đã không hoạt động trong một khoảng thời gian dài......{a} tôi biết có một người có thể giúp cậu.");
+                    yield return createCharacterText.Z.Say("Thật sao, là ai vậy?");
+                    yield return createCharacterText.H.Say("Nhưng trước hết, cậu cần phải nghỉ ngơi và hồi phục sức khỏe đã.{c} Nhưng con đường phía trước sẽ rất nguy hiểm, cậu có dám đối mặt hay không?");
+                    yield return createCharacterText.H.Say("1. Đồng ý.\n2. Không.");
+                    ChoicePanelAnimation();
                     break;
                 }
             case 1:
+                {
+                    yield return createCharacterText.H.Say("Tốt lắm, cậu ta tên là Scy, sống trong thành phố Azzaband.{c}Cậu có thể đến thành phố bằng cách đi qua cánh cổng dịch chuyển phía sau nhà.");
+                    yield return createCharacterText.Z.Say("Cảm ơn ông rất nhiều, Halrath.{c} Tôi sẽ đến tìm và gặp Scy ngay.");
+                    yield return createCharacterText.H.Say("Trước khi đi, tôi có một số thứ cho cậu, có thể sẽ giúp ích cho cậu trên đường đi đấy.");
+                    yield return createCharacterText.N.Say("Nhận được 1 thanh kiếm ngắn.\nNhận được 2 bình máu.\nNhận được 2 bình Mana.");
+                    playerStatsManager.AddHPPotion(2);
+                    playerStatsManager.AddHPPotion(2);
+                    playerController.SwitchToMeetHalrath();
+                    dialogueBox.SetActive(false);
+                    //gameObject.SetActive(false);
+                    playerController.enabled = true;
+                    yield return null;
+                    break;
+                }
+            case 2:
                 {
                     z.StopTalking();
                     dialogueBox.SetActive(false);
                     //gameObject.SetActive(false);
                     playerController.enabled = true;
-                    //choicePanel.SetActive(false);
                     yield return null;
                     break;
                 }
@@ -111,14 +143,14 @@ public class Halrath_Chap2_D1 : MonoBehaviour
 
     public void Choice1()
     {
-        playerController.storyProgress = +1;
-        //choicePanel.SetActive(false);
-        //StartCoroutine(Chap());
+        playerStatsManager.storyProgress++;
+        choicePanel.SetActive(false);
+        StartCoroutine(Chap());
     }
     public void Choice2()
     {
-        playerController.storyProgress = +2;
-        //choicePanel.SetActive(false);
-        //StartCoroutine(Chap());
+        playerStatsManager.storyProgress += 2;
+        choicePanel.SetActive(false);
+        StartCoroutine(Chap());
     }
 }
