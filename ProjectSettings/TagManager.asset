@@ -25,6 +25,7 @@ TagManager:
   - PlayerCamera
   - D1
   - D2
+  - D7
   layers:
   - Default
   - TransparentFX
@@ -40,7 +41,7 @@ TagManager:
   - 
   - 
   - Player
-  - 
+  - Hitting
   - 
   - 
   - 

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Zino_Chap1_D1 : MonoBehaviour
@@ -10,7 +9,6 @@ public class Zino_Chap1_D1 : MonoBehaviour
     //public TMP_Text text2;
 
     public GameObject dialogueBox;
-    private bool isDialogueActive = false;
 
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
@@ -51,7 +49,6 @@ public class Zino_Chap1_D1 : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        isDialogueActive = false;
         z.StopTalking();
         zino.SetTrigger("Idle");
     }

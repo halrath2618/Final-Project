@@ -9,7 +9,6 @@ public class Zino_Chap1_D5 : MonoBehaviour
     //public TMP_Text text2;
 
     public GameObject dialogueBox;
-    private bool isDialogueActive = false;
 
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
@@ -53,7 +52,6 @@ public class Zino_Chap1_D5 : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        isDialogueActive = false;
         z.StopTalking();
         zino.SetTrigger("Idle");
     }

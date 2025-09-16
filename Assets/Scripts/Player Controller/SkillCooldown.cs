@@ -9,12 +9,12 @@ public class SkillCooldown : MonoBehaviour
     public Slider skillCooldownSliderF; // Reference to the UI Slider for cooldown of the second skill
     public Slider HP;
     public Slider MP;
-    private PlayerController playerController; // Reference to the PlayerController script
+    private SkillCoolDownManager skillCoolDownManager; // Reference to the PlayerController script
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerController = GetComponent<PlayerController>(); // Get the PlayerController component from the same GameObject
+        skillCoolDownManager = GetComponent<SkillCoolDownManager>(); // Get the PlayerController component from the same GameObject
     }
 
     // Update is called once per frame
@@ -27,22 +27,22 @@ public class SkillCooldown : MonoBehaviour
     }
     public void E_UpdateSkillCooldown()
     {
-        skillCooldownSliderE.maxValue = playerController.skill1MaxCD; // Set the maximum value of the cooldown slider to the spell's cooldown time
-        skillCooldownSliderE.value = playerController.skill1CDTime; // Set the current value of the cooldown slider to the spell's cooldown time
+        skillCooldownSliderE.maxValue = skillCoolDownManager.skill1MaxCD; // Set the maximum value of the cooldown slider to the spell's cooldown time
+        skillCooldownSliderE.value = skillCoolDownManager.skill1CDTime; // Set the current value of the cooldown slider to the spell's cooldown time
     }
     public void F_UpdateSkillCooldown()
     {
-        skillCooldownSliderF.maxValue = playerController.skill2MaxCD; // Set the maximum value of the cooldown slider to the spell's cooldown time
-        skillCooldownSliderF.value = playerController.skill2CDTime; // Set the current value of the cooldown slider to the spell's cooldown time
+        skillCooldownSliderF.maxValue = skillCoolDownManager.skill2MaxCD; // Set the maximum value of the cooldown slider to the spell's cooldown time
+        skillCooldownSliderF.value = skillCoolDownManager.skill2CDTime; // Set the current value of the cooldown slider to the spell's cooldown time
     }
     public void HPCooldownUpdate()
     {
-        HP.maxValue = playerController.hpMaxCD; // Set the maximum value of the HP slider to the player's maximum HP
-        HP.value = playerController.hpcdTime; // Set the current value of the HP slider to the player's current HP
+        HP.maxValue = skillCoolDownManager.hpMaxCD; // Set the maximum value of the HP slider to the player's maximum HP
+        HP.value = skillCoolDownManager.hpcdTime; // Set the current value of the HP slider to the player's current HP
     }
     public void MPCooldownUpdate()
     {
-        MP.maxValue = playerController.manaMaxCD; // Set the maximum value of the MP slider to the player's maximum MP
-        MP.value = playerController.manacdTime; // Set the current value of the MP slider to the player's current MP
+        MP.maxValue = skillCoolDownManager.manaMaxCD; // Set the maximum value of the MP slider to the player's maximum MP
+        MP.value = skillCoolDownManager.manacdTime; // Set the current value of the MP slider to the player's current MP
     }
 }

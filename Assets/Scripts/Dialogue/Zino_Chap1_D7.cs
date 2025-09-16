@@ -9,7 +9,7 @@ public class Zino_Chap1_D7 : MonoBehaviour
     //public TMP_Text text2;
 
     public GameObject dialogueBox;
-    private bool isDialogueActive = false;
+    //private bool isDialogueActive = false;
 
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
@@ -21,7 +21,7 @@ public class Zino_Chap1_D7 : MonoBehaviour
 
     public CameraSetting cameraSetting;
     [SerializeField] private Animator zino;
-    [SerializeField] CreateCharacterText createCharacterText;
+    [SerializeField] private CreateCharacterText createCharacterText;
 
 
 
