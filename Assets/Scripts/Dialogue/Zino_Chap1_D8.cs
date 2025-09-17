@@ -10,20 +10,19 @@ public class Zino_Chap1_D8 : MonoBehaviour
     //public TMP_Text text2;
 
     public GameObject dialogueBox;
-    private bool isDialogueActive = false;
 
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
 
-    [SerializeField] private PlayerStatsManager playerStatsManager;
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private DialogueBlendShapeController z;
+    private PlayerStatsManager playerStatsManager;
+    private PlayerController playerController;
+    public DialogueBlendShapeController z;
 
     //public GameObject fighting;
 
     public CameraSetting cameraSetting;
-    [SerializeField] private Animator zino;
-    [SerializeField] CreateCharacterText createCharacterText;
+    public Animator zino;
+    private CreateCharacterText createCharacterText;
 
 
 
@@ -53,12 +52,14 @@ public class Zino_Chap1_D8 : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        isDialogueActive = false;
         z.StopTalking();
         zino.SetTrigger("Idle");
     }
     private void Start()
     {
+        playerController = FindAnyObjectByType<PlayerController>();
+        cameraSetting = FindAnyObjectByType<CameraSetting>();
+        createCharacterText = FindAnyObjectByType<CreateCharacterText>();
         playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
     }
     //private void Update()
@@ -85,7 +86,7 @@ public class Zino_Chap1_D8 : MonoBehaviour
     {
         switch (playerStatsManager.storyProgress)
         {
-            case 3:
+            case 7:
                 {
                     z.StartTalking();
                     zino.SetTrigger("Talking");
@@ -100,7 +101,7 @@ public class Zino_Chap1_D8 : MonoBehaviour
                     StartCoroutine(Chap8());
                     break;
                 }
-            case 4:
+            case 8:
                 {
                     z.StopTalking();
                     dialogueBox.SetActive(false);

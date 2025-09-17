@@ -7,7 +7,7 @@ public class PlayerStatsManager : MonoBehaviour
     public float stamina = 100f;
     public float mana = 100f;
 
-    public int characterClassNum = 0;
+    public int characterClassNum = 4;
 
     public int HPPotionCount = 5;
     public int MPPotionCount = 5;

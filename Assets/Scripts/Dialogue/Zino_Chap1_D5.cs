@@ -13,16 +13,16 @@ public class Zino_Chap1_D5 : MonoBehaviour
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
 
-    [SerializeField] private PlayerStatsManager playerStatsManager;
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private DialogueBlendShapeController z;
+    private PlayerStatsManager playerStatsManager;
+    private PlayerController playerController;
+    public DialogueBlendShapeController z;
 
     //public GameObject fighting;
 
     public CameraSetting cameraSetting;
-    [SerializeField] private Animator zino;
-    [SerializeField] private Animator halrath;
-    [SerializeField] CreateCharacterText createCharacterText;
+    public Animator zino;
+    public Animator halrath;
+    private CreateCharacterText createCharacterText;
 
 
 
@@ -58,6 +58,9 @@ public class Zino_Chap1_D5 : MonoBehaviour
     }
     private void Start()
     {
+        playerController = FindAnyObjectByType<PlayerController>();
+        cameraSetting = FindAnyObjectByType<CameraSetting>();
+        createCharacterText = FindAnyObjectByType<CreateCharacterText>();
         playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
     }
     //private void Update()
@@ -84,7 +87,7 @@ public class Zino_Chap1_D5 : MonoBehaviour
     {
         switch (playerStatsManager.storyProgress)
         {
-            case 0:
+            case 4:
                 {
                     z.StartTalking();
                     yield return createCharacterText.Z.Say("Mình…{a}mình đang ở đâu?{c}Đây không phải khu rừng mình vừa bước vào!");
@@ -95,7 +98,7 @@ public class Zino_Chap1_D5 : MonoBehaviour
                     StartCoroutine(Chap5());
                     break;
                 }
-            case 1:
+            case 5:
                 {
                     z.StopTalking();
                     dialogueBox.SetActive(false);

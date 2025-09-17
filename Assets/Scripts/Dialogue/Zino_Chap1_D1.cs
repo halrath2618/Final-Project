@@ -13,14 +13,15 @@ public class Zino_Chap1_D1 : MonoBehaviour
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
 
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private DialogueBlendShapeController z;
+    private PlayerStatsManager playerStatsManager;
+    private PlayerController playerController;
+    public DialogueBlendShapeController z;
 
     //public GameObject fighting;
-    [SerializeField] private PlayerStatsManager playerStatsManager;
+
     public CameraSetting cameraSetting;
-    [SerializeField] private Animator zino;
-    [SerializeField] CreateCharacterText createCharacterText;
+    public Animator zino;
+    private CreateCharacterText createCharacterText;
 
 
 
@@ -49,6 +50,9 @@ public class Zino_Chap1_D1 : MonoBehaviour
     }
     private void Start()
     {
+        playerController = FindAnyObjectByType<PlayerController>();
+        cameraSetting = FindAnyObjectByType<CameraSetting>();
+        createCharacterText = FindAnyObjectByType<CreateCharacterText>();
         playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
     }
     private void OnTriggerExit(Collider other)

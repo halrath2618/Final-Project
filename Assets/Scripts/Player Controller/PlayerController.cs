@@ -194,7 +194,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        skillCoolDownManager.enabled = false;
         //if (Input.GetKeyDown(KeyCode.B))
         //{
         //    playerStatsManager.characterClassNum = 1;
@@ -247,8 +246,6 @@ public class PlayerController : MonoBehaviour
         //    skillCoolDownManager.skill2CDTime = skillCoolDownManager.skill2MaxCD; // Initialize cooldown time for After Meet Halrath's second skill
         //    SwitchToMeetHalrath(); // Switch to After Meet Halrath class when 4 is pressed
         //}
-        skillCooldown.E_UpdateSkillCooldown();
-        skillCooldown.F_UpdateSkillCooldown();
         hp.UpdateHP();
         hp.UpdateMana();
         hp.UpdateStamina();
@@ -325,12 +322,13 @@ public class PlayerController : MonoBehaviour
         // Basic Attack
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            
             if (skillCoolDownManager.skill1_isReady)
             {
                 StartCoroutine(PerformAttack_1()); // Perform attack
                 if (playerStatsManager.mana >= 10)
                 {
-                    skillCoolDownManager.skill1_isReady = false; // Set skill as not ready
+                    /*skillCoolDownManager.skill1_isReady = false;*/ // Set skill as not ready
                     StartCoroutine(skillCoolDownManager.ApplySkillCooldown1()); // Start cooldown
                 }
                 else
@@ -352,7 +350,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(PerformAttack_2()); // Perform attack
                 if (playerStatsManager.mana >= 30)
                 {
-                    skillCoolDownManager.skill2_isReady = false; // Set skill as not ready
+                    /*skillCoolDownManager.skill2_isReady = false;*/ // Set skill as not ready
                     StartCoroutine(skillCoolDownManager.ApplySkillCooldown2()); // Start cooldown
                 }
                 else
@@ -370,7 +368,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (playerStatsManager.characterClassNum == 1)
+            if (playerStatsManager.characterClassNum == 2)
             {
                 if (skillCoolDownManager.auraReady)
                 {
@@ -393,7 +391,7 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Skill is not ready.");
                 }
             }
-            else if (playerStatsManager.characterClassNum == 2)
+            else if (playerStatsManager.characterClassNum == 3)
             {
                 if (skillCoolDownManager.auraReady)
                 {
@@ -412,7 +410,7 @@ public class PlayerController : MonoBehaviour
                     StopDrainingMana(); // Stop draining mana if already active
                 }
             }
-            else if (playerStatsManager.characterClassNum == 3)
+            else if (playerStatsManager.characterClassNum == 4)
             {
                 if (skillCoolDownManager.auraReady)
                 {
@@ -1053,7 +1051,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Die()); // Trigger game over sequence
         }
     }
-    IEnumerator GameOver()
+    public IEnumerator GameOver()
     {
         noticePanel.SetActive(true); // Show the notice panel
         noticeCanvasGroup.alpha += 0.5f * Time.deltaTime; // Set the alpha to fully visible
