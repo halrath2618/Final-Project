@@ -115,7 +115,9 @@ public class Halrath_Chap2_D1 : MonoBehaviour
                     yield return createCharacterText.H.Say("Xin chào, đã tỉnh dậy rồi à?");
                     yield return createCharacterText.Z.Say("......{a}...Tôi...Tôi đang ở đâu vậy?");
                     yield return createCharacterText.Z.Say("Ông là ai? Sao tôi lại ở đây?");
-                    yield return createCharacterText.H.Say("Bình tĩnh nào.{c}Ta là Halrath. Còn cậu là ai? Tại sao cậu lại ở nơi này?{a} Nơi này cực kỳ nguy hiểm đấy.");
+                    yield return createCharacterText.H.Say("Bình tĩnh nào.{c}Uống cái này đi! Nó sẽ giúp cậu hồi phục sức khỏe.");
+                    StartCoroutine(playerController.DrinkHPPotion());
+                    yield return createCharacterText.H.Say("Ta là Halrath. Còn cậu là ai? Tại sao cậu lại ở nơi này?{a} Nơi này cực kỳ nguy hiểm đấy.");
                     yield return createCharacterText.Z.Say("Tôi là Zino, trong một cuộc tìm kiếm cổ vật, {a}một mảnh cổ vật đã bay ra khỏi rương và dẫn tôi đến một cánh cổng kỳ lạ.{c} Sau khi bước vào, trước mắt tôi là một khu rừng tối với đầy rẫy quái vật sung quanh.{c} Tôi đã phải chạy trốn đến đây và gục ngã bất tỉnh sau đó.");
                     yield return createCharacterText.H.Say("Cậu thật sự rất may mắn khi còn sống sót.{c} Khi tôi mở cửa thì phát hiện cậu đang nằm bất tỉnh, người đầy thương tích.{c} Mà cậu nói là cánh cổng cổ đại trong khu rừng này à??");
                     yield return createCharacterText.Z.Say("Vâng!!");

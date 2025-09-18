@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class SkillCoolDownManager : MonoBehaviour
 {
@@ -26,16 +27,24 @@ public class SkillCoolDownManager : MonoBehaviour
     public float manacdTime = 10f;
     public bool hpcdReady = true; // Flag to check if the HP potion cooldown is ready
     public bool manacdReady = true; // Flag to check if the Mana potion cooldown is ready
+    private PlayerStatsManager playerStatsManager;
+    public TMP_Text HPCount;
+    public TMP_Text MPCount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
         warningSkill = GetComponent<Warning_Skill>();
         skillConstantlyActive = GetComponent<SkillConstantlyActive>();
         skillCooldown = GetComponent<SkillCooldown>();
         auraReady = true;
     }
-
+    private void Update()
+    {
+        HPCount.text = playerStatsManager.HPPotionCount.ToString();
+        MPCount.text = playerStatsManager.MPPotionCount.ToString();
+    }
     // Update is called once per frame
     public IEnumerator ApplySkillCooldown1()
     {

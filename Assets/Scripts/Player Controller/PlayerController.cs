@@ -557,7 +557,7 @@ public class PlayerController : MonoBehaviour
         _canDodge = true;
     }
 
-    IEnumerator DrinkHPPotion()
+    public IEnumerator DrinkHPPotion()
     {
         while (skillCoolDownManager.hpDuration > 0)
         {

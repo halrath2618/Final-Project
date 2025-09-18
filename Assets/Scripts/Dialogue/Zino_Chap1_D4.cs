@@ -94,6 +94,7 @@ public class Zino_Chap1_D4 : MonoBehaviour
                 }
             case 4:
                 {
+                    playerStatsManager.AddHPPotion(-5);
                     z.StopTalking();
                     dialogueBox.SetActive(false);
                     gameObject.SetActive(false);

@@ -7,10 +7,10 @@ public class PlayerStatsManager : MonoBehaviour
     public float stamina = 100f;
     public float mana = 100f;
 
-    public int characterClassNum = 4;
+    public int characterClassNum = 0;
 
     public int HPPotionCount = 5;
-    public int MPPotionCount = 5;
+    public int MPPotionCount = 0;
 
     public int storyProgress = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,4 +34,5 @@ public class PlayerStatsManager : MonoBehaviour
     {
         MPPotionCount = MPPotionCount + num;
     }
+
 }
