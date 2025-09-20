@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Zino_Chap1_D1 : MonoBehaviour
@@ -10,19 +9,19 @@ public class Zino_Chap1_D1 : MonoBehaviour
     //public TMP_Text text2;
 
     public GameObject dialogueBox;
-    private bool isDialogueActive = false;
 
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
 
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private DialogueBlendShapeController z;
+    private PlayerStatsManager playerStatsManager;
+    private PlayerController playerController;
+    public DialogueBlendShapeController z;
 
     //public GameObject fighting;
 
     public CameraSetting cameraSetting;
-    [SerializeField] private Animator zino;
-    [SerializeField] CreateCharacterText createCharacterText;
+    public Animator zino;
+    private CreateCharacterText createCharacterText;
 
 
 
@@ -49,9 +48,15 @@ public class Zino_Chap1_D1 : MonoBehaviour
             StartCoroutine(Chap1());
         }
     }
+    private void Start()
+    {
+        playerController = FindAnyObjectByType<PlayerController>();
+        cameraSetting = FindAnyObjectByType<CameraSetting>();
+        createCharacterText = FindAnyObjectByType<CreateCharacterText>();
+        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
+    }
     private void OnTriggerExit(Collider other)
     {
-        isDialogueActive = false;
         z.StopTalking();
         zino.SetTrigger("Idle");
     }
@@ -68,7 +73,7 @@ public class Zino_Chap1_D1 : MonoBehaviour
     //    zino.SetTrigger("Talking");
     //    z.StartTalking();
     //    Zino.enabled = false;
-    //    Debug.Log("Story point: " + playerController.storyProgress);
+    //    Debug.Log("Story point: " + playerStatsManager.storyProgress);
     //    Z = CreateCharacter("Zino") as Character_Text;
 
     //    dialogueBox.SetActive(true);
@@ -76,13 +81,13 @@ public class Zino_Chap1_D1 : MonoBehaviour
     //}
     IEnumerator Chap1()
     {
-        switch (playerController.storyProgress)
+        switch (playerStatsManager.storyProgress)
         {
             case 0:
                 {
                     z.StartTalking();
                     yield return createCharacterText.Z.Say("Vậy là... đây chính là nơi mà người ta chỉ nhắc đến trong những câu chuyện mờ nhạt. Khu rừng đã nuốt chửng lối đi, những vì sao biến mất khỏi bầu trời, nhưng tôi vẫn bước tiếp. Có thứ gì đó kéo tôi đến đây. Thứ gì đó cổ xưa.");
-                    playerController.storyProgress++;
+                    playerStatsManager.storyProgress++;
                     StartCoroutine(Chap1());
                     break;
                 }
@@ -103,13 +108,13 @@ public class Zino_Chap1_D1 : MonoBehaviour
 
     public void Choice1()
     {
-        playerController.storyProgress = +1;
+        playerStatsManager.storyProgress++;
         //choicePanel.SetActive(false);
         //StartCoroutine(Chap());
     }
     public void Choice2()
     {
-        playerController.storyProgress = +2;
+        playerStatsManager.storyProgress += 2;
         //choicePanel.SetActive(false);
         //StartCoroutine(Chap());
     }

@@ -770,7 +770,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1383794377}
   - component: {fileID: 1383794378}
-  - component: {fileID: 1383794379}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -802,25 +801,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1383794376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c6de58a72288a42ab1b96bfd633986, type: 3}
+  m_Script: {fileID: 11500000, guid: 385d56cf262924047b8e2a61da187181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressBar: {fileID: 1605581670}
-  manifestFileName: file_manifest.json
-  nextSceneName: Prologue
---- !u!114 &1383794379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383794376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3194902a1f3e844fb18d2465f1ca149, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 0
+  scene: Prologue
+  progressBar: {fileID: 1536875833}
 --- !u!1 &1530656562
 GameObject:
   m_ObjectHideFlags: 0

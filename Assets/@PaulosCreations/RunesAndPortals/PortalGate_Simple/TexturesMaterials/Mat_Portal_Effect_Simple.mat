@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Portal_Effect_Simple
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: f8df9d72baf4e0c4bac2d4036f6c5d7b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -73,11 +73,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Normals:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Shadermap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -99,8 +107,11 @@ Material:
     - Vector1_eb86ebf3ceb446ba893fde4145c46867: 0.5
     - _BumpScale: 1
     - _Cutoff: 0.5
+    - _Depth: 0.5
+    - _Depthdarkness: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FlowSpeed: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -111,14 +122,21 @@ Material:
     - _PortalFade: 1
     - _QueueControl: -1
     - _QueueOffset: 0
+    - _RefractionAmount: 0
+    - _RimSize: 1.5
+    - _Rimfalloff: 1.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Tiling: 0.05
+    - _Transparency: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorMain: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _WaterColor: {r: 0.1467344, g: 0.4798458, b: 0.8676471, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

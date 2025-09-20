@@ -7,17 +7,17 @@ public class SkillReady : MonoBehaviour
     public GameObject skill_3;
     public GameObject skill_4;
     public GameObject skill_5;
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] private SkillCoolDownManager skillCoolDownManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        skillCoolDownManager = FindAnyObjectByType<SkillCoolDownManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerController.skill1_isReady)
+        if (skillCoolDownManager.skill1_isReady)
         {
             skill_1.SetActive(true);
         }
@@ -25,7 +25,7 @@ public class SkillReady : MonoBehaviour
         {
             skill_1.SetActive(false);
         }
-        if (playerController.skill2_isReady)
+        if (skillCoolDownManager.skill2_isReady)
         {
             skill_2.SetActive(true);
         }
@@ -33,7 +33,7 @@ public class SkillReady : MonoBehaviour
         {
             skill_2.SetActive(false);
         }
-        if (playerController.auraReady)
+        if (skillCoolDownManager.auraReady)
         {
             skill_3.SetActive(true);
         }
@@ -41,7 +41,7 @@ public class SkillReady : MonoBehaviour
         {
             skill_3.SetActive(false);
         }
-        if (playerController.manacdReady)
+        if (skillCoolDownManager.manacdReady)
         {
             skill_4.SetActive(true);
         }
@@ -49,7 +49,7 @@ public class SkillReady : MonoBehaviour
         {
             skill_4.SetActive(false);
         }
-        if (playerController.hpcdReady)
+        if (skillCoolDownManager.hpcdReady)
         {
             skill_5.SetActive(true);
         }

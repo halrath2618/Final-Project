@@ -1,4 +1,3 @@
-// CharacterClass.cs
 using UnityEngine;
 
 public enum CharacterClass

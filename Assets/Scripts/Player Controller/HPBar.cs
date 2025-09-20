@@ -8,11 +8,13 @@ public class HPBar : MonoBehaviour
     public Slider manaSlider; // Reference to the UI Slider for Mana
     public Slider staminaSlider; // Reference to the UI Slider for Stamina
 
+    private PlayerStatsManager playerStatsManager; // Reference to the PlayerStatsManager script
     private PlayerController playerController; // Reference to the PlayerController script
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerController = GetComponent<PlayerController>();
+        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
     }
 
     // Update is called once per frame
@@ -27,16 +29,16 @@ public class HPBar : MonoBehaviour
     public void UpdateHP()
     {
         hpSlider.maxValue = playerController.maxHP; // Set the maximum value of the HP bar to the player's max HP
-        hpSlider.value = playerController._currentHealth; // Set the current value of the HP bar to the player's current health
+        hpSlider.value = playerStatsManager.health; // Set the current value of the HP bar to the player's current health
     }
     public void UpdateMana()
     {
         manaSlider.maxValue = playerController.maxMana; // Set the maximum value of the Mana bar to the player's max Mana
-        manaSlider.value = playerController._currentMana; // Set the current value of the Mana bar to the provided manaValue
+        manaSlider.value = playerStatsManager.mana; // Set the current value of the Mana bar to the provided manaValue
     }
     public void UpdateStamina()
     {
         staminaSlider.maxValue = playerController.maxStamina; // Set the maximum value of the Stamina bar to the player's max Stamina
-        staminaSlider.value = playerController._currentStamina; // Set the current value of the Stamina bar to the player's current Stamina
+        staminaSlider.value = playerStatsManager.stamina; // Set the current value of the Stamina bar to the player's current Stamina
     }
 }

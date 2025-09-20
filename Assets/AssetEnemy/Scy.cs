@@ -17,7 +17,7 @@ public class Scy : MonoBehaviour
 
     public GameObject choicePanel;
     public RectTransform _choicePanel;
-
+    [SerializeField] private PlayerStatsManager playerStatsManager;
     [SerializeField] private PlayerController playerController;
 
     [SerializeField] private CharacterController Zino;
@@ -66,6 +66,10 @@ public class Scy : MonoBehaviour
         halrath.SetTrigger("Idle");
         zino.SetTrigger("Idle");
     }
+    private void Start()
+    {
+        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -81,7 +85,7 @@ public class Scy : MonoBehaviour
         z.StartTalking();
         s.StartTalking();
         Zino.enabled = false;
-        Debug.Log("Story point: " + playerController.storyProgress);
+        Debug.Log("Story point: " + playerStatsManager.storyProgress);
         Z = CreateCharacter("Zino") as Character_Text;
         S = CreateCharacter("Scy") as Character_Text;
 
@@ -90,7 +94,7 @@ public class Scy : MonoBehaviour
     }
     IEnumerator Chap()
     {
-        switch (playerController.storyProgress)
+        switch (playerStatsManager.storyProgress)
         {
             case 0:
                 {
@@ -151,13 +155,13 @@ public class Scy : MonoBehaviour
 
     public void Choice1()
     {
-        playerController.storyProgress = +1;
+        playerStatsManager.storyProgress = +1;
         choicePanel.SetActive(false);
         StartCoroutine(Chap());
     }
     public void Choice2()
     {
-        playerController.storyProgress = +2;
+        playerStatsManager.storyProgress = +2;
         choicePanel.SetActive(false);
         StartCoroutine(Chap());
     }

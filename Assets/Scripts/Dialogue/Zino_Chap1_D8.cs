@@ -10,19 +10,19 @@ public class Zino_Chap1_D8 : MonoBehaviour
     //public TMP_Text text2;
 
     public GameObject dialogueBox;
-    private bool isDialogueActive = false;
 
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
 
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private DialogueBlendShapeController z;
+    private PlayerStatsManager playerStatsManager;
+    private PlayerController playerController;
+    public DialogueBlendShapeController z;
 
     //public GameObject fighting;
 
     public CameraSetting cameraSetting;
-    [SerializeField] private Animator zino;
-    [SerializeField] CreateCharacterText createCharacterText;
+    public Animator zino;
+    private CreateCharacterText createCharacterText;
 
 
 
@@ -52,9 +52,15 @@ public class Zino_Chap1_D8 : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        isDialogueActive = false;
         z.StopTalking();
         zino.SetTrigger("Idle");
+    }
+    private void Start()
+    {
+        playerController = FindAnyObjectByType<PlayerController>();
+        cameraSetting = FindAnyObjectByType<CameraSetting>();
+        createCharacterText = FindAnyObjectByType<CreateCharacterText>();
+        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
     }
     //private void Update()
     //{
@@ -69,7 +75,7 @@ public class Zino_Chap1_D8 : MonoBehaviour
     //    zino.SetTrigger("Talking");
     //    z.StartTalking();
     //    Zino.enabled = false;
-    //    Debug.Log("Story point: " + playerController.storyProgress);
+    //    Debug.Log("Story point: " + playerStatsManager.storyProgress);
     //    Z = CreateCharacter("Zino") as Character_Text;
 
     //    dialogueBox.SetActive(true);
@@ -78,9 +84,9 @@ public class Zino_Chap1_D8 : MonoBehaviour
 
     IEnumerator Chap8()
     {
-        switch (playerController.storyProgress)
+        switch (playerStatsManager.storyProgress)
         {
-            case 3:
+            case 7:
                 {
                     z.StartTalking();
                     zino.SetTrigger("Talking");
@@ -90,12 +96,12 @@ public class Zino_Chap1_D8 : MonoBehaviour
                     yield return createCharacterText.Z.Say("Có ai không.....{a} giúp tôi với.....");
                     yield return createCharacterText.Z.Say("Có....ai...........");
                     zino.SetTrigger("Faint");
-                    playerController.storyProgress++;
+                    playerStatsManager.storyProgress++;
                     yield return new WaitForSeconds(5f);
                     StartCoroutine(Chap8());
                     break;
                 }
-            case 4:
+            case 8:
                 {
                     z.StopTalking();
                     dialogueBox.SetActive(false);
@@ -113,13 +119,13 @@ public class Zino_Chap1_D8 : MonoBehaviour
 
     public void Choice1()
     {
-        playerController.storyProgress = +1;
+        playerStatsManager.storyProgress = +1;
         //choicePanel.SetActive(false);
         //StartCoroutine(Chap());
     }
     public void Choice2()
     {
-        playerController.storyProgress = +2;
+        playerStatsManager.storyProgress = +2;
         //choicePanel.SetActive(false);
         //StartCoroutine(Chap());
     }

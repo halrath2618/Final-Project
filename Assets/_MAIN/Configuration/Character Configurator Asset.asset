@@ -48,3 +48,10 @@ MonoBehaviour:
     dialogueColor: {r: 1, g: 1, b: 1, a: 1}
     nameFont: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}
     dialogueFont: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}
+  - name: ' '
+    alias: N
+    characterType: 0
+    nameColor: {r: 0.6037736, g: 0.20458598, b: 0.17942329, a: 1}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}
+    dialogueFont: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}
