@@ -8,7 +8,7 @@ public class BoxTrigger : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        rotator = GetComponent<RMRotator>();
+        rotator = FindAnyObjectByType<RMRotator>();
     }
     private void OnTriggerEnter(Collider other)
     {

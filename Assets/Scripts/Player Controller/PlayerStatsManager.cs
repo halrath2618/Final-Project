@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerStatsManager : MonoBehaviour
@@ -13,6 +14,8 @@ public class PlayerStatsManager : MonoBehaviour
     public int MPPotionCount = 0;
 
     public int storyProgress = 0;
+    public int gold = 0;
+    public TMP_Text goldText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -33,6 +36,11 @@ public class PlayerStatsManager : MonoBehaviour
     public void AddMPPotion(int num)
     {
         MPPotionCount = MPPotionCount + num;
+    }
+    public void AddGold(int amount)
+    {
+        gold += amount;
+        goldText.text = gold.ToString();
     }
 
 }

@@ -20,9 +20,9 @@ public class Zino_Chap2_D1 : MonoBehaviour
 
     //public GameObject fighting;
 
-    public CameraSetting cameraSetting;
     public Animator zino;
     private CreateCharacterText createCharacterText;
+    public SphereCollider repeat;
 
 
 
@@ -42,7 +42,7 @@ public class Zino_Chap2_D1 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
+            repeat.enabled = false;
             Debug.Log("Trigger Entered");
             zino.SetFloat("Speed", 0);
             dialogueBox.SetActive(true);
@@ -58,7 +58,6 @@ public class Zino_Chap2_D1 : MonoBehaviour
     private void Start()
     {
         playerController = FindAnyObjectByType<PlayerController>();
-        cameraSetting = FindAnyObjectByType<CameraSetting>();
         createCharacterText = FindAnyObjectByType<CreateCharacterText>();
         playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
     }
