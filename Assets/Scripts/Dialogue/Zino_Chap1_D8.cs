@@ -110,7 +110,7 @@ public class Zino_Chap1_D8 : MonoBehaviour
                     cutScene.Play();
                     StartCoroutine(WaitForCutsceneEnd());
                     playerController.enabled = true;
-                    SceneManager.LoadScene("LoadingScene 1.5");
+                    
                     //choicePanel.SetActive(false);
                     yield return null;
                     break;
@@ -141,6 +141,6 @@ public class Zino_Chap1_D8 : MonoBehaviour
         }
 
         // Load the next scene after the cutscene ends
-        SceneManager.LoadScene("LoadingScene 1");
+        SceneManager.LoadScene("LoadingScene 1.5");
     }
 }
