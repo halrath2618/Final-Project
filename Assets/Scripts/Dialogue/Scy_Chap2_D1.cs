@@ -4,16 +4,21 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
+using Pathfinding;
+using CHARACTERS;
 
 public class Scy_Chap2_D1 : MonoBehaviour
 {
-    //public GameObject canvas;
-    //public CanvasGroup canvasGroup;
+    public GameObject canvas;
+    public CanvasGroup canvasGroup;
     //public Button choice1;
     //public Button choice2;
     //public TMP_Text text1;
     //public TMP_Text text2;
     public GameObject F;
+
+    public AIDestinationSetter location;
 
     public GameObject dialogueBox;
     private bool isDialogueActive = false;
@@ -21,17 +26,17 @@ public class Scy_Chap2_D1 : MonoBehaviour
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
 
-    private PlayerStatsManager playerStatsManager;
-    private PlayerController playerController;
+
+    public PlayerStatsManager playerStatsManager;
+    public PlayerController playerController;
     public DialogueBlendShapeController z;
-    public DialogueBlendShapeController h;
+    public DialogueBlendShapeController s;
 
     //public GameObject fighting;
 
-    public CameraSetting cameraSetting;
     public Animator zino;
-    public Animator halrath;
-    private CreateCharacterText createCharacterText;
+    public Animator scy;
+    public CreateCharacterText createCharacterText;
 
 
 
@@ -65,18 +70,22 @@ public class Scy_Chap2_D1 : MonoBehaviour
         isDialogueActive = false;
         z.StopTalking();
         zino.SetTrigger("Idle");
-        halrath.SetTrigger("Idle");
+        scy.SetTrigger("Idle");
 
     }
     private void Start()
     {
         playerController = FindAnyObjectByType<PlayerController>();
-        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
-        cameraSetting = FindAnyObjectByType<CameraSetting>();
         createCharacterText = FindAnyObjectByType<CreateCharacterText>();
+        playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
+        location = FindAnyObjectByType<AIDestinationSetter>();
+        location.enabled = false;
+        
+        
     }
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (isDialogueActive)
@@ -87,9 +96,9 @@ public class Scy_Chap2_D1 : MonoBehaviour
     {
         F.SetActive(false);
         zino.SetTrigger("Talking");
-        halrath.SetTrigger("Talking");
+        scy.SetTrigger("Talking");
         z.StartTalking();
-        h.StartTalking();
+        s.StartTalking();
         playerController.enabled = false;
         Debug.Log("Story point: " + playerStatsManager.storyProgress);
         zino.SetFloat("Speed", 0);
@@ -101,21 +110,28 @@ public class Scy_Chap2_D1 : MonoBehaviour
     {
         switch (playerStatsManager.storyProgress)
         {
-            case 12:
+            case 13:
                 {
-                    createCharacterText.
+                    yield return createCharacterText.S.Say("Chờ cậu hơi lâu đấy anh bạn trẻ ạ.{c}Trước khi cậu đập vào mặt tôi một dàn câu hỏi...{a}Tôi tên là Scy. Rất vui được gặp cậu.{c}Tôi nghe Halrath kể về cậu.{c}Cậu vào đây, tôi sẽ kể cho cậu nghe mọi chuyện.");
+                    StartCoroutine(BlackenOvertime());
+                    yield return createCharacterText.N.Say("Scy ngồi kể cho Zino nghe về lịch sử của thành phố và những sự kiện đã xảy ra gần đây.{c}Zino chăm chú nghe từng câu chuyện từ Scy và ghi chép lại kỹ càng.{c}");
+                    StartCoroutine(WhitenOvertime());
+                    yield return createCharacterText.S.Say("Rồi, bây giờ cậu đi với tôi tới chổ này để chuẩn bị một số thứ nhé.");
+                    playerStatsManager.storyProgress++;
                     StartCoroutine(Chap());
                     break;
                 }
-            case 13:
+            case 14:
                 {
+                    location.enabled = true;
                     z.StopTalking();
-                    h.StopTalking();
-                    halrath.SetTrigger("Idle");
+                    s.StopTalking();
+                    scy.SetTrigger("Idle");
                     zino.SetTrigger("Idle");
-                    playerStatsManager.AddHPPotion(2);
+
                     dialogueBox.SetActive(false);
                     playerController.enabled = true;
+                    gameObject.SetActive(false);
                     yield return null;
                     break;
                 }
@@ -136,4 +152,30 @@ public class Scy_Chap2_D1 : MonoBehaviour
     //    choicePanel.SetActive(false);
     //    StartCoroutine(Chap());
     //}
+    IEnumerator BlackenOvertime()
+    {
+        canvas.SetActive(true);
+        float elapsedTime = 0f;
+        float duration = 2f; // Duration of the fade effect in seconds
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Clamp01(elapsedTime / duration);
+            canvasGroup.alpha = alpha;
+            yield return null;
+        }
+    }
+    IEnumerator WhitenOvertime()
+    {
+        float elapsedTime = 0f;
+        float duration = 2f; // Duration of the fade effect in seconds
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Clamp01(1 - (elapsedTime / duration));
+            canvasGroup.alpha = alpha;
+            yield return null;
+        }
+        canvas.SetActive(false);
+    }
 }

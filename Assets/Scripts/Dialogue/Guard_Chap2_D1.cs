@@ -21,18 +21,16 @@ public class Guard_Chap2_D1 : MonoBehaviour
     //public GameObject choicePanel;
     //public RectTransform _choicePanel;
 
-    private PlayerStatsManager playerStatsManager;
-    private PlayerController playerController;
+    public PlayerStatsManager playerStatsManager;
+    public PlayerController playerController;
     public DialogueBlendShapeController z;
-    public DialogueBlendShapeController a;
 
     //public GameObject fighting;
 
-    public CameraSetting cameraSetting;
     public Animator zino;
     public BoxCollider door;
     public Animator aran;
-    private CreateCharacterText createCharacterText;
+    public CreateCharacterText createCharacterText;
 
 
 
@@ -73,11 +71,12 @@ public class Guard_Chap2_D1 : MonoBehaviour
     {
         playerController = FindAnyObjectByType<PlayerController>();
         playerStatsManager = FindAnyObjectByType<PlayerStatsManager>();
-        cameraSetting = FindAnyObjectByType<CameraSetting>();
         createCharacterText = FindAnyObjectByType<CreateCharacterText>();
+
     }
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (isDialogueActive)
@@ -88,11 +87,9 @@ public class Guard_Chap2_D1 : MonoBehaviour
     {
         F.SetActive(false);
         zino.SetTrigger("Talking");
-        aran.SetTrigger("Talking");
+        aran.SetTrigger("talking");
         z.StartTalking();
-        a.StartTalking();
         playerController.enabled = false;
-        Debug.Log("Story point: " + playerStatsManager.storyProgress);
         zino.SetFloat("Speed", 0);
         dialogueBox.SetActive(true);
         StartCoroutine(Chap());
@@ -104,10 +101,10 @@ public class Guard_Chap2_D1 : MonoBehaviour
         {
             case 12:
                 {
-                    createCharacterText.Z.Say("Xin chào~{c}CCho tôi hỏi, tôi có thể tìm thấy người này ở đâu được không?");
-                    createCharacterText.N.Say("Zino đưa cho người lính gác bức thư của Halrath");
-                    createCharacterText.G.Say("Ra là vậy, được rồi, bây giờ cậu đi theo hướng dẫn của tôi nhé.{c}Đi thẳng con đường này đến đài phun nước, sau đó rẽ trái, cậu sẽ thấy 1 căn nhà lớn bên tay phải. Cậu ta ở trong đó.");
-                    createCharacterText.Z.Say("Cảm ơn rất nhiều!");
+                    yield return createCharacterText.Z.Say("Xin chào~{c}Cho tôi hỏi, tôi có thể tìm thấy người này ở đâu được không?");
+                    yield return createCharacterText.N.Say("Zino đưa cho người lính gác bức thư của Halrath");
+                    yield return createCharacterText.G.Say("Ra là vậy, được rồi, bây giờ cậu đi theo hướng dẫn của tôi nhé.{c}Đi thẳng con đường này đến đài phun nước, sau đó rẽ trái, cậu sẽ thấy 1 căn nhà lớn bên tay phải. Cậu ta ở trong đó.");
+                    yield return createCharacterText.Z.Say("Cảm ơn rất nhiều!");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap());
                     break;
@@ -116,7 +113,6 @@ public class Guard_Chap2_D1 : MonoBehaviour
                 {
                     door.enabled = false;
                     z.StopTalking();
-                    a.StopTalking();
                     aran.SetTrigger("Idle");
                     zino.SetTrigger("Idle");
                     playerStatsManager.AddHPPotion(2);
@@ -125,8 +121,6 @@ public class Guard_Chap2_D1 : MonoBehaviour
                     yield return null;
                     break;
                 }
-            default:
-                break;
         }
     }
 

@@ -3,17 +3,32 @@ using UnityEngine;
 
 public class CreateCharacterText : MonoBehaviour
 {
-    [SerializeField] public Character Z;
-    [SerializeField] public Character H;
-    [SerializeField] public Character B;
-    [SerializeField] public Character S;
-    [SerializeField] public Character G;
-    [SerializeField] public Character Z1;
-    [SerializeField] public Character N;
+    public static CreateCharacterText instance;
+    public Character Z;
+    public Character H;
+    public Character B;
+    public Character S;
+    public Character G;
+    public Character Z1;
+    public Character N;
 
     public static Character CreateCharacter(string name) => CharacterManager.instance.CreateCharacter(name);
 
-    public void Start()
+    public void Awake()
+    {
+        
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
+    }
+    private void Start()
     {
         Z = CreateCharacter("Zino") as Character_Text;
         H = CreateCharacter("Halrath") as Character_Text;
