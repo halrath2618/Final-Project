@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
 
     public TMP_Text gold;
 
+    public GameObject blood;
+    public GameObject blood1;
+    public Animator bloodAnimator;
+
 
     [Header("Equipment")]
     public GameObject[] weapon; // Reference to the player's weapon GameObject
@@ -286,6 +290,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (playerStatsManager.health < 30f)
+        {
+            blood.SetActive(true); // Activate blood effect when health is low
+        }
+        else if (playerStatsManager.health >= 30f)
+        {
+            blood.SetActive(false); // Deactivate blood effect when health is sufficient
+        }
         gold.text = playerStatsManager.gold.ToString();
         //if (Input.GetKeyDown(KeyCode.B))
         //{
@@ -1145,6 +1157,7 @@ public class PlayerController : MonoBehaviour
 
         playerStatsManager.health -= damage;
         hp.UpdateHP(); // Update health bar UI
+        
         if (playerStatsManager.health <= 0)
         {
             playerStatsManager.health = 0; // Ensure health does not go below zero
@@ -1301,8 +1314,16 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Claw"))
         {
+            blood1.SetActive(true);
             Debug.Log("Player hit by monster claw");
             TakeDamage(monster.attackDamage); // Assuming Monster.Health has a static attackDmg variable
+        }
+    }
+    public void OnTriggerExit(Collider other) 
+    {
+        if (other.CompareTag("Claw"))
+        {
+            blood1.SetActive(false);
         }
     }
 }
