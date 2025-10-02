@@ -492,7 +492,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 3084027952719272357}
-  hitSounds: []
+  hitSounds:
+  - name: Attack01
+    clip: {fileID: 8300000, guid: 879cbba642d9a404f9d1d0f4d42d4f6e, type: 3}
+  - name: HeavyAttack
+    clip: {fileID: 8300000, guid: 5a2bb0fc829e35e4ea748c11b840fe52, type: 3}
 --- !u!82 &3084027952719272357
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1175,15 +1179,12 @@ MonoBehaviour:
   patrolRadius: 10
   patrolSpeed: 2
   patrolWaitTime: 3
-  detectionDistance: 4
-  detectionAngle: 90
   attackRange: 2
   attackCooldown: 2
   attackDamage: 10
   fleeHealthThreshold: 0.2
   fleeDistance: 8
   fleeSpeed: 5
-  agent: {fileID: 3306108704353143348}
   animator: {fileID: 1893251089351956518}
   health: {fileID: 5336583091233534739}
   monsterUI: {fileID: 1475127922222808136}
