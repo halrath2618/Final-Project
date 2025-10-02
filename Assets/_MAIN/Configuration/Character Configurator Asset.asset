@@ -55,3 +55,10 @@ MonoBehaviour:
     dialogueColor: {r: 1, g: 1, b: 1, a: 1}
     nameFont: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}
     dialogueFont: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}
+  - name: Guard
+    alias: G
+    characterType: 0
+    nameColor: {r: 0.18039216, g: 0.3558595, b: 0.6039216, a: 1}
+    dialogueColor: {r: 1, g: 1, b: 1, a: 1}
+    nameFont: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}
+    dialogueFont: {fileID: 11400000, guid: ea3b7a34c5bdeca4d984c286187bb193, type: 2}

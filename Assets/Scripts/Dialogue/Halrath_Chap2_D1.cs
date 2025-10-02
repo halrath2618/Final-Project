@@ -83,11 +83,11 @@ public class Halrath_Chap2_D1 : MonoBehaviour
             if (isDialogueActive)
                 StartDialogue();
         }
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Choice1();
         }
-        else if (Input.GetKeyDown(KeyCode.Keypad2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Choice2();
         }

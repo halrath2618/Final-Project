@@ -192,7 +192,7 @@ MonoBehaviour:
     m_Start: 7.583333333333333
     m_ClipIn: 0
     m_Asset: {fileID: -8375581384586474214}
-    m_Duration: 7.55
+    m_Duration: 10.950000000000003
     m_TimeScale: 1
     m_ParentTrack: {fileID: -1622409951212216836}
     m_EaseInDuration: 0
@@ -831,7 +831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d6d46decfea034cbddaf9cc760a148, type: 3}
   m_Name: SubtitleClip
   m_EditorClassIdentifier: 
-  subtitleText: "Th\xE0nh ph\u1ED1 ....."
+  subtitleText: "Th\xE0nh ph\u1ED1 Azzaband"
 --- !u!114 &1908184569311054495
 MonoBehaviour:
   m_ObjectHideFlags: 1

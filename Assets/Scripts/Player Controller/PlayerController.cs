@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController _controller;
     private Animator _animator;
+
+    public TMP_Text gold;
 
 
     [Header("Equipment")]
@@ -56,6 +59,7 @@ public class PlayerController : MonoBehaviour
     public GameObject auraSpell;
     public GameObject healAura;
     public GameObject manaAura;
+    private bool _isAuraActive = false;
 
     [Header("Brawler: Skills and Spells")]
     public GameObject[] brawlerSkillsIcon; // Reference to the Brawler's skills icons
@@ -138,6 +142,23 @@ public class PlayerController : MonoBehaviour
     public GameObject switchClassUI; // Reference to the UI GameObject for switching classes
     public void SwitchToBrawler()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            weapon[i].SetActive(false);
+        }
+        playerStatsManager.characterClassNum = 2;
+        for (int i = 0; i < 3; i++)
+        {
+            mageSpellsIcon[i].SetActive(false);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            swordMasterSkillsIcon[i].SetActive(false);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            afterMeetHalrathSkillsIcon[i].SetActive(false);
+        }
         brawlerSkillsIcon[0].SetActive(true);
         brawlerSkillsIcon[1].SetActive(true);
         brawlerSkillsIcon[2].SetActive(true);
@@ -146,6 +167,21 @@ public class PlayerController : MonoBehaviour
     }
     public void SwitchToMage()
     {
+        weapon[0].SetActive(false);
+        weapon[2].SetActive(false);
+        playerStatsManager.characterClassNum = 3;
+        for (int i = 0; i < 3; i++)
+        {
+            brawlerSkillsIcon[i].SetActive(false);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            swordMasterSkillsIcon[i].SetActive(false);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            afterMeetHalrathSkillsIcon[i].SetActive(false);
+        }
         mageSpellsIcon[0].SetActive(true); // Activate the Mage spell icon
         mageSpellsIcon[1].SetActive(true); // Activate the Mage spell icon
         mageSpellsIcon[2].SetActive(true); // Activate the Mage fire spell
@@ -155,18 +191,48 @@ public class PlayerController : MonoBehaviour
     }
     public void SwitchToSwordMaster()
     {
+        playerStatsManager.characterClassNum = 4;
+        for (int i = 0; i < 3; i++)
+        {
+            brawlerSkillsIcon[i].SetActive(false);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            mageSpellsIcon[i].SetActive(false);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            afterMeetHalrathSkillsIcon[i].SetActive(false);
+        }
         swordMasterSkillsIcon[0].SetActive(true); // Activate the SwordMaster skill icon
         swordMasterSkillsIcon[1].SetActive(true); // Activate the SwordMaster skill icon
         swordMasterSkillsIcon[2].SetActive(true); // Activate the SwordMaster skill icon
+        weapon[1].SetActive(false); // Deactivate the Mage weapon
+        weapon[0].SetActive(false); // Deactivate the Mage weapon
         weapon[2].SetActive(true); // Activate the SwordMaster weapon
         characterClassManager.SwitchClass(CharacterClass.SwordMaster); // Switch to Rogue class
         _controller.GetComponent<CharacterController>().enabled = true;
     }
     public void SwitchToMeetHalrath()
     {
+        playerStatsManager.characterClassNum = 1;
+        for (int i = 0; i < 3; i++)
+        {
+            brawlerSkillsIcon[i].SetActive(false);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            mageSpellsIcon[i].SetActive(false);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            swordMasterSkillsIcon[i].SetActive(false);
+        }
         afterMeetHalrathSkillsIcon[0].SetActive(true); // Activate the After Meet Halrath's first skill icon
         afterMeetHalrathSkillsIcon[1].SetActive(true); // Activate the After Meet Halrath's second skill icon
         weapon[0].SetActive(true);
+        weapon[1].SetActive(false);
+        weapon[2].SetActive(false);
         characterClassManager.SwitchClass(CharacterClass.After_Meet_Halrath); // Switch to Halrath class
         _controller.GetComponent<CharacterController>().enabled = true; // Enable character controller
     }
@@ -194,6 +260,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        gold.text = playerStatsManager.gold.ToString();
         //if (Input.GetKeyDown(KeyCode.B))
         //{
         //    playerStatsManager.characterClassNum = 1;
@@ -246,6 +313,7 @@ public class PlayerController : MonoBehaviour
         //    skillCoolDownManager.skill2CDTime = skillCoolDownManager.skill2MaxCD; // Initialize cooldown time for After Meet Halrath's second skill
         //    SwitchToMeetHalrath(); // Switch to After Meet Halrath class when 4 is pressed
         //}
+        //Comment
         hp.UpdateHP();
         hp.UpdateMana();
         hp.UpdateStamina();
@@ -325,6 +393,11 @@ public class PlayerController : MonoBehaviour
             
             if (skillCoolDownManager.skill1_isReady)
             {
+                if (_isAuraActive)
+                {
+                    attackDmg_Earth = attackDmg_Earth + (attackDmg_Earth * 0.5f);
+                    attackDmg_Fire = attackDmg_Fire + (attackDmg_Fire * 0.5f);
+                }
                 StartCoroutine(PerformAttack_1()); // Perform attack
                 if (playerStatsManager.mana >= 10)
                 {
@@ -395,6 +468,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (skillCoolDownManager.auraReady)
                 {
+                    _isAuraActive = true;
                     skillCoolDownManager.auraReady = false; // Set aura skill as not ready
                     _isDrainingMana = true; // Start draining mana
                     StartCoroutine(AuraManaDrainPerSecond()); // Start mana drain coroutine

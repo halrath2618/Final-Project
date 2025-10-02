@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class Zino_Chap1_D8 : MonoBehaviour
@@ -24,8 +25,8 @@ public class Zino_Chap1_D8 : MonoBehaviour
     public Animator zino;
     private CreateCharacterText createCharacterText;
 
-
-
+    public PlayableDirector cutScene;
+    public GameObject cutSceneOJ;
     //public CanvasShaking cv_Shaking;
     //public CharacterShaking char_Shaking;
     //public BackgroundChangeSystem bg;
@@ -105,9 +106,11 @@ public class Zino_Chap1_D8 : MonoBehaviour
                 {
                     z.StopTalking();
                     dialogueBox.SetActive(false);
-                    gameObject.SetActive(false);
+                    cutSceneOJ.SetActive(true); // Activate the cutscene GameObject
+                    cutScene.Play();
+                    StartCoroutine(WaitForCutsceneEnd());
                     playerController.enabled = true;
-                    SceneManager.LoadScene("LoadingScene 1.5");
+                    
                     //choicePanel.SetActive(false);
                     yield return null;
                     break;
@@ -128,5 +131,16 @@ public class Zino_Chap1_D8 : MonoBehaviour
         playerStatsManager.storyProgress = +2;
         //choicePanel.SetActive(false);
         //StartCoroutine(Chap());
+    }
+    private IEnumerator WaitForCutsceneEnd()
+    {
+        // Wait until the cutscene is done playing
+        while (cutScene.state == PlayState.Playing)
+        {
+            yield return null; // Wait for the next frame
+        }
+
+        // Load the next scene after the cutscene ends
+        SceneManager.LoadScene("LoadingScene 1.5");
     }
 }
