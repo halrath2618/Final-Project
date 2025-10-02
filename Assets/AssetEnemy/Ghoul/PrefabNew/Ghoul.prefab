@@ -2288,15 +2288,12 @@ MonoBehaviour:
   patrolRadius: 10
   patrolSpeed: 2
   patrolWaitTime: 3
-  detectionDistance: 15
-  detectionAngle: 180
   attackRange: 2
   attackCooldown: 2
   attackDamage: 10
   fleeHealthThreshold: 0.2
   fleeDistance: 8
   fleeSpeed: 5
-  agent: {fileID: 2372119630207648249}
   animator: {fileID: 692383930465205248}
   health: {fileID: 6239461727572429696}
   monsterUI: {fileID: 5826487549078905943}

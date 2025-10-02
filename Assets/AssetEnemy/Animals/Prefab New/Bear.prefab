@@ -1867,21 +1867,15 @@ MonoBehaviour:
   patrolRadius: 10
   patrolSpeed: 2
   patrolWaitTime: 3
-  detectionDistance: 4
-  detectionAngle: 90
-  playerPosition: {fileID: 0}
   attackRange: 2
   attackCooldown: 2
   attackDamage: 10
   fleeHealthThreshold: 0.2
   fleeDistance: 8
   fleeSpeed: 5
-  player: {fileID: 0}
-  agent: {fileID: 1275728157844297105}
   animator: {fileID: 1030537713270448768}
   health: {fileID: 1757643159581348068}
   monsterUI: {fileID: 428498949399460890}
-  playerController: {fileID: 0}
   blendParameter: Blend
   idleBlendValue: 0
   walkBlendValue: 0.5
@@ -2130,7 +2124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 7927618998313079163}
-  hitSounds: []
+  hitSounds:
+  - name: AttackSound
+    clip: {fileID: 8300000, guid: bb0ac5e7afc48cb4e87361cefb1687c9, type: 3}
 --- !u!1 &6897315387075790285
 GameObject:
   m_ObjectHideFlags: 0
