@@ -38,8 +38,8 @@ public class DoorClose : MonoBehaviour
         {
             case 15:
                 {
-                    yield return createCharacterText.Z.Say("Có lẽ nên nghỉ ngơi thôi,{a} ngày mai là một ngày dài đang đợi.");
-                    yield return createCharacterText.N.Say("Zino đóng cửa và nghỉ ngơi tận hưởng khoảng thời gian còn lại trong ngày.");
+                    yield return createCharacterText.Z.Say("Perhaps it is time to rest, {a}... for the morrow bears the weight of a long and arduous path.");
+                    yield return createCharacterText.N.Say("Zino close the door behind, retreating into quietude to savor the dwindling embers of the day.");
                     
                     StartCoroutine(BlackenOvertime());
                     SceneManager.LoadScene("LoadingScene 2.5");

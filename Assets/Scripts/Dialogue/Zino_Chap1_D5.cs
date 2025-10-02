@@ -90,10 +90,10 @@ public class Zino_Chap1_D5 : MonoBehaviour
             case 4:
                 {
                     z.StartTalking();
-                    yield return createCharacterText.Z.Say("Mình…{a}mình đang ở đâu?{c}Đây không phải khu rừng mình vừa bước vào!");
-                    yield return createCharacterText.Z.Say("Tất cả đồ đạc đều mất cả rồi…{a}Mình phải làm gì đây?");
+                    yield return createCharacterText.Z.Say("I… where am I? This isn’t the forest I stepped into…");
+                    yield return createCharacterText.Z.Say("All my belongings… vanished into the void. What am I to do now, alone and stripped bare?");
                     yield return createCharacterText.Z.Say("...");
-                    yield return createCharacterText.Z.Say("Phải nhanh chóng rời khỏi khu rừng này thôi.");
+                    yield return createCharacterText.Z.Say("I must escape this cursed forest before it swallows me whole.");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap5());
                     break;

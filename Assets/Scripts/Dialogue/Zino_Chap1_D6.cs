@@ -88,7 +88,7 @@ public class Zino_Chap1_D6 : MonoBehaviour
             case 5:
                 {
                     z.StartTalking();
-                    yield return createCharacterText.Z.Say("Sao lại có nhiều quái vật thế này!!!{a}..........{a} Phải thật cẩn thận.{a} Cứ bình tĩnh đi sau lưng bọn chúng đừng đề bọn chúng phát hiện ra mình.");
+                    yield return createCharacterText.Z.Say("Why are there so many monsters…? …I must tread carefully. Stay calm… move behind them. Let them not see me.");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap6());
                     break;

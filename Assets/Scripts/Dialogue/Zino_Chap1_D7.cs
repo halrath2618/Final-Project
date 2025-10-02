@@ -88,7 +88,7 @@ public class Zino_Chap1_D7 : MonoBehaviour
             case 6:
                 {
                     z.StartTalking();
-                    yield return createCharacterText.Z.Say("Đằng kia có ánh đèn, may quá được cứu rồi!!!!!");
+                    yield return createCharacterText.Z.Say("Light… over there. Thank the stars—salvation, at last!");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap7());
                     break;

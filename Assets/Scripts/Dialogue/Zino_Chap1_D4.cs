@@ -87,7 +87,7 @@ public class Zino_Chap1_D4 : MonoBehaviour
             case 3:
                 {
                     z.StartTalking();
-                    yield return createCharacterText.Z.Say("Cánh cổng thật kỳ lạ....{a}\nDù phía sau cánh cổng là gì...{a}tôi sẽ đối mặt.{a} Tôi không thể để mảnh cổ vật tuột khỏi tay mình như thế.");
+                    yield return createCharacterText.Z.Say("The gate…{a} strange beyond reason.{c}Whatever lies beyond it.{c}I shall face it.{c}I cannot let the relic slip from my grasp.");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap4());
                     break;

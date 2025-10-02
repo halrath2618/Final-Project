@@ -7,7 +7,7 @@ public class MenuController : MonoBehaviour
     public GameObject menuCanvas;
     public PlayerController playerController;
     public CameraSetting cameraSetting;
-
+    public GameObject[] warning;
     private bool _isMenuOpen = false;
     private bool _wasCursorLocked;
     private CursorLockMode _previousCursorState;
@@ -63,6 +63,14 @@ public class MenuController : MonoBehaviour
             if (playerController) playerController.enabled = true;
             if (cameraSetting) cameraSetting.enabled = true;
         }
+    }
+    public void OpenWarningExit()
+    {
+        warning[0].SetActive(true);
+    }
+    public void OpenWarningBackMenu()
+    {
+        warning[1].SetActive(true);
     }
     public void ExitToMenu()
     {

@@ -108,15 +108,15 @@ public class Scy_Chap2_D2 : MonoBehaviour
         {
             case 14:
                 {
-                    yield return createCharacterText.S.Say("Đến rồi!{c}Đầu tiên vẫn phải mua cho cậu một bộ quần áo đã.{c}Cậu không thể cứ mặc bộ đồ rách rưới đó đi loanh quanh được.{c}Cậu có mang theo vàng không, tôi khá chắc là Halrath đã đưa cho cậu một ít rồi đúng không?");
-                    yield return createCharacterText.Z.Say("Ừm...{a} Có chứ, tôi có một ít vàng đây.");
-                    yield return createCharacterText.N.Say("Zino đưa cho Scy 500 đồng vàng.");
+                    yield return createCharacterText.S.Say("Here we are!{c}First things first,{a} we need to get you some proper clothes.{c}You can’t be wandering around in those tattered rags.{c}You’ve got some gold, haven’t you? I’m fairly certain Halrath gave you a bit.");
+                    yield return createCharacterText.Z.Say("Uh… yes,{a} I’ve got some gold with me.");
+                    yield return createCharacterText.N.Say("Zino hands Scy 500 gold coins.");
                     playerStatsManager.AddGold(-500);
-                    yield return createCharacterText.S.Say("Chắc là đủ đấy, đợi tôi một chút nhé.");
+                    yield return createCharacterText.S.Say("That should do. Wait here a moment.");
                     StartCoroutine(BlackenOvertime());
-                    yield return createCharacterText.N.Say("Scy đi vào trong cửa hàng và mua cho Zino một bộ quần áo mới.{c}Sau khi thay xong, Zino cảm thấy tự tin hơn rất nhiều.");
+                    yield return createCharacterText.N.Say("Scy enters the shop and returns with a new set of clothes for Zino. After changing, Zino feels a renewed sense of confidence.");
                     StartCoroutine(WhitenOvertime());
-                    yield return createCharacterText.S.Say("Bây giờ thì,{a}cậu hãy đi nghỉ ngơi trước đi.{c}Hãy đến căn nhà bên phải của tòa nhà nơi tôi gặp cậu,{a} tôi có chuẩn bị sẵn cho cậu đấy.{c}Hẹn gặp lại cậu vào ngày mai nhé.{c}");
+                    yield return createCharacterText.S.Say("Now then, go get some rest.{c}Head to the house to the right of the building where we met—I’ve prepared a place for you.{c}We’ll speak again tomorrow.");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap());
                     break;

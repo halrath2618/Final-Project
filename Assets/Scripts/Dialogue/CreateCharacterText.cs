@@ -1,5 +1,6 @@
 using CHARACTERS;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 public class CreateCharacterText : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class CreateCharacterText : MonoBehaviour
     public Character G;
     public Character Z1;
     public Character N;
+    public MainMenuActive mainMenuActive;
 
     public static Character CreateCharacter(string name) => CharacterManager.instance.CreateCharacter(name);
 
@@ -37,5 +39,16 @@ public class CreateCharacterText : MonoBehaviour
         G = CreateCharacter("Guard") as Character_Text;
         Z1 = CreateCharacter("Demon") as Character_Text;
         N = CreateCharacter(" ") as Character_Text;
+    }
+    private void Update()
+    {
+        mainMenuActive = FindAnyObjectByType<MainMenuActive>();
+        if (mainMenuActive != null)
+        {
+            if (mainMenuActive.isActive)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

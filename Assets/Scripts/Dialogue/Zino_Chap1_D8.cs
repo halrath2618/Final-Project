@@ -91,11 +91,11 @@ public class Zino_Chap1_D8 : MonoBehaviour
                 {
                     z.StartTalking();
                     zino.SetTrigger("Talking");
-                    yield return createCharacterText.Z.Say("Làm ơn.....{a} Cứu tôi với....");
+                    yield return createCharacterText.Z.Say("Please...{a} help me...");
                     zino.SetTrigger("Idle");
                     zino.SetTrigger("Injured");
-                    yield return createCharacterText.Z.Say("Có ai không.....{a} giúp tôi với.....");
-                    yield return createCharacterText.Z.Say("Có....ai...........");
+                    yield return createCharacterText.Z.Say("Is anyone there...?{a} I beg you...{a} save me...");
+                    yield return createCharacterText.Z.Say("Is.....anyone.....there...");
                     zino.SetTrigger("Faint");
                     playerStatsManager.storyProgress++;
                     yield return new WaitForSeconds(5f);

@@ -101,10 +101,10 @@ public class Guard_Chap2_D1 : MonoBehaviour
         {
             case 12:
                 {
-                    yield return createCharacterText.Z.Say("Xin chào~{c}Cho tôi hỏi, tôi có thể tìm thấy người này ở đâu được không?");
-                    yield return createCharacterText.N.Say("Zino đưa cho người lính gác bức thư của Halrath");
-                    yield return createCharacterText.G.Say("Ra là vậy, được rồi, bây giờ cậu đi theo hướng dẫn của tôi nhé.{c}Đi thẳng con đường này đến đài phun nước, sau đó rẽ trái, cậu sẽ thấy 1 căn nhà lớn bên tay phải. Cậu ta ở trong đó.");
-                    yield return createCharacterText.Z.Say("Cảm ơn rất nhiều!");
+                    yield return createCharacterText.Z.Say("Greetings~ May I ask… where might I find this person?");
+                    yield return createCharacterText.N.Say("Zino hands the guard Halrath’s letter.");
+                    yield return createCharacterText.G.Say("Ah, I see.{c}Very well, follow my directions.{c}Head straight down this road to the fountain, then turn left.{c}You’ll find a large house on your right.{c}He’s inside.");
+                    yield return createCharacterText.Z.Say("Thank you kindly!");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap());
                     break;

@@ -111,27 +111,27 @@ public class Scy_Chap3_D1 : MonoBehaviour
         {
             case 15:
                 {
-                    yield return createCharacterText.S.Say("Xin chào, ngủ ngon chứ?!{c}Hôm nay sẽ là một ngày dài của cậu đấy!!");
+                    yield return createCharacterText.S.Say("Good morning! Sleep well?{c}Today will be a long one for you!");
                     cv_Shaking.Shake();
                     yield return createCharacterText.Z.Say("Ehhh???!!");
-                    yield return createCharacterText.S.Say("Đừng thừ người ra nữa!!{c}Giờ ngồi xuống và nghe đây!{c}Đây sẽ nơi cuộc hành trình của cậu bắt đầu.");
-                    yield return createCharacterText.S.Say("Để có thể chinh phục, cậu hãy chọn ra nghề nghiệp mà cậu mong muốn.{c}Mỗi nghề sẽ có những điểm mạnh và điểm yếu riêng,{c}nên hãy chọn một cách khôn ngoan nhé.");
+                    yield return createCharacterText.S.Say("Snap out of it!{c}Sit down and listen closely.{c}This is where your journey begins.");
+                    yield return createCharacterText.S.Say("To conquer what lies ahead, you must choose your profession.{c}Each path bears its own strengths and weaknesses—so choose wisely.");
                     videos[0].enabled = true;
                     videos[0].Play();
-                    yield return createCharacterText.S.Say("Đầu tiên là class Brawler, thân thủ nhanh, sức chịu đựng cao, sát thương trung bình.");
+                    yield return createCharacterText.S.Say("First, the Brawler — nimble, resilient, with moderate damage.");
                     videos[0].Stop();
                     videos[0].enabled = false;
                     videos[1].enabled = true;
                     videos[1].Play();
-                    yield return createCharacterText.S.Say("Tiếp theo là Mage, sát thương cao, tốc độ ra chiêu khá chậm, sức chịu đựng kém.");
+                    yield return createCharacterText.S.Say("Next, the Mage — devastating power, but slow to cast and fragile.");
                     videos[1].Stop();
                     videos[1].enabled = false;
                     videos[2].enabled = true;
                     videos[2].Play();
-                    yield return createCharacterText.S.Say("Cuối cùng là Sword Master, thuần túy về kỹ năng kiếm, xuất chiêu khá nhanh, sát thương cao, sức chịu đựng cực kỳ kém.");
+                    yield return createCharacterText.S.Say("Lastly, the Sword Master — pure blade technique, swift and deadly, but with almost no endurance.");
                     videos[2].Stop();
                     videos[2].enabled = false;
-                    yield return createCharacterText.S.Say("Cứ suy nghĩ thật kỹ rồi quay lại gặp tôi nhé.");
+                    yield return createCharacterText.S.Say("Take your time. When you’ve made your decision, come find me.");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap());
                     break;

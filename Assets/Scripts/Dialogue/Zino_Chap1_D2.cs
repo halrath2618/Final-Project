@@ -87,7 +87,7 @@ public class Zino_Chap1_D2 : MonoBehaviour
             case 1:
                 {
                     z.StartTalking();
-                    yield return createCharacterText.Z.Say("Chiếc rương này... cổ hơn cả thời gian. Tôi cảm nhận được nó đang rung lên dưới làn da mình. Di vật — nó ở bên trong. Tôi biết mà. Tôi đã đi quá xa để còn nghi ngờ.");
+                    yield return createCharacterText.Z.Say("This chest…{a} older than time itself.{c}I feel it trembling beneath my skin.{c}The relic — it lies within. I know it.{c}I’ve come too far to doubt now.");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap2());
                     break;

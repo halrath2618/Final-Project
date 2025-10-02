@@ -140,6 +140,32 @@ public class PlayerController : MonoBehaviour
     [Header("Testing Switch Class")] //Testing swtiching class
     private CharacterClassManager characterClassManager; // Reference to the CharacterClassManager script
     public GameObject switchClassUI; // Reference to the UI GameObject for switching classes
+    public void SwitchToNormal()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            weapon[i].SetActive(false);
+        }
+        playerStatsManager.characterClassNum = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            mageSpellsIcon[i].SetActive(false);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            swordMasterSkillsIcon[i].SetActive(false);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            afterMeetHalrathSkillsIcon[i].SetActive(false);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            brawlerSkillsIcon[i].SetActive(false);
+        }
+        characterClassManager.SwitchClass(CharacterClass.Starter); // Switch to Starter class
+        _controller.GetComponent<CharacterController>().enabled = true;
+    }
     public void SwitchToBrawler()
     {
         for (int i = 0; i < 3; i++)

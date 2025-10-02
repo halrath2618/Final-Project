@@ -112,46 +112,48 @@ public class Halrath_Chap2_D1 : MonoBehaviour
         {
             case 8:
                 {
-                    yield return createCharacterText.H.Say("Xin chào, đã tỉnh dậy rồi à?");
-                    yield return createCharacterText.Z.Say("......{a}...Tôi...Tôi đang ở đâu vậy?");
-                    yield return createCharacterText.Z.Say("Ông là ai? Sao tôi lại ở đây?");
-                    yield return createCharacterText.H.Say("Bình tĩnh nào.{c}Uống cái này đi! Nó sẽ giúp cậu hồi phục sức khỏe.");
+                    yield return createCharacterText.H.Say("Ah…{a} you’re awake.");
+                    yield return createCharacterText.Z.Say("……{a}I…{a} Where am I?");
+                    yield return createCharacterText.Z.Say("Who are you? Why am I here?");
+                    yield return createCharacterText.H.Say("Easy now. Drink this,{a} it will help restore your strength.");
                     StartCoroutine(playerController.DrinkHPPotion());
-                    yield return createCharacterText.H.Say("Ta là Halrath. Còn cậu là ai? Tại sao cậu lại ở nơi này?{a} Nơi này cực kỳ nguy hiểm đấy.");
-                    yield return createCharacterText.Z.Say("Tôi là Zino, trong một cuộc tìm kiếm cổ vật, {a}một mảnh cổ vật đã bay ra khỏi rương và dẫn tôi đến một cánh cổng kỳ lạ.{c} Sau khi bước vào, trước mắt tôi là một khu rừng tối với đầy rẫy quái vật sung quanh.{c} Tôi đã phải chạy trốn đến đây và gục ngã bất tỉnh sau đó.");
-                    yield return createCharacterText.H.Say("Cậu thật sự rất may mắn khi còn sống sót.{c} Khi tôi mở cửa thì phát hiện cậu đang nằm bất tỉnh, người đầy thương tích.{c} Mà cậu nói là cánh cổng cổ đại trong khu rừng này à??");
-                    yield return createCharacterText.Z.Say("Vâng!!");
-                    yield return createCharacterText.H.Say("Cánh cổng đó đã không hoạt động trong suốt gần 20 năm nay rồi.....{a} Thật kỳ lạ.{c}Cậu có đang giữ mảnh cổ vật đó không?");
-                    yield return createCharacterText.Z.Say("Khi nó bay vào cánh cổng, tôi đã cố gắng nắm lấy nó nhưng không được.{c} Tôi không biết nó đã đi đâu nữa rồi.");
-                    yield return createCharacterText.H.Say("Hmmm,{a} khó rồi đấy.......");
-                    yield return createCharacterText.Z.Say("Bây giờ làm sao tôi có thể tìm lại mảnh cổ vật đó và quay trở lại được?");
-                    yield return createCharacterText.H.Say("Cánh cổng đó đã không hoạt động trong một khoảng thời gian dài......{a} tôi biết có một người có thể giúp cậu.");
-                    yield return createCharacterText.Z.Say("Thật sao, là ai vậy?");
-                    yield return createCharacterText.H.Say("Nhưng trước hết, cậu cần phải nghỉ ngơi và hồi phục sức khỏe đã.{c} Nhưng con đường phía trước sẽ rất nguy hiểm, cậu có dám đối mặt hay không?");
-                    yield return createCharacterText.N.Say("1. Đồng ý.\n2. Không.");
+                    yield return createCharacterText.H.Say("I am Halrath.{c}And you…{a} who are you?{c}What brought you to this place?{c}It is perilous beyond measure.");
+                    yield return createCharacterText.Z.Say("I’m Zino.{c}I was searching for an ancient relic…{a} one fragment flew from the chest and led me to a strange gate.{c}When I stepped through,{a} I found myself in a dark forest teeming with monsters.{c}I fled…{a} and collapsed here.");
+                    yield return createCharacterText.H.Say("You’re fortunate to be alive.{c}When I opened the door,{a} you were lying there—unconscious, wounded.{c}By the way, you said…{a} the ancient gate in that forest?");
+                    yield return createCharacterText.Z.Say("Yes!");
+                    yield return createCharacterText.H.Say("That gate hasn’t stirred in nearly twenty years…{a} Curious.{c}Do you still have the relic fragment?");
+                    yield return createCharacterText.Z.Say("When it flew into the gate,{a} I tried to grab it—but failed.{c}I don’t know where it went.");
+                    yield return createCharacterText.H.Say("Hmmm… that complicates things.");
+                    yield return createCharacterText.Z.Say("How can I find it again?{c}How do I return?");
+                    yield return createCharacterText.H.Say("The gate has long been dormant…{a} but I know someone who might help you.");
+                    yield return createCharacterText.Z.Say("Really?{a} Who?");
+                    yield return createCharacterText.H.Say("But first—you must rest and recover.{c}The path ahead is treacherous.{c}Tell me…{w} do you have the courage to face it?");
+
+                    text1.text = "Yes, I will do whatever it takes to return to my world.";
+                    text2.text = "This world is too frightening… I don't know if I can face it… Maybe I'll just die out there searching. I don't know...";
                     ChoicePanelAnimation();
                     break;
                 }
             case 9:
                 {
-                    yield return createCharacterText.Z.Say("Tôi đồng ý, tôi sẽ làm bất cứ điều gì để có thể trở về thế giới của mình.");
-                    yield return createCharacterText.H.Say("Tốt lắm, cậu ta tên là Scy, sống trong thành phố Azzaband.{c}Cậu có thể đến thành phố bằng cách đi qua cánh cổng dịch chuyển phía sau nhà.");
-                    yield return createCharacterText.Z.Say("Cảm ơn ông rất nhiều, Halrath.{c} Tôi sẽ đến tìm và gặp Scy ngay.");
-                    yield return createCharacterText.H.Say("Trước khi đi, tôi có một số thứ cho cậu, có thể sẽ giúp ích cho cậu trên đường đi đấy.");
-                    yield return createCharacterText.N.Say("Nhận được 1 thanh kiếm ngắn.\nNhận được 2 bình máu.\nNhận được 2 bình Mana.");
+                    yield return createCharacterText.Z.Say("I accept.{c}I’ll do whatever it takes to return to my world.");
+                    yield return createCharacterText.H.Say("Good.{c}The one you seek is named Scy.{c}He dwells in the city of Azzaband.{c}You may reach it through the teleportation gate behind this house.");
+                    yield return createCharacterText.Z.Say("Thank you, Halrath.{c}I’ll find Scy without delay.");
+                    yield return createCharacterText.H.Say("Before you go,{a} I have something for you.{c}It may aid you on the road ahead.");
+                    yield return createCharacterText.N.Say("Received: 1 Short Sword.\nReceived: 2 Blood Vials.\nReceived: 2 Mana Vials.");
                     playerStatsManager.AddHPPotion(2);
                     playerStatsManager.AddMPPotion(2);
-                    yield return createCharacterText.Z.Say("Cảm ơn ông rất nhiều, Halrath.{c} Tôi sẽ đến tìm và gặp Scy ngay.");
-                    yield return createCharacterText.H.Say("Khoan đã, đừng vội, tôi cần cậu giúp một số việc ở đây. Cũng như luyện tập một tí chứ nhỉ?");
+                    yield return createCharacterText.Z.Say("Thank you, Halrath.{c}I’ll go now.");
+                    yield return createCharacterText.H.Say("Wait!!{a} don’t rush off just yet.{c}I need your help with a few tasks here.{c}And some training wouldn’t hurt,{a} would it?");
                     StartCoroutine(BlackenOvertime());
-                    yield return createCharacterText.N.Say("Sau khi nghỉ ngơi và hồi phục sức khỏe, Zino bắt đầu luyện tập chiến đấu với Halrath để chuẩn bị cho những thử thách phía trước.");
+                    yield return createCharacterText.N.Say("After resting and regaining his strength,{a} Zino begins combat training with Halrath to prepare for the trials ahead.");
                     StartCoroutine(WhitenOvertime());
-                    yield return createCharacterText.N.Say("Nhận được kỹ năng -tấn công cơ bản- và -tấn công liên trảm-");
+                    yield return createCharacterText.N.Say("Learned skills: -Basic Strike- and -Flurry Assault-.");
                     playerStatsManager.characterClassNum = 1;
-                    yield return createCharacterText.H.Say("Được rồi, bây giờ cậu đã sẵn sàng để đi rồi đấy.{c} Cánh cổng dịch chuyển ở phía sau nhà sẽ đưa cậu đến thành phố Azzaband.{c} Đây là lá thư giới thiệu của tôi, hãy đưa nó cho lính canh ở cổng vào, họ sẽ biết phải làm gì.{c} Trước khi khởi hành, tôi nhờ cậu một chuyện được chứ?");
-                    yield return createCharacterText.Z.Say("Ông cứ nói đi, tôi sẽ giúp ông.");
-                    yield return createCharacterText.H.Say("Có một thứ để ở sâu trong khu rừng tôi cần cậu mang về.{c}Hãy đi về phía bên trái của căn nhà, đi sâu vào trong rừng, cậu sẽ thấy một cái hòm chứa đồ, bên trong có món đồ tôi cần. Hãy mang nó về đây và tôi sẽ thưởng cho cậu.");
-                    yield return createCharacterText.Z.Say("Vâng, tôi sẽ đi ngay bây giờ.");
+                    yield return createCharacterText.H.Say("Now you’re ready.{c}The teleportation gate behind the house will take you to Azzaband. This is my letter of introduction,{a} give it to the gate sentries, they’ll know what to do.{c}But before you depart, may I ask for a favor?.");
+                    yield return createCharacterText.Z.Say("Speak, and I’ll do what I can.");
+                    yield return createCharacterText.H.Say("Deep within the forest lies something I need retrieved.{c}Head left from the house, go far into the woods, and you’ll find a chest.{c}Inside is the item I seek.{c}Bring it back, and you shall be rewarded.");
+                    yield return createCharacterText.Z.Say("Understood. I’ll go at once.");
                     z.StopTalking();
                     h.StopTalking();
                     halrath.SetTrigger("Idle");
@@ -165,9 +167,9 @@ public class Halrath_Chap2_D1 : MonoBehaviour
                 }
             case 10:
                 {
-                    yield return createCharacterText.Z.Say("Thế giới này quá đáng sợ… tôi không biết liệu mình có đủ sức đối mặt không…{c}Hay tôi sẽ chết ngoài đấy trong lúc tìm kiếm.{c}Tôi không biết nữa.....");
-                    yield return createCharacterText.H.Say("Nếu cậu không đủ sức để đối mặt, tôi e rằng rất khó để cậu có thể vượt qua được.{c} Nhưng nếu cậu đã quyết định rồi thì tôi sẽ không ngăn cản nữa.{c}Cứ ở lại đây bao lâu tùy thích, khi quen với nó rồi, có lẽ sẽ không quá tệ đâu. Haha");
-                    yield return createCharacterText.N.Say("Vì không còn ý chí vượt qua nữa, Zino quyết định ở lại khu rừng này và sống phần đời còn lại ở đây.");
+                    yield return createCharacterText.Z.Say("This world…{a} it’s terrifying.{c}I don’t know if I have the strength to face it… or if I’ll die out there, chasing shadows. I… I just don’t know anymore…");
+                    yield return createCharacterText.H.Say("If you lack the strength to face what lies ahead,{a} I fear survival will be a fleeting hope.{c}But if your choice is made, I won’t stop you. Stay here as long as you wish.{c}In time, you may find it not so dreadful. Haha…");
+                    yield return createCharacterText.N.Say("Having lost the will to press on, Zino chose to remain in the forest, living out the rest of his days in quiet solitude.");
                     StartCoroutine(playerController.GameOver());
                     SceneManager.LoadScene("Main Menu");
                     z.StopTalking();

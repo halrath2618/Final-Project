@@ -112,11 +112,11 @@ public class Scy_Chap2_D1 : MonoBehaviour
         {
             case 13:
                 {
-                    yield return createCharacterText.S.Say("Chờ cậu hơi lâu đấy anh bạn trẻ ạ.{c}Trước khi cậu đập vào mặt tôi một dàn câu hỏi...{a}Tôi tên là Scy. Rất vui được gặp cậu.{c}Tôi nghe Halrath kể về cậu.{c}Cậu vào đây, tôi sẽ kể cho cậu nghe mọi chuyện.");
+                    yield return createCharacterText.S.Say("You kept me waiting, young one.{c}Before you throw a barrage of questions at me…{a} I’m Scy.{c}A pleasure to meet you.{c}Halrath spoke of you. Come in—I’ll tell you everything.");
                     StartCoroutine(BlackenOvertime());
-                    yield return createCharacterText.N.Say("Scy ngồi kể cho Zino nghe về lịch sử của thành phố và những sự kiện đã xảy ra gần đây.{c}Zino chăm chú nghe từng câu chuyện từ Scy và ghi chép lại kỹ càng.{c}");
+                    yield return createCharacterText.N.Say("Scy sat and spoke at length, recounting the city’s history and the events that had recently unfolded. Zino listened intently, noting every detail with care.");
                     StartCoroutine(WhitenOvertime());
-                    yield return createCharacterText.S.Say("Rồi, bây giờ cậu đi với tôi tới chổ này để chuẩn bị một số thứ nhé.");
+                    yield return createCharacterText.S.Say("Now then, come with me.{c}There are preparations to be made.");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap());
                     break;

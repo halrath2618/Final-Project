@@ -86,7 +86,7 @@ public class Zino_Chap1_D3 : MonoBehaviour
             case 2:
                 {
                     z.StartTalking();
-                    yield return createCharacterText.Z.Say("Khoan{a} gì thế? Không! Nó đang bay...{a}bay thẳng về phía cánh cổng!");
+                    yield return createCharacterText.Z.Say("Wait !!!{a} what is that? No…{a} it’s rising…{a} soaring straight toward the gate!");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap3());
                     break;

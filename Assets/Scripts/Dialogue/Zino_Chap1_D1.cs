@@ -86,7 +86,7 @@ public class Zino_Chap1_D1 : MonoBehaviour
             case 0:
                 {
                     z.StartTalking();
-                    yield return createCharacterText.Z.Say("Vậy là... đây chính là nơi mà người ta chỉ nhắc đến trong những câu chuyện mờ nhạt. Khu rừng đã nuốt chửng lối đi, những vì sao biến mất khỏi bầu trời, nhưng tôi vẫn bước tiếp. Có thứ gì đó kéo tôi đến đây. Thứ gì đó cổ xưa.");
+                    yield return createCharacterText.Z.Say("So… this is the place.{c}Whispered only in half-remembered tales and fading dreams.{c}The forest devours the path, the stars retreat from the heavens…{a} yet I press on.{c}Something beckons.{a} Something old.{a} Older than time,{a} and far less forgiving.");
                     playerStatsManager.storyProgress++;
                     StartCoroutine(Chap1());
                     break;

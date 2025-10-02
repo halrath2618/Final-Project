@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerStatsManager : MonoBehaviour
 {
     public static PlayerStatsManager instance;
+    public MainMenuActive mainMenuActive;
     public float health = 100f;
     public float stamina = 100f;
     public float mana = 100f;
@@ -26,6 +27,17 @@ public class PlayerStatsManager : MonoBehaviour
        else
         {
             Destroy(gameObject);
+        }
+    }
+    private void Update()
+    {
+        mainMenuActive = FindAnyObjectByType<MainMenuActive>();
+        if (mainMenuActive != null)
+        {
+            if (mainMenuActive.isActive)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     public void AddHPPotion(int num)

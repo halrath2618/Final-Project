@@ -103,8 +103,8 @@ public class Halrath_Chap2_D1_Repeat : MonoBehaviour
         {
             case 9:
                 {
-                    yield return createCharacterText.H.Say("Có một thứ để ở sâu trong khu rừng tôi cần cậu mang về.{c}Hãy đi về phía bên trái của căn nhà, đi sâu vào trong rừng, cậu sẽ thấy một cái hòm chứa đồ, bên trong có món đồ tôi cần. Hãy mang nó về đây và tôi sẽ thưởng cho cậu.");
-                    yield return createCharacterText.Z.Say("Vâng, tôi sẽ đi ngay bây giờ.");
+                    yield return createCharacterText.H.Say("Deep within the forest lies something I need retrieved.{c}Head left from the house, go far into the woods, and you’ll find a chest.{c}Inside is the item I seek.{c}Bring it back, and you shall be rewarded.");
+                    yield return createCharacterText.Z.Say("Understood. I’ll go at once.");
                     dialogueBox.SetActive(false);
                     playerController.enabled = true;
                     yield return null;

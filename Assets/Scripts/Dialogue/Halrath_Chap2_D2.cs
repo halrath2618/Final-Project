@@ -103,16 +103,16 @@ public class Halrath_Chap2_D2 : MonoBehaviour
         {
             case 11:
                 {
-                    yield return createCharacterText.H.Say("Oh!{a} Đã về rồi à?");
-                    yield return createCharacterText.Z.Say("Vâng, tôi đã lấy được món đồ mà ông cần.");
-                    yield return createCharacterText.H.Say("Tốt lắm! Cảm ơn cậu rất nhiều, hãy cầm lấy nó đi.{c}Cậu sẽ cần đến nó đấy.");
-                    yield return createCharacterText.Z.Say("Nhưng đây là...........");
-                    yield return createCharacterText.H.Say("Tất cả chuyện này là tôi muốn thử sức chiến đấu của cậu đến đâu và cậu đã hoàn thành rất tốt.{a} Hãy mở cái túi ra xem bên trong đi!!");
-                    yield return createCharacterText.N.Say("Bạn nhận được 1000 vàng và 2 bình máu");
+                    yield return createCharacterText.H.Say("Ah!{a} You’ve returned.");
+                    yield return createCharacterText.Z.Say("Yes, I’ve retrieved the item you asked for.");
+                    yield return createCharacterText.H.Say("Well done. Thank you, truly.{c}Take this,{a} you’ll need it.");
+                    yield return createCharacterText.Z.Say("But this is.....");
+                    yield return createCharacterText.H.Say("All of this was a test, {a}to see the measure of your strength.{c}And you’ve proven yourself. Go on, open the pouch.");
+                    yield return createCharacterText.N.Say("Received 1000 gold and 2 Blood Vials.");
                     playerStatsManager.storyProgress++;
                     playerStatsManager.AddGold(1000);
-                    yield return createCharacterText.H.Say("Giờ cũng đã khá trễ rồi, cậu nên bắt đầu đến thành phố để gặp Scy trước khi trời tối.{c}Cánh cổng phía sau nhà đang hoạt động, nó sẽ dẫn cậu đến thành phố.");
-                    yield return createCharacterText.Z.Say("Vâng, tôi sẽ đi ngay bây giờ.");
+                    yield return createCharacterText.H.Say("It’s getting late.{c}You should make haste to the city and find Scy before nightfall.{c}The gate behind the house is active, it will take you there.");
+                    yield return createCharacterText.Z.Say("Understood. I’ll leave at once.");
                     StartCoroutine(Chap());
                     break;
                 }

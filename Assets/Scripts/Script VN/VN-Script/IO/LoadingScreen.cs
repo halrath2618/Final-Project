@@ -11,7 +11,7 @@ public class LoadingScreen : MonoBehaviour
     public GameObject progressBar;
     private float fixedLoadingTime = 3f;
 
-    private void Start()
+    private void Update()
     {
         StartCoroutine(LoadSceneFixedTime(scene));
     }

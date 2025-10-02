@@ -109,7 +109,7 @@ public class Zino_Chap2_D1 : MonoBehaviour
         {
             case 9:
                 {
-                    yield return createCharacterText.Z.Say("Nó đây rồi....{c}Chắc đây là những thứ Halrath cần.{c}Mang nó về thôi.");
+                    yield return createCharacterText.Z.Say("There it is…{a} This must be what Halrath asked for.{c}Time to bring it back.");
                     playerStatsManager.storyProgress += 2;
                     StartCoroutine(Chap());
                     break;
