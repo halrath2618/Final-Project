@@ -1314,16 +1314,16 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Claw"))
         {
-            blood1.SetActive(true);
+            StartCoroutine(HideBloodEffect());
+
             Debug.Log("Player hit by monster claw");
             TakeDamage(monster.attackDamage); // Assuming Monster.Health has a static attackDmg variable
         }
     }
-    public void OnTriggerExit(Collider other) 
+    IEnumerator HideBloodEffect()
     {
-        if (other.CompareTag("Claw"))
-        {
-            blood1.SetActive(false);
-        }
+        blood1.SetActive(true); // Show the blood effect
+        yield return new WaitForSeconds(1f); // Wait for 0.5 seconds
+        blood1.SetActive(false); // Hide the blood effect
     }
 }
